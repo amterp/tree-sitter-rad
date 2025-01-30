@@ -1,0 +1,141 @@
+#!/usr/bin/env rad
+---
+this is a file
+header
+
+whoa! hello
+---
+args:
+    name string
+    age int = 30 # An age.
+    employed bool
+    foo string[] = ["blah", "bloop"]
+    bar "BAR" b int[] = [4, 5]
+
+    name enum ["alice", "bob"]
+    name regex "[A-Z][a-z]*"
+
+a = 2
+a = "hello"
+a = 3.14
+a = true
+a = [1, 2, 3]
+a = {"x": 1, y: 2}
+
+a = 3 + 5 * 3 - 1 / 0.01 % 2
+a += 2
+a -= 1
+a *= 5
+a /= 2
+a %= 2
+
+a = `hello {upper("alice")}`
+print(a)
+
+f1 = json[].id
+f2 = json.hello[].blah.*.woop
+
+rad url:
+    fields f1, f2
+    sort f1 desc, f2
+    sort
+
+    if a > b:
+        sort f2, f1
+    
+    f1:
+        map a -> a * 2
+
+    f1, f2:
+        color "red" ".*"
+
+if bah > 5:
+    hello = bloop
+
+    if blah == 2:
+        yoink += 2
+    else if blah == 3:
+        boom = "haha"
+
+request url:
+    fields f1
+
+display:
+    fields f2, f1, f3
+
+area = [width[i] * height[i] for i in range(width)]
+
+numbers = [1, 2, 3]
+print(join(numbers, "... "))
+print(join(numbers, "... ", "Okay I'll count. "))
+print(join(numbers, "... ", "Okay I'll count. ", "!"))
+
+my_headers = {
+    "Authorization": "Bearer {token}",
+}
+response = http_post(url, body, headers=my_headers)
+
+text = """
+This is an
+example of text
+that "may contain quotes"!
+"""
+print(text)
+
+text = r"Hello\n{name}"
+text = r'Hello\n{name}'
+text = r`Hello\n{name}`
+
+url, name = pick_from_resource("./resources/websites.json", website)
+print("url: {url}, name: {name}")
+
+$`ls`
+
+cmd = `curl {url}`
+$cmd
+fail:
+    print("Oh no, curl failed!")
+
+$cmd
+recover:
+    print("Oh no, curl failed!")
+
+$!`ls`
+
+unsafe $`ls`
+
+code = $cmd
+
+code, stdout = $cmd
+
+code, stdout, stderr = $cmd
+
+_, _, stderr = $cmd
+
+quiet $!`touch {filename}.txt`
+
+unsafe quiet $!`touch {filename}.txt`
+
+defer:
+    $!`mv notes-tmp.txt notes.txt`
+    print("Moved back!")
+
+$!`sed -i '' "s/Version = .*/Version = {version}/" {path}`
+errdefer:
+    print("Undoing bump...")
+    $!`git checkout -- {path}`
+
+if false:  // failure simulation point 1
+    print("Oh no! ERROR!")
+    exit(1)
+
+$!`git add {path}`
+errdefer:
+    print("Resetting {path}...")
+    _, _ = $!`git reset {path}`
+
+if false:  // failure simulation point 2
+    print("Bah! ERROR!")
+    exit(1)
+
+$!`git commit -m "Bump version to {version}"`

@@ -1,0 +1,195 @@
+===
+Basic double quotes
+===
+
+a = "hi"
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Basic single quotes
+===
+
+a = 'hi'
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Basic backticks
+===
+
+a = `hi`
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Interpolation
+===
+
+"hello {name}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (var_path
+                root: (identifier))))
+          (string_end))))))
+
+===
+Raw string
+===
+
+r"hello {name}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Interpolation fancy
+===
+
+"hello {2 + 2}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (literal
+                    (int)))
+                right: (primary_expr
+                  (literal
+                    (int))))))
+          (string_end))))))
+
+===
+Nested double quotes
+===
+
+"'hello'"
+"`hello`"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Nested single quotes
+===
+
+'"hello"'
+'`hello`'
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Nested backtick
+===
+
+`"hello"`
+`'hello'`
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))

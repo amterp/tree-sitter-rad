@@ -1,0 +1,39 @@
+===
+1
+===
+
+// this is a comment
+
+if true: // inline comment
+    // comment at start of block
+    a = 2
+    // comment in block
+    print(a)
+// comment after
+
+---
+
+(source_file
+  (comment)
+  (if_stmt
+    condition: (primary_expr
+      (literal
+        (bool)))
+    (comment)
+    (comment)
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    (comment)
+    body: (expr_stmt
+      (primary_expr
+        (call
+          func: (identifier)
+          args: (call_arg_list
+            (primary_expr
+              (var_path
+                root: (identifier))))))))
+  (comment))

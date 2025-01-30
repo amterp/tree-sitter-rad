@@ -1,0 +1,133 @@
+===
+1
+===
+
+del a
+
+---
+
+(source_file
+  (del_stmt
+    paths: (var_path
+      root: (identifier))))
+
+===
+2+
+===
+
+del a, b, c
+
+---
+
+(source_file
+  (del_stmt
+    paths: (var_path
+      root: (identifier))
+    paths: (var_path
+      root: (identifier))
+    paths: (var_path
+      root: (identifier))))
+
+===
+2+ trailing
+===
+
+del a, b, c, 
+
+---
+
+(source_file
+  (del_stmt
+    paths: (var_path
+      root: (identifier))
+    paths: (var_path
+      root: (identifier))
+    paths: (var_path
+      root: (identifier))))
+
+===
+Multiline delete fails
+:error
+===
+
+del a,
+    b,
+    c,
+
+---
+
+===
+Path index
+===
+
+del a[0]
+
+---
+
+(source_file
+  (del_stmt
+    paths: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (int))))))
+
+===
+Path map lookup
+===
+
+del a["foo"]
+
+---
+
+(source_file
+  (del_stmt
+    paths: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end)))))))
+
+===
+Path map dot syntax
+===
+
+del a.foo
+
+---
+
+(source_file
+  (del_stmt
+    paths: (var_path
+      root: (identifier)
+      indexing: (identifier))))
+
+===
+2+ paths
+===
+
+del a.foo, b[1], c["bar"]
+
+---
+
+(source_file
+  (del_stmt
+    paths: (var_path
+      root: (identifier)
+      indexing: (identifier))
+    paths: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (int))))
+    paths: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end)))))))

@@ -1,0 +1,88 @@
+===
+All comparisons
+===
+
+a > 2
+a >= 2
+a < 2
+a <= 2
+a == 2
+a != 2
+a in [2, 3]
+a not in [2, 3]
+
+---
+
+(source_file
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int)))))
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int)))))
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int)))))
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int)))))
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int)))))
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int)))))
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (list
+            (literal
+              (int))
+            (literal
+              (int)))))))
+  (expr_stmt
+    (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (list
+            (literal
+              (int))
+            (literal
+              (int))))))))

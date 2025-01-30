@@ -1,0 +1,53 @@
+===
+Complete
+===
+
+#!/usr/bin/env rad
+---
+this is a file
+header
+
+whoa! hello
+---
+args:
+    name string
+    age int = 30 # An age.
+
+    name enum ["alice", "bob"]
+    name regex "[A-Z][a-z]*"
+
+---
+
+(source_file
+  (shebang)
+  (file_header)
+  (arg_block
+    body: (arg_declaration
+      (identifier)
+      (type_andor_default))
+    body: (arg_declaration
+      (identifier)
+      (type_andor_default
+        (arg_int_default
+          (int)))
+      (arg_comment
+        (comment_text)))
+    body: (arg_constraint
+      (arg_enum_constraint
+        (identifier)
+        (string_list
+          (string
+            (string_start)
+            (string_content)
+            (string_end))
+          (string
+            (string_start)
+            (string_content)
+            (string_end)))))
+    body: (arg_constraint
+      (arg_regex_constraint
+        (identifier)
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))

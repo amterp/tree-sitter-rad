@@ -1,0 +1,248 @@
+===
+Empty
+===
+
+{}
+a = {}
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (map))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (map)))))
+
+===
+With contents
+===
+
+{"a": 2}
+a = {"b": 3}
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (map
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (int))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (map
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (int)))))))))
+
+===
+With more contents
+===
+
+{ "a": 2, "b": "hello", "c": ["yo", 2] }
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (map
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (int))))
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end)))))
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (list
+                  (literal
+                    (string
+                      (string_start)
+                      (string_content)
+                      (string_end)))
+                  (literal
+                    (int)))))))))))
+
+===
+Nested
+===
+
+{ "a": 2, "b": { "c": true, "d": { "e": 0, "f": { } } } }
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (map
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (int))))
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (map
+                  (map_entry
+                    key: (primary_expr
+                      (literal
+                        (string
+                          (string_start)
+                          (string_content)
+                          (string_end))))
+                    value: (primary_expr
+                      (literal
+                        (bool))))
+                  (map_entry
+                    key: (primary_expr
+                      (literal
+                        (string
+                          (string_start)
+                          (string_content)
+                          (string_end))))
+                    value: (primary_expr
+                      (literal
+                        (map
+                          (map_entry
+                            key: (primary_expr
+                              (literal
+                                (string
+                                  (string_start)
+                                  (string_content)
+                                  (string_end))))
+                            value: (primary_expr
+                              (literal
+                                (int))))
+                          (map_entry
+                            key: (primary_expr
+                              (literal
+                                (string
+                                  (string_start)
+                                  (string_content)
+                                  (string_end))))
+                            value: (primary_expr
+                              (literal
+                                (map)))))))))))))))))
+
+===
+Multiline
+===
+
+my_headers = {
+    "Authorization": "Bearer {token}",
+    "Content" : [
+        "json",
+        "plaintext",
+    ],
+}
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (map
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (interpolation
+                    expr: (primary_expr
+                      (var_path
+                        root: (identifier))))
+                  (string_end)))))
+          (map_entry
+            key: (primary_expr
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            value: (primary_expr
+              (literal
+                (list
+                  (literal
+                    (string
+                      (string_start)
+                      (string_content)
+                      (string_end)))
+                  (literal
+                    (string
+                      (string_start)
+                      (string_content)
+                      (string_end))))))))))))

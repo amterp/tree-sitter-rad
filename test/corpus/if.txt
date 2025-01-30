@@ -1,0 +1,117 @@
+===
+If
+===
+
+if true:
+    a = 2
+
+---
+
+(source_file
+  (if_stmt
+    condition: (primary_expr
+      (literal
+        (bool)))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))))
+
+===
+If Else
+===
+
+if a > 2:
+    b = 2
+else:
+    c = "hi"
+
+---
+
+(source_file
+  (if_stmt
+    condition: (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int))))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    alternative: (else_clause
+      body: (assign
+        left: (var_path
+          root: (identifier))
+        right: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+If Else If Else
+===
+
+if a > 2:
+    b = 2
+    e = 2
+else if a > 5:
+    d = true
+else:
+    c = "hi"
+
+---
+
+(source_file
+  (if_stmt
+    condition: (comparison_op
+      (primary_expr
+        (var_path
+          root: (identifier)))
+      (primary_expr
+        (literal
+          (int))))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    alternative: (elif_clause
+      condition: (comparison_op
+        (primary_expr
+          (var_path
+            root: (identifier)))
+        (primary_expr
+          (literal
+            (int))))
+      body: (assign
+        left: (var_path
+          root: (identifier))
+        right: (primary_expr
+          (literal
+            (bool)))))
+    alternative: (else_clause
+      body: (assign
+        left: (var_path
+          root: (identifier))
+        right: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))

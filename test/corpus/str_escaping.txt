@@ -1,0 +1,78 @@
+===
+Newline, tab
+===
+
+"\t\n"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content
+            (escape_sequence)
+            (escape_sequence))
+          (string_end))))))
+
+===
+Interpolation
+===
+
+"\{hello}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (var_path
+                root: (identifier))))
+          (string_end))))))
+
+===
+Own delimiter
+===
+
+"\"hello\""
+'\'hello\''
+`\`hello\``
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content
+            (escape_sequence)
+            (escape_sequence))
+          (string_end)))))
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content
+            (escape_sequence)
+            (escape_sequence))
+          (string_end)))))
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content
+            (escape_sequence)
+            (escape_sequence))
+          (string_end))))))

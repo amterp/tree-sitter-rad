@@ -1,0 +1,27 @@
+[package]
+name = "tree-sitter-rsl"
+description = "A parser for RSL, Rad Scripting Language."
+version = "0.0.1"
+authors = ["Alexander Terp <alexander.terp@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+keywords = ["incremental", "parsing", "tree-sitter", "rsl"]
+categories = ["parsing", "text-editors"]
+repository = "http://github.com/amterp/rad"
+edition = "2021"
+autoexamples = false
+
+build = "bindings/rust/build.rs"
+include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*", "tree-sitter.json"]
+
+[lib]
+path = "bindings/rust/lib.rs"
+
+[dependencies]
+tree-sitter-language = "0.1"
+
+[build-dependencies]
+cc = "1.1.22"
+
+[dev-dependencies]
+tree-sitter = "0.24.6"

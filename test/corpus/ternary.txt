@@ -1,0 +1,112 @@
+===
+Basic
+===
+
+a > 2 ? "true" : "false"
+
+---
+
+(source_file
+  (expr_stmt
+    (ternary
+      condition: (comparison_op
+        (primary_expr
+          (var_path
+            root: (identifier)))
+        (primary_expr
+          (literal
+            (int))))
+      true_branch: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end))))
+      false_branch: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end)))))))
+
+===
+Assignment
+===
+
+b = a > 2 ? "true" : "false"
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (ternary
+      condition: (comparison_op
+        (primary_expr
+          (var_path
+            root: (identifier)))
+        (primary_expr
+          (literal
+            (int))))
+      true_branch: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end))))
+      false_branch: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end)))))))
+
+===
+Nested
+===
+
+b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (ternary
+      condition: (comparison_op
+        (primary_expr
+          (var_path
+            root: (identifier)))
+        (primary_expr
+          (literal
+            (int))))
+      true_branch: (ternary
+        condition: (comparison_op
+          (primary_expr
+            (var_path
+              root: (identifier)))
+          (primary_expr
+            (literal
+              (int))))
+        true_branch: (primary_expr
+          (literal
+            (int)))
+        false_branch: (primary_expr
+          (literal
+            (int))))
+      false_branch: (ternary
+        condition: (comparison_op
+          (primary_expr
+            (var_path
+              root: (identifier)))
+          (primary_expr
+            (literal
+              (int))))
+        true_branch: (primary_expr
+          (literal
+            (int)))
+        false_branch: (primary_expr
+          (literal
+            (int)))))))

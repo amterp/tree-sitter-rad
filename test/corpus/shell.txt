@@ -1,0 +1,340 @@
+===
+Fail simple
+===
+
+$`ls -n`
+fail:
+    a = 2
+    b = 2
+
+---
+
+(source_file
+  (expr_stmt
+    (shell_cmd
+      (checked_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))
+        (shell_body_type)
+        body: (assign
+          left: (var_path
+            root: (identifier))
+          right: (primary_expr
+            (literal
+              (int))))
+        body: (assign
+          left: (var_path
+            root: (identifier))
+          right: (primary_expr
+            (literal
+              (int))))))))
+
+===
+Fail var
+===
+
+cmd = `ls -n`
+$cmd
+fail:
+    a = 2
+    b = 2
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (expr_stmt
+    (shell_cmd
+      (checked_shell_cmd
+        command: (primary_expr
+          (var_path
+            root: (identifier)))
+        (shell_body_type)
+        body: (assign
+          left: (var_path
+            root: (identifier))
+          right: (primary_expr
+            (literal
+              (int))))
+        body: (assign
+          left: (var_path
+            root: (identifier))
+          right: (primary_expr
+            (literal
+              (int))))))))
+
+===
+Recover
+===
+
+$`ls -n`
+recover:
+    a = 2
+    b = 2
+
+---
+
+(source_file
+  (expr_stmt
+    (shell_cmd
+      (checked_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))
+        (shell_body_type)
+        body: (assign
+          left: (var_path
+            root: (identifier))
+          right: (primary_expr
+            (literal
+              (int))))
+        body: (assign
+          left: (var_path
+            root: (identifier))
+          right: (primary_expr
+            (literal
+              (int))))))))
+
+===
+Critical simple
+===
+
+$!`ls -n`
+
+---
+
+(source_file
+  (expr_stmt
+    (shell_cmd
+      (critical_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+Critical var
+===
+
+cmd = `ls -n` 
+$!cmd
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (expr_stmt
+    (shell_cmd
+      (critical_shell_cmd
+        command: (primary_expr
+          (var_path
+            root: (identifier)))))))
+
+===
+Single assign
+===
+
+a = $!`ls -n`
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      (critical_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+Double assign
+===
+
+a, b = $!`ls -n`
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      (critical_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+Triple assign
+===
+
+a, b, c = $!`ls -n`
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      (critical_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+Underscore assigns
+===
+
+_, _, _ = $!`ls -n`
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      (critical_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+Assign checked
+===
+
+a, b = $`ls -n`
+fail:
+  print("hi")
+  print("there")
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      (checked_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))
+        (shell_body_type)
+        body: (expr_stmt
+          (primary_expr
+            (call
+              func: (identifier)
+              args: (call_arg_list
+                (primary_expr
+                  (literal
+                    (string
+                      (string_start)
+                      (string_content)
+                      (string_end))))))))
+        body: (expr_stmt
+          (primary_expr
+            (call
+              func: (identifier)
+              args: (call_arg_list
+                (primary_expr
+                  (literal
+                    (string
+                      (string_start)
+                      (string_content)
+                      (string_end))))))))))))
+
+===
+Modifiers
+===
+
+a, b = unsafe quiet $!`ls -n`
+a, b = quiet unsafe $!`ls -n`
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      (shell_modifier)
+      (shell_modifier)
+      (critical_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end)))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      (shell_modifier)
+      (shell_modifier)
+      (critical_shell_cmd
+        command: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))

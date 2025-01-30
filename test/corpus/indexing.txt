@@ -1,0 +1,304 @@
+===
+List index
+===
+
+a[0]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (primary_expr
+          (literal
+            (int)))))))
+
+===
+List index nested
+===
+
+a[0][1][3]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (primary_expr
+          (literal
+            (int)))
+        indexing: (primary_expr
+          (literal
+            (int)))
+        indexing: (primary_expr
+          (literal
+            (int)))))))
+
+===
+List expr
+===
+
+a[8][b][c]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (primary_expr
+          (literal
+            (int)))
+        indexing: (primary_expr
+          (var_path
+            root: (identifier)))
+        indexing: (primary_expr
+          (var_path
+            root: (identifier)))))))
+
+===
+Map index
+===
+
+a["2"]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+Map index nested
+===
+
+a["2"]["3"]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))
+        indexing: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))))))
+
+===
+Map index expr
+===
+
+a["2"][b]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))
+        indexing: (primary_expr
+          (var_path
+            root: (identifier)))))))
+
+===
+List index assign
+===
+
+a[1] = "hi"
+a[1][2] = "hi"
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (int))))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (assign
+    left: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (int)))
+      indexing: (primary_expr
+        (literal
+          (int))))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Map index assign
+===
+
+a["a"] = "hi"
+a["a"]["b"] = "hi"
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end)))))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (assign
+    left: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end))))
+      indexing: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end)))))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Mixed index assign
+===
+
+a["a"][0] = "hi"
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end))))
+      indexing: (primary_expr
+        (literal
+          (int))))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Map dot syntax
+===
+
+a.b.c
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (identifier)
+        indexing: (identifier)))))
+
+===
+Map dot mixed syntax
+===
+
+a.b[c].d["e"].f
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (var_path
+        root: (identifier)
+        indexing: (identifier)
+        indexing: (primary_expr
+          (var_path
+            root: (identifier)))
+        indexing: (identifier)
+        indexing: (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))
+        indexing: (identifier)))))
+
+===
+Map dot syntax assign
+===
+
+a.b.c = 2
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier)
+      indexing: (identifier)
+      indexing: (identifier))
+    right: (primary_expr
+      (literal
+        (int)))))

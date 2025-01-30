@@ -1,0 +1,53 @@
+===
+Both
+===
+
+a++
+a--
+
+---
+
+(source_file
+  (incr_decr
+    left: (var_path
+      root: (identifier)))
+  (incr_decr
+    left: (var_path
+      root: (identifier))))
+
+===
+Var path
+===
+
+a[1][2]++
+a.b.c++
+a.b["asd"].c++
+
+---
+
+(source_file
+  (incr_decr
+    left: (var_path
+      root: (identifier)
+      indexing: (primary_expr
+        (literal
+          (int)))
+      indexing: (primary_expr
+        (literal
+          (int)))))
+  (incr_decr
+    left: (var_path
+      root: (identifier)
+      indexing: (identifier)
+      indexing: (identifier)))
+  (incr_decr
+    left: (var_path
+      root: (identifier)
+      indexing: (identifier)
+      indexing: (primary_expr
+        (literal
+          (string
+            (string_start)
+            (string_content)
+            (string_end))))
+      indexing: (identifier))))

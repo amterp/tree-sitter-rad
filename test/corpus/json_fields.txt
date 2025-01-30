@@ -1,0 +1,74 @@
+===
+Root
+===
+
+a = json
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (json_path)))
+
+===
+Root list
+===
+
+a = json[]
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (json_path)))
+
+===
+Simple
+===
+
+a = json.foo.bar
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (json_path
+      (identifier)
+      (identifier))))
+
+===
+Simple lists
+===
+
+a = json[].foo.bar[]
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (json_path
+      (identifier)
+      (identifier))))
+
+===
+Wildcard
+===
+
+a = json[].*.bar
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (json_path
+      (identifier))))

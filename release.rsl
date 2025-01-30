@@ -1,0 +1,12 @@
+#!/usr/bin/env rad
+---
+Releases new version of the RSL tree sitter.
+---
+args:
+    version v string
+
+    version regex "v[0-9]+\.[0-9]+\.[0-9]+\"
+
+`$!tree-sitter version {version}`
+
+// WIP

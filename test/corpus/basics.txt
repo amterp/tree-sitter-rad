@@ -1,0 +1,255 @@
+===
+Assignment int
+===
+
+a = 2
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (int)))))
+
+===
+Assignment string
+===
+
+a = "hi"
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Assignment float
+===
+
+a = 2.1
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (float)))))
+
+===
+Assignment bool
+===
+
+a = true
+b = false
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (bool))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (bool)))))
+
+===
+Assignment lists
+===
+
+a = []
+a = [2, 3]
+a = [2, 3,]
+a = [2, 3, ]
+a = ["hi"]
+a = ["hi", "hello",]
+a = [2.2, 3.3,]
+a = [true, false, ]
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (empty_list)))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (literal
+            (int))
+          (literal
+            (int))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (literal
+            (int))
+          (literal
+            (int))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (literal
+            (int))
+          (literal
+            (int))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end)))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end)))
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end)))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (literal
+            (float))
+          (literal
+            (float))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (list
+          (literal
+            (bool))
+          (literal
+            (bool)))))))
+
+===
+Assignment bool
+===
+
+a = true
+b = false
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (bool))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (bool)))))
+
+===
+Assignment mixed list
+===
+
+[1, true, "hi", 3.2]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (list
+          (literal
+            (int))
+          (literal
+            (bool))
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end)))
+          (literal
+            (float)))))))
+
+===
+Assignment nested list
+===
+
+[1, true, ["hi", [2, 3]], 3.2]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (list
+          (literal
+            (int))
+          (literal
+            (bool))
+          (literal
+            (list
+              (literal
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end)))
+              (literal
+                (list
+                  (literal
+                    (int))
+                  (literal
+                    (int))))))
+          (literal
+            (float)))))))

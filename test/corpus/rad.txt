@@ -1,0 +1,313 @@
+===
+Rad simple
+===
+
+rad url:
+    fields foo, bar
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (rad_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))))
+
+===
+Request simple
+===
+
+request url:
+    fields foo, bar
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (request_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))))
+
+===
+Display simple
+===
+
+display:
+    fields foo, bar
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (display_keyword)
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))))
+
+===
+Rad sort simple
+===
+
+rad url:
+    fields foo, bar
+    sort
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (rad_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))
+    body: (rad_sort_stmt)))
+
+===
+Rad sort complex
+===
+
+rad url:
+    fields foo, bar
+    sort foo desc, bar asc, blah, bloop
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (rad_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))
+    body: (rad_sort_stmt
+      (identifier)
+      (identifier)
+      (identifier)
+      (identifier))))
+
+===
+Rad map one
+===
+
+rad url:
+    fields foo, bar
+    foo:
+        map a -> "{a * 100}%"
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (rad_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))
+    body: (rad_field_modifier_stmt
+      (identifier)
+      body: (rad_field_mod_map
+        (lambda
+          (identifier)
+          (primary_expr
+            (literal
+              (string
+                (string_start)
+                (interpolation
+                  expr: (primary_expr
+                    (binary_op
+                      left: (primary_expr
+                        (var_path
+                          root: (identifier)))
+                      right: (primary_expr
+                        (literal
+                          (int))))))
+                (string_content)
+                (string_end)))))))))
+
+===
+Rad map more
+===
+
+rad url:
+    fields foo, bar
+    foo, bar, woo:
+        map a -> "{a * 100}%"
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (rad_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))
+    body: (rad_field_modifier_stmt
+      (identifier)
+      (identifier)
+      (identifier)
+      body: (rad_field_mod_map
+        (lambda
+          (identifier)
+          (primary_expr
+            (literal
+              (string
+                (string_start)
+                (interpolation
+                  expr: (primary_expr
+                    (binary_op
+                      left: (primary_expr
+                        (var_path
+                          root: (identifier)))
+                      right: (primary_expr
+                        (literal
+                          (int))))))
+                (string_content)
+                (string_end)))))))))
+
+===
+Rad color
+===
+
+rad url:
+    fields foo, bar
+    foo, bar:
+        color "red" "Denmark"
+        color my_color my_country
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (rad_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))
+    body: (rad_field_modifier_stmt
+      (identifier)
+      (identifier)
+      body: (rad_field_mod_color
+        (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end))))
+        (primary_expr
+          (literal
+            (string
+              (string_start)
+              (string_content)
+              (string_end)))))
+      body: (rad_field_mod_color
+        (primary_expr
+          (var_path
+            root: (identifier)))
+        (primary_expr
+          (var_path
+            root: (identifier)))))))
+
+===
+Rad if stmt
+===
+
+rad url:
+    fields foo, bar
+    if blue:
+        foo, bar:
+            color "red" "Denmark"
+            color my_color my_country
+    else if green:
+        fields yo
+        sort
+    else:
+        bar:
+            map a -> a * 10
+            color a b
+
+---
+
+(source_file
+  (rad_block
+    rad_type: (rad_keyword)
+    source: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (rad_field_stmt
+      (identifier)
+      (identifier))
+    body: (rad_if_stmt
+      condition: (primary_expr
+        (var_path
+          root: (identifier)))
+      body: (rad_field_modifier_stmt
+        (identifier)
+        (identifier)
+        body: (rad_field_mod_color
+          (primary_expr
+            (literal
+              (string
+                (string_start)
+                (string_content)
+                (string_end))))
+          (primary_expr
+            (literal
+              (string
+                (string_start)
+                (string_content)
+                (string_end)))))
+        body: (rad_field_mod_color
+          (primary_expr
+            (var_path
+              root: (identifier)))
+          (primary_expr
+            (var_path
+              root: (identifier)))))
+      alternative: (rad_elif_clause
+        condition: (primary_expr
+          (var_path
+            root: (identifier)))
+        body: (rad_field_stmt
+          (identifier))
+        body: (rad_sort_stmt))
+      alternative: (rad_else_clause
+        body: (rad_field_modifier_stmt
+          (identifier)
+          body: (rad_field_mod_map
+            (lambda
+              (identifier)
+              (primary_expr
+                (binary_op
+                  left: (primary_expr
+                    (var_path
+                      root: (identifier)))
+                  right: (primary_expr
+                    (literal
+                      (int)))))))
+          body: (rad_field_mod_color
+            (primary_expr
+              (var_path
+                root: (identifier)))
+            (primary_expr
+              (var_path
+                root: (identifier)))))))))

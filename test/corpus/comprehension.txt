@@ -1,0 +1,56 @@
+===
+Comprehension no filter
+===
+
+[i * 2 for i in nums]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (list_comprehension
+        expr: (primary_expr
+          (binary_op
+            left: (primary_expr
+              (var_path
+                root: (identifier)))
+            right: (primary_expr
+              (literal
+                (int)))))
+        left: (identifier)
+        right: (primary_expr
+          (var_path
+            root: (identifier)))))))
+
+===
+Comprehension w/ filter
+===
+
+[i * 2 for i in nums if i > 5]
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (list_comprehension
+        expr: (primary_expr
+          (binary_op
+            left: (primary_expr
+              (var_path
+                root: (identifier)))
+            right: (primary_expr
+              (literal
+                (int)))))
+        left: (identifier)
+        right: (primary_expr
+          (var_path
+            root: (identifier)))
+        condition: (comparison_op
+          (primary_expr
+            (var_path
+              root: (identifier)))
+          (primary_expr
+            (literal
+              (int))))))))

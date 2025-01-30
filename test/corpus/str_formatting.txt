@@ -1,0 +1,117 @@
+===
+Padding
+===
+
+"hello {name:20}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (var_path
+                root: (identifier)))
+            format: (format_specifier
+              padding: (int)))
+          (string_end))))))
+
+===
+Decimals
+===
+
+"hello {name:.4}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (var_path
+                root: (identifier)))
+            format: (format_specifier
+              precision: (int)))
+          (string_end))))))
+
+===
+Padding & Decimals
+===
+
+"hello {name:20.4}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (var_path
+                root: (identifier)))
+            format: (format_specifier
+              padding: (int)
+              precision: (int)))
+          (string_end))))))
+
+===
+Left align
+===
+
+"hello {name:<20.4}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (var_path
+                root: (identifier)))
+            format: (format_specifier
+              padding: (int)
+              precision: (int)))
+          (string_end))))))
+
+===
+Right align
+===
+
+"hello {name:>20.4}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          (string_start)
+          (string_content)
+          (interpolation
+            expr: (primary_expr
+              (var_path
+                root: (identifier)))
+            format: (format_specifier
+              padding: (int)
+              precision: (int)))
+          (string_end))))))

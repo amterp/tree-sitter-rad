@@ -1,0 +1,55 @@
+===
+Defer
+===
+
+defer:
+    a = 2
+    a * 10
+
+---
+
+(source_file
+  (defer_block
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    body: (expr_stmt
+      (primary_expr
+        (binary_op
+          left: (primary_expr
+            (var_path
+              root: (identifier)))
+          right: (primary_expr
+            (literal
+              (int))))))))
+
+===
+Errdefer
+===
+
+errdefer:
+    a = 2
+    a * 10
+
+---
+
+(source_file
+  (errdefer_block
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    body: (expr_stmt
+      (primary_expr
+        (binary_op
+          left: (primary_expr
+            (var_path
+              root: (identifier)))
+          right: (primary_expr
+            (literal
+              (int))))))))

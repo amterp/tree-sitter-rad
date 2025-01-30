@@ -1,0 +1,93 @@
+===
+Arithmetic times precedence
+===
+
+a = 2 * 3 + 3
+a = 2 + 3 * 3
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (binary_op
+        left: (primary_expr
+          (binary_op
+            left: (primary_expr
+              (literal
+                (int)))
+            right: (primary_expr
+              (literal
+                (int)))))
+        right: (primary_expr
+          (literal
+            (int))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (binary_op
+        left: (primary_expr
+          (literal
+            (int)))
+        right: (primary_expr
+          (binary_op
+            left: (primary_expr
+              (literal
+                (int)))
+            right: (primary_expr
+              (literal
+                (int)))))))))
+
+===
+Arithmetic all
+===
+
+a = 2 + 3 - 4 * 5 / 2 + 4 / 3 % 2
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (binary_op
+        left: (primary_expr
+          (binary_op
+            left: (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (literal
+                    (int)))
+                right: (primary_expr
+                  (literal
+                    (int)))))
+            right: (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (binary_op
+                    left: (primary_expr
+                      (literal
+                        (int)))
+                    right: (primary_expr
+                      (literal
+                        (int)))))
+                right: (primary_expr
+                  (literal
+                    (int)))))))
+        right: (primary_expr
+          (binary_op
+            left: (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (literal
+                    (int)))
+                right: (primary_expr
+                  (literal
+                    (int)))))
+            right: (primary_expr
+              (literal
+                (int)))))))))

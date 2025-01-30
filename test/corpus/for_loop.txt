@@ -1,0 +1,98 @@
+===
+Just i
+===
+
+for i in nums:
+    a = 2
+    b = 2
+
+---
+
+(source_file
+  (for_loop
+    left: (identifier)
+    right: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))))
+
+===
+i, item
+===
+
+for i, item in nums:
+    a = 2
+    b = 2
+
+---
+
+(source_file
+  (for_loop
+    left: (identifier)
+    left: (identifier)
+    right: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))))
+
+===
+break, continue
+===
+
+for i in nums:
+  a = 2
+  break
+
+for i in nums:
+  a = 2
+  continue
+
+---
+
+(source_file
+  (for_loop
+    left: (identifier)
+    right: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    body: (break_stmt))
+  (for_loop
+    left: (identifier)
+    right: (primary_expr
+      (var_path
+        root: (identifier)))
+    body: (assign
+      left: (var_path
+        root: (identifier))
+      right: (primary_expr
+        (literal
+          (int))))
+    body: (continue_stmt)))
