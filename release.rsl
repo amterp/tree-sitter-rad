@@ -1,16 +1,43 @@
 #!/usr/bin/env rad
 ---
 Releases new version of the RSL tree sitter.
+
+Releases new version of the RSL tree sitter.
 Doc: https://tree-sitter.github.io/tree-sitter/creating-parsers/6-publishing.html
 ---
 args:
     version v string
+    no_push "no-push" P bool # Enable to not push.
+    version regex "^[0-9]+\.[0-9]+\.[0-9]+$"
 
-    version regex "v[0-9]+\.[0-9]+\.[0-9]+\"
+$!`tss version {version}`
 
-`$!tree-sitter version {version}`
+FILES = [
+    "CMakeLists.txt",
+    "Cargo.lock",
+    "Cargo.toml",
+    "Makefile",
+    "package-lock.json",
+    "package.json",
+    "pyproject.toml",
+    "release.rsl",
+    "tree-sitter.json",
+]
+FILES = join(FILES, " ")
 
+$!`git add {FILES}`
 
+msg = "Bump version to {version}"
+$!`git commit -m "{msg}"`
+$!`git tag -a v{version} -m "{msg}"`
 
+push_cmd = `git push origin main --tags`
+
+if no_push:
+    print("Not pushing, remember to do it yourself with", yellow(push_cmd))
+else:
+    $!push_cmd
+
+print(green("Done!"))
 
 // relies on an alias `tss` for the 0.25+ version of tree-sitter CLI
