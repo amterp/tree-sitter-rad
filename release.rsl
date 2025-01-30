@@ -1,6 +1,7 @@
 #!/usr/bin/env rad
 ---
 Releases new version of the RSL tree sitter.
+Doc: https://tree-sitter.github.io/tree-sitter/creating-parsers/6-publishing.html
 ---
 args:
     version v string
@@ -9,4 +10,7 @@ args:
 
 `$!tree-sitter version {version}`
 
-// WIP
+
+
+
+// relies on an alias `tss` for the 0.25+ version of tree-sitter CLI

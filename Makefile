@@ -3,7 +3,7 @@ $(error Windows is not supported)
 endif
 
 LANGUAGE_NAME := tree-sitter-rsl
-HOMEPAGE_URL := http://github.com/amterp/rad
+HOMEPAGE_URL := http://github.com/amterp/tree-sitter-rsl
 VERSION := 0.0.1
 
 # repository

@@ -7,7 +7,7 @@ license = "Apache-2.0"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "rsl"]
 categories = ["parsing", "text-editors"]
-repository = "http://github.com/amterp/rad"
+repository = "http://github.com/amterp/tree-sitter-rsl"
 edition = "2021"
 autoexamples = false
 

@@ -22,7 +22,7 @@
       }
     ],
     "links": {
-      "repository": "http://github.com/amterp/rad"
+      "repository": "http://github.com/amterp/tree-sitter-rsl"
     }
   },
   "bindings": {
