@@ -40,4 +40,5 @@ else:
 
 print(green("Done!"))
 
-// relies on an alias `tss` for the 0.25+ version of tree-sitter CLI
+// relies on `tss` being the 0.25+ version of tree-sitter CLI.
+// as of writing, has to be compiled locally from source.
