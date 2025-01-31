@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-rsl
 HOMEPAGE_URL := http://github.com/amterp/tree-sitter-rsl
-VERSION := 0.0.6
+VERSION := 0.0.7
 
 # repository
 SRC_DIR := src
