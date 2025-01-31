@@ -3636,6 +3636,5 @@
     "_simple_stmt",
     "_compound_stmt",
     "expr"
-  ],
-  "reserved": {}
+  ]
 }
