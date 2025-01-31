@@ -14,8 +14,8 @@ args:
 
 if build:
     $!`npm install`
-    $!`tss generate -b`
-    test_cmd = `tss test --show-fields`
+    $!`tree-sitter generate -b`
+    test_cmd = `tree-sitter test --show-fields`
     err = unsafe $test_cmd
     if err != 0:
         test_cmd += " --update"
