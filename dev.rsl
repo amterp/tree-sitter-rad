@@ -20,6 +20,14 @@ if version:
         exit(1)
 
 $!`tss version {version}`
+
+$!`git diff --compact-summary`
+
+if not confirm("Continue? [y/n] > "):
+    print(red("Resetting and exiting..."))
+    $!`git reset --hard`
+    exit(1)
+
 $!`git add .`
 
 msg = "Release version {version}"
