@@ -1,5 +1,11 @@
 # RSL Tree Sitter
 
+## Installation
+
+```shell
+go get -u github.com/amterp/tree-sitter-rsl
+```
+
 ## Commands
 
 Setup

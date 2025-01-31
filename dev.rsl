@@ -1,23 +1,39 @@
 #!/usr/bin/env rad
 ---
-Rebuild & test the grammar.
+Releases new version of the RSL tree sitter.
+
+Releases new version of the RSL tree sitter.
+Doc: https://tree-sitter.github.io/tree-sitter/creating-parsers/6-publishing.html
 ---
 args:
-    no_test T bool # Enable to skip tests.
-    update u bool # Enable to get asked if tests should be updated by tree sitter.
+    version v string = "" # Specify to release a new version.
+    no_push "no-push" P bool # Enable to not push.
 
-// might need npm install?
-$!`tree-sitter generate -b`
+    version regex "^[0-9]+\.[0-9]+\.[0-9]+$"
 
-if no_test:
-    exit()
+if version:
+    clean = unsafe $`git status --porcelain | grep -q .`
+    print(clean)
+    if not clean:
+        print(red("Exiting!"))
+        print("Your", yellow("git status"), "isn't clean, first commit/shelve/clean any files before releasing a new version.")
+        exit(1)
 
-test_cmd = `tree-sitter test --show-fields`
-err = unsafe $test_cmd
-if err != 0 and update:
-    test_cmd += " --update"
-    if confirm("Update tests? [y/n] > "):
-        $!test_cmd
+$!`tss version {version}`
+$!`git add .`
 
-if confirm("Push? [y/n] > "):
-    $!`./push.rsl --skip-tests`
+msg = "Release version {version}"
+$!`git commit -m "{msg}"`
+$!`git tag -a v{version} -m "{msg}"`
+
+push_cmd = `git push origin main --tags`
+
+if no_push:
+    print("Not pushing, remember to do it yourself with", yellow(push_cmd))
+else:
+    $!push_cmd
+
+print(green("Done!"))
+
+// relies on `tss` being the 0.25+ version of tree-sitter CLI.
+// as of writing, has to be compiled locally from source.

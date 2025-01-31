@@ -1,4 +1,4 @@
-module tree-sitter-rsl
+module github.com/amterp/tree-sitter-rsl
 
 go 1.22
 
