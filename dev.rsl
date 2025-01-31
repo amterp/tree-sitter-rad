@@ -6,18 +6,31 @@ Releases new version of the RSL tree sitter.
 Doc: https://tree-sitter.github.io/tree-sitter/creating-parsers/6-publishing.html
 ---
 args:
+    build b bool # Enable to build RTS.
     version v string = "" # Specify to release a new version.
     no_push "no-push" P bool # Enable to not push.
 
     version regex "^[0-9]+\.[0-9]+\.[0-9]+$"
 
-if version:
-    clean = unsafe $`git status --porcelain | grep -q .`
-    print(clean)
-    if not clean:
-        print(red("Exiting!"))
-        print("Your", yellow("git status"), "isn't clean, first commit/shelve/clean any files before releasing a new version.")
-        exit(1)
+if build:
+    $!`npm install`
+    $!`tss generate -b`
+    test_cmd = `tss test --show-fields`
+    err = unsafe $test_cmd
+    if err != 0:
+        test_cmd += " --update"
+        if confirm("Update tests? [y/n] > "):
+            $!test_cmd
+
+if not version:
+    exit()
+
+clean = unsafe $`git status --porcelain | grep -q .`
+print(clean)
+if not clean:
+    print(red("Exiting!"))
+    print("Your", yellow("git status"), "isn't clean, first commit/shelve/clean any files before releasing a new version.")
+    exit(1)
 
 $!`tss version {version}`
 

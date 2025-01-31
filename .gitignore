@@ -2,6 +2,7 @@ src/*
 !src/
 !src/scanner.c
 .vscode/
+.idea/
 
 # Rust artifacts
 target/
