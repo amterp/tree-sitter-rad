@@ -107,13 +107,17 @@ module.exports = grammar({
     shebang: $ => /#!.*/,
 
     file_header: $ => seq(
-      seq("---", $._newline),
-      repeat(seq(
-        optional(/[^\r\n]+/),
-        /\r?\n/
-      )),
-      seq("---", $._newline),
+      $._file_header_line,
+      optional(field("contents", $.file_header_contents)),
+      $._file_header_line,
     ),
+
+    file_header_contents: $ => repeat1(seq(
+      optional(/[^\r\n]+/),
+      /\r?\n/
+    )),
+
+    _file_header_line: $ => seq("---", /\r?\n/),
 
     _stmt: $ => choice(
       $._simple_stmts,

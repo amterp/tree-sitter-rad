@@ -20,7 +20,8 @@ args:
 
 (source_file
   (shebang)
-  (file_header)
+  (file_header
+    contents: (file_header_contents))
   (arg_block
     body: (arg_declaration
       (identifier)

@@ -862,6 +862,22 @@
   {
     "type": "file_header",
     "named": true,
+    "fields": {
+      "contents": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "file_header_contents",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "file_header_contents",
+    "named": true,
     "fields": {}
   },
   {
@@ -2124,11 +2140,11 @@
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "float[]",
@@ -2152,11 +2168,11 @@
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "int[]",

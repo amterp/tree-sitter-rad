@@ -15,6 +15,8 @@ args:
 if build:
     $!`npm install`
     $!`tree-sitter generate -b`
+    $!`cd ./bindings/go && go clean -cache`
+    $!`go test ./bindings/go`
     test_cmd = `tree-sitter test --show-fields`
     err = unsafe $test_cmd
     if err != 0:
@@ -26,15 +28,20 @@ if not version:
     exit()
 
 clean = unsafe $`git status --porcelain | grep -q .`
-print(clean)
 if not clean:
-    print(red("Exiting!"))
-    print("Your", yellow("git status"), "isn't clean, first commit/shelve/clean any files before releasing a new version.")
-    exit(1)
+    $!`git add .`
+    $!`git diff HEAD --compact-summary`
+    if not confirm("You've got local changes, commit them ALL first? [y/n] > "):
+        print(red("Exiting!"))
+        print("Your", yellow("git status"), "isn't clean, first commit/shelve/clean any files before releasing a new version.")
+        exit(1)
+    else:
+        $!`git add .`
+        $!`git commit`
 
 $!`tss version {version}`
 
-$!`git diff --compact-summary`
+$!`git diff HEAD --compact-summary`
 
 if not confirm("Continue? [y/n] > "):
     print(red("Resetting and exiting..."))
