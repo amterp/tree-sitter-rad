@@ -3,7 +3,7 @@
   "version": "0.0.8",
   "description": "A parser for RSL, Rad Scripting Language.",
   "repository": "https://github.com/amterp/tree-sitter-rsl",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "author": {
     "name": "Alexander Terp",
     "email": "alexander.terp@gmail.com",

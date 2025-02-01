@@ -1,7 +1,7 @@
 /**
  * @file RSL grammar for tree-sitter
  * @author Alexander Terp <alexander.terp@gmail.com>
- * @license Apache-2.0
+ * @license MIT
  */
 
 
