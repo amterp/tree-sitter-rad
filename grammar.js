@@ -654,9 +654,9 @@ module.exports = grammar({
     ),
 
     string: $ => seq(
-      $.string_start,
-      repeat(choice($.interpolation, $.string_content)),
-      $.string_end,
+      field("start", $.string_start),
+      field("contents", repeat(choice($.interpolation, $.string_content))),
+      field("end", $.string_end),
     ),
 
     string_content: $ => prec.right(repeat1(

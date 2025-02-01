@@ -6,7 +6,8 @@ Releases new version of the RSL tree sitter.
 Doc: https://tree-sitter.github.io/tree-sitter/creating-parsers/6-publishing.html
 ---
 args:
-    build b bool # Enable to build RTS.
+    build b bool # Enable to build & test the tree sitter.
+    no_clean "no-clean" C bool # Enable to not clean the go cache.
     version v string = "" # Specify to release a new version.
     no_push "no-push" P bool # Enable to not push.
 
@@ -15,7 +16,8 @@ args:
 if build:
     $!`npm install`
     $!`tree-sitter generate -b`
-    $!`cd ./bindings/go && go clean -cache`
+    if not no_clean:
+        $!`cd ./bindings/go && go clean -cache`
     $!`go test ./bindings/go`
     test_cmd = `tree-sitter test --show-fields`
     err = unsafe $test_cmd

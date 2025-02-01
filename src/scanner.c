@@ -30,7 +30,7 @@ typedef enum
     DoubleQuote = 1 << 1,
     BackQuote = 1 << 2,
     Raw = 1 << 3,
-    Triple = 1 << 5,
+    Triple = 1 << 4,
 } Flags;
 
 // Structure to represent a string delimiter.
@@ -100,6 +100,64 @@ typedef struct
 static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 
 static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
+
+static bool consume_only_whitespace_and_comment_then_newline(TSLexer *lexer)
+{
+    for (;;)
+    {
+        switch (lexer->lookahead)
+        {
+        // If we hit newline or EOF, we’re good
+        case '\r':
+            skip(lexer);
+        case '\n':
+            // in case we hit above \r and it's followed by \n
+            if (lexer->lookahead == '\n')
+            {
+                skip(lexer);
+            }
+        case 0:
+            return true;
+
+        // If it’s normal whitespace, consume it and keep going
+        case ' ':
+        case '\t':
+            skip(lexer);
+            break;
+
+        case '/':
+            skip(lexer);
+            if (lexer->lookahead == '/')
+            {
+                skip(lexer);
+                while (lexer->lookahead != '\r' && lexer->lookahead != '\n' && lexer->lookahead != 0)
+                {
+                    skip(lexer);
+                }
+                if (lexer->lookahead == '\r')
+                {
+                    skip(lexer);
+                }
+                if (lexer->lookahead == '\n')
+                {
+                    skip(lexer);
+                }
+                return true;
+            }
+            else
+            {
+                // Found a slash that doesn't begin a comment => not valid
+                return false;
+            }
+            break;
+
+        // If we find any other character that is not whitespace,
+        // that means the line is not empty => fail
+        default:
+            return false;
+        }
+    }
+}
 
 // The core external scanner function.
 bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols)
@@ -342,18 +400,11 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
     {
         Delimiter delimiter = new_delimiter();
 
-        // Check for string prefixes (r, u, R, U).
+        // Check for string prefixes (r).
         bool has_flags = false;
-        while (lexer->lookahead)
+        if (lexer->lookahead == 'r')
         {
-            if (lexer->lookahead == 'r' || lexer->lookahead == 'R')
-            {
-                set_raw(&delimiter);
-            }
-            else if (lexer->lookahead != 'u' && lexer->lookahead != 'U')
-            {
-                break;
-            }
+            set_raw(&delimiter);
             has_flags = true;
             advance(lexer);
         }
@@ -370,16 +421,6 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
             set_end_character(&delimiter, '\'');
             advance(lexer);
             lexer->mark_end(lexer);
-            if (lexer->lookahead == '\'')
-            {
-                advance(lexer);
-                if (lexer->lookahead == '\'')
-                {
-                    advance(lexer);
-                    lexer->mark_end(lexer);
-                    set_triple(&delimiter);
-                }
-            }
         }
         else if (lexer->lookahead == '"')
         {
@@ -392,8 +433,12 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
                 if (lexer->lookahead == '"')
                 {
                     advance(lexer);
-                    lexer->mark_end(lexer);
-                    set_triple(&delimiter);
+                    if (consume_only_whitespace_and_comment_then_newline(lexer)) {
+                        lexer->mark_end(lexer);
+                        set_triple(&delimiter);
+                    } else {
+                        return false;
+                    }
                 }
             }
         }
@@ -405,10 +450,6 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
             lexer->result_symbol = STRING_START;
             scanner->inside_raw_string = !is_raw(&delimiter); // we're inside of a raw string if and only if we didn't set the raw flag
             return true;
-        }
-        if (has_flags)
-        {
-            return false;
         }
     }
 

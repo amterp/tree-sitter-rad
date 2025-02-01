@@ -29,9 +29,9 @@ a = "hi"
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Assignment float
@@ -133,9 +133,9 @@ a = [true, false, ]
         (list
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end)))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end)))))))
   (assign
     left: (var_path
       root: (identifier))
@@ -144,14 +144,14 @@ a = [true, false, ]
         (list
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end)))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end)))
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end)))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end)))))))
   (assign
     left: (var_path
       root: (identifier))
@@ -215,9 +215,9 @@ Assignment mixed list
             (bool))
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end)))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end)))
           (literal
             (float)))))))
 
@@ -242,9 +242,9 @@ Assignment nested list
             (list
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end)))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end)))
               (literal
                 (list
                   (literal

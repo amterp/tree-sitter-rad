@@ -11,11 +11,11 @@ Newline, tab
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content
+          start: (string_start)
+          contents: (string_content
             (escape_sequence)
             (escape_sequence))
-          (string_end))))))
+          end: (string_end))))))
 
 ===
 Interpolation
@@ -30,13 +30,13 @@ Interpolation
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (interpolation
+          start: (string_start)
+          contents: (string_content)
+          contents: (interpolation
             expr: (primary_expr
               (var_path
                 root: (identifier))))
-          (string_end))))))
+          end: (string_end))))))
 
 ===
 Own delimiter
@@ -53,26 +53,26 @@ Own delimiter
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content
+          start: (string_start)
+          contents: (string_content
             (escape_sequence)
             (escape_sequence))
-          (string_end)))))
+          end: (string_end)))))
   (expr_stmt
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content
+          start: (string_start)
+          contents: (string_content
             (escape_sequence)
             (escape_sequence))
-          (string_end)))))
+          end: (string_end)))))
   (expr_stmt
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content
+          start: (string_start)
+          contents: (string_content
             (escape_sequence)
             (escape_sequence))
-          (string_end))))))
+          end: (string_end))))))

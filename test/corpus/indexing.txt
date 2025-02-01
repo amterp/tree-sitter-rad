@@ -77,9 +77,9 @@ a["2"]
         indexing: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 Map index nested
@@ -97,15 +97,15 @@ a["2"]["3"]
         indexing: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))
         indexing: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 Map index expr
@@ -123,9 +123,9 @@ a["2"][b]
         indexing: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))
         indexing: (primary_expr
           (var_path
             root: (identifier)))))))
@@ -149,9 +149,9 @@ a[1][2] = "hi"
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end)))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end)))))
   (assign
     left: (var_path
       root: (identifier)
@@ -164,9 +164,9 @@ a[1][2] = "hi"
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Map index assign
@@ -184,36 +184,36 @@ a["a"]["b"] = "hi"
       indexing: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end)))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end)))))
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end)))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end)))))
   (assign
     left: (var_path
       root: (identifier)
       indexing: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end))))
       indexing: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end)))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end)))))
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Mixed index assign
@@ -230,18 +230,18 @@ a["a"][0] = "hi"
       indexing: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end))))
       indexing: (primary_expr
         (literal
           (int))))
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Map dot syntax
@@ -280,9 +280,9 @@ a.b[c].d["e"].f
         indexing: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))
         indexing: (identifier)))))
 
 ===

@@ -52,9 +52,9 @@ else:
         right: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 If Else If Else
@@ -112,6 +112,6 @@ else:
         right: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))

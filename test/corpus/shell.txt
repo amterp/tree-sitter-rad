@@ -16,9 +16,9 @@ fail:
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))
         (shell_body_type)
         body: (assign
           left: (var_path
@@ -52,9 +52,9 @@ fail:
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end)))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end)))))
   (expr_stmt
     (shell_cmd
       (checked_shell_cmd
@@ -93,9 +93,9 @@ recover:
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))
         (shell_body_type)
         body: (assign
           left: (var_path
@@ -125,9 +125,9 @@ $!`ls -n`
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 Critical var
@@ -145,9 +145,9 @@ $!cmd
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end)))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end)))))
   (expr_stmt
     (shell_cmd
       (critical_shell_cmd
@@ -172,9 +172,9 @@ a = $!`ls -n`
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 Double assign
@@ -195,9 +195,9 @@ a, b = $!`ls -n`
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 Triple assign
@@ -220,9 +220,9 @@ a, b, c = $!`ls -n`
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 Underscore assigns
@@ -245,9 +245,9 @@ _, _, _ = $!`ls -n`
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))
 
 ===
 Assign checked
@@ -271,9 +271,9 @@ fail:
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))
         (shell_body_type)
         body: (expr_stmt
           (primary_expr
@@ -283,9 +283,9 @@ fail:
                 (primary_expr
                   (literal
                     (string
-                      (string_start)
-                      (string_content)
-                      (string_end))))))))
+                      start: (string_start)
+                      contents: (string_content)
+                      end: (string_end))))))))
         body: (expr_stmt
           (primary_expr
             (call
@@ -294,9 +294,9 @@ fail:
                 (primary_expr
                   (literal
                     (string
-                      (string_start)
-                      (string_content)
-                      (string_end))))))))))))
+                      start: (string_start)
+                      contents: (string_content)
+                      end: (string_end))))))))))))
 
 ===
 Modifiers
@@ -320,9 +320,9 @@ a, b = quiet unsafe $!`ls -n`
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end)))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end)))))))
   (assign
     left: (var_path
       root: (identifier))
@@ -335,6 +335,6 @@ a, b = quiet unsafe $!`ls -n`
         command: (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))))))

@@ -3325,28 +3325,40 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "string_start"
-        },
-        {
-          "type": "REPEAT",
+          "type": "FIELD",
+          "name": "start",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "interpolation"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "string_content"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "string_start"
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "string_end"
+          "type": "FIELD",
+          "name": "contents",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "interpolation"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "string_content"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "end",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_end"
+          }
         }
       ]
     },

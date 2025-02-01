@@ -38,17 +38,17 @@ args:
         (identifier)
         (string_list
           (string
-            (string_start)
-            (string_content)
-            (string_end))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end))
           (string
-            (string_start)
-            (string_content)
-            (string_end)))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end)))))
     body: (arg_constraint
       (arg_regex_constraint
         (identifier)
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))

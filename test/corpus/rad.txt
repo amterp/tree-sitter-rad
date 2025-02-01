@@ -126,8 +126,8 @@ rad url:
           (primary_expr
             (literal
               (string
-                (string_start)
-                (interpolation
+                start: (string_start)
+                contents: (interpolation
                   expr: (primary_expr
                     (binary_op
                       left: (primary_expr
@@ -136,8 +136,8 @@ rad url:
                       right: (primary_expr
                         (literal
                           (int))))))
-                (string_content)
-                (string_end)))))))))
+                contents: (string_content)
+                end: (string_end)))))))))
 
 ===
 Rad map more
@@ -169,8 +169,8 @@ rad url:
           (primary_expr
             (literal
               (string
-                (string_start)
-                (interpolation
+                start: (string_start)
+                contents: (interpolation
                   expr: (primary_expr
                     (binary_op
                       left: (primary_expr
@@ -179,8 +179,8 @@ rad url:
                       right: (primary_expr
                         (literal
                           (int))))))
-                (string_content)
-                (string_end)))))))))
+                contents: (string_content)
+                end: (string_end)))))))))
 
 ===
 Rad color
@@ -210,15 +210,15 @@ rad url:
         (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end))))
         (primary_expr
           (literal
             (string
-              (string_start)
-              (string_content)
-              (string_end)))))
+              start: (string_start)
+              contents: (string_content)
+              end: (string_end)))))
       body: (rad_field_mod_color
         (primary_expr
           (var_path
@@ -267,15 +267,15 @@ rad url:
           (primary_expr
             (literal
               (string
-                (string_start)
-                (string_content)
-                (string_end))))
+                start: (string_start)
+                contents: (string_content)
+                end: (string_end))))
           (primary_expr
             (literal
               (string
-                (string_start)
-                (string_content)
-                (string_end)))))
+                start: (string_start)
+                contents: (string_content)
+                end: (string_end)))))
         body: (rad_field_mod_color
           (primary_expr
             (var_path

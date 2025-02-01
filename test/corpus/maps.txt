@@ -37,9 +37,9 @@ a = {"b": 3}
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (int))))))))
@@ -53,9 +53,9 @@ a = {"b": 3}
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (int)))))))))
@@ -77,9 +77,9 @@ With more contents
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (int))))
@@ -87,30 +87,30 @@ With more contents
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end)))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end)))))
           (map_entry
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (list
                   (literal
                     (string
-                      (string_start)
-                      (string_content)
-                      (string_end)))
+                      start: (string_start)
+                      contents: (string_content)
+                      end: (string_end)))
                   (literal
                     (int)))))))))))
 
@@ -131,9 +131,9 @@ Nested
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (int))))
@@ -141,9 +141,9 @@ Nested
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (map
@@ -151,9 +151,9 @@ Nested
                     key: (primary_expr
                       (literal
                         (string
-                          (string_start)
-                          (string_content)
-                          (string_end))))
+                          start: (string_start)
+                          contents: (string_content)
+                          end: (string_end))))
                     value: (primary_expr
                       (literal
                         (bool))))
@@ -161,9 +161,9 @@ Nested
                     key: (primary_expr
                       (literal
                         (string
-                          (string_start)
-                          (string_content)
-                          (string_end))))
+                          start: (string_start)
+                          contents: (string_content)
+                          end: (string_end))))
                     value: (primary_expr
                       (literal
                         (map
@@ -171,9 +171,9 @@ Nested
                             key: (primary_expr
                               (literal
                                 (string
-                                  (string_start)
-                                  (string_content)
-                                  (string_end))))
+                                  start: (string_start)
+                                  contents: (string_content)
+                                  end: (string_end))))
                             value: (primary_expr
                               (literal
                                 (int))))
@@ -181,9 +181,9 @@ Nested
                             key: (primary_expr
                               (literal
                                 (string
-                                  (string_start)
-                                  (string_content)
-                                  (string_end))))
+                                  start: (string_start)
+                                  contents: (string_content)
+                                  end: (string_end))))
                             value: (primary_expr
                               (literal
                                 (map)))))))))))))))))
@@ -213,36 +213,36 @@ my_headers = {
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (interpolation
+                  start: (string_start)
+                  contents: (string_content)
+                  contents: (interpolation
                     expr: (primary_expr
                       (var_path
                         root: (identifier))))
-                  (string_end)))))
+                  end: (string_end)))))
           (map_entry
             key: (primary_expr
               (literal
                 (string
-                  (string_start)
-                  (string_content)
-                  (string_end))))
+                  start: (string_start)
+                  contents: (string_content)
+                  end: (string_end))))
             value: (primary_expr
               (literal
                 (list
                   (literal
                     (string
-                      (string_start)
-                      (string_content)
-                      (string_end)))
+                      start: (string_start)
+                      contents: (string_content)
+                      end: (string_end)))
                   (literal
                     (string
-                      (string_start)
-                      (string_content)
-                      (string_end))))))))))))
+                      start: (string_start)
+                      contents: (string_content)
+                      end: (string_end))))))))))))

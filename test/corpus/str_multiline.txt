@@ -1,0 +1,101 @@
+===
+Simple
+===
+
+a = """
+"Hello" they said
+this is a many-line
+ string
+"""
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
+
+===
+With indentation
+===
+
+a = """
+    "Hello" they said
+    this is a many-line
+     string
+    """
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
+
+===
+With interpolation
+===
+
+a = """
+"Hello" they said
+this is a {2 + 2}
+ string
+"""
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          contents: (interpolation
+            expr: (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (literal
+                    (int)))
+                right: (primary_expr
+                  (literal
+                    (int))))))
+          contents: (string_content)
+          end: (string_end))))))
+
+===
+Raw
+===
+
+a = r"""
+"Hello" they said
+this is a {2 + 2}
+ string
+"""
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))

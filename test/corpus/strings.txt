@@ -13,9 +13,9 @@ a = "hi"
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Basic single quotes
@@ -32,9 +32,9 @@ a = 'hi'
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Basic backticks
@@ -51,9 +51,9 @@ a = `hi`
     right: (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Interpolation
@@ -68,13 +68,13 @@ Interpolation
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (interpolation
+          start: (string_start)
+          contents: (string_content)
+          contents: (interpolation
             expr: (primary_expr
               (var_path
                 root: (identifier))))
-          (string_end))))))
+          end: (string_end))))))
 
 ===
 Raw string
@@ -89,9 +89,9 @@ r"hello {name}"
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Interpolation fancy
@@ -106,9 +106,9 @@ Interpolation fancy
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (interpolation
+          start: (string_start)
+          contents: (string_content)
+          contents: (interpolation
             expr: (primary_expr
               (binary_op
                 left: (primary_expr
@@ -117,7 +117,7 @@ Interpolation fancy
                 right: (primary_expr
                   (literal
                     (int))))))
-          (string_end))))))
+          end: (string_end))))))
 
 ===
 Nested double quotes
@@ -133,16 +133,16 @@ Nested double quotes
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end)))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end)))))
   (expr_stmt
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Nested single quotes
@@ -158,16 +158,16 @@ Nested single quotes
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end)))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end)))))
   (expr_stmt
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
 
 ===
 Nested backtick
@@ -183,13 +183,43 @@ Nested backtick
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end)))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end)))))
   (expr_stmt
     (primary_expr
       (literal
         (string
-          (string_start)
-          (string_content)
-          (string_end))))))
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
+
+===
+Empty
+===
+
+""
+''
+``
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          end: (string_end)))))
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          end: (string_end)))))
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          end: (string_end))))))

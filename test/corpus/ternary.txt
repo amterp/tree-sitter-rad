@@ -19,15 +19,15 @@ a > 2 ? "true" : "false"
       true_branch: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end))))
       false_branch: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end)))))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end)))))))
 
 ===
 Assignment
@@ -52,15 +52,15 @@ b = a > 2 ? "true" : "false"
       true_branch: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end))))
       false_branch: (primary_expr
         (literal
           (string
-            (string_start)
-            (string_content)
-            (string_end)))))))
+            start: (string_start)
+            contents: (string_content)
+            end: (string_end)))))))
 
 ===
 Nested
