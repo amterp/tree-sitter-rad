@@ -26,6 +26,8 @@ func Test_PrintNodeKindIdTable(t *testing.T) {
 	for i := 0; i < int(lang.NodeKindCount()); i++ {
 		fmt.Fprintf(file, "| %3d | %-40s |\n", i, fmt.Sprintf("`%s`", lang.NodeKindForId(uint16(i))))
 	}
+
+	fmt.Fprintf(file, "\n*This file is generated - don't edit manually.*\n")
 }
 
 func Test_PrintFieldIdTable(t *testing.T) {
@@ -46,4 +48,6 @@ func Test_PrintFieldIdTable(t *testing.T) {
 	for i := 0; i < int(lang.FieldCount()); i++ {
 		fmt.Fprintf(file, "| %3d | %-40s |\n", i, fmt.Sprintf("`%s`", lang.FieldNameForId(uint16(i))))
 	}
+
+	fmt.Fprintf(file, "\n*This file is generated - don't edit manually.*\n")
 }

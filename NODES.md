@@ -216,3 +216,5 @@
 | 211 | `map_repeat1`                            |
 | 212 | `string_repeat1`                         |
 | 213 | `string_content_repeat1`                 |
+
+*This file is generated - don't edit manually.*

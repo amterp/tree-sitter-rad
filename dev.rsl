@@ -9,7 +9,6 @@ args:
     build b bool # Enable to build & test the tree sitter.
     no_clean "no-clean" C bool # Enable to not clean the go cache.
     version v string = "" # Specify to release a new version.
-    no_push "no-push" P bool # Enable to not push.
 
     version regex "^[0-9]+\.[0-9]+\.[0-9]+$"
 
@@ -58,10 +57,10 @@ $!`git tag -a v{version} -m "{msg}"`
 
 push_cmd = `git push origin main --tags`
 
-if no_push:
-    print("Not pushing, remember to do it yourself with", yellow(push_cmd))
-else:
+if confirm("Push? [y/n] > "):
     $!push_cmd
+else:
+    print("Not pushing, remember to do it yourself with", yellow(push_cmd))
 
 print(green("Done!"))
 
