@@ -179,43 +179,19 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
             // Check for escape interpolation start within the string.
             if ((lexer->lookahead == '{' || lexer->lookahead == '}') && !is_raw(delimiter))
             {
+                // about to start an interpolation -- exit and let TS grammar handle it
                 lexer->mark_end(lexer);
                 lexer->result_symbol = STRING_CONTENT;
                 return has_content;
             }
 
             // Handle escape sequences.
-            if (lexer->lookahead == '\\')
+            if (lexer->lookahead == '\\' && !is_raw(delimiter))
             {
-                if (is_raw(delimiter))
-                {
-                    // In raw strings, backslashes are treated literally, except when escaping quotes or newlines.
-                    advance(lexer);
-                    if (lexer->lookahead == end_character(delimiter) || lexer->lookahead == '\\')
-                    {
-                        advance(lexer);
-                    }
-                    if (lexer->lookahead == '\r')
-                    {
-                        advance(lexer);
-                        if (lexer->lookahead == '\n')
-                        {
-                            advance(lexer);
-                        }
-                    }
-                    else if (lexer->lookahead == '\n')
-                    {
-                        advance(lexer);
-                    }
-                    continue;
-                }
-                else
-                {
-                    // In regular strings, backslash indicates an escape sequence.
-                    lexer->mark_end(lexer);
-                    lexer->result_symbol = STRING_CONTENT;
-                    return has_content;
-                }
+                // In regular strings, backslash indicates an escape sequence.
+                lexer->mark_end(lexer);
+                lexer->result_symbol = STRING_CONTENT;
+                return has_content;
             }
             else if (lexer->lookahead == end_char)
             {
@@ -306,6 +282,7 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
             indent_length += 8;
             skip(lexer);
         }
+        // todo //-style comments
         else if (lexer->lookahead == '#' && (valid_symbols[INDENT] || valid_symbols[DEDENT] ||
                                              valid_symbols[NEWLINE] || valid_symbols[EXCEPT]))
         {

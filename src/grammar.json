@@ -3402,12 +3402,28 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "PATTERN",
-                  "value": "\\r?\\n"
+                  "type": "STRING",
+                  "value": "'"
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "['\"`nt\\\\]"
+                  "type": "STRING",
+                  "value": "\""
+                },
+                {
+                  "type": "STRING",
+                  "value": "`"
+                },
+                {
+                  "type": "STRING",
+                  "value": "n"
+                },
+                {
+                  "type": "STRING",
+                  "value": "t"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\\"
                 }
               ]
             }

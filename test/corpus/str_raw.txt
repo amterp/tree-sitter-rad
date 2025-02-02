@@ -1,0 +1,80 @@
+===
+Newline, tab
+===
+
+r"\t\n"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
+
+===
+Interpolation
+===
+
+r"\{hello}"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
+
+===
+Own delimiter is error
+:error
+===
+
+r"\"hello\""
+r'\'hello\''
+r`\`hello\``
+
+---
+
+blah error
+
+===
+Single escape
+===
+
+r"\"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))
+
+===
+Double escape
+===
+
+r"\\"
+
+---
+
+(source_file
+  (expr_stmt
+    (primary_expr
+      (literal
+        (string
+          start: (string_start)
+          contents: (string_content)
+          end: (string_end))))))

@@ -666,18 +666,9 @@ module.exports = grammar({
         $._string_content,
       ))),
 
-    escape_sequence: _ => token.immediate(prec(1, seq(
-      '\\',
-      choice(
-        // /u[a-fA-F\d]{4}/,
-        // /U[a-fA-F\d]{8}/,
-        // /x[a-fA-F\d]{2}/,
-        // /\d{1,3}/,
-        /\r?\n/,
-        /['"`nt\\]/,
-        // /N\{[^}]+\}/,
-      ),
-    ))),
+    escape_sequence: _ => token.immediate(prec(1,
+      seq('\\', choice("'", '"', '`', 'n', 't', '\\')),
+    )),
 
     _not_escape_sequence: _ => token.immediate('\\'),
 
