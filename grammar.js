@@ -63,7 +63,7 @@ module.exports = grammar({
     $._indent,
     $._dedent,
     $.string_start,
-    $._string_content,
+    $.string_content,
     $.string_end,
 
     // Mark comments as external tokens so that the external scanner is always
@@ -78,7 +78,6 @@ module.exports = grammar({
     ']',
     ')',
     '}',
-    'except',
   ],
 
   // inline: $ => [
@@ -655,15 +654,15 @@ module.exports = grammar({
 
     string: $ => seq(
       field("start", $.string_start),
-      field("contents", repeat(choice($.interpolation, $.string_content))),
+      field("contents", repeat(choice($.interpolation, $.str_contents))),
       field("end", $.string_end),
     ),
 
-    string_content: $ => prec.right(repeat1(
+    str_contents: $ => prec.right(repeat1(
       choice(
         $.escape_sequence,
         $._not_escape_sequence,
-        $._string_content,
+        $.string_content,
       ))),
 
     escape_sequence: _ => token.immediate(prec(1,

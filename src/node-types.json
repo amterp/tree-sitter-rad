@@ -1703,6 +1703,25 @@
     }
   },
   {
+    "type": "str_contents",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "string",
     "named": true,
     "fields": {
@@ -1715,7 +1734,7 @@
             "named": true
           },
           {
-            "type": "string_content",
+            "type": "str_contents",
             "named": true
           }
         ]
@@ -1740,21 +1759,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "string_content",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "escape_sequence",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2153,11 +2157,11 @@
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "float[]",
@@ -2246,6 +2250,10 @@
   {
     "type": "string[]",
     "named": false
+  },
+  {
+    "type": "string_content",
+    "named": true
   },
   {
     "type": "string_end",

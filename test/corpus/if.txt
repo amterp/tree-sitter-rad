@@ -53,7 +53,8 @@ else:
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -113,5 +114,6 @@ else:
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))

@@ -30,7 +30,8 @@ a = "hi"
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end))))))
 
 ===
@@ -134,7 +135,8 @@ a = [true, false, ]
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end)))))))
   (assign
     left: (var_path
@@ -145,12 +147,14 @@ a = [true, false, ]
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end)))
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end)))))))
   (assign
     left: (var_path
@@ -216,7 +220,8 @@ Assignment mixed list
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end)))
           (literal
             (float)))))))
@@ -243,7 +248,8 @@ Assignment nested list
               (literal
                 (string
                   start: (string_start)
-                  contents: (string_content)
+                  contents: (str_contents
+                    (string_content))
                   end: (string_end)))
               (literal
                 (list

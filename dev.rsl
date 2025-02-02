@@ -9,6 +9,7 @@ args:
     build b bool # Enable to build & test the tree sitter.
     no_clean "no-clean" C bool # Enable to not clean the go cache.
     version v string = "" # Specify to release a new version.
+    include i string = "" # Specify to regex include only certain TS tests.
 
     version regex "^[0-9]+\.[0-9]+\.[0-9]+$"
 
@@ -19,6 +20,8 @@ if build:
         $!`cd ./bindings/go && go clean -cache`
     $!`go test ./bindings/go`
     test_cmd = `tree-sitter test --show-fields`
+    if include:
+        test_cmd += ` --include "{include}"`
     err = unsafe $test_cmd
     if err != 0:
         test_cmd += " --update"

@@ -78,7 +78,8 @@ a["2"]
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -98,13 +99,15 @@ a["2"]["3"]
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))
         indexing: (primary_expr
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -124,7 +127,8 @@ a["2"][b]
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))
         indexing: (primary_expr
           (var_path
@@ -150,7 +154,8 @@ a[1][2] = "hi"
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end)))))
   (assign
     left: (var_path
@@ -165,7 +170,8 @@ a[1][2] = "hi"
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end))))))
 
 ===
@@ -185,13 +191,15 @@ a["a"]["b"] = "hi"
         (literal
           (string
             start: (string_start)
-            contents: (string_content)
+            contents: (str_contents
+              (string_content))
             end: (string_end)))))
     right: (primary_expr
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end)))))
   (assign
     left: (var_path
@@ -200,19 +208,22 @@ a["a"]["b"] = "hi"
         (literal
           (string
             start: (string_start)
-            contents: (string_content)
+            contents: (str_contents
+              (string_content))
             end: (string_end))))
       indexing: (primary_expr
         (literal
           (string
             start: (string_start)
-            contents: (string_content)
+            contents: (str_contents
+              (string_content))
             end: (string_end)))))
     right: (primary_expr
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end))))))
 
 ===
@@ -231,7 +242,8 @@ a["a"][0] = "hi"
         (literal
           (string
             start: (string_start)
-            contents: (string_content)
+            contents: (str_contents
+              (string_content))
             end: (string_end))))
       indexing: (primary_expr
         (literal
@@ -240,7 +252,8 @@ a["a"][0] = "hi"
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end))))))
 
 ===
@@ -281,7 +294,8 @@ a.b[c].d["e"].f
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))
         indexing: (identifier)))))
 

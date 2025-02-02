@@ -56,6 +56,8 @@ del a,
 
 ---
 
+
+
 ===
 Path index
 ===
@@ -88,7 +90,8 @@ del a["foo"]
         (literal
           (string
             start: (string_start)
-            contents: (string_content)
+            contents: (str_contents
+              (string_content))
             end: (string_end)))))))
 
 ===
@@ -129,5 +132,6 @@ del a.foo, b[1], c["bar"]
         (literal
           (string
             start: (string_start)
-            contents: (string_content)
+            contents: (str_contents
+              (string_content))
             end: (string_end)))))))

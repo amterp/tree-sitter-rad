@@ -17,7 +17,8 @@ fail:
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))
         (shell_body_type)
         body: (assign
@@ -53,7 +54,8 @@ fail:
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end)))))
   (expr_stmt
     (shell_cmd
@@ -94,7 +96,8 @@ recover:
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))
         (shell_body_type)
         body: (assign
@@ -126,7 +129,8 @@ $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -146,7 +150,8 @@ $!cmd
       (literal
         (string
           start: (string_start)
-          contents: (string_content)
+          contents: (str_contents
+            (string_content))
           end: (string_end)))))
   (expr_stmt
     (shell_cmd
@@ -173,7 +178,8 @@ a = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -196,7 +202,8 @@ a, b = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -221,7 +228,8 @@ a, b, c = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -246,7 +254,8 @@ _, _, _ = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
 
 ===
@@ -272,7 +281,8 @@ fail:
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))
         (shell_body_type)
         body: (expr_stmt
@@ -284,7 +294,8 @@ fail:
                   (literal
                     (string
                       start: (string_start)
-                      contents: (string_content)
+                      contents: (str_contents
+                        (string_content))
                       end: (string_end))))))))
         body: (expr_stmt
           (primary_expr
@@ -295,7 +306,8 @@ fail:
                   (literal
                     (string
                       start: (string_start)
-                      contents: (string_content)
+                      contents: (str_contents
+                        (string_content))
                       end: (string_end))))))))))))
 
 ===
@@ -321,7 +333,8 @@ a, b = quiet unsafe $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end)))))))
   (assign
     left: (var_path
@@ -336,5 +349,6 @@ a, b = quiet unsafe $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (string_content)
+              contents: (str_contents
+                (string_content))
               end: (string_end))))))))
