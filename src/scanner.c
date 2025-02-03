@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#define DEBUG 0  // Set to 1 to enable debug logging, 0 to disable
+#define ENABLE_DEBUG 0  // Set to 1 to enable debug logging, 0 to disable
 
-#if DEBUG
+#if ENABLE_DEBUG
     #define DEBUG(fmt, ...) fprintf(stderr, "DEBUG: " fmt "\n", ##__VA_ARGS__)
 #else
     #define DEBUG(fmt, ...)
