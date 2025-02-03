@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-rsl
-        VERSION "0.0.10"
+        VERSION "0.0.11"
         DESCRIPTION "A parser for RSL, Rad Scripting Language."
         HOMEPAGE_URL "http://github.com/amterp/tree-sitter-rsl"
         LANGUAGES C)
