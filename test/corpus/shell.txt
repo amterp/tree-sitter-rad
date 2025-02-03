@@ -17,7 +17,7 @@ fail:
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))
         (shell_body_type)
@@ -54,7 +54,7 @@ fail:
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end)))))
   (expr_stmt
@@ -96,7 +96,7 @@ recover:
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))
         (shell_body_type)
@@ -129,7 +129,7 @@ $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))))
 
@@ -150,7 +150,7 @@ $!cmd
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end)))))
   (expr_stmt
@@ -178,7 +178,7 @@ a = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))))
 
@@ -202,7 +202,7 @@ a, b = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))))
 
@@ -228,7 +228,7 @@ a, b, c = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))))
 
@@ -254,7 +254,7 @@ _, _, _ = $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))))
 
@@ -281,7 +281,7 @@ fail:
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))
         (shell_body_type)
@@ -294,7 +294,7 @@ fail:
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end))))))))
         body: (expr_stmt
@@ -306,7 +306,7 @@ fail:
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end))))))))))))
 
@@ -333,7 +333,7 @@ a, b = quiet unsafe $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))))
   (assign
@@ -349,6 +349,6 @@ a, b = quiet unsafe $!`ls -n`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))))

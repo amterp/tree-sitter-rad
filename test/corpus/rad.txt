@@ -136,7 +136,7 @@ rad url:
                       right: (primary_expr
                         (literal
                           (int))))))
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 end: (string_end)))))))))
 
@@ -180,7 +180,7 @@ rad url:
                       right: (primary_expr
                         (literal
                           (int))))))
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 end: (string_end)))))))))
 
@@ -213,14 +213,14 @@ rad url:
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))
         (primary_expr
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))
       body: (rad_field_mod_color
@@ -272,14 +272,14 @@ rad url:
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 end: (string_end))))
           (primary_expr
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 end: (string_end)))))
         body: (rad_field_mod_color

@@ -81,7 +81,7 @@ a.b["asd"].c += 2
         (literal
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end))))
       indexing: (identifier))

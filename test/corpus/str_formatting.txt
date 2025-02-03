@@ -12,7 +12,7 @@ Padding
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           contents: (interpolation
             expr: (primary_expr
@@ -36,7 +36,7 @@ Decimals
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           contents: (interpolation
             expr: (primary_expr
@@ -60,7 +60,7 @@ Padding & Decimals
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           contents: (interpolation
             expr: (primary_expr
@@ -85,7 +85,7 @@ Left align
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           contents: (interpolation
             expr: (primary_expr
@@ -110,7 +110,7 @@ Right align
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           contents: (interpolation
             expr: (primary_expr

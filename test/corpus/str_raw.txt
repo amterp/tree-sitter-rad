@@ -12,7 +12,7 @@ r"\t\n"
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end))))))
 
@@ -30,7 +30,7 @@ r"\{hello}"
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end))))))
 
@@ -61,7 +61,7 @@ r"\"
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end))))))
 
@@ -79,6 +79,6 @@ r"\\"
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end))))))

@@ -18,7 +18,7 @@ this is a many-line
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content)
             (string_content)
             (string_content)
@@ -64,7 +64,7 @@ a = """
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content)
             (string_content)
             (string_content))
@@ -90,7 +90,7 @@ this is a {2 + 2}
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content)
             (string_content)
             (string_content))
@@ -103,7 +103,7 @@ this is a {2 + 2}
                 right: (primary_expr
                   (literal
                     (int))))))
-          contents: (str_contents
+          contents: (string_contents
             (string_content)
             (string_content))
           end: (string_end))))))
@@ -128,7 +128,7 @@ this is a {2 + 2}
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content)
             (string_content)
             (string_content)

@@ -39,12 +39,12 @@ args:
         (string_list
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end))
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end)))))
     body: (arg_constraint
@@ -52,6 +52,6 @@ args:
         (identifier)
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end))))))

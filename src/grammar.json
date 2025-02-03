@@ -3346,7 +3346,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "str_contents"
+                  "name": "string_contents"
                 }
               ]
             }
@@ -3362,7 +3362,7 @@
         }
       ]
     },
-    "str_contents": {
+    "string_contents": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {

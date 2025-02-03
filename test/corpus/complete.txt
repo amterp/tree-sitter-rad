@@ -175,19 +175,19 @@ $!`git commit -m "Bump version to {version}"`
           (string_list
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))
     body: (arg_declaration
       (identifier)
       (string
         start: (string_start)
-        contents: (str_contents
+        contents: (string_contents
           (string_content))
         end: (string_end))
       (shorthand_flag)
@@ -202,12 +202,12 @@ $!`git commit -m "Bump version to {version}"`
         (string_list
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end))
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end)))))
     body: (arg_constraint
@@ -215,7 +215,7 @@ $!`git commit -m "Bump version to {version}"`
         (identifier)
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end)))))
   (assign
@@ -231,7 +231,7 @@ $!`git commit -m "Bump version to {version}"`
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end)))))
   (assign
@@ -269,7 +269,7 @@ $!`git commit -m "Bump version to {version}"`
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   end: (string_end))))
             value: (primary_expr
@@ -350,7 +350,7 @@ $!`git commit -m "Bump version to {version}"`
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           contents: (interpolation
             expr: (primary_expr
@@ -361,7 +361,7 @@ $!`git commit -m "Bump version to {version}"`
                     (literal
                       (string
                         start: (string_start)
-                        contents: (str_contents
+                        contents: (string_contents
                           (string_content))
                         end: (string_end))))))))
           end: (string_end)))))
@@ -429,14 +429,14 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))
         (primary_expr
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))))
   (if_stmt
@@ -482,7 +482,7 @@ $!`git commit -m "Bump version to {version}"`
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 end: (string_end))))))))
   (rad_block
@@ -553,7 +553,7 @@ $!`git commit -m "Bump version to {version}"`
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end)))))))))))
   (expr_stmt
@@ -572,14 +572,14 @@ $!`git commit -m "Bump version to {version}"`
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end))))
                 (primary_expr
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end)))))))))))
   (expr_stmt
@@ -598,21 +598,21 @@ $!`git commit -m "Bump version to {version}"`
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end))))
                 (primary_expr
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end))))
                 (primary_expr
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end)))))))))))
   (assign
@@ -666,14 +666,14 @@ $!`git commit -m "Bump version to {version}"`
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   contents: (interpolation
                     expr: (primary_expr
@@ -711,7 +711,7 @@ $!`git commit -m "Bump version to {version}"`
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end)))))
   (assign
@@ -721,7 +721,7 @@ $!`git commit -m "Bump version to {version}"`
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end)))))
   (assign
@@ -731,7 +731,7 @@ $!`git commit -m "Bump version to {version}"`
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           end: (string_end)))))
   (assign
@@ -747,7 +747,7 @@ $!`git commit -m "Bump version to {version}"`
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 end: (string_end))))
           (primary_expr
@@ -762,13 +762,13 @@ $!`git commit -m "Bump version to {version}"`
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 contents: (interpolation
                   expr: (primary_expr
                     (var_path
                       root: (identifier))))
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 contents: (interpolation
                   expr: (primary_expr
@@ -782,7 +782,7 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))))
   (assign
@@ -792,7 +792,7 @@ $!`git commit -m "Bump version to {version}"`
       (literal
         (string
           start: (string_start)
-          contents: (str_contents
+          contents: (string_contents
             (string_content))
           contents: (interpolation
             expr: (primary_expr
@@ -815,7 +815,7 @@ $!`git commit -m "Bump version to {version}"`
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end)))))))))))
   (expr_stmt
@@ -834,7 +834,7 @@ $!`git commit -m "Bump version to {version}"`
                   (literal
                     (string
                       start: (string_start)
-                      contents: (str_contents
+                      contents: (string_contents
                         (string_content))
                       end: (string_end)))))))))))
   (expr_stmt
@@ -845,7 +845,7 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))))
   (assign
@@ -898,13 +898,13 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               contents: (interpolation
                 expr: (primary_expr
                   (var_path
                     root: (identifier))))
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))))
   (expr_stmt
@@ -916,13 +916,13 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               contents: (interpolation
                 expr: (primary_expr
                   (var_path
                     root: (identifier))))
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))))
   (expr_stmt
@@ -934,13 +934,13 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               contents: (interpolation
                 expr: (primary_expr
                   (var_path
                     root: (identifier))))
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end)))))))
   (defer_block
@@ -951,7 +951,7 @@ $!`git commit -m "Bump version to {version}"`
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 end: (string_end)))))))
     body: (expr_stmt
@@ -963,7 +963,7 @@ $!`git commit -m "Bump version to {version}"`
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   end: (string_end)))))))))
   (expr_stmt
@@ -973,13 +973,13 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               contents: (interpolation
                 expr: (primary_expr
                   (var_path
                     root: (identifier))))
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               contents: (interpolation
                 expr: (primary_expr
@@ -996,7 +996,7 @@ $!`git commit -m "Bump version to {version}"`
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   end: (string_end))))))))
     body: (expr_stmt
@@ -1006,7 +1006,7 @@ $!`git commit -m "Bump version to {version}"`
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 contents: (interpolation
                   expr: (primary_expr
@@ -1027,7 +1027,7 @@ $!`git commit -m "Bump version to {version}"`
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   end: (string_end))))))))
     body: (expr_stmt
@@ -1045,7 +1045,7 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               contents: (interpolation
                 expr: (primary_expr
@@ -1062,13 +1062,13 @@ $!`git commit -m "Bump version to {version}"`
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   contents: (interpolation
                     expr: (primary_expr
                       (var_path
                         root: (identifier))))
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   end: (string_end))))))))
     body: (assign
@@ -1082,7 +1082,7 @@ $!`git commit -m "Bump version to {version}"`
             (literal
               (string
                 start: (string_start)
-                contents: (str_contents
+                contents: (string_contents
                   (string_content))
                 contents: (interpolation
                   expr: (primary_expr
@@ -1103,7 +1103,7 @@ $!`git commit -m "Bump version to {version}"`
               (literal
                 (string
                   start: (string_start)
-                  contents: (str_contents
+                  contents: (string_contents
                     (string_content))
                   end: (string_end))))))))
     body: (expr_stmt
@@ -1121,12 +1121,12 @@ $!`git commit -m "Bump version to {version}"`
           (literal
             (string
               start: (string_start)
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               contents: (interpolation
                 expr: (primary_expr
                   (var_path
                     root: (identifier))))
-              contents: (str_contents
+              contents: (string_contents
                 (string_content))
               end: (string_end))))))))

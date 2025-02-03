@@ -20,14 +20,14 @@ a > 2 ? "true" : "false"
         (literal
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end))))
       false_branch: (primary_expr
         (literal
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end)))))))
 
@@ -55,14 +55,14 @@ b = a > 2 ? "true" : "false"
         (literal
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end))))
       false_branch: (primary_expr
         (literal
           (string
             start: (string_start)
-            contents: (str_contents
+            contents: (string_contents
               (string_content))
             end: (string_end)))))))
 

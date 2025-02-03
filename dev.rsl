@@ -13,7 +13,7 @@ args:
 
     version regex "^[0-9]+\.[0-9]+\.[0-9]+$"
 
-if build:
+if build or version:
     $!`npm install`
     $!`tree-sitter generate -b`
     if not no_clean:
