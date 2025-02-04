@@ -224,9 +224,11 @@ module.exports = grammar({
     )),
 
     unary_op: $ => prec(PREC.unary, seq(
-      field('op', choice('+', '-')),
+      field('op', $.unary_op_sign),
       field('arg', $.primary_expr),
     )),
+
+    unary_op_sign: $ => choice('+', '-'),
 
     parenthesized_expr: $ => prec(PREC.parenthesized_expr, seq(
       '(',
@@ -457,13 +459,22 @@ module.exports = grammar({
     ),
 
     _arg_string_default: $ => seq(field("type", $.string_type), optional(seq("=", field("default", $.string)))),
-    _arg_int_default: $ => seq(field("type", $.int_type), optional(seq("=", field("default", $.int)))),
-    _arg_float_default: $ => seq(field("type", $.float_type), optional(seq("=", field("default", $.float)))),
+    _arg_int_default: $ => seq(field("type", $.int_type), optional(seq("=", field("default", $.int_arg)))),
+    _arg_float_default: $ => seq(field("type", $.float_type), optional(seq("=", field("default", $.float_arg)))),
     _arg_bool_default: $ => seq(field("type", $.bool_type), optional(seq("=", field("default", $.bool)))),
     _arg_string_list_default: $ => seq(field("type", $.string_list_type), optional(seq("=", field("default", $.string_list)))),
     _arg_int_list_default: $ => seq(field("type", $.int_list_type), optional(seq("=", field("default", $.int_list)))),
     _arg_float_list_default: $ => seq(field("type", $.float_list_type), optional(seq("=", field("default", $.float_list)))),
     _arg_bool_list_default: $ => seq(field("type", $.bool_list_type), optional(seq("=", field("default", $.bool_list)))),
+
+    int_arg: $ => prec(1, seq(
+      field('op', repeat($.unary_op_sign)),
+      field("value", $.int),
+    )),
+    float_arg: $ => seq(
+      field('op', repeat($.unary_op_sign)),
+      field("value", choice($.float, $.int)),
+    ),
 
     _arg_constraint: $ => choice(
       field("enum_constraint", $.arg_enum_constraint),
@@ -612,7 +623,6 @@ module.exports = grammar({
       $.bool_list_type,
     ),
 
-    
     string_type: $ => "string",
     int_type: $ => "int",
     float_type: $ => "float",
@@ -631,22 +641,24 @@ module.exports = grammar({
 
     string_list: $ => seq(
       "[",
-      sepTrail0(field("string", $.string)),
+      sepTrail0(field("list_entry", $.string)),
       "]",
     ),
+    // intended for arg block
     int_list: $ => seq(
       "[",
-      sepTrail0($.int),
+      sepTrail0(field("list_entry", $.int_arg)),
       "]",
     ),
+    // intended for arg block
     float_list: $ => seq(
       "[",
-      sepTrail0($.float),
+      sepTrail0(field("list_entry", choice($.float_arg, $.int_arg))),
       "]",
     ),
     bool_list: $ => seq(
       "[",
-      sepTrail0($.bool),
+      sepTrail0(field("list_entry", $.bool)),
       "]",
     ),
     list: $ => choice(
