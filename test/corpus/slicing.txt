@@ -32,6 +32,7 @@ a[:b]
         indexing: (slice
           end: (primary_expr
             (unary_op
+              op: (unary_op_sign)
               arg: (primary_expr
                 (literal
                   (int)))))))))

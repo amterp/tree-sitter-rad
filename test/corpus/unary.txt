@@ -1,0 +1,193 @@
+===
+Plus
+===
+
+a = +2
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (literal
+            (int)))))))
+
+===
+Negative
+===
+
+a = -2
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (literal
+            (int)))))))
+
+===
+Repeated
+===
+
+a = ++++2
+a = ----3
+a = ++--+-+-4
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (unary_op
+            op: (unary_op_sign)
+            arg: (primary_expr
+              (unary_op
+                op: (unary_op_sign)
+                arg: (primary_expr
+                  (unary_op
+                    op: (unary_op_sign)
+                    arg: (primary_expr
+                      (literal
+                        (int))))))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (unary_op
+            op: (unary_op_sign)
+            arg: (primary_expr
+              (unary_op
+                op: (unary_op_sign)
+                arg: (primary_expr
+                  (unary_op
+                    op: (unary_op_sign)
+                    arg: (primary_expr
+                      (literal
+                        (int))))))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (unary_op
+            op: (unary_op_sign)
+            arg: (primary_expr
+              (unary_op
+                op: (unary_op_sign)
+                arg: (primary_expr
+                  (unary_op
+                    op: (unary_op_sign)
+                    arg: (primary_expr
+                      (unary_op
+                        op: (unary_op_sign)
+                        arg: (primary_expr
+                          (unary_op
+                            op: (unary_op_sign)
+                            arg: (primary_expr
+                              (unary_op
+                                op: (unary_op_sign)
+                                arg: (primary_expr
+                                  (unary_op
+                                    op: (unary_op_sign)
+                                    arg: (primary_expr
+                                      (literal
+                                        (int)))))))))))))))))))))
+
+===
+Repeated floats
+===
+
+a = ++++2.2
+a = ----3.3
+a = ++--+-+-4.4
+
+---
+
+(source_file
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (unary_op
+            op: (unary_op_sign)
+            arg: (primary_expr
+              (unary_op
+                op: (unary_op_sign)
+                arg: (primary_expr
+                  (unary_op
+                    op: (unary_op_sign)
+                    arg: (primary_expr
+                      (literal
+                        (float))))))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (unary_op
+            op: (unary_op_sign)
+            arg: (primary_expr
+              (unary_op
+                op: (unary_op_sign)
+                arg: (primary_expr
+                  (unary_op
+                    op: (unary_op_sign)
+                    arg: (primary_expr
+                      (literal
+                        (float))))))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (primary_expr
+      (unary_op
+        op: (unary_op_sign)
+        arg: (primary_expr
+          (unary_op
+            op: (unary_op_sign)
+            arg: (primary_expr
+              (unary_op
+                op: (unary_op_sign)
+                arg: (primary_expr
+                  (unary_op
+                    op: (unary_op_sign)
+                    arg: (primary_expr
+                      (unary_op
+                        op: (unary_op_sign)
+                        arg: (primary_expr
+                          (unary_op
+                            op: (unary_op_sign)
+                            arg: (primary_expr
+                              (unary_op
+                                op: (unary_op_sign)
+                                arg: (primary_expr
+                                  (unary_op
+                                    op: (unary_op_sign)
+                                    arg: (primary_expr
+                                      (literal
+                                        (float)))))))))))))))))))))

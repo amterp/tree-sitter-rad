@@ -1,0 +1,32 @@
+===
+Args many negs
+===
+
+args:
+	intArg int = --- 10
+	floatArg float = -------10.2
+
+---
+
+(source_file
+  (arg_block
+    declaration: (arg_declaration
+      arg_name: (identifier)
+      type: (int_type)
+      default: (int_arg
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        value: (int)))
+    declaration: (arg_declaration
+      arg_name: (identifier)
+      type: (float_type)
+      default: (float_arg
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        op: (unary_op_sign)
+        value: (float)))))

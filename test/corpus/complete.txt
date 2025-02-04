@@ -161,7 +161,8 @@ $!`git commit -m "Bump version to {version}"`
     declaration: (arg_declaration
       arg_name: (identifier)
       type: (int_type)
-      default: (int)
+      default: (int_arg
+        value: (int))
       comment: (comment_text))
     declaration: (arg_declaration
       arg_name: (identifier)
@@ -170,12 +171,12 @@ $!`git commit -m "Bump version to {version}"`
       arg_name: (identifier)
       type: (string_list_type)
       default: (string_list
-        string: (string
+        list_entry: (string
           start: (string_start)
           contents: (string_contents
             content: (string_content))
           end: (string_end))
-        string: (string
+        list_entry: (string
           start: (string_start)
           contents: (string_contents
             content: (string_content))
@@ -190,17 +191,19 @@ $!`git commit -m "Bump version to {version}"`
       shorthand: (shorthand_flag)
       type: (int_list_type)
       default: (int_list
-        (int)
-        (int)))
+        list_entry: (int_arg
+          value: (int))
+        list_entry: (int_arg
+          value: (int))))
     enum_constraint: (arg_enum_constraint
       arg_name: (identifier)
       values: (string_list
-        string: (string
+        list_entry: (string
           start: (string_start)
           contents: (string_contents
             content: (string_content))
           end: (string_end))
-        string: (string
+        list_entry: (string
           start: (string_start)
           contents: (string_contents
             content: (string_content))

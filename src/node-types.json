@@ -162,7 +162,7 @@
             "named": true
           },
           {
-            "type": "float",
+            "type": "float_arg",
             "named": true
           },
           {
@@ -170,7 +170,7 @@
             "named": true
           },
           {
-            "type": "int",
+            "type": "int_arg",
             "named": true
           },
           {
@@ -393,16 +393,17 @@
   {
     "type": "bool_list",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "bool",
-          "named": true
-        }
-      ]
+    "fields": {
+      "list_entry": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "bool",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -839,18 +840,53 @@
     "fields": {}
   },
   {
+    "type": "float_arg",
+    "named": true,
+    "fields": {
+      "op": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "unary_op_sign",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "float_list",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "float",
-          "named": true
-        }
-      ]
+    "fields": {
+      "list_entry": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "float_arg",
+            "named": true
+          },
+          {
+            "type": "int_arg",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1016,18 +1052,45 @@
     }
   },
   {
+    "type": "int_arg",
+    "named": true,
+    "fields": {
+      "op": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "unary_op_sign",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "int_list",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        }
-      ]
+    "fields": {
+      "list_entry": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "int_arg",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1772,7 +1835,7 @@
     "type": "string_list",
     "named": true,
     "fields": {
-      "string": {
+      "list_entry": {
         "multiple": true,
         "required": false,
         "types": [
@@ -1839,16 +1902,17 @@
         "required": true,
         "types": [
           {
-            "type": "+",
-            "named": false
-          },
-          {
-            "type": "-",
-            "named": false
+            "type": "unary_op_sign",
+            "named": true
           }
         ]
       }
     }
+  },
+  {
+    "type": "unary_op_sign",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "var_path",
