@@ -49,6 +49,6 @@ a.b["asd"].c++
           (string
             start: (string_start)
             contents: (string_contents
-              (string_content))
+              content: (string_content))
             end: (string_end))))
       indexing: (identifier))))

@@ -418,14 +418,13 @@ module.exports = grammar({
 
     // Arg Block
 
-    //   arg_block: $ => prec.right(20, seq(
     arg_block: $ => seq(
       "args",
       colonBlock($, $._arg_stmts)
     ),
 
     _arg_stmts: $ => choice(
-      $.arg_declaration,
+      field("declaration", $.arg_declaration),
       $._arg_constraint,
     ),
 
@@ -467,8 +466,8 @@ module.exports = grammar({
     _arg_bool_list_default: $ => seq(field("type", $.bool_list_type), optional(seq("=", field("default", $.bool_list)))),
 
     _arg_constraint: $ => choice(
-      $.arg_enum_constraint,
-      $.arg_regex_constraint,
+      field("enum_constraint", $.arg_enum_constraint),
+      field("regex_constraint", $.arg_regex_constraint),
     ),
 
     arg_enum_constraint: $ => seq(
@@ -632,7 +631,7 @@ module.exports = grammar({
 
     string_list: $ => seq(
       "[",
-      sepTrail0($.string),
+      sepTrail0(field("string", $.string)),
       "]",
     ),
     int_list: $ => seq(
@@ -670,16 +669,28 @@ module.exports = grammar({
 
     string_contents: $ => prec.right(repeat1(
       choice(
-        $.escape_sequence,
-        $._not_escape_sequence,
-        $.string_content,
+        $._escape_seq,
+        $._not_escape_seq,
+        field("content", $.string_content),
       ))),
 
-    escape_sequence: _ => token.immediate(prec(1,
-      seq('\\', choice("'", '"', '`', 'n', 't', '\\')),
+    _escape_seq: $ => prec(1, choice(
+      field("single_quote", $.esc_single_quote),
+      field("double_quote", $.esc_double_quote),
+      field("backtick", $.esc_backtick),
+      field("newline", $.esc_newline),
+      field("tab", $.esc_tab),
+      field("backslash", $.esc_backslash),
     )),
 
-    _not_escape_sequence: _ => token.immediate('\\'),
+    esc_single_quote: _ => token.immediate("\\'"),
+    esc_double_quote: _ => token.immediate('\\"'),
+    esc_backtick: _ => token.immediate("\\`"),
+    esc_newline: _ => token.immediate("\\n"),
+    esc_tab: _ => token.immediate("\\t"),
+    esc_backslash: _ => token.immediate("\\\\"),
+
+    _not_escape_seq: _ => token.immediate('\\'),
 
     interpolation: $ => seq(
       '{',
@@ -797,7 +808,7 @@ function colonBlock($, rule) {
     ":",
     $._newline,
     $._indent,
-    field('body', repeat(rule)),
+    repeat(rule),
     $._dedent
   );
 }

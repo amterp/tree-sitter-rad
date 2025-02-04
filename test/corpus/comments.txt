@@ -21,14 +21,14 @@ if true: // inline comment
         (bool)))
     (comment)
     (comment)
-    body: (assign
+    (assign
       left: (var_path
         root: (identifier))
       right: (primary_expr
         (literal
           (int))))
     (comment)
-    body: (expr_stmt
+    (expr_stmt
       (primary_expr
         (call
           func: (identifier)

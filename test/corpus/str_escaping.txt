@@ -13,8 +13,8 @@ Newline, tab
         (string
           start: (string_start)
           contents: (string_contents
-            (escape_sequence)
-            (escape_sequence))
+            tab: (esc_tab)
+            newline: (esc_newline))
           end: (string_end))))))
 
 ===
@@ -55,9 +55,9 @@ Own delimiter
         (string
           start: (string_start)
           contents: (string_contents
-            (escape_sequence)
-            (string_content)
-            (escape_sequence))
+            double_quote: (esc_double_quote)
+            content: (string_content)
+            double_quote: (esc_double_quote))
           end: (string_end)))))
   (expr_stmt
     (primary_expr
@@ -65,9 +65,9 @@ Own delimiter
         (string
           start: (string_start)
           contents: (string_contents
-            (escape_sequence)
-            (string_content)
-            (escape_sequence))
+            single_quote: (esc_single_quote)
+            content: (string_content)
+            single_quote: (esc_single_quote))
           end: (string_end)))))
   (expr_stmt
     (primary_expr
@@ -75,7 +75,7 @@ Own delimiter
         (string
           start: (string_start)
           contents: (string_contents
-            (escape_sequence)
-            (string_content)
-            (escape_sequence))
+            backtick: (esc_backtick)
+            content: (string_content)
+            backtick: (esc_backtick))
           end: (string_end))))))

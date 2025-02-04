@@ -15,7 +15,7 @@ a = "hi"
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -35,7 +35,7 @@ a = 'hi'
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -55,7 +55,7 @@ a = `hi`
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -73,7 +73,7 @@ Interpolation
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           contents: (interpolation
             expr: (primary_expr
               (var_path
@@ -95,7 +95,7 @@ r"hello {name}"
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -113,7 +113,7 @@ Interpolation fancy
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           contents: (interpolation
             expr: (primary_expr
               (binary_op
@@ -141,7 +141,7 @@ Nested double quotes
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end)))))
   (expr_stmt
     (primary_expr
@@ -149,7 +149,7 @@ Nested double quotes
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -168,7 +168,7 @@ Nested single quotes
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end)))))
   (expr_stmt
     (primary_expr
@@ -176,7 +176,7 @@ Nested single quotes
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -195,7 +195,7 @@ Nested backtick
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end)))))
   (expr_stmt
     (primary_expr
@@ -203,7 +203,7 @@ Nested backtick
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))))
 
 ===

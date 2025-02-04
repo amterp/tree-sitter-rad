@@ -12,7 +12,7 @@ if true:
     condition: (primary_expr
       (literal
         (bool)))
-    body: (assign
+    (assign
       left: (var_path
         root: (identifier))
       right: (primary_expr
@@ -39,14 +39,14 @@ else:
       (primary_expr
         (literal
           (int))))
-    body: (assign
+    (assign
       left: (var_path
         root: (identifier))
       right: (primary_expr
         (literal
           (int))))
     alternative: (else_clause
-      body: (assign
+      (assign
         left: (var_path
           root: (identifier))
         right: (primary_expr
@@ -54,7 +54,7 @@ else:
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))
 
 ===
@@ -80,13 +80,13 @@ else:
       (primary_expr
         (literal
           (int))))
-    body: (assign
+    (assign
       left: (var_path
         root: (identifier))
       right: (primary_expr
         (literal
           (int))))
-    body: (assign
+    (assign
       left: (var_path
         root: (identifier))
       right: (primary_expr
@@ -100,14 +100,14 @@ else:
         (primary_expr
           (literal
             (int))))
-      body: (assign
+      (assign
         left: (var_path
           root: (identifier))
         right: (primary_expr
           (literal
             (bool)))))
     alternative: (else_clause
-      body: (assign
+      (assign
         left: (var_path
           root: (identifier))
         right: (primary_expr
@@ -115,5 +115,5 @@ else:
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))

@@ -23,31 +23,31 @@ args:
   (file_header
     contents: (file_header_contents))
   (arg_block
-    body: (arg_declaration
+    declaration: (arg_declaration
       arg_name: (identifier)
       type: (string_type))
-    body: (arg_declaration
+    declaration: (arg_declaration
       arg_name: (identifier)
       type: (int_type)
       default: (int)
       comment: (comment_text))
-    body: (arg_enum_constraint
+    enum_constraint: (arg_enum_constraint
       arg_name: (identifier)
       values: (string_list
-        (string
+        string: (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))
-        (string
+        string: (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end))))
-    body: (arg_regex_constraint
+    regex_constraint: (arg_regex_constraint
       arg_name: (identifier)
       regex: (string
         start: (string_start)
         contents: (string_contents
-          (string_content))
+          content: (string_content))
         end: (string_end)))))

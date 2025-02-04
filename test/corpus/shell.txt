@@ -18,16 +18,16 @@ fail:
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))
         (shell_body_type)
-        body: (assign
+        (assign
           left: (var_path
             root: (identifier))
           right: (primary_expr
             (literal
               (int))))
-        body: (assign
+        (assign
           left: (var_path
             root: (identifier))
           right: (primary_expr
@@ -55,7 +55,7 @@ fail:
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end)))))
   (expr_stmt
     (shell_cmd
@@ -64,13 +64,13 @@ fail:
           (var_path
             root: (identifier)))
         (shell_body_type)
-        body: (assign
+        (assign
           left: (var_path
             root: (identifier))
           right: (primary_expr
             (literal
               (int))))
-        body: (assign
+        (assign
           left: (var_path
             root: (identifier))
           right: (primary_expr
@@ -97,16 +97,16 @@ recover:
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))
         (shell_body_type)
-        body: (assign
+        (assign
           left: (var_path
             root: (identifier))
           right: (primary_expr
             (literal
               (int))))
-        body: (assign
+        (assign
           left: (var_path
             root: (identifier))
           right: (primary_expr
@@ -130,7 +130,7 @@ $!`ls -n`
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))
 
 ===
@@ -151,7 +151,7 @@ $!cmd
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content))
+            content: (string_content))
           end: (string_end)))))
   (expr_stmt
     (shell_cmd
@@ -179,7 +179,7 @@ a = $!`ls -n`
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))
 
 ===
@@ -203,7 +203,7 @@ a, b = $!`ls -n`
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))
 
 ===
@@ -229,7 +229,7 @@ a, b, c = $!`ls -n`
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))
 
 ===
@@ -255,7 +255,7 @@ _, _, _ = $!`ls -n`
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))
 
 ===
@@ -282,10 +282,10 @@ fail:
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))
         (shell_body_type)
-        body: (expr_stmt
+        (expr_stmt
           (primary_expr
             (call
               func: (identifier)
@@ -295,9 +295,9 @@ fail:
                     (string
                       start: (string_start)
                       contents: (string_contents
-                        (string_content))
+                        content: (string_content))
                       end: (string_end))))))))
-        body: (expr_stmt
+        (expr_stmt
           (primary_expr
             (call
               func: (identifier)
@@ -307,7 +307,7 @@ fail:
                     (string
                       start: (string_start)
                       contents: (string_contents
-                        (string_content))
+                        content: (string_content))
                       end: (string_end))))))))))))
 
 ===
@@ -334,7 +334,7 @@ a, b = quiet unsafe $!`ls -n`
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end)))))))
   (assign
     left: (var_path
@@ -350,5 +350,5 @@ a, b = quiet unsafe $!`ls -n`
             (string
               start: (string_start)
               contents: (string_contents
-                (string_content))
+                content: (string_content))
               end: (string_end))))))))

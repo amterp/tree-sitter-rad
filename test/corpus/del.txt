@@ -91,7 +91,7 @@ del a["foo"]
           (string
             start: (string_start)
             contents: (string_contents
-              (string_content))
+              content: (string_content))
             end: (string_end)))))))
 
 ===
@@ -133,5 +133,5 @@ del a.foo, b[1], c["bar"]
           (string
             start: (string_start)
             contents: (string_contents
-              (string_content))
+              content: (string_content))
             end: (string_end)))))))

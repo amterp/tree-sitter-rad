@@ -19,11 +19,11 @@ this is a many-line
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content)
-            (string_content)
-            (string_content)
-            (string_content)
-            (string_content))
+            content: (string_content)
+            content: (string_content)
+            content: (string_content)
+            content: (string_content)
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -65,9 +65,9 @@ a = """
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content)
-            (string_content)
-            (string_content))
+            content: (string_content)
+            content: (string_content)
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -91,9 +91,9 @@ this is a {2 + 2}
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content)
-            (string_content)
-            (string_content))
+            content: (string_content)
+            content: (string_content)
+            content: (string_content))
           contents: (interpolation
             expr: (primary_expr
               (binary_op
@@ -104,8 +104,8 @@ this is a {2 + 2}
                   (literal
                     (int))))))
           contents: (string_contents
-            (string_content)
-            (string_content))
+            content: (string_content)
+            content: (string_content))
           end: (string_end))))))
 
 ===
@@ -129,9 +129,9 @@ this is a {2 + 2}
         (string
           start: (string_start)
           contents: (string_contents
-            (string_content)
-            (string_content)
-            (string_content)
-            (string_content)
-            (string_content))
+            content: (string_content)
+            content: (string_content)
+            content: (string_content)
+            content: (string_content)
+            content: (string_content))
           end: (string_end))))))

@@ -39,7 +39,7 @@ a = {"b": 3}
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
@@ -56,7 +56,7 @@ a = {"b": 3}
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
@@ -81,7 +81,7 @@ With more contents
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
@@ -92,14 +92,14 @@ With more contents
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end)))))
           (map_entry
             key: (primary_expr
@@ -107,7 +107,7 @@ With more contents
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
@@ -116,7 +116,7 @@ With more contents
                     (string
                       start: (string_start)
                       contents: (string_contents
-                        (string_content))
+                        content: (string_content))
                       end: (string_end)))
                   (literal
                     (int)))))))))))
@@ -140,7 +140,7 @@ Nested
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
@@ -151,7 +151,7 @@ Nested
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
@@ -162,7 +162,7 @@ Nested
                         (string
                           start: (string_start)
                           contents: (string_contents
-                            (string_content))
+                            content: (string_content))
                           end: (string_end))))
                     value: (primary_expr
                       (literal
@@ -173,7 +173,7 @@ Nested
                         (string
                           start: (string_start)
                           contents: (string_contents
-                            (string_content))
+                            content: (string_content))
                           end: (string_end))))
                     value: (primary_expr
                       (literal
@@ -184,7 +184,7 @@ Nested
                                 (string
                                   start: (string_start)
                                   contents: (string_contents
-                                    (string_content))
+                                    content: (string_content))
                                   end: (string_end))))
                             value: (primary_expr
                               (literal
@@ -195,7 +195,7 @@ Nested
                                 (string
                                   start: (string_start)
                                   contents: (string_contents
-                                    (string_content))
+                                    content: (string_content))
                                   end: (string_end))))
                             value: (primary_expr
                               (literal
@@ -228,14 +228,14 @@ my_headers = {
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   contents: (interpolation
                     expr: (primary_expr
                       (var_path
@@ -247,7 +247,7 @@ my_headers = {
                 (string
                   start: (string_start)
                   contents: (string_contents
-                    (string_content))
+                    content: (string_content))
                   end: (string_end))))
             value: (primary_expr
               (literal
@@ -256,11 +256,11 @@ my_headers = {
                     (string
                       start: (string_start)
                       contents: (string_contents
-                        (string_content))
+                        content: (string_content))
                       end: (string_end)))
                   (literal
                     (string
                       start: (string_start)
                       contents: (string_contents
-                        (string_content))
+                        content: (string_content))
                       end: (string_end))))))))))))
