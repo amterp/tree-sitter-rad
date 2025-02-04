@@ -426,61 +426,61 @@ module.exports = grammar({
 
     _arg_stmts: $ => choice(
       $.arg_declaration,
-      $.arg_constraint,
+      $._arg_constraint,
     ),
 
     arg_declaration: $ => seq(
-      $.identifier,
-      optional($.string),
-      optional($.shorthand_flag),
-      $.type_andor_default,
-      optional($.arg_comment),
+      field("arg_name", $.identifier),
+      optional(field("rename", $.string)),
+      optional(field("shorthand", $.shorthand_flag)),
+      $._type_andor_default,
+      optional($._arg_comment),
     ),
 
-    arg_comment: $ => seq(
-      "#",
-      $.comment_text,
+    _arg_comment: $ => seq(
+      /#[ \t]*/,
+      field("comment", $.comment_text),
     ),
 
     comment_text: $ => /.*/,
 
     shorthand_flag: $ => /[a-zA-Z]/,
 
-    type_andor_default: $ => choice(
-      seq("string", optional($.arg_string_default)),
-      seq("int", optional($.arg_int_default)),
-      seq("float", optional($.arg_float_default)),
-      seq("bool", optional($.arg_bool_default)),
-      seq("string[]", optional($.arg_string_list_default)),
-      seq("int[]", optional($.arg_int_list_default)),
-      seq("float[]", optional($.arg_float_list_default)),
-      seq("bool[]", optional($.arg_bool_list_default)),
+    _type_andor_default: $ => choice(
+      $._arg_string_default,
+      $._arg_int_default,
+      $._arg_float_default,
+      $._arg_bool_default,
+      $._arg_string_list_default,
+      $._arg_int_list_default,
+      $._arg_float_list_default,
+      $._arg_bool_list_default,
     ),
 
-    arg_string_default: $ => seq("=", $.string),
-    arg_int_default: $ => seq("=", $.int),
-    arg_float_default: $ => seq("=", $.float),
-    arg_bool_default: $ => seq("=", $.bool),
-    arg_string_list_default: $ => seq("=", $.string_list),
-    arg_int_list_default: $ => seq("=", $.int_list),
-    arg_float_list_default: $ => seq("=", $.float_list),
-    arg_bool_list_default: $ => seq("=", $.bool_list),
+    _arg_string_default: $ => seq(field("type", $.string_type), optional(seq("=", field("default", $.string)))),
+    _arg_int_default: $ => seq(field("type", $.int_type), optional(seq("=", field("default", $.int)))),
+    _arg_float_default: $ => seq(field("type", $.float_type), optional(seq("=", field("default", $.float)))),
+    _arg_bool_default: $ => seq(field("type", $.bool_type), optional(seq("=", field("default", $.bool)))),
+    _arg_string_list_default: $ => seq(field("type", $.string_list_type), optional(seq("=", field("default", $.string_list)))),
+    _arg_int_list_default: $ => seq(field("type", $.int_list_type), optional(seq("=", field("default", $.int_list)))),
+    _arg_float_list_default: $ => seq(field("type", $.float_list_type), optional(seq("=", field("default", $.float_list)))),
+    _arg_bool_list_default: $ => seq(field("type", $.bool_list_type), optional(seq("=", field("default", $.bool_list)))),
 
-    arg_constraint: $ => choice(
+    _arg_constraint: $ => choice(
       $.arg_enum_constraint,
       $.arg_regex_constraint,
     ),
 
     arg_enum_constraint: $ => seq(
-      $.identifier,
+      field("arg_name", $.identifier),
       "enum",
-      $.string_list,
+      field("values", $.string_list),
     ),
 
     arg_regex_constraint: $ => seq(
-      $.identifier,
+      field("arg_name", $.identifier),
       "regex",
-      $.string,
+      field("regex", $.string),
     ),
 
     // Rad Block
@@ -603,15 +603,25 @@ module.exports = grammar({
     ),
 
     type: $ => choice(
-      "string",
-      "int",
-      "float",
-      "bool",
-      "string[]",
-      "int[]",
-      "float[]",
-      "bool[]",
+      $.string_type,
+      $.int_type,
+      $.float_type,
+      $.bool_type,
+      $.string_list_type,
+      $.int_list_type,
+      $.float_list_type,
+      $.bool_list_type,
     ),
+
+    
+    string_type: $ => "string",
+    int_type: $ => "int",
+    float_type: $ => "float",
+    bool_type: $ => "bool",
+    string_list_type: $ => "string[]",
+    int_list_type: $ => "int[]",
+    float_list_type: $ => "float[]",
+    bool_list_type: $ => "bool[]",
 
     block: $ => seq(
       repeat($._stmt),

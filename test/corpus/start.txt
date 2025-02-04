@@ -24,34 +24,30 @@ args:
     contents: (file_header_contents))
   (arg_block
     body: (arg_declaration
-      (identifier)
-      (type_andor_default))
+      arg_name: (identifier)
+      type: (string_type))
     body: (arg_declaration
-      (identifier)
-      (type_andor_default
-        (arg_int_default
-          (int)))
-      (arg_comment
-        (comment_text)))
-    body: (arg_constraint
-      (arg_enum_constraint
-        (identifier)
-        (string_list
-          (string
-            start: (string_start)
-            contents: (string_contents
-              (string_content))
-            end: (string_end))
-          (string
-            start: (string_start)
-            contents: (string_contents
-              (string_content))
-            end: (string_end)))))
-    body: (arg_constraint
-      (arg_regex_constraint
-        (identifier)
+      arg_name: (identifier)
+      type: (int_type)
+      default: (int)
+      comment: (comment_text))
+    body: (arg_enum_constraint
+      arg_name: (identifier)
+      values: (string_list
         (string
           start: (string_start)
           contents: (string_contents
             (string_content))
-          end: (string_end))))))
+          end: (string_end))
+        (string
+          start: (string_start)
+          contents: (string_contents
+            (string_content))
+          end: (string_end))))
+    body: (arg_regex_constraint
+      arg_name: (identifier)
+      regex: (string
+        start: (string_start)
+        contents: (string_contents
+          (string_content))
+        end: (string_end)))))
