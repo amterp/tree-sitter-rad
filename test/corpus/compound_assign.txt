@@ -14,33 +14,38 @@ a %= 2
   (compound_assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
   (compound_assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
   (compound_assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
   (compound_assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
   (compound_assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (int)))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int))))))
 
 ===
 Var path
@@ -56,35 +61,41 @@ a.b["asd"].c += 2
   (compound_assign
     left: (var_path
       root: (identifier)
-      indexing: (primary_expr
+      indexing: (expr
+        (primary_expr
+          (literal
+            (int))))
+      indexing: (expr
+        (primary_expr
+          (literal
+            (int)))))
+    right: (expr
+      (primary_expr
         (literal
-          (int)))
-      indexing: (primary_expr
-        (literal
-          (int))))
-    right: (primary_expr
-      (literal
-        (int))))
+          (int)))))
   (compound_assign
     left: (var_path
       root: (identifier)
       indexing: (identifier)
       indexing: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
   (compound_assign
     left: (var_path
       root: (identifier)
       indexing: (identifier)
-      indexing: (primary_expr
-        (literal
-          (string
-            start: (string_start)
-            contents: (string_contents
-              content: (string_content))
-            end: (string_end))))
+      indexing: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))
       indexing: (identifier))
-    right: (primary_expr
-      (literal
-        (int)))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int))))))

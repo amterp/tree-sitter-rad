@@ -8,19 +8,21 @@ Padding
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          contents: (interpolation
-            expr: (primary_expr
-              (var_path
-                root: (identifier)))
-            format: (format_specifier
-              padding: (int)))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier))))
+              format: (format_specifier
+                padding: (int)))
+            end: (string_end)))))))
 
 ===
 Decimals
@@ -32,19 +34,21 @@ Decimals
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          contents: (interpolation
-            expr: (primary_expr
-              (var_path
-                root: (identifier)))
-            format: (format_specifier
-              precision: (int)))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier))))
+              format: (format_specifier
+                precision: (int)))
+            end: (string_end)))))))
 
 ===
 Padding & Decimals
@@ -56,20 +60,22 @@ Padding & Decimals
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          contents: (interpolation
-            expr: (primary_expr
-              (var_path
-                root: (identifier)))
-            format: (format_specifier
-              padding: (int)
-              precision: (int)))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier))))
+              format: (format_specifier
+                padding: (int)
+                precision: (int)))
+            end: (string_end)))))))
 
 ===
 Left align
@@ -81,20 +87,22 @@ Left align
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          contents: (interpolation
-            expr: (primary_expr
-              (var_path
-                root: (identifier)))
-            format: (format_specifier
-              padding: (int)
-              precision: (int)))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier))))
+              format: (format_specifier
+                padding: (int)
+                precision: (int)))
+            end: (string_end)))))))
 
 ===
 Right align
@@ -106,17 +114,19 @@ Right align
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          contents: (interpolation
-            expr: (primary_expr
-              (var_path
-                root: (identifier)))
-            format: (format_specifier
-              padding: (int)
-              precision: (int)))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier))))
+              format: (format_specifier
+                padding: (int)
+                precision: (int)))
+            end: (string_end)))))))

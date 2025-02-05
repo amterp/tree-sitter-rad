@@ -218,158 +218,183 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          end: (string_end)))))
+    right: (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            end: (string_end))))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (float))))
+    right: (expr
+      (primary_expr
+        (literal
+          (float)))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (bool))))
+    right: (expr
+      (primary_expr
+        (literal
+          (bool)))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (list
-          (literal
-            (int))
-          (literal
-            (int))
-          (literal
-            (int))))))
+    right: (expr
+      (primary_expr
+        (literal
+          (list
+            list_entry: (expr
+              (primary_expr
+                (literal
+                  (int))))
+            list_entry: (expr
+              (primary_expr
+                (literal
+                  (int))))
+            list_entry: (expr
+              (primary_expr
+                (literal
+                  (int)))))))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (map
-          (map_entry
-            key: (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))
-            value: (primary_expr
-              (literal
-                (int))))
-          (map_entry
-            key: (primary_expr
-              (var_path
-                root: (identifier)))
-            value: (primary_expr
-              (literal
-                (int))))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (binary_op
-        left: (primary_expr
-          (binary_op
-            left: (primary_expr
-              (literal
-                (int)))
-            right: (primary_expr
-              (binary_op
-                left: (primary_expr
+    right: (expr
+      (primary_expr
+        (literal
+          (map
+            map_entry: (map_entry
+              key: (expr
+                (primary_expr
                   (literal
-                    (int)))
-                right: (primary_expr
+                    (string
+                      start: (string_start)
+                      contents: (string_contents
+                        content: (string_content))
+                      end: (string_end)))))
+              value: (expr
+                (primary_expr
                   (literal
-                    (int)))))))
-        right: (primary_expr
-          (binary_op
-            left: (primary_expr
-              (binary_op
-                left: (primary_expr
+                    (int)))))
+            map_entry: (map_entry
+              key: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier))))
+              value: (expr
+                (primary_expr
                   (literal
-                    (int)))
-                right: (primary_expr
-                  (literal
-                    (float)))))
-            right: (primary_expr
-              (literal
-                (int))))))))
-  (compound_assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
-  (compound_assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
-  (compound_assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
-  (compound_assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
-  (compound_assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (int))))
+                    (int))))))))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          contents: (interpolation
-            expr: (primary_expr
-              (call
-                func: (identifier)
-                args: (call_arg_list
-                  (primary_expr
+    right: (expr
+      (primary_expr
+        (binary_op
+          left: (primary_expr
+            (binary_op
+              left: (primary_expr
+                (literal
+                  (int)))
+              right: (primary_expr
+                (binary_op
+                  left: (primary_expr
                     (literal
-                      (string
-                        start: (string_start)
-                        contents: (string_contents
-                          content: (string_content))
-                        end: (string_end))))))))
-          end: (string_end)))))
+                      (int)))
+                  right: (primary_expr
+                    (literal
+                      (int)))))))
+          right: (primary_expr
+            (binary_op
+              left: (primary_expr
+                (binary_op
+                  left: (primary_expr
+                    (literal
+                      (int)))
+                  right: (primary_expr
+                    (literal
+                      (float)))))
+              right: (primary_expr
+                (literal
+                  (int)))))))))
+  (compound_assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
+  (compound_assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
+  (compound_assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
+  (compound_assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
+  (compound_assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (int)))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (call
+                    func: (identifier)
+                    arg: (expr
+                      (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end)))))))))
+            end: (string_end))))))
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (var_path
-              root: (identifier)))))))
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))))))
   (assign
     left: (var_path
       root: (identifier))
@@ -384,9 +409,10 @@ $!`git commit -m "Bump version to {version}"`
       (identifier)))
   (rad_block
     rad_type: (rad_keyword)
-    source: (primary_expr
-      (var_path
-        root: (identifier)))
+    source: (expr
+      (primary_expr
+        (var_path
+          root: (identifier))))
     (rad_field_stmt
       (identifier)
       (identifier))
@@ -395,13 +421,14 @@ $!`git commit -m "Bump version to {version}"`
       (identifier))
     (rad_sort_stmt)
     (rad_if_stmt
-      condition: (comparison_op
-        (primary_expr
-          (var_path
-            root: (identifier)))
-        (primary_expr
-          (var_path
-            root: (identifier))))
+      condition: (expr
+        (comparison_op
+          (primary_expr
+            (var_path
+              root: (identifier)))
+          (primary_expr
+            (var_path
+              root: (identifier)))))
       (rad_sort_stmt
         (identifier)
         (identifier)))
@@ -410,83 +437,93 @@ $!`git commit -m "Bump version to {version}"`
       (rad_field_mod_map
         (lambda
           (identifier)
-          (primary_expr
-            (binary_op
-              left: (primary_expr
-                (var_path
-                  root: (identifier)))
-              right: (primary_expr
-                (literal
-                  (int))))))))
+          (expr
+            (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (var_path
+                    root: (identifier)))
+                right: (primary_expr
+                  (literal
+                    (int)))))))))
     (rad_field_modifier_stmt
       (identifier)
       (identifier)
       (rad_field_mod_color
-        (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))
-        (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))))
-  (if_stmt
-    condition: (comparison_op
-      (primary_expr
-        (var_path
-          root: (identifier)))
-      (primary_expr
-        (literal
-          (int))))
-    (assign
-      left: (var_path
-        root: (identifier))
-      right: (primary_expr
-        (var_path
-          root: (identifier))))
-    (if_stmt
-      condition: (comparison_op
-        (primary_expr
-          (var_path
-            root: (identifier)))
-        (primary_expr
-          (literal
-            (int))))
-      (compound_assign
-        left: (var_path
-          root: (identifier))
-        right: (primary_expr
-          (literal
-            (int))))
-      alternative: (elif_clause
-        condition: (comparison_op
-          (primary_expr
-            (var_path
-              root: (identifier)))
+        (expr
           (primary_expr
             (literal
-              (int))))
-        (assign
-          left: (var_path
-            root: (identifier))
-          right: (primary_expr
+              (string
+                start: (string_start)
+                contents: (string_contents
+                  content: (string_content))
+                end: (string_end)))))
+        (expr
+          (primary_expr
             (literal
               (string
                 start: (string_start)
                 contents: (string_contents
                   content: (string_content))
                 end: (string_end))))))))
+  (if_stmt
+    condition: (expr
+      (comparison_op
+        (primary_expr
+          (var_path
+            root: (identifier)))
+        (primary_expr
+          (literal
+            (int)))))
+    (assign
+      left: (var_path
+        root: (identifier))
+      right: (expr
+        (primary_expr
+          (var_path
+            root: (identifier)))))
+    (if_stmt
+      condition: (expr
+        (comparison_op
+          (primary_expr
+            (var_path
+              root: (identifier)))
+          (primary_expr
+            (literal
+              (int)))))
+      (compound_assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int)))))
+      alternative: (elif_clause
+        condition: (expr
+          (comparison_op
+            (primary_expr
+              (var_path
+                root: (identifier)))
+            (primary_expr
+              (literal
+                (int)))))
+        (assign
+          left: (var_path
+            root: (identifier))
+          right: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end)))))))))
   (rad_block
     rad_type: (request_keyword)
-    source: (primary_expr
-      (var_path
-        root: (identifier)))
+    source: (expr
+      (primary_expr
+        (var_path
+          root: (identifier))))
     (rad_field_stmt
       (identifier)))
   (rad_block
@@ -498,557 +535,305 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (list_comprehension
-        expr: (primary_expr
-          (binary_op
-            left: (primary_expr
-              (var_path
-                root: (identifier)
-                indexing: (primary_expr
+    right: (expr
+      (primary_expr
+        (list_comprehension
+          expr: (expr
+            (primary_expr
+              (binary_op
+                left: (primary_expr
                   (var_path
-                    root: (identifier)))))
-            right: (primary_expr
-              (var_path
-                root: (identifier)
-                indexing: (primary_expr
+                    root: (identifier)
+                    indexing: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier))))))
+                right: (primary_expr
                   (var_path
-                    root: (identifier)))))))
-        left: (identifier)
-        right: (primary_expr
-          (call
-            func: (identifier)
-            args: (call_arg_list
+                    root: (identifier)
+                    indexing: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))))))
+          left: (identifier)
+          right: (expr
+            (primary_expr
+              (call
+                func: (identifier)
+                arg: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier)))))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (list
+            list_entry: (expr
+              (primary_expr
+                (literal
+                  (int))))
+            list_entry: (expr
+              (primary_expr
+                (literal
+                  (int))))
+            list_entry: (expr
+              (primary_expr
+                (literal
+                  (int)))))))))
+  (expr_stmt
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (call
+                func: (identifier)
+                arg: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                arg: (expr
+                  (primary_expr
+                    (literal
+                      (string
+                        start: (string_start)
+                        contents: (string_contents
+                          content: (string_content))
+                        end: (string_end))))))))))))
+  (expr_stmt
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (call
+                func: (identifier)
+                arg: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                arg: (expr
+                  (primary_expr
+                    (literal
+                      (string
+                        start: (string_start)
+                        contents: (string_contents
+                          content: (string_content))
+                        end: (string_end)))))
+                arg: (expr
+                  (primary_expr
+                    (literal
+                      (string
+                        start: (string_start)
+                        contents: (string_contents
+                          content: (string_content))
+                        end: (string_end))))))))))))
+  (expr_stmt
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (call
+                func: (identifier)
+                arg: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                arg: (expr
+                  (primary_expr
+                    (literal
+                      (string
+                        start: (string_start)
+                        contents: (string_contents
+                          content: (string_content))
+                        end: (string_end)))))
+                arg: (expr
+                  (primary_expr
+                    (literal
+                      (string
+                        start: (string_start)
+                        contents: (string_contents
+                          content: (string_content))
+                        end: (string_end)))))
+                arg: (expr
+                  (primary_expr
+                    (literal
+                      (string
+                        start: (string_start)
+                        contents: (string_contents
+                          content: (string_content))
+                        end: (string_end))))))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice)))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            start: (expr
+              (primary_expr
+                (literal
+                  (int)))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            start: (expr
+              (primary_expr
+                (literal
+                  (int))))
+            end: (expr
+              (primary_expr
+                (literal
+                  (int)))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            end: (expr
+              (primary_expr
+                (literal
+                  (int)))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (map
+            map_entry: (map_entry
+              key: (expr
+                (primary_expr
+                  (literal
+                    (string
+                      start: (string_start)
+                      contents: (string_contents
+                        content: (string_content))
+                      end: (string_end)))))
+              value: (expr
+                (primary_expr
+                  (literal
+                    (string
+                      start: (string_start)
+                      contents: (string_contents
+                        content: (string_content))
+                      contents: (interpolation
+                        expr: (expr
+                          (primary_expr
+                            (var_path
+                              root: (identifier)))))
+                      end: (string_end)))))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          named_arg: (call_named_arg
+            name: (identifier)
+            value: (expr
               (primary_expr
                 (var_path
                   root: (identifier)))))))))
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (literal
-        (list
-          (literal
-            (int))
-          (literal
-            (int))
-          (literal
-            (int))))))
-  (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (call
-              func: (identifier)
-              args: (call_arg_list
-                (primary_expr
-                  (var_path
-                    root: (identifier)))
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))))))))
-  (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (call
-              func: (identifier)
-              args: (call_arg_list
-                (primary_expr
-                  (var_path
-                    root: (identifier)))
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end))))
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))))))))
-  (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (call
-              func: (identifier)
-              args: (call_arg_list
-                (primary_expr
-                  (var_path
-                    root: (identifier)))
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end))))
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end))))
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))))))))
+    right: (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            end: (string_end))))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice))))
+    right: (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            end: (string_end))))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          start: (primary_expr
-            (literal
-              (int)))))))
+    right: (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            end: (string_end))))))
   (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          start: (primary_expr
-            (literal
-              (int)))
-          end: (primary_expr
-            (literal
-              (int)))))))
-  (assign
     left: (var_path
       root: (identifier))
-    right: (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          end: (primary_expr
-            (literal
-              (int)))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (map
-          (map_entry
-            key: (primary_expr
+    right: (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
               (literal
                 (string
                   start: (string_start)
                   contents: (string_contents
                     content: (string_content))
-                  end: (string_end))))
-            value: (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  contents: (interpolation
-                    expr: (primary_expr
-                      (var_path
-                        root: (identifier))))
-                  end: (string_end)))))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (call_named_arg
-            name: (identifier)
-            value: (primary_expr
+                  end: (string_end)))))
+          arg: (expr
+            (primary_expr
               (var_path
                 root: (identifier))))))))
-  (comment)
-  (comment)
-  (comment)
-  (comment)
-  (comment)
-  (comment)
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          end: (string_end)))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          end: (string_end)))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          end: (string_end)))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end))))
-          (primary_expr
-            (var_path
-              root: (identifier)))))))
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                contents: (interpolation
-                  expr: (primary_expr
-                    (var_path
-                      root: (identifier))))
-                contents: (string_contents
-                  content: (string_content))
-                contents: (interpolation
-                  expr: (primary_expr
-                    (var_path
-                      root: (identifier))))
-                end: (string_end))))))))
-  (expr_stmt
-    (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            content: (string_content))
-          contents: (interpolation
-            expr: (primary_expr
-              (var_path
-                root: (identifier))))
-          end: (string_end)))))
-  (expr_stmt
-    (shell_cmd
-      checked: (checked_shell_cmd
-        command: (primary_expr
-          (var_path
-            root: (identifier)))
-        body_type: (shell_body_type)
-        (expr_stmt
-          (primary_expr
-            (call
-              func: (identifier)
-              args: (call_arg_list
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))))))))
-  (expr_stmt
-    (shell_cmd
-      checked: (checked_shell_cmd
-        command: (primary_expr
-          (var_path
-            root: (identifier)))
-        body_type: (shell_body_type)
-        (expr_stmt
-          (primary_expr
-            (call
-              func: (identifier)
-              args: (call_arg_list
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))))))))
-  (expr_stmt
-    (shell_cmd
-      unsafe: (unsafe_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (var_path
-            root: (identifier))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (var_path
-            root: (identifier))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (var_path
-            root: (identifier))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (var_path
-            root: (identifier))))))
-  (expr_stmt
-    (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              contents: (interpolation
-                expr: (primary_expr
-                  (var_path
-                    root: (identifier))))
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))))
-  (expr_stmt
-    (shell_cmd
-      unsafe: (unsafe_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              contents: (interpolation
-                expr: (primary_expr
-                  (var_path
-                    root: (identifier))))
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))))
-  (expr_stmt
-    (shell_cmd
-      unsafe: (unsafe_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              contents: (interpolation
-                expr: (primary_expr
-                  (var_path
-                    root: (identifier))))
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))))
-  (defer_block
-    (expr_stmt
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end)))))))
-    (expr_stmt
+    (expr
       (primary_expr
         (call
           func: (identifier)
-          args: (call_arg_list
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))))))
-  (expr_stmt
-    (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              contents: (interpolation
-                expr: (primary_expr
-                  (var_path
-                    root: (identifier))))
-              contents: (string_contents
-                content: (string_content))
-              contents: (interpolation
-                expr: (primary_expr
-                  (var_path
-                    root: (identifier))))
-              end: (string_end)))))))
-  (errdefer_block
-    (expr_stmt
-      (primary_expr
-        (call
-          func: (identifier)
-          args: (call_arg_list
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))
-    (expr_stmt
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                contents: (interpolation
-                  expr: (primary_expr
-                    (var_path
-                      root: (identifier))))
-                end: (string_end))))))))
-  (if_stmt
-    condition: (primary_expr
-      (literal
-        (bool)))
-    (comment)
-    (expr_stmt
-      (primary_expr
-        (call
-          func: (identifier)
-          args: (call_arg_list
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))
-    (expr_stmt
-      (primary_expr
-        (call
-          func: (identifier)
-          args: (call_arg_list
-            (primary_expr
-              (literal
-                (int))))))))
-  (expr_stmt
-    (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              contents: (interpolation
-                expr: (primary_expr
-                  (var_path
-                    root: (identifier))))
-              end: (string_end)))))))
-  (errdefer_block
-    (expr_stmt
-      (primary_expr
-        (call
-          func: (identifier)
-          args: (call_arg_list
+          arg: (expr
             (primary_expr
               (literal
                 (string
@@ -1056,68 +841,421 @@ $!`git commit -m "Bump version to {version}"`
                   contents: (string_contents
                     content: (string_content))
                   contents: (interpolation
-                    expr: (primary_expr
-                      (var_path
-                        root: (identifier))))
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
                   contents: (string_contents
                     content: (string_content))
-                  end: (string_end))))))))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  end: (string_end)))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end)))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              content: (string_content))
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier)))))
+            end: (string_end))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        checked: (checked_shell_cmd
+          command: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          body_type: (shell_body_type)
+          (expr_stmt
+            (expr
+              (primary_expr
+                (call
+                  func: (identifier)
+                  arg: (expr
+                    (primary_expr
+                      (literal
+                        (string
+                          start: (string_start)
+                          contents: (string_contents
+                            content: (string_content))
+                          end: (string_end)))))))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        checked: (checked_shell_cmd
+          command: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          body_type: (shell_body_type)
+          (expr_stmt
+            (expr
+              (primary_expr
+                (call
+                  func: (identifier)
+                  arg: (expr
+                    (primary_expr
+                      (literal
+                        (string
+                          start: (string_start)
+                          contents: (string_contents
+                            content: (string_content))
+                          end: (string_end)))))))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        unsafe: (unsafe_shell_cmd
+          command: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end)))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end)))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        unsafe: (unsafe_shell_cmd
+          command: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end)))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        unsafe: (unsafe_shell_cmd
+          command: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end)))))))))
+  (defer_block
+    (expr_stmt
+      (expr
+        (shell_cmd
+          critical: (critical_shell_cmd
+            command: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))))))
+    (expr_stmt
+      (expr
+        (primary_expr
+          (call
+            func: (identifier)
+            arg: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end))))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  contents: (string_contents
+                    content: (string_content))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  end: (string_end)))))))))
+  (errdefer_block
+    (expr_stmt
+      (expr
+        (primary_expr
+          (call
+            func: (identifier)
+            arg: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))))))
+    (expr_stmt
+      (expr
+        (shell_cmd
+          critical: (critical_shell_cmd
+            command: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    contents: (interpolation
+                      expr: (expr
+                        (primary_expr
+                          (var_path
+                            root: (identifier)))))
+                    end: (string_end))))))))))
+  (if_stmt
+    condition: (expr
+      (primary_expr
+        (literal
+          (bool))))
+    (comment)
+    (expr_stmt
+      (expr
+        (primary_expr
+          (call
+            func: (identifier)
+            arg: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))))))
+    (expr_stmt
+      (expr
+        (primary_expr
+          (call
+            func: (identifier)
+            arg: (expr
+              (primary_expr
+                (literal
+                  (int)))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
+            (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  end: (string_end)))))))))
+  (errdefer_block
+    (expr_stmt
+      (expr
+        (primary_expr
+          (call
+            func: (identifier)
+            arg: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    contents: (interpolation
+                      expr: (expr
+                        (primary_expr
+                          (var_path
+                            root: (identifier)))))
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))))))
     (assign
       left: (var_path
         root: (identifier))
       left: (var_path
         root: (identifier))
-      right: (shell_cmd
-        critical: (critical_shell_cmd
-          command: (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                contents: (interpolation
-                  expr: (primary_expr
-                    (var_path
-                      root: (identifier))))
-                end: (string_end))))))))
+      right: (expr
+        (shell_cmd
+          critical: (critical_shell_cmd
+            command: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    contents: (interpolation
+                      expr: (expr
+                        (primary_expr
+                          (var_path
+                            root: (identifier)))))
+                    end: (string_end))))))))))
   (if_stmt
-    condition: (primary_expr
-      (literal
-        (bool)))
+    condition: (expr
+      (primary_expr
+        (literal
+          (bool))))
     (comment)
     (expr_stmt
-      (primary_expr
-        (call
-          func: (identifier)
-          args: (call_arg_list
+      (expr
+        (primary_expr
+          (call
+            func: (identifier)
+            arg: (expr
+              (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))))))
+    (expr_stmt
+      (expr
+        (primary_expr
+          (call
+            func: (identifier)
+            arg: (expr
+              (primary_expr
+                (literal
+                  (int)))))))))
+  (expr_stmt
+    (expr
+      (shell_cmd
+        critical: (critical_shell_cmd
+          command: (expr
             (primary_expr
               (literal
                 (string
                   start: (string_start)
                   contents: (string_contents
                     content: (string_content))
-                  end: (string_end))))))))
-    (expr_stmt
-      (primary_expr
-        (call
-          func: (identifier)
-          args: (call_arg_list
-            (primary_expr
-              (literal
-                (int))))))))
-  (expr_stmt
-    (shell_cmd
-      critical: (critical_shell_cmd
-        command: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              contents: (interpolation
-                expr: (primary_expr
-                  (var_path
-                    root: (identifier))))
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))))
+                  contents: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier)))))
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end))))))))))

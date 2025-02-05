@@ -13,18 +13,20 @@ defer:
     (assign
       left: (var_path
         root: (identifier))
-      right: (primary_expr
-        (literal
-          (int))))
+      right: (expr
+        (primary_expr
+          (literal
+            (int)))))
     (expr_stmt
-      (primary_expr
-        (binary_op
-          left: (primary_expr
-            (var_path
-              root: (identifier)))
-          right: (primary_expr
-            (literal
-              (int))))))))
+      (expr
+        (primary_expr
+          (binary_op
+            left: (primary_expr
+              (var_path
+                root: (identifier)))
+            right: (primary_expr
+              (literal
+                (int)))))))))
 
 ===
 Errdefer
@@ -41,15 +43,17 @@ errdefer:
     (assign
       left: (var_path
         root: (identifier))
-      right: (primary_expr
-        (literal
-          (int))))
+      right: (expr
+        (primary_expr
+          (literal
+            (int)))))
     (expr_stmt
-      (primary_expr
-        (binary_op
-          left: (primary_expr
-            (var_path
-              root: (identifier)))
-          right: (primary_expr
-            (literal
-              (int))))))))
+      (expr
+        (primary_expr
+          (binary_op
+            left: (primary_expr
+              (var_path
+                root: (identifier)))
+            right: (primary_expr
+              (literal
+                (int)))))))))

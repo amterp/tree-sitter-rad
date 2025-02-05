@@ -8,20 +8,23 @@ Comprehension no filter
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (list_comprehension
-        expr: (primary_expr
-          (binary_op
-            left: (primary_expr
+    (expr
+      (primary_expr
+        (list_comprehension
+          expr: (expr
+            (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (var_path
+                    root: (identifier)))
+                right: (primary_expr
+                  (literal
+                    (int))))))
+          left: (identifier)
+          right: (expr
+            (primary_expr
               (var_path
-                root: (identifier)))
-            right: (primary_expr
-              (literal
-                (int)))))
-        left: (identifier)
-        right: (primary_expr
-          (var_path
-            root: (identifier)))))))
+                root: (identifier)))))))))
 
 ===
 Comprehension w/ filter
@@ -33,24 +36,28 @@ Comprehension w/ filter
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (list_comprehension
-        expr: (primary_expr
-          (binary_op
-            left: (primary_expr
+    (expr
+      (primary_expr
+        (list_comprehension
+          expr: (expr
+            (primary_expr
+              (binary_op
+                left: (primary_expr
+                  (var_path
+                    root: (identifier)))
+                right: (primary_expr
+                  (literal
+                    (int))))))
+          left: (identifier)
+          right: (expr
+            (primary_expr
               (var_path
-                root: (identifier)))
-            right: (primary_expr
-              (literal
-                (int)))))
-        left: (identifier)
-        right: (primary_expr
-          (var_path
-            root: (identifier)))
-        condition: (comparison_op
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (literal
-              (int))))))))
+                root: (identifier))))
+          condition: (expr
+            (comparison_op
+              (primary_expr
+                (var_path
+                  root: (identifier)))
+              (primary_expr
+                (literal
+                  (int))))))))))

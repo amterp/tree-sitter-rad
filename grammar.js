@@ -40,19 +40,11 @@ module.exports = grammar({
     /[\s\f\uFEFF\u2060\u200B]|\r?\n/,
   ],
 
-  conflicts: $ => [
-    // [$.primary_expr, $.pattern],list
-    // [$.primary_expr, $.list_splat_pattern],
-    // [$.list, $.list_pattern],
-    // [$.named_expr, $.as_pattern],
-    // [$.type_alias_stmt, $.primary_expr],
-    // [$.match_stmt, $.primary_expr],
-  ],
-
+  // todo can we get rid of this? or doc it
   supertypes: $ => [
     $._simple_stmt,
     $._compound_stmt,
-    $.expr,
+    // $.expr,
     // $.primary_expr,
     // $.pattern,
     // $.parameter,
@@ -239,15 +231,15 @@ module.exports = grammar({
     call: $ => prec(PREC.call, seq(
       // python does primary_expr, probably to allow e.g. (a ? print : debug)(args here)
       field('func', $.identifier),
-      field('args', choice(
-        $.call_arg_list,
-      )),
+      choice(
+        $._call_arg_list,
+      ),
     )),
 
-    call_arg_list: $ => choice(
+    _call_arg_list: $ => choice(
       "()", // empty call
-      seq("(", sepTrail1($.expr), ")"), // no named args
-      seq("(", optional(seq(commaSep1($.expr), ",")), sepTrail1($.call_named_arg), ")"), // mixed
+      seq("(", sepTrail1(field("arg", $.expr)), ")"), // no named args
+      seq("(", optional(seq(commaSep1(field("arg", $.expr)), ",")), sepTrail1(field("named_arg", $.call_named_arg)), ")"), // mixed
     ),
 
     call_named_arg: $ => seq(
@@ -259,13 +251,13 @@ module.exports = grammar({
     // Assignment
 
     assign: $ => seq(
-      field('left', $._left_hand_side),
+      $._left_hand_side,
       '=',
       field('right', $._right_hand_side),
     ),
 
     compound_assign: $ => seq(
-      field('left', $._left_hand_side),
+      $._left_hand_side,
       field('op', choice(
         '+=', '-=', '*=', '/=', '%=',
       )),
@@ -277,24 +269,24 @@ module.exports = grammar({
       field('op', choice('++', '--')),
     ),
 
-    _left_hand_side: $ => commaSep1($.var_path),
+    _left_hand_side: $ => commaSep1(field("left", $.var_path)),
 
     var_path: $ => prec.left(seq(
       field("root", $.identifier),
-      field("indexing", repeat($._var_path_lookup)),
+      repeat($._var_path_lookup),
     )),
 
     _var_path_lookup: $ => choice(
       $._indexing,
-      seq(".", $.identifier),
+      seq(".", field("indexing", $.identifier)),
     ),
 
     _indexing: $ => seq(
       '[',
-      choice(
+      field('indexing', choice(
         $.expr,
         $.slice,
-      ),
+      )),
       ']',
     ),
 
@@ -409,7 +401,7 @@ module.exports = grammar({
       '$',
       field("command", $.expr),
     ),
-    
+
     critical_shell_cmd: $ => seq(
       repeat($._shell_non_unsafe_mod),
       '$!',
@@ -670,10 +662,10 @@ module.exports = grammar({
     ),
     list: $ => choice(
       $.empty_list,
-      seq("[", sepTrail0($.literal), "]",),
+      seq("[", sepTrail0(field("list_entry", $.expr)), "]",),
     ),
 
-    map: $ => seq("{", sepTrail0($.map_entry), "}"),
+    map: $ => seq("{", sepTrail0(field("map_entry", $.map_entry)), "}"),
     map_entry: $ => seq(
       field('key', $.expr),
       ":",

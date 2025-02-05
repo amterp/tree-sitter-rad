@@ -8,10 +8,10 @@ print()
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list)))))
+    (expr
+      (primary_expr
+        (call
+          func: (identifier))))))
 
 ===
 Basic 1
@@ -23,13 +23,14 @@ print(hi)
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (var_path
-              root: (identifier))))))))
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier)))))))))
 
 ===
 Basic 2+
@@ -41,19 +42,22 @@ print(hi, hello, hey)
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier))))))))
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier)))))))))
 
 ===
 Basic 2+ trailing
@@ -65,19 +69,22 @@ print(hi, hello, hey, )
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier))))))))
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier)))))))))
 
 ===
 Basic 2+ trailing multiline
@@ -93,19 +100,22 @@ print(
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier))))))))
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier))))
+          arg: (expr
+            (primary_expr
+              (var_path
+                root: (identifier)))))))))
 
 ===
 Only named 1
@@ -117,15 +127,16 @@ print(foo=bar)
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (call_named_arg
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          named_arg: (call_named_arg
             name: (identifier)
-            value: (primary_expr
-              (var_path
-                root: (identifier)))))))))
+            value: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier))))))))))
 
 ===
 Only named 2+
@@ -137,25 +148,28 @@ print(foo=bar, a = b, c = d, )
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (call_named_arg
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          named_arg: (call_named_arg
             name: (identifier)
-            value: (primary_expr
-              (var_path
-                root: (identifier))))
-          (call_named_arg
+            value: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier)))))
+          named_arg: (call_named_arg
             name: (identifier)
-            value: (primary_expr
-              (var_path
-                root: (identifier))))
-          (call_named_arg
+            value: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier)))))
+          named_arg: (call_named_arg
             name: (identifier)
-            value: (primary_expr
-              (var_path
-                root: (identifier)))))))))
+            value: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier))))))))))
 
 ===
 Mixed
@@ -167,28 +181,33 @@ print(hello, hi, foo=bar, a = b, c = d, )
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (call
-        func: (identifier)
-        args: (call_arg_list
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (primary_expr
-            (var_path
-              root: (identifier)))
-          (call_named_arg
-            name: (identifier)
-            value: (primary_expr
+    (expr
+      (primary_expr
+        (call
+          func: (identifier)
+          arg: (expr
+            (primary_expr
               (var_path
                 root: (identifier))))
-          (call_named_arg
-            name: (identifier)
-            value: (primary_expr
+          arg: (expr
+            (primary_expr
               (var_path
                 root: (identifier))))
-          (call_named_arg
+          named_arg: (call_named_arg
             name: (identifier)
-            value: (primary_expr
-              (var_path
-                root: (identifier)))))))))
+            value: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier)))))
+          named_arg: (call_named_arg
+            name: (identifier)
+            value: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier)))))
+          named_arg: (call_named_arg
+            name: (identifier)
+            value: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier))))))))))

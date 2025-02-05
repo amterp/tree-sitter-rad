@@ -8,14 +8,15 @@ Newline, tab
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            tab: (esc_tab)
-            newline: (esc_newline))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              tab: (esc_tab)
+              newline: (esc_newline))
+            end: (string_end)))))))
 
 ===
 Interpolation
@@ -27,16 +28,18 @@ Interpolation
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents)
-          contents: (interpolation
-            expr: (primary_expr
-              (var_path
-                root: (identifier))))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents)
+            contents: (interpolation
+              expr: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier)))))
+            end: (string_end)))))))
 
 ===
 Own delimiter
@@ -50,32 +53,35 @@ Own delimiter
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            double_quote: (esc_double_quote)
-            content: (string_content)
-            double_quote: (esc_double_quote))
-          end: (string_end)))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              double_quote: (esc_double_quote)
+              content: (string_content)
+              double_quote: (esc_double_quote))
+            end: (string_end))))))
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            single_quote: (esc_single_quote)
-            content: (string_content)
-            single_quote: (esc_single_quote))
-          end: (string_end)))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              single_quote: (esc_single_quote)
+              content: (string_content)
+              single_quote: (esc_single_quote))
+            end: (string_end))))))
   (expr_stmt
-    (primary_expr
-      (literal
-        (string
-          start: (string_start)
-          contents: (string_contents
-            backtick: (esc_backtick)
-            content: (string_content)
-            backtick: (esc_backtick))
-          end: (string_end))))))
+    (expr
+      (primary_expr
+        (literal
+          (string
+            start: (string_start)
+            contents: (string_contents
+              backtick: (esc_backtick)
+              content: (string_content)
+              backtick: (esc_backtick))
+            end: (string_end)))))))

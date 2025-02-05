@@ -60,36 +60,6 @@
     ]
   },
   {
-    "type": "expr",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "bool_op",
-        "named": true
-      },
-      {
-        "type": "comparison_op",
-        "named": true
-      },
-      {
-        "type": "not_op",
-        "named": true
-      },
-      {
-        "type": "primary_expr",
-        "named": true
-      },
-      {
-        "type": "shell_cmd",
-        "named": true
-      },
-      {
-        "type": "ternary",
-        "named": true
-      }
-    ]
-  },
-  {
     "type": "arg_block",
     "named": true,
     "fields": {
@@ -308,10 +278,6 @@
         "required": true,
         "types": [
           {
-            "type": ",",
-            "named": false
-          },
-          {
             "type": "var_path",
             "named": true
           }
@@ -455,12 +421,12 @@
     "type": "call",
     "named": true,
     "fields": {
-      "args": {
-        "multiple": false,
-        "required": true,
+      "arg": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
-            "type": "call_arg_list",
+            "type": "expr",
             "named": true
           }
         ]
@@ -474,26 +440,17 @@
             "named": true
           }
         ]
+      },
+      "named_arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "call_named_arg",
+            "named": true
+          }
+        ]
       }
-    }
-  },
-  {
-    "type": "call_arg_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "call_named_arg",
-          "named": true
-        },
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -634,10 +591,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": ",",
-            "named": false
-          },
           {
             "type": "var_path",
             "named": true
@@ -824,6 +777,41 @@
         },
         {
           "type": "_simple_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_op",
+          "named": true
+        },
+        {
+          "type": "comparison_op",
+          "named": true
+        },
+        {
+          "type": "not_op",
+          "named": true
+        },
+        {
+          "type": "primary_expr",
+          "named": true
+        },
+        {
+          "type": "shell_cmd",
+          "named": true
+        },
+        {
+          "type": "ternary",
           "named": true
         }
       ]
@@ -1182,17 +1170,24 @@
   {
     "type": "list",
     "named": true,
-    "fields": {},
+    "fields": {
+      "list_entry": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
           "type": "empty_list",
-          "named": true
-        },
-        {
-          "type": "literal",
           "named": true
         }
       ]
@@ -1286,16 +1281,17 @@
   {
     "type": "map",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "map_entry",
-          "named": true
-        }
-      ]
+    "fields": {
+      "map_entry": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "map_entry",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1996,18 +1992,6 @@
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "[",
-            "named": false
-          },
-          {
-            "type": "]",
-            "named": false
-          },
           {
             "type": "expr",
             "named": true

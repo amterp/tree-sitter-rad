@@ -13,56 +13,68 @@ a[:b]
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice))))
+    (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice)))))
   (expr_stmt
-    (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          start: (primary_expr
-            (literal
-              (int)))))))
-  (expr_stmt
-    (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          end: (primary_expr
-            (unary_op
-              op: (unary_op_sign)
-              arg: (primary_expr
+    (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            start: (expr
+              (primary_expr
                 (literal
                   (int)))))))))
   (expr_stmt
-    (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          start: (primary_expr
-            (var_path
-              root: (identifier)))
-          end: (primary_expr
-            (var_path
-              root: (identifier)))))))
+    (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            end: (expr
+              (primary_expr
+                (unary_op
+                  op: (unary_op_sign)
+                  arg: (primary_expr
+                    (literal
+                      (int)))))))))))
   (expr_stmt
-    (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          start: (primary_expr
-            (var_path
-              root: (identifier)))))))
+    (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            start: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier))))
+            end: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier)))))))))
   (expr_stmt
-    (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          end: (primary_expr
-            (var_path
-              root: (identifier))))))))
+    (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            start: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier)))))))))
+  (expr_stmt
+    (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            end: (expr
+              (primary_expr
+                (var_path
+                  root: (identifier))))))))))
 
 ===
 With ternaries
@@ -74,35 +86,44 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
 
 (source_file
   (expr_stmt
-    (primary_expr
-      (var_path
-        root: (identifier)
-        indexing: (slice
-          start: (ternary
-            condition: (comparison_op
-              (primary_expr
-                (var_path
-                  root: (identifier)))
-              (primary_expr
-                (literal
-                  (int))))
-            true_branch: (primary_expr
-              (literal
-                (int)))
-            false_branch: (primary_expr
-              (literal
-                (int))))
-          end: (ternary
-            condition: (comparison_op
-              (primary_expr
-                (var_path
-                  root: (identifier)))
-              (primary_expr
-                (literal
-                  (int))))
-            true_branch: (primary_expr
-              (literal
-                (int)))
-            false_branch: (primary_expr
-              (literal
-                (int)))))))))
+    (expr
+      (primary_expr
+        (var_path
+          root: (identifier)
+          indexing: (slice
+            start: (expr
+              (ternary
+                condition: (expr
+                  (comparison_op
+                    (primary_expr
+                      (var_path
+                        root: (identifier)))
+                    (primary_expr
+                      (literal
+                        (int)))))
+                true_branch: (expr
+                  (primary_expr
+                    (literal
+                      (int))))
+                false_branch: (expr
+                  (primary_expr
+                    (literal
+                      (int))))))
+            end: (expr
+              (ternary
+                condition: (expr
+                  (comparison_op
+                    (primary_expr
+                      (var_path
+                        root: (identifier)))
+                    (primary_expr
+                      (literal
+                        (int)))))
+                true_branch: (expr
+                  (primary_expr
+                    (literal
+                      (int))))
+                false_branch: (expr
+                  (primary_expr
+                    (literal
+                      (int))))))))))))
