@@ -55,9 +55,9 @@ Comprehension w/ filter
                 root: (identifier))))
           condition: (expr
             (comparison_op
-              (primary_expr
+              left: (primary_expr
                 (var_path
                   root: (identifier)))
-              (primary_expr
+              right: (primary_expr
                 (literal
                   (int))))))))))

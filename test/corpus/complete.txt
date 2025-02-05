@@ -423,10 +423,10 @@ $!`git commit -m "Bump version to {version}"`
     (rad_if_stmt
       condition: (expr
         (comparison_op
-          (primary_expr
+          left: (primary_expr
             (var_path
               root: (identifier)))
-          (primary_expr
+          right: (primary_expr
             (var_path
               root: (identifier)))))
       (rad_sort_stmt
@@ -469,10 +469,10 @@ $!`git commit -m "Bump version to {version}"`
   (if_stmt
     condition: (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int)))))
     (assign
@@ -485,10 +485,10 @@ $!`git commit -m "Bump version to {version}"`
     (if_stmt
       condition: (expr
         (comparison_op
-          (primary_expr
+          left: (primary_expr
             (var_path
               root: (identifier)))
-          (primary_expr
+          right: (primary_expr
             (literal
               (int)))))
       (compound_assign
@@ -501,10 +501,10 @@ $!`git commit -m "Bump version to {version}"`
       alternative: (elif_clause
         condition: (expr
           (comparison_op
-            (primary_expr
+            left: (primary_expr
               (var_path
                 root: (identifier)))
-            (primary_expr
+            right: (primary_expr
               (literal
                 (int)))))
         (assign

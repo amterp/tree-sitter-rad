@@ -12,10 +12,10 @@ a > 2 ? "true" : "false"
       (ternary
         condition: (expr
           (comparison_op
-            (primary_expr
+            left: (primary_expr
               (var_path
                 root: (identifier)))
-            (primary_expr
+            right: (primary_expr
               (literal
                 (int)))))
         true_branch: (expr
@@ -51,10 +51,10 @@ b = a > 2 ? "true" : "false"
       (ternary
         condition: (expr
           (comparison_op
-            (primary_expr
+            left: (primary_expr
               (var_path
                 root: (identifier)))
-            (primary_expr
+            right: (primary_expr
               (literal
                 (int)))))
         true_branch: (expr
@@ -90,20 +90,20 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
       (ternary
         condition: (expr
           (comparison_op
-            (primary_expr
+            left: (primary_expr
               (var_path
                 root: (identifier)))
-            (primary_expr
+            right: (primary_expr
               (literal
                 (int)))))
         true_branch: (expr
           (ternary
             condition: (expr
               (comparison_op
-                (primary_expr
+                left: (primary_expr
                   (var_path
                     root: (identifier)))
-                (primary_expr
+                right: (primary_expr
                   (literal
                     (int)))))
             true_branch: (expr
@@ -118,10 +118,10 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
           (ternary
             condition: (expr
               (comparison_op
-                (primary_expr
+                left: (primary_expr
                   (var_path
                     root: (identifier)))
-                (primary_expr
+                right: (primary_expr
                   (literal
                     (int)))))
             true_branch: (expr

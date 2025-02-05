@@ -95,10 +95,10 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
               (ternary
                 condition: (expr
                   (comparison_op
-                    (primary_expr
+                    left: (primary_expr
                       (var_path
                         root: (identifier)))
-                    (primary_expr
+                    right: (primary_expr
                       (literal
                         (int)))))
                 true_branch: (expr
@@ -113,10 +113,10 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
               (ternary
                 condition: (expr
                   (comparison_op
-                    (primary_expr
+                    left: (primary_expr
                       (var_path
                         root: (identifier)))
-                    (primary_expr
+                    right: (primary_expr
                       (literal
                         (int)))))
                 true_branch: (expr

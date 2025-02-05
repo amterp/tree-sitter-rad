@@ -36,10 +36,10 @@ else:
   (if_stmt
     condition: (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int)))))
     (assign
@@ -80,10 +80,10 @@ else:
   (if_stmt
     condition: (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int)))))
     (assign
@@ -103,10 +103,10 @@ else:
     alternative: (elif_clause
       condition: (expr
         (comparison_op
-          (primary_expr
+          left: (primary_expr
             (var_path
               root: (identifier)))
-          (primary_expr
+          right: (primary_expr
             (literal
               (int)))))
       (assign

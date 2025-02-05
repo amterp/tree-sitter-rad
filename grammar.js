@@ -198,22 +198,21 @@ module.exports = grammar({
     },
 
     comparison_op: $ => prec.left(PREC.compare, seq(
-      $.primary_expr,
-      repeat1(seq(
-        field('ops',
-          choice(
-            '<',
-            '<=',
-            '==',
-            '!=',
-            '>=',
-            '>',
-            'in',
-            seq('not', 'in'),
-          )),
-        $.primary_expr,
+      field("left", $.primary_expr),
+      field("op", choice(
+        '<',
+        '<=',
+        '==',
+        '!=',
+        '>=',
+        '>',
+        'in',
+        $.not_in,
       )),
+      field("right", $.primary_expr),
     )),
+
+    not_in: $ => seq('not', 'in'),
 
     unary_op: $ => prec(PREC.unary, seq(
       field('op', $.unary_op_sign),

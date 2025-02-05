@@ -533,8 +533,18 @@
     "type": "comparison_op",
     "named": true,
     "fields": {
-      "ops": {
-        "multiple": true,
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "primary_expr",
+            "named": true
+          }
+        ]
+      },
+      "op": {
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -566,21 +576,21 @@
             "named": false
           },
           {
-            "type": "not",
-            "named": false
+            "type": "not_in",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "primary_expr",
+            "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "primary_expr",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1319,6 +1329,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "not_in",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "not_op",

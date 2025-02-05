@@ -17,64 +17,64 @@ a not in [2, 3]
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int))))))
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int))))))
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int))))))
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int))))))
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int))))))
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (int))))))
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        right: (primary_expr
           (literal
             (list
               list_entry: (expr
@@ -88,10 +88,11 @@ a not in [2, 3]
   (expr_stmt
     (expr
       (comparison_op
-        (primary_expr
+        left: (primary_expr
           (var_path
             root: (identifier)))
-        (primary_expr
+        op: (not_in)
+        right: (primary_expr
           (literal
             (list
               list_entry: (expr
