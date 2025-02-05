@@ -109,7 +109,7 @@ $cmd
 recover:
     print("Oh no, curl failed!")
 
-unsafe $!`ls`
+unsafe $`ls`
 
 code = $!cmd
 
@@ -121,8 +121,8 @@ _, _, stderr = $!cmd
 
 quiet $!`touch {filename}.txt`
 
-unsafe quiet $!`touch {filename}.txt`
-quiet unsafe $!`touch {filename}.txt`
+unsafe quiet $`touch {filename}.txt`
+quiet unsafe $`touch {filename}.txt`
 
 defer:
     $!`mv notes-tmp.txt notes.txt`
@@ -774,7 +774,7 @@ $!`git commit -m "Bump version to {version}"`
                 end: (string_end))))))))
   (expr_stmt
     (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -798,11 +798,11 @@ $!`git commit -m "Bump version to {version}"`
           end: (string_end)))))
   (expr_stmt
     (shell_cmd
-      (checked_shell_cmd
+      checked: (checked_shell_cmd
         command: (primary_expr
           (var_path
             root: (identifier)))
-        (shell_body_type)
+        body_type: (shell_body_type)
         (expr_stmt
           (primary_expr
             (call
@@ -817,11 +817,11 @@ $!`git commit -m "Bump version to {version}"`
                       end: (string_end)))))))))))
   (expr_stmt
     (shell_cmd
-      (checked_shell_cmd
+      checked: (checked_shell_cmd
         command: (primary_expr
           (var_path
             root: (identifier)))
-        (shell_body_type)
+        body_type: (shell_body_type)
         (expr_stmt
           (primary_expr
             (call
@@ -836,8 +836,7 @@ $!`git commit -m "Bump version to {version}"`
                       end: (string_end)))))))))))
   (expr_stmt
     (shell_cmd
-      (shell_modifier)
-      (critical_shell_cmd
+      unsafe: (unsafe_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -849,7 +848,7 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (var_path
             root: (identifier))))))
@@ -859,19 +858,7 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (critical_shell_cmd
-        command: (primary_expr
-          (var_path
-            root: (identifier))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (var_path
             root: (identifier))))))
@@ -883,14 +870,25 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
+        command: (primary_expr
+          (var_path
+            root: (identifier))))))
+  (assign
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    right: (shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (var_path
             root: (identifier))))))
   (expr_stmt
     (shell_cmd
-      (shell_modifier)
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -906,9 +904,7 @@ $!`git commit -m "Bump version to {version}"`
               end: (string_end)))))))
   (expr_stmt
     (shell_cmd
-      (shell_modifier)
-      (shell_modifier)
-      (critical_shell_cmd
+      unsafe: (unsafe_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -924,9 +920,7 @@ $!`git commit -m "Bump version to {version}"`
               end: (string_end)))))))
   (expr_stmt
     (shell_cmd
-      (shell_modifier)
-      (shell_modifier)
-      (critical_shell_cmd
+      unsafe: (unsafe_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -943,7 +937,7 @@ $!`git commit -m "Bump version to {version}"`
   (defer_block
     (expr_stmt
       (shell_cmd
-        (critical_shell_cmd
+        critical: (critical_shell_cmd
           command: (primary_expr
             (literal
               (string
@@ -965,7 +959,7 @@ $!`git commit -m "Bump version to {version}"`
                   end: (string_end)))))))))
   (expr_stmt
     (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -998,7 +992,7 @@ $!`git commit -m "Bump version to {version}"`
                   end: (string_end))))))))
     (expr_stmt
       (shell_cmd
-        (critical_shell_cmd
+        critical: (critical_shell_cmd
           command: (primary_expr
             (literal
               (string
@@ -1037,7 +1031,7 @@ $!`git commit -m "Bump version to {version}"`
                 (int))))))))
   (expr_stmt
     (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -1074,7 +1068,7 @@ $!`git commit -m "Bump version to {version}"`
       left: (var_path
         root: (identifier))
       right: (shell_cmd
-        (critical_shell_cmd
+        critical: (critical_shell_cmd
           command: (primary_expr
             (literal
               (string
@@ -1113,7 +1107,7 @@ $!`git commit -m "Bump version to {version}"`
                 (int))))))))
   (expr_stmt
     (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string

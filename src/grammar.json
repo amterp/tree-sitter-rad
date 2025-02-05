@@ -1583,60 +1583,30 @@
       }
     },
     "shell_cmd": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "shell_modifier"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "$"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "critical_shell_cmd"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "checked_shell_cmd"
-            }
-          ]
-        }
-      ]
-    },
-    "shell_modifier": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "unsafe"
-        },
-        {
-          "type": "STRING",
-          "value": "quiet"
-        }
-      ]
-    },
-    "critical_shell_cmd": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "!"
+          "type": "FIELD",
+          "name": "checked",
+          "content": {
+            "type": "SYMBOL",
+            "name": "checked_shell_cmd"
+          }
         },
         {
           "type": "FIELD",
-          "name": "command",
+          "name": "unsafe",
           "content": {
             "type": "SYMBOL",
-            "name": "expr"
+            "name": "unsafe_shell_cmd"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "critical",
+          "content": {
+            "type": "SYMBOL",
+            "name": "critical_shell_cmd"
           }
         }
       ]
@@ -1644,6 +1614,17 @@
     "checked_shell_cmd": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_shell_non_unsafe_mod"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "$"
+        },
         {
           "type": "FIELD",
           "name": "command",
@@ -1657,8 +1638,12 @@
           "name": "_newline"
         },
         {
-          "type": "SYMBOL",
-          "name": "shell_body_type"
+          "type": "FIELD",
+          "name": "body_type",
+          "content": {
+            "type": "SYMBOL",
+            "name": "shell_body_type"
+          }
         },
         {
           "type": "SEQ",
@@ -1687,6 +1672,85 @@
               "name": "_dedent"
             }
           ]
+        }
+      ]
+    },
+    "unsafe_shell_cmd": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_shell_non_unsafe_mod"
+          }
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "FIELD",
+            "name": "unsafe_mod",
+            "content": {
+              "type": "STRING",
+              "value": "unsafe"
+            }
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_shell_non_unsafe_mod"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "FIELD",
+          "name": "command",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        }
+      ]
+    },
+    "critical_shell_cmd": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_shell_non_unsafe_mod"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "$!"
+        },
+        {
+          "type": "FIELD",
+          "name": "command",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        }
+      ]
+    },
+    "_shell_non_unsafe_mod": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "quiet_mod",
+          "content": {
+            "type": "STRING",
+            "value": "quiet"
+          }
         }
       ]
     },
@@ -3570,8 +3634,12 @@
               "name": "_escape_seq"
             },
             {
-              "type": "SYMBOL",
-              "name": "_not_escape_seq"
+              "type": "FIELD",
+              "name": "backslash",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_not_escape_seq"
+              }
             },
             {
               "type": "FIELD",

@@ -526,6 +526,16 @@
     "type": "checked_shell_cmd",
     "named": true,
     "fields": {
+      "body_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "shell_body_type",
+            "named": true
+          }
+        ]
+      },
       "command": {
         "multiple": false,
         "required": true,
@@ -535,11 +545,21 @@
             "named": true
           }
         ]
+      },
+      "quiet_mod": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "quiet",
+            "named": false
+          }
+        ]
       }
     },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "_compound_stmt",
@@ -547,10 +567,6 @@
         },
         {
           "type": "_simple_stmt",
-          "named": true
-        },
-        {
-          "type": "shell_body_type",
           "named": true
         }
       ]
@@ -686,6 +702,16 @@
           {
             "type": "expr",
             "named": true
+          }
+        ]
+      },
+      "quiet_mod": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "quiet",
+            "named": false
           }
         ]
       }
@@ -1632,30 +1658,38 @@
   {
     "type": "shell_cmd",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "checked_shell_cmd",
-          "named": true
-        },
-        {
-          "type": "critical_shell_cmd",
-          "named": true
-        },
-        {
-          "type": "shell_modifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "checked": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "checked_shell_cmd",
+            "named": true
+          }
+        ]
+      },
+      "critical": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "critical_shell_cmd",
+            "named": true
+          }
+        ]
+      },
+      "unsafe": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "unsafe_shell_cmd",
+            "named": true
+          }
+        ]
+      }
     }
-  },
-  {
-    "type": "shell_modifier",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "slice",
@@ -1763,6 +1797,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "\\",
+            "named": false
+          },
           {
             "type": "esc_backslash",
             "named": true
@@ -1915,6 +1953,42 @@
     "fields": {}
   },
   {
+    "type": "unsafe_shell_cmd",
+    "named": true,
+    "fields": {
+      "command": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "quiet_mod": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "quiet",
+            "named": false
+          }
+        ]
+      },
+      "unsafe_mod": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "unsafe",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "var_path",
     "named": true,
     "fields": {
@@ -1961,15 +2035,15 @@
     }
   },
   {
-    "type": "!",
-    "named": false
-  },
-  {
     "type": "!=",
     "named": false
   },
   {
     "type": "$",
+    "named": false
+  },
+  {
+    "type": "$!",
     "named": false
   },
   {

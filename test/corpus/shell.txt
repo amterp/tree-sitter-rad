@@ -12,7 +12,7 @@ fail:
 (source_file
   (expr_stmt
     (shell_cmd
-      (checked_shell_cmd
+      checked: (checked_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -20,7 +20,7 @@ fail:
               contents: (string_contents
                 content: (string_content))
               end: (string_end))))
-        (shell_body_type)
+        body_type: (shell_body_type)
         (assign
           left: (var_path
             root: (identifier))
@@ -59,11 +59,11 @@ fail:
           end: (string_end)))))
   (expr_stmt
     (shell_cmd
-      (checked_shell_cmd
+      checked: (checked_shell_cmd
         command: (primary_expr
           (var_path
             root: (identifier)))
-        (shell_body_type)
+        body_type: (shell_body_type)
         (assign
           left: (var_path
             root: (identifier))
@@ -91,7 +91,7 @@ recover:
 (source_file
   (expr_stmt
     (shell_cmd
-      (checked_shell_cmd
+      checked: (checked_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -99,7 +99,7 @@ recover:
               contents: (string_contents
                 content: (string_content))
               end: (string_end))))
-        (shell_body_type)
+        body_type: (shell_body_type)
         (assign
           left: (var_path
             root: (identifier))
@@ -124,7 +124,7 @@ $!`ls -n`
 (source_file
   (expr_stmt
     (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -155,7 +155,7 @@ $!cmd
           end: (string_end)))))
   (expr_stmt
     (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (var_path
             root: (identifier)))))))
@@ -173,7 +173,7 @@ a = $!`ls -n`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -197,7 +197,7 @@ a, b = $!`ls -n`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -223,7 +223,7 @@ a, b, c = $!`ls -n`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -249,7 +249,7 @@ _, _, _ = $!`ls -n`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (critical_shell_cmd
+      critical: (critical_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -276,7 +276,7 @@ fail:
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (checked_shell_cmd
+      checked: (checked_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -284,7 +284,7 @@ fail:
               contents: (string_contents
                 content: (string_content))
               end: (string_end))))
-        (shell_body_type)
+        body_type: (shell_body_type)
         (expr_stmt
           (primary_expr
             (call
@@ -314,8 +314,8 @@ fail:
 Modifiers
 ===
 
-a, b = unsafe quiet $!`ls -n`
-a, b = quiet unsafe $!`ls -n`
+a, b = unsafe quiet $`ls -n`
+a, b = quiet unsafe $`ls -n`
 
 ---
 
@@ -326,9 +326,7 @@ a, b = quiet unsafe $!`ls -n`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (shell_modifier)
-      (shell_modifier)
-      (critical_shell_cmd
+      unsafe: (unsafe_shell_cmd
         command: (primary_expr
           (literal
             (string
@@ -342,9 +340,7 @@ a, b = quiet unsafe $!`ls -n`
     left: (var_path
       root: (identifier))
     right: (shell_cmd
-      (shell_modifier)
-      (shell_modifier)
-      (critical_shell_cmd
+      unsafe: (unsafe_shell_cmd
         command: (primary_expr
           (literal
             (string

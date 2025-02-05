@@ -387,30 +387,37 @@ module.exports = grammar({
       field('false_branch', $.expr),
     )),
 
-    shell_cmd: $ => seq(
-      repeat($.shell_modifier), // unsafe, quiet
-      '$',
-      choice(
-        $.critical_shell_cmd,
-        $.checked_shell_cmd,
-      ),
-    ),
-
-    shell_modifier: $ => choice(
-      'unsafe',
-      'quiet',
-    ),
-
-    critical_shell_cmd: $ => seq(
-      '!',
-      field("command", $.expr), // too free? string or identifier?
+    shell_cmd: $ => choice(
+      field("checked", $.checked_shell_cmd),
+      field("unsafe", $.unsafe_shell_cmd),
+      field("critical", $.critical_shell_cmd),
     ),
 
     checked_shell_cmd: $ => seq(
-      field("command", $.expr), // too free? string or identifier?
+      repeat($._shell_non_unsafe_mod),
+      '$',
+      field("command", $.expr),
       $._newline,
-      $.shell_body_type,
+      field("body_type", $.shell_body_type),
       colonBlock($, $._stmt),
+    ),
+
+    unsafe_shell_cmd: $ => seq(
+      repeat($._shell_non_unsafe_mod),
+      repeat1(field("unsafe_mod", "unsafe")), // required somewhere in there
+      repeat($._shell_non_unsafe_mod),
+      '$',
+      field("command", $.expr),
+    ),
+    
+    critical_shell_cmd: $ => seq(
+      repeat($._shell_non_unsafe_mod),
+      '$!',
+      field("command", $.expr), // too free? string or identifier?
+    ),
+
+    _shell_non_unsafe_mod: $ => choice(
+      field("quiet_mod", "quiet"),
     ),
 
     shell_body_type: $ => choice(
@@ -682,7 +689,7 @@ module.exports = grammar({
     string_contents: $ => prec.right(repeat1(
       choice(
         $._escape_seq,
-        $._not_escape_seq,
+        field("backslash", $._not_escape_seq),
         field("content", $.string_content),
       ))),
 
