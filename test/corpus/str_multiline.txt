@@ -97,18 +97,17 @@ this is a {2 + 2}
             contents: (string_contents
               content: (string_content)
               content: (string_content)
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (binary_op
-                    left: (primary_expr
-                      (literal
-                        (int)))
-                    right: (primary_expr
-                      (literal
-                        (int)))))))
-            contents: (string_contents
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (binary_op
+                      left: (primary_expr
+                        (literal
+                          (int)))
+                      right: (primary_expr
+                        (literal
+                          (int)))))))
               content: (string_content)
               content: (string_content))
             end: (string_end)))))))

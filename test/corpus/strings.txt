@@ -77,12 +77,12 @@ Interpolation
           (string
             start: (string_start)
             contents: (string_contents
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (var_path
-                    root: (identifier)))))
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))))
             end: (string_end)))))))
 
 ===
@@ -120,17 +120,17 @@ Interpolation fancy
           (string
             start: (string_start)
             contents: (string_contents
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (binary_op
-                    left: (primary_expr
-                      (literal
-                        (int)))
-                    right: (primary_expr
-                      (literal
-                        (int)))))))
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (binary_op
+                      left: (primary_expr
+                        (literal
+                          (int)))
+                      right: (primary_expr
+                        (literal
+                          (int))))))))
             end: (string_end)))))))
 
 ===

@@ -270,12 +270,12 @@ my_headers = {
                     (string
                       start: (string_start)
                       contents: (string_contents
-                        content: (string_content))
-                      contents: (interpolation
-                        expr: (expr
-                          (primary_expr
-                            (var_path
-                              root: (identifier)))))
+                        content: (string_content)
+                        interpolation: (interpolation
+                          expr: (expr
+                            (primary_expr
+                              (var_path
+                                root: (identifier))))))
                       end: (string_end))))))
             map_entry: (map_entry
               key: (expr

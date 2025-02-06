@@ -162,7 +162,7 @@ module.exports = grammar({
     ),
 
     not_op: $ => prec(PREC.not, seq(
-      'not',
+      field("op", 'not'),
       field('arg', $.expr),
     )),
 
@@ -215,11 +215,11 @@ module.exports = grammar({
     not_in: $ => seq('not', 'in'),
 
     unary_op: $ => prec(PREC.unary, seq(
-      field('op', $.unary_op_sign),
+      field("op", $._unary_op_sign),
       field('arg', $.primary_expr),
     )),
 
-    unary_op_sign: $ => choice('+', '-'),
+    _unary_op_sign: $ => choice('+', '-'),
 
     parenthesized_expr: $ => prec(PREC.parenthesized_expr, seq(
       '(',
@@ -331,36 +331,33 @@ module.exports = grammar({
     ),
 
     if_stmt: $ => seq(
-      $._if_clause,
-      colonBlock($, $._stmt),
-      repeat(field('alternative', $.elif_clause)),
-      optional(field('alternative', $.else_clause)),
+      field("alt", $.if_alt),
+      repeat(seq("else", field("alt", $.if_alt))),
+      optional(seq("else", field("alt", $.else_alt))),
     ),
 
-    elif_clause: $ => seq(
-      'else',
+    if_alt: $ => seq(
       $._if_clause,
-      colonBlock($, $._stmt),
-    ),
-
-    else_clause: $ => seq(
-      'else',
-      colonBlock($, $._stmt),
+      colonBlockField($, $._stmt, "stmt"),
     ),
 
     _if_clause: $ => seq("if", field('condition', $.expr)),
+    
+    else_alt: $ => colonBlockField($, $._stmt, "stmt"),
 
     for_loop: $ => seq(
       $._for_in,
-      colonBlock($, $._stmt),
+      colonBlockField($, $._stmt, "stmt"),
     ),
 
     _for_in: $ => seq(
       'for',
-      field('left', commaSep1($.identifier)),
+      field("lefts", $.for_lefts),
       'in',
       field('right', $.expr),
     ),
+
+    for_lefts: $ => commaSep1(field('left', $.identifier)),
 
     list_comprehension: $ => seq(
       '[',
@@ -466,11 +463,11 @@ module.exports = grammar({
     _arg_bool_list_default: $ => seq(field("type", $.bool_list_type), optional(seq("=", field("default", $.bool_list)))),
 
     int_arg: $ => prec(1, seq(
-      field('op', repeat($.unary_op_sign)),
+      field('op', repeat($._unary_op_sign)),
       field("value", $.int),
     )),
     float_arg: $ => seq(
-      field('op', repeat($.unary_op_sign)),
+      field('op', repeat($._unary_op_sign)),
       field("value", choice($.float, $.int)),
     ),
 
@@ -673,7 +670,7 @@ module.exports = grammar({
 
     string: $ => seq(
       field("start", $.string_start),
-      field("contents", repeat(choice($.interpolation, $.string_contents))),
+      optional(field("contents", $.string_contents)),
       field("end", $.string_end),
     ),
 
@@ -682,6 +679,7 @@ module.exports = grammar({
         $._escape_seq,
         field("backslash", $._not_escape_seq),
         field("content", $.string_content),
+        field("interpolation", $.interpolation),
       ))),
 
     _escape_seq: $ => prec(1, choice(
@@ -819,6 +817,24 @@ function colonBlock($, rule) {
     $._newline,
     $._indent,
     repeat(rule),
+    $._dedent
+  );
+}
+
+/**
+ * Creates a rule to match repeated occurrences of a rule as a body, starting with a colon,
+ * handling indents.
+ *
+ * @param {RuleOrLiteral} rule
+ *
+ * @returns {SeqRule}
+ */
+function colonBlockField($, rule, fieldName) {
+  return seq(
+    ":",
+    $._newline,
+    $._indent,
+    field(fieldName, repeat(rule)),
     $._dedent
   );
 }

@@ -14,14 +14,14 @@ Padding
           (string
             start: (string_start)
             contents: (string_contents
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (var_path
-                    root: (identifier))))
-              format: (format_specifier
-                padding: (int)))
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                format: (format_specifier
+                  padding: (int))))
             end: (string_end)))))))
 
 ===
@@ -40,14 +40,14 @@ Decimals
           (string
             start: (string_start)
             contents: (string_contents
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (var_path
-                    root: (identifier))))
-              format: (format_specifier
-                precision: (int)))
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                format: (format_specifier
+                  precision: (int))))
             end: (string_end)))))))
 
 ===
@@ -66,15 +66,15 @@ Padding & Decimals
           (string
             start: (string_start)
             contents: (string_contents
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (var_path
-                    root: (identifier))))
-              format: (format_specifier
-                padding: (int)
-                precision: (int)))
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                format: (format_specifier
+                  padding: (int)
+                  precision: (int))))
             end: (string_end)))))))
 
 ===
@@ -93,15 +93,15 @@ Left align
           (string
             start: (string_start)
             contents: (string_contents
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (var_path
-                    root: (identifier))))
-              format: (format_specifier
-                padding: (int)
-                precision: (int)))
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                format: (format_specifier
+                  padding: (int)
+                  precision: (int))))
             end: (string_end)))))))
 
 ===
@@ -120,13 +120,13 @@ Right align
           (string
             start: (string_start)
             contents: (string_contents
-              content: (string_content))
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (var_path
-                    root: (identifier))))
-              format: (format_specifier
-                padding: (int)
-                precision: (int)))
+              content: (string_content)
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))
+                format: (format_specifier
+                  padding: (int)
+                  precision: (int))))
             end: (string_end)))))))

@@ -20,7 +20,8 @@ Comprehension no filter
                 right: (primary_expr
                   (literal
                     (int))))))
-          left: (identifier)
+          lefts: (for_lefts
+            left: (identifier))
           right: (expr
             (primary_expr
               (var_path
@@ -48,7 +49,8 @@ Comprehension w/ filter
                 right: (primary_expr
                   (literal
                     (int))))))
-          left: (identifier)
+          lefts: (for_lefts
+            left: (identifier))
           right: (expr
             (primary_expr
               (var_path

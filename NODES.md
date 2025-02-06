@@ -116,7 +116,7 @@
 | 111 | `comparison_op`                          |
 | 112 | `not_in`                                 |
 | 113 | `unary_op`                               |
-| 114 | `unary_op_sign`                          |
+| 114 | `_unary_op_sign`                         |
 | 115 | `parenthesized_expr`                     |
 | 116 | `call`                                   |
 | 117 | `_call_arg_list`                         |
@@ -136,9 +136,9 @@
 | 131 | `continue_stmt`                          |
 | 132 | `_compound_stmt`                         |
 | 133 | `if_stmt`                                |
-| 134 | `elif_clause`                            |
-| 135 | `else_clause`                            |
-| 136 | `_if_clause`                             |
+| 134 | `if_alt`                                 |
+| 135 | `_if_clause`                             |
+| 136 | `else_alt`                               |
 | 137 | `for_loop`                               |
 | 138 | `_for_in`                                |
 | 139 | `list_comprehension`                     |
@@ -218,15 +218,15 @@
 | 213 | `int_arg_repeat1`                        |
 | 214 | `_rad_rad_block_repeat1`                 |
 | 215 | `rad_sort_stmt_repeat1`                  |
-| 216 | `rad_field_modifier_stmt_repeat1`        |
-| 217 | `rad_if_stmt_repeat1`                    |
-| 218 | `string_list_repeat1`                    |
-| 219 | `int_list_repeat1`                       |
-| 220 | `float_list_repeat1`                     |
-| 221 | `bool_list_repeat1`                      |
-| 222 | `list_repeat1`                           |
-| 223 | `map_repeat1`                            |
-| 224 | `string_repeat1`                         |
+| 216 | `rad_field_stmt_repeat1`                 |
+| 217 | `rad_field_modifier_stmt_repeat1`        |
+| 218 | `rad_if_stmt_repeat1`                    |
+| 219 | `string_list_repeat1`                    |
+| 220 | `int_list_repeat1`                       |
+| 221 | `float_list_repeat1`                     |
+| 222 | `bool_list_repeat1`                      |
+| 223 | `list_repeat1`                           |
+| 224 | `map_repeat1`                            |
 | 225 | `string_contents_repeat1`                |
 
 *This file is generated - don't edit manually.*

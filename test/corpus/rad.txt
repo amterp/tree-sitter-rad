@@ -133,17 +133,17 @@ rad url:
               (literal
                 (string
                   start: (string_start)
-                  contents: (interpolation
-                    expr: (expr
-                      (primary_expr
-                        (binary_op
-                          left: (primary_expr
-                            (var_path
-                              root: (identifier)))
-                          right: (primary_expr
-                            (literal
-                              (int)))))))
                   contents: (string_contents
+                    interpolation: (interpolation
+                      expr: (expr
+                        (primary_expr
+                          (binary_op
+                            left: (primary_expr
+                              (var_path
+                                root: (identifier)))
+                            right: (primary_expr
+                              (literal
+                                (int)))))))
                     content: (string_content))
                   end: (string_end))))))))))
 
@@ -180,17 +180,17 @@ rad url:
               (literal
                 (string
                   start: (string_start)
-                  contents: (interpolation
-                    expr: (expr
-                      (primary_expr
-                        (binary_op
-                          left: (primary_expr
-                            (var_path
-                              root: (identifier)))
-                          right: (primary_expr
-                            (literal
-                              (int)))))))
                   contents: (string_contents
+                    interpolation: (interpolation
+                      expr: (expr
+                        (primary_expr
+                          (binary_op
+                            left: (primary_expr
+                              (var_path
+                                root: (identifier)))
+                            right: (primary_expr
+                              (literal
+                                (int)))))))
                     content: (string_content))
                   end: (string_end))))))))))
 

@@ -33,12 +33,12 @@ Interpolation
         (literal
           (string
             start: (string_start)
-            contents: (string_contents)
-            contents: (interpolation
-              expr: (expr
-                (primary_expr
-                  (var_path
-                    root: (identifier)))))
+            contents: (string_contents
+              interpolation: (interpolation
+                expr: (expr
+                  (primary_expr
+                    (var_path
+                      root: (identifier))))))
             end: (string_end)))))))
 
 ===

@@ -720,52 +720,23 @@
     }
   },
   {
-    "type": "elif_clause",
+    "type": "else_alt",
     "named": true,
     "fields": {
-      "condition": {
-        "multiple": false,
-        "required": true,
+      "stmt": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "_compound_stmt",
+            "named": true
+          },
+          {
+            "type": "_simple_stmt",
             "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_compound_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "else_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_compound_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -872,8 +843,12 @@
         "required": false,
         "types": [
           {
-            "type": "unary_op_sign",
-            "named": true
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
           }
         ]
       },
@@ -914,7 +889,7 @@
     }
   },
   {
-    "type": "for_loop",
+    "type": "for_lefts",
     "named": true,
     "fields": {
       "left": {
@@ -922,11 +897,23 @@
         "required": true,
         "types": [
           {
-            "type": ",",
-            "named": false
-          },
-          {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "for_loop",
+    "named": true,
+    "fields": {
+      "lefts": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "for_lefts",
             "named": true
           }
         ]
@@ -940,21 +927,21 @@
             "named": true
           }
         ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_compound_stmt",
+            "named": true
+          },
+          {
+            "type": "_simple_stmt",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_compound_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -998,23 +985,9 @@
     }
   },
   {
-    "type": "if_stmt",
+    "type": "if_alt",
     "named": true,
     "fields": {
-      "alternative": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "elif_clause",
-            "named": true
-          },
-          {
-            "type": "else_clause",
-            "named": true
-          }
-        ]
-      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -1024,21 +997,41 @@
             "named": true
           }
         ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_compound_stmt",
+            "named": true
+          },
+          {
+            "type": "_simple_stmt",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_compound_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        }
-      ]
+    }
+  },
+  {
+    "type": "if_stmt",
+    "named": true,
+    "fields": {
+      "alt": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "else_alt",
+            "named": true
+          },
+          {
+            "type": "if_alt",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1084,8 +1077,12 @@
         "required": false,
         "types": [
           {
-            "type": "unary_op_sign",
-            "named": true
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
           }
         ]
       },
@@ -1227,16 +1224,12 @@
           }
         ]
       },
-      "left": {
-        "multiple": true,
+      "lefts": {
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "identifier",
+            "type": "for_lefts",
             "named": true
           }
         ]
@@ -1346,6 +1339,16 @@
           {
             "type": "expr",
             "named": true
+          }
+        ]
+      },
+      "op": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "not",
+            "named": false
           }
         ]
       }
@@ -1765,13 +1768,9 @@
     "named": true,
     "fields": {
       "contents": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
           {
             "type": "string_contents",
             "named": true
@@ -1844,6 +1843,16 @@
         "types": [
           {
             "type": "esc_double_quote",
+            "named": true
+          }
+        ]
+      },
+      "interpolation": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "interpolation",
             "named": true
           }
         ]
@@ -1951,17 +1960,16 @@
         "required": true,
         "types": [
           {
-            "type": "unary_op_sign",
-            "named": true
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
           }
         ]
       }
     }
-  },
-  {
-    "type": "unary_op_sign",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "unsafe_shell_cmd",

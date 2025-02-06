@@ -16,27 +16,28 @@ if true: // inline comment
 (source_file
   (comment)
   (if_stmt
-    condition: (expr
-      (primary_expr
-        (literal
-          (bool))))
-    (comment)
-    (comment)
-    (assign
-      left: (var_path
-        root: (identifier))
-      right: (expr
+    alt: (if_alt
+      condition: (expr
         (primary_expr
           (literal
-            (int)))))
-    (comment)
-    (expr_stmt
-      (expr
-        (primary_expr
-          (call
-            func: (identifier)
-            arg: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))))))
+            (bool))))
+      (comment)
+      (comment)
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int)))))
+      (comment)
+      stmt: (expr_stmt
+        (expr
+          (primary_expr
+            (call
+              func: (identifier)
+              arg: (expr
+                (primary_expr
+                  (var_path
+                    root: (identifier))))))))))
   (comment))

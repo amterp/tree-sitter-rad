@@ -9,17 +9,18 @@ if true:
 
 (source_file
   (if_stmt
-    condition: (expr
-      (primary_expr
-        (literal
-          (bool))))
-    (assign
-      left: (var_path
-        root: (identifier))
-      right: (expr
+    alt: (if_alt
+      condition: (expr
         (primary_expr
           (literal
-            (int)))))))
+            (bool))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int))))))))
 
 ===
 If Else
@@ -34,23 +35,24 @@ else:
 
 (source_file
   (if_stmt
-    condition: (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
-          (literal
-            (int)))))
-    (assign
-      left: (var_path
-        root: (identifier))
-      right: (expr
-        (primary_expr
-          (literal
-            (int)))))
-    alternative: (else_clause
-      (assign
+    alt: (if_alt
+      condition: (expr
+        (comparison_op
+          left: (primary_expr
+            (var_path
+              root: (identifier)))
+          right: (primary_expr
+            (literal
+              (int)))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int))))))
+    alt: (else_alt
+      stmt: (assign
         left: (var_path
           root: (identifier))
         right: (expr
@@ -78,29 +80,7 @@ else:
 
 (source_file
   (if_stmt
-    condition: (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
-          (literal
-            (int)))))
-    (assign
-      left: (var_path
-        root: (identifier))
-      right: (expr
-        (primary_expr
-          (literal
-            (int)))))
-    (assign
-      left: (var_path
-        root: (identifier))
-      right: (expr
-        (primary_expr
-          (literal
-            (int)))))
-    alternative: (elif_clause
+    alt: (if_alt
       condition: (expr
         (comparison_op
           left: (primary_expr
@@ -109,15 +89,38 @@ else:
           right: (primary_expr
             (literal
               (int)))))
-      (assign
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int)))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int))))))
+    alt: (if_alt
+      condition: (expr
+        (comparison_op
+          left: (primary_expr
+            (var_path
+              root: (identifier)))
+          right: (primary_expr
+            (literal
+              (int)))))
+      stmt: (assign
         left: (var_path
           root: (identifier))
         right: (expr
           (primary_expr
             (literal
               (bool))))))
-    alternative: (else_clause
-      (assign
+    alt: (else_alt
+      stmt: (assign
         left: (var_path
           root: (identifier))
         right: (expr
