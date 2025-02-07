@@ -399,14 +399,23 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path
       root: (identifier))
     right: (json_path
-      (identifier)))
+      segment: (json_opener
+        index: (json_path_indexer))
+      segment: (json_segment
+        key: (identifier))))
   (assign
     left: (var_path
       root: (identifier))
     right: (json_path
-      (identifier)
-      (identifier)
-      (identifier)))
+      segment: (json_opener)
+      segment: (json_segment
+        key: (identifier)
+        index: (json_path_indexer))
+      segment: (json_segment
+        key: (identifier))
+      segment: (json_segment)
+      segment: (json_segment
+        key: (identifier))))
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
@@ -855,18 +864,16 @@ $!`git commit -m "Bump version to {version}"`
                           (var_path
                             root: (identifier))))))
                   end: (string_end)))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))))))
+  (shell_stmt
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))))
   (assign
     left: (var_path
       root: (identifier))
@@ -883,180 +890,156 @@ $!`git commit -m "Bump version to {version}"`
                     (var_path
                       root: (identifier))))))
             end: (string_end))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        checked: (checked_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          body_type: (shell_body_type)
-          (expr_stmt
-            (expr
-              (primary_expr
-                (call
-                  func: (identifier)
-                  arg: (expr
+  (shell_stmt
+    shell_cmd: (checked_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier))))
+      stmt: (expr_stmt
+        (expr
+          (primary_expr
+            (call
+              func: (identifier)
+              arg: (expr
+                (primary_expr
+                  (literal
+                    (string
+                      start: (string_start)
+                      contents: (string_contents
+                        content: (string_content))
+                      end: (string_end)))))))))))
+  (shell_stmt
+    shell_cmd: (checked_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier))))
+      stmt: (expr_stmt
+        (expr
+          (primary_expr
+            (call
+              func: (identifier)
+              arg: (expr
+                (primary_expr
+                  (literal
+                    (string
+                      start: (string_start)
+                      contents: (string_contents
+                        content: (string_content))
+                      end: (string_end)))))))))))
+  (shell_stmt
+    shell_cmd: (unsafe_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))))
+  (shell_stmt
+    left: (var_path
+      root: (identifier))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier))))))
+  (shell_stmt
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier))))))
+  (shell_stmt
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier))))))
+  (shell_stmt
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    left: (var_path
+      root: (identifier))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier))))))
+  (shell_stmt
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content)
+                interpolation: (interpolation
+                  expr: (expr
                     (primary_expr
-                      (literal
-                        (string
-                          start: (string_start)
-                          contents: (string_contents
-                            content: (string_content))
-                          end: (string_end)))))))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        checked: (checked_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          body_type: (shell_body_type)
-          (expr_stmt
-            (expr
-              (primary_expr
-                (call
-                  func: (identifier)
-                  arg: (expr
+                      (var_path
+                        root: (identifier)))))
+                content: (string_content))
+              end: (string_end)))))))
+  (shell_stmt
+    shell_cmd: (unsafe_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content)
+                interpolation: (interpolation
+                  expr: (expr
                     (primary_expr
-                      (literal
-                        (string
-                          start: (string_start)
-                          contents: (string_contents
-                            content: (string_content))
-                          end: (string_end)))))))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        unsafe: (unsafe_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))))))
-  (assign
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    left: (var_path
-      root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content)
-                    interpolation: (interpolation
-                      expr: (expr
-                        (primary_expr
-                          (var_path
-                            root: (identifier)))))
-                    content: (string_content))
-                  end: (string_end)))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        unsafe: (unsafe_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content)
-                    interpolation: (interpolation
-                      expr: (expr
-                        (primary_expr
-                          (var_path
-                            root: (identifier)))))
-                    content: (string_content))
-                  end: (string_end)))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        unsafe: (unsafe_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content)
-                    interpolation: (interpolation
-                      expr: (expr
-                        (primary_expr
-                          (var_path
-                            root: (identifier)))))
-                    content: (string_content))
-                  end: (string_end)))))))))
+                      (var_path
+                        root: (identifier)))))
+                content: (string_content))
+              end: (string_end)))))))
+  (shell_stmt
+    shell_cmd: (unsafe_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content)
+                interpolation: (interpolation
+                  expr: (expr
+                    (primary_expr
+                      (var_path
+                        root: (identifier)))))
+                content: (string_content))
+              end: (string_end)))))))
   (defer_block
-    (expr_stmt
-      (expr
-        (shell_cmd
-          critical: (critical_shell_cmd
-            command: (expr
-              (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content))
-                    end: (string_end)))))))))
-    (expr_stmt
+    stmt: (shell_stmt
+      shell_cmd: (critical_shell_cmd
+        command: (expr
+          (primary_expr
+            (literal
+              (string
+                start: (string_start)
+                contents: (string_contents
+                  content: (string_content))
+                end: (string_end)))))))
+    stmt: (expr_stmt
       (expr
         (primary_expr
           (call
@@ -1069,31 +1052,29 @@ $!`git commit -m "Bump version to {version}"`
                     contents: (string_contents
                       content: (string_content))
                     end: (string_end))))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content)
-                    interpolation: (interpolation
-                      expr: (expr
-                        (primary_expr
-                          (var_path
-                            root: (identifier)))))
-                    content: (string_content)
-                    interpolation: (interpolation
-                      expr: (expr
-                        (primary_expr
-                          (var_path
-                            root: (identifier))))))
-                  end: (string_end)))))))))
+  (shell_stmt
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content)
+                interpolation: (interpolation
+                  expr: (expr
+                    (primary_expr
+                      (var_path
+                        root: (identifier)))))
+                content: (string_content)
+                interpolation: (interpolation
+                  expr: (expr
+                    (primary_expr
+                      (var_path
+                        root: (identifier))))))
+              end: (string_end)))))))
   (errdefer_block
-    (expr_stmt
+    stmt: (expr_stmt
       (expr
         (primary_expr
           (call
@@ -1106,23 +1087,21 @@ $!`git commit -m "Bump version to {version}"`
                     contents: (string_contents
                       content: (string_content))
                     end: (string_end)))))))))
-    (expr_stmt
-      (expr
-        (shell_cmd
-          critical: (critical_shell_cmd
-            command: (expr
-              (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content)
-                      interpolation: (interpolation
-                        expr: (expr
-                          (primary_expr
-                            (var_path
-                              root: (identifier))))))
-                    end: (string_end))))))))))
+    stmt: (shell_stmt
+      shell_cmd: (critical_shell_cmd
+        command: (expr
+          (primary_expr
+            (literal
+              (string
+                start: (string_start)
+                contents: (string_contents
+                  content: (string_content)
+                  interpolation: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier))))))
+                end: (string_end))))))))
   (if_stmt
     alt: (if_alt
       condition: (expr
@@ -1152,25 +1131,23 @@ $!`git commit -m "Bump version to {version}"`
                 (primary_expr
                   (literal
                     (int))))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content)
-                    interpolation: (interpolation
-                      expr: (expr
-                        (primary_expr
-                          (var_path
-                            root: (identifier))))))
-                  end: (string_end)))))))))
+  (shell_stmt
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content)
+                interpolation: (interpolation
+                  expr: (expr
+                    (primary_expr
+                      (var_path
+                        root: (identifier))))))
+              end: (string_end)))))))
   (errdefer_block
-    (expr_stmt
+    stmt: (expr_stmt
       (expr
         (primary_expr
           (call
@@ -1189,27 +1166,25 @@ $!`git commit -m "Bump version to {version}"`
                               root: (identifier)))))
                       content: (string_content))
                     end: (string_end)))))))))
-    (assign
+    stmt: (shell_stmt
       left: (var_path
         root: (identifier))
       left: (var_path
         root: (identifier))
-      right: (expr
-        (shell_cmd
-          critical: (critical_shell_cmd
-            command: (expr
-              (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content)
-                      interpolation: (interpolation
-                        expr: (expr
-                          (primary_expr
-                            (var_path
-                              root: (identifier))))))
-                    end: (string_end))))))))))
+      shell_cmd: (critical_shell_cmd
+        command: (expr
+          (primary_expr
+            (literal
+              (string
+                start: (string_start)
+                contents: (string_contents
+                  content: (string_content)
+                  interpolation: (interpolation
+                    expr: (expr
+                      (primary_expr
+                        (var_path
+                          root: (identifier))))))
+                end: (string_end))))))))
   (if_stmt
     alt: (if_alt
       condition: (expr
@@ -1239,21 +1214,19 @@ $!`git commit -m "Bump version to {version}"`
                 (primary_expr
                   (literal
                     (int))))))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content)
-                    interpolation: (interpolation
-                      expr: (expr
-                        (primary_expr
-                          (var_path
-                            root: (identifier)))))
-                    content: (string_content))
-                  end: (string_end))))))))))
+  (shell_stmt
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content)
+                interpolation: (interpolation
+                  expr: (expr
+                    (primary_expr
+                      (var_path
+                        root: (identifier)))))
+                content: (string_content))
+              end: (string_end))))))))

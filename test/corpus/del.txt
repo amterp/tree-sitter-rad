@@ -8,7 +8,7 @@ del a
 
 (source_file
   (del_stmt
-    paths: (var_path
+    right: (var_path
       root: (identifier))))
 
 ===
@@ -21,11 +21,11 @@ del a, b, c
 
 (source_file
   (del_stmt
-    paths: (var_path
+    right: (var_path
       root: (identifier))
-    paths: (var_path
+    right: (var_path
       root: (identifier))
-    paths: (var_path
+    right: (var_path
       root: (identifier))))
 
 ===
@@ -38,11 +38,11 @@ del a, b, c,
 
 (source_file
   (del_stmt
-    paths: (var_path
+    right: (var_path
       root: (identifier))
-    paths: (var_path
+    right: (var_path
       root: (identifier))
-    paths: (var_path
+    right: (var_path
       root: (identifier))))
 
 ===
@@ -68,7 +68,7 @@ del a[0]
 
 (source_file
   (del_stmt
-    paths: (var_path
+    right: (var_path
       root: (identifier)
       indexing: (expr
         (primary_expr
@@ -85,7 +85,7 @@ del a["foo"]
 
 (source_file
   (del_stmt
-    paths: (var_path
+    right: (var_path
       root: (identifier)
       indexing: (expr
         (primary_expr
@@ -106,7 +106,7 @@ del a.foo
 
 (source_file
   (del_stmt
-    paths: (var_path
+    right: (var_path
       root: (identifier)
       indexing: (identifier))))
 
@@ -120,16 +120,16 @@ del a.foo, b[1], c["bar"]
 
 (source_file
   (del_stmt
-    paths: (var_path
+    right: (var_path
       root: (identifier)
       indexing: (identifier))
-    paths: (var_path
+    right: (var_path
       root: (identifier)
       indexing: (expr
         (primary_expr
           (literal
             (int)))))
-    paths: (var_path
+    right: (var_path
       root: (identifier)
       indexing: (expr
         (primary_expr

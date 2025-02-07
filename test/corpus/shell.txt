@@ -10,33 +10,30 @@ fail:
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (shell_cmd
-        checked: (checked_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))
-          body_type: (shell_body_type)
-          (assign
-            left: (var_path
-              root: (identifier))
-            right: (expr
-              (primary_expr
-                (literal
-                  (int)))))
-          (assign
-            left: (var_path
-              root: (identifier))
-            right: (expr
-              (primary_expr
-                (literal
-                  (int))))))))))
+  (shell_stmt
+    shell_cmd: (checked_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int)))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int))))))))
 
 ===
 Fail var
@@ -62,29 +59,26 @@ fail:
             contents: (string_contents
               content: (string_content))
             end: (string_end))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        checked: (checked_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          body_type: (shell_body_type)
-          (assign
-            left: (var_path
-              root: (identifier))
-            right: (expr
-              (primary_expr
-                (literal
-                  (int)))))
-          (assign
-            left: (var_path
-              root: (identifier))
-            right: (expr
-              (primary_expr
-                (literal
-                  (int))))))))))
+  (shell_stmt
+    shell_cmd: (checked_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int)))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int))))))))
 
 ===
 Recover
@@ -98,33 +92,30 @@ recover:
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (shell_cmd
-        checked: (checked_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))
-          body_type: (shell_body_type)
-          (assign
-            left: (var_path
-              root: (identifier))
-            right: (expr
-              (primary_expr
-                (literal
-                  (int)))))
-          (assign
-            left: (var_path
-              root: (identifier))
-            right: (expr
-              (primary_expr
-                (literal
-                  (int))))))))))
+  (shell_stmt
+    shell_cmd: (checked_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int)))))
+      stmt: (assign
+        left: (var_path
+          root: (identifier))
+        right: (expr
+          (primary_expr
+            (literal
+              (int))))))))
 
 ===
 Critical simple
@@ -135,18 +126,16 @@ $!`ls -n`
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+  (shell_stmt
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Critical var
@@ -169,14 +158,12 @@ $!cmd
             contents: (string_contents
               content: (string_content))
             end: (string_end))))))
-  (expr_stmt
-    (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+  (shell_stmt
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (var_path
+            root: (identifier)))))))
 
 ===
 Single assign
@@ -187,20 +174,18 @@ a = $!`ls -n`
 ---
 
 (source_file
-  (assign
+  (shell_stmt
     left: (var_path
       root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Double assign
@@ -211,22 +196,20 @@ a, b = $!`ls -n`
 ---
 
 (source_file
-  (assign
+  (shell_stmt
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Triple assign
@@ -237,24 +220,22 @@ a, b, c = $!`ls -n`
 ---
 
 (source_file
-  (assign
+  (shell_stmt
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Underscore assigns
@@ -265,24 +246,22 @@ _, _, _ = $!`ls -n`
 ---
 
 (source_file
-  (assign
+  (shell_stmt
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
-    right: (expr
-      (shell_cmd
-        critical: (critical_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Assign checked
@@ -296,49 +275,46 @@ fail:
 ---
 
 (source_file
-  (assign
+  (shell_stmt
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
-    right: (expr
-      (shell_cmd
-        checked: (checked_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))
-          body_type: (shell_body_type)
-          (expr_stmt
-            (expr
-              (primary_expr
-                (call
-                  func: (identifier)
-                  arg: (expr
-                    (primary_expr
-                      (literal
-                        (string
-                          start: (string_start)
-                          contents: (string_contents
-                            content: (string_content))
-                          end: (string_end)))))))))
-          (expr_stmt
-            (expr
-              (primary_expr
-                (call
-                  func: (identifier)
-                  arg: (expr
-                    (primary_expr
-                      (literal
-                        (string
-                          start: (string_start)
-                          contents: (string_contents
-                            content: (string_content))
-                          end: (string_end))))))))))))))
+    shell_cmd: (checked_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))
+      stmt: (expr_stmt
+        (expr
+          (primary_expr
+            (call
+              func: (identifier)
+              arg: (expr
+                (primary_expr
+                  (literal
+                    (string
+                      start: (string_start)
+                      contents: (string_contents
+                        content: (string_content))
+                      end: (string_end)))))))))
+      stmt: (expr_stmt
+        (expr
+          (primary_expr
+            (call
+              func: (identifier)
+              arg: (expr
+                (primary_expr
+                  (literal
+                    (string
+                      start: (string_start)
+                      contents: (string_contents
+                        content: (string_content))
+                      end: (string_end))))))))))))
 
 ===
 Modifiers
@@ -350,35 +326,31 @@ a, b = quiet unsafe $`ls -n`
 ---
 
 (source_file
-  (assign
+  (shell_stmt
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
-    right: (expr
-      (shell_cmd
-        unsafe: (unsafe_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))))))
-  (assign
+    shell_cmd: (unsafe_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))))
+  (shell_stmt
     left: (var_path
       root: (identifier))
     left: (var_path
       root: (identifier))
-    right: (expr
-      (shell_cmd
-        unsafe: (unsafe_shell_cmd
-          command: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+    shell_cmd: (unsafe_shell_cmd
+      command: (expr
+        (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))

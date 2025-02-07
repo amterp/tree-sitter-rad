@@ -10,14 +10,14 @@ defer:
 
 (source_file
   (defer_block
-    (assign
+    stmt: (assign
       left: (var_path
         root: (identifier))
       right: (expr
         (primary_expr
           (literal
             (int)))))
-    (expr_stmt
+    stmt: (expr_stmt
       (expr
         (primary_expr
           (binary_op
@@ -40,14 +40,14 @@ errdefer:
 
 (source_file
   (errdefer_block
-    (assign
+    stmt: (assign
       left: (var_path
         root: (identifier))
       right: (expr
         (primary_expr
           (literal
             (int)))))
-    (expr_stmt
+    stmt: (expr_stmt
       (expr
         (primary_expr
           (binary_op

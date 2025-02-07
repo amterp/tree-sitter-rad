@@ -56,6 +56,10 @@
       {
         "type": "incr_decr",
         "named": true
+      },
+      {
+        "type": "shell_stmt",
+        "named": true
       }
     ]
   },
@@ -483,16 +487,6 @@
     "type": "checked_shell_cmd",
     "named": true,
     "fields": {
-      "body_type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "shell_body_type",
-            "named": true
-          }
-        ]
-      },
       "command": {
         "multiple": false,
         "required": true,
@@ -512,21 +506,35 @@
             "named": false
           }
         ]
+      },
+      "response": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fail",
+            "named": false
+          },
+          {
+            "type": "recover",
+            "named": false
+          }
+        ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_compound_stmt",
+            "named": true
+          },
+          {
+            "type": "_simple_stmt",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_compound_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -683,34 +691,41 @@
   {
     "type": "defer_block",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_compound_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "defer",
+            "named": false
+          }
+        ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_compound_stmt",
+            "named": true
+          },
+          {
+            "type": "_simple_stmt",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "del_stmt",
     "named": true,
     "fields": {
-      "paths": {
+      "right": {
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": ",",
-            "named": false
-          },
           {
             "type": "var_path",
             "named": true
@@ -747,20 +762,31 @@
   {
     "type": "errdefer_block",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_compound_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "errdefer",
+            "named": false
+          }
+        ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_compound_stmt",
+            "named": true
+          },
+          {
+            "type": "_simple_stmt",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -785,10 +811,6 @@
         },
         {
           "type": "primary_expr",
-          "named": true
-        },
-        {
-          "type": "shell_cmd",
           "named": true
         },
         {
@@ -1141,18 +1163,95 @@
     }
   },
   {
+    "type": "json_opener",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "json_path_indexer",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "json",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "json_path",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "segment": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "json_opener",
+            "named": true
+          },
+          {
+            "type": "json_segment",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "json_path_indexer",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "json_segment",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "json_path_indexer",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "*",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1665,38 +1764,31 @@
     }
   },
   {
-    "type": "shell_body_type",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "shell_cmd",
+    "type": "shell_stmt",
     "named": true,
     "fields": {
-      "checked": {
-        "multiple": false,
+      "left": {
+        "multiple": true,
         "required": false,
+        "types": [
+          {
+            "type": "var_path",
+            "named": true
+          }
+        ]
+      },
+      "shell_cmd": {
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "checked_shell_cmd",
             "named": true
-          }
-        ]
-      },
-      "critical": {
-        "multiple": false,
-        "required": false,
-        "types": [
+          },
           {
             "type": "critical_shell_cmd",
             "named": true
-          }
-        ]
-      },
-      "unsafe": {
-        "multiple": false,
-        "required": false,
-        "types": [
+          },
           {
             "type": "unsafe_shell_cmd",
             "named": true
@@ -2163,10 +2255,6 @@
   },
   {
     "type": "[",
-    "named": false
-  },
-  {
-    "type": "[]",
     "named": false
   },
   {

@@ -126,6 +126,7 @@ module.exports = grammar({
       $.expr_stmt,
       $.assign,
       $.compound_assign,
+      $.shell_stmt,
       $.incr_decr,
       $.del_stmt,
       $.break_stmt,
@@ -144,7 +145,6 @@ module.exports = grammar({
       $.bool_op,
       $.primary_expr,
       $.ternary,
-      $.shell_cmd,
     ),
 
     primary_expr: $ => choice(
@@ -301,21 +301,28 @@ module.exports = grammar({
     ),
 
     json_path: $ => seq(
-      "json",
-      optional("[]"),
+      field("segment", $.json_opener),
       repeat(seq(
         '.',
-        choice(
-          $.identifier,
-          "*", // wildcard
-        ),
-        optional("[]"),
+        optional(field("segment", $.json_segment)),
       )),
     ),
+    
+    json_opener : $ => seq(
+      field("key", "json"),
+      optional(field("index", $.json_path_indexer)),
+    ),
+    
+    json_segment : $ => seq(
+      field("key", choice($.identifier, "*")),
+      optional(field("index", $.json_path_indexer)),
+    ),
+
+    json_path_indexer: $ => seq("[", optional(field("expr", $.expr)), "]"),
 
     del_stmt: $ => seq(
       "del",
-      field("paths", sepTrail1($.var_path)),
+      sepTrail1(field("right", $.var_path)),
     ),
 
     break_stmt: _ => prec.left('break'),
@@ -342,7 +349,7 @@ module.exports = grammar({
     ),
 
     _if_clause: $ => seq("if", field('condition', $.expr)),
-    
+
     else_alt: $ => colonBlockField($, $._stmt, "stmt"),
 
     for_loop: $ => seq(
@@ -375,19 +382,21 @@ module.exports = grammar({
       field('false_branch', $.expr),
     )),
 
-    shell_cmd: $ => choice(
-      field("checked", $.checked_shell_cmd),
-      field("unsafe", $.unsafe_shell_cmd),
-      field("critical", $.critical_shell_cmd),
-    ),
+    shell_stmt: $ => seq(
+      optional(seq($._left_hand_side, "=")),
+      field("shell_cmd", choice(
+        $.checked_shell_cmd,
+        $.unsafe_shell_cmd,
+        $.critical_shell_cmd,
+      ))),
 
     checked_shell_cmd: $ => seq(
       repeat($._shell_non_unsafe_mod),
       '$',
       field("command", $.expr),
       $._newline,
-      field("body_type", $.shell_body_type),
-      colonBlock($, $._stmt),
+      field("response", choice('fail', 'recover')),
+      colonBlockField($, $._stmt, "stmt"),
     ),
 
     unsafe_shell_cmd: $ => seq(
@@ -406,11 +415,6 @@ module.exports = grammar({
 
     _shell_non_unsafe_mod: $ => choice(
       field("quiet_mod", "quiet"),
-    ),
-
-    shell_body_type: $ => choice(
-      'fail',
-      'recover',
     ),
 
     // Arg Block
@@ -588,13 +592,13 @@ module.exports = grammar({
     ),
 
     defer_block: $ => seq(
-      "defer",
-      colonBlock($, $._stmt),
+      field("keyword", "defer"),
+      colonBlockField($, $._stmt, "stmt"),
     ),
 
     errdefer_block: $ => seq(
-      "errdefer",
-      colonBlock($, $._stmt),
+      field("keyword", "errdefer"),
+      colonBlockField($, $._stmt, "stmt"),
     ),
 
     // Generic
