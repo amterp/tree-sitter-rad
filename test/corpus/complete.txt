@@ -422,14 +422,16 @@ $!`git commit -m "Bump version to {version}"`
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))
-    (rad_sort_stmt
-      (identifier)
-      (identifier))
-    (rad_sort_stmt)
-    (rad_if_stmt
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))
+    stmt: (rad_sort_stmt
+      (rad_sort_specifier
+        identifier: (identifier))
+      (rad_sort_specifier
+        identifier: (identifier)))
+    stmt: (rad_sort_stmt)
+    stmt: (rad_if_stmt
       condition: (expr
         (comparison_op
           left: (primary_expr
@@ -439,14 +441,16 @@ $!`git commit -m "Bump version to {version}"`
             (var_path
               root: (identifier)))))
       (rad_sort_stmt
-        (identifier)
-        (identifier)))
-    (rad_field_modifier_stmt
-      (identifier)
-      (rad_field_mod_map
-        (lambda
-          (identifier)
-          (expr
+        (rad_sort_specifier
+          identifier: (identifier))
+        (rad_sort_specifier
+          identifier: (identifier))))
+    stmt: (rad_field_modifier_stmt
+      identifier: (identifier)
+      mod_stmt: (rad_field_mod_map
+        lambda: (lambda
+          identifier: (identifier)
+          expr: (expr
             (primary_expr
               (binary_op
                 left: (primary_expr
@@ -455,11 +459,11 @@ $!`git commit -m "Bump version to {version}"`
                 right: (primary_expr
                   (literal
                     (int)))))))))
-    (rad_field_modifier_stmt
-      (identifier)
-      (identifier)
-      (rad_field_mod_color
-        (expr
+    stmt: (rad_field_modifier_stmt
+      identifier: (identifier)
+      identifier: (identifier)
+      mod_stmt: (rad_field_mod_color
+        color: (expr
           (primary_expr
             (literal
               (string
@@ -467,7 +471,7 @@ $!`git commit -m "Bump version to {version}"`
                 contents: (string_contents
                   content: (string_content))
                 end: (string_end)))))
-        (expr
+        regex: (expr
           (primary_expr
             (literal
               (string
@@ -535,14 +539,14 @@ $!`git commit -m "Bump version to {version}"`
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)))
+    stmt: (rad_field_stmt
+      identifier: (identifier)))
   (rad_block
     rad_type: (display_keyword)
-    (rad_field_stmt
-      (identifier)
-      (identifier)
-      (identifier)))
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier)
+      identifier: (identifier)))
   (assign
     left: (var_path
       root: (identifier))

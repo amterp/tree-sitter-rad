@@ -503,18 +503,18 @@ module.exports = grammar({
     _rad_rad_block: $ => seq(
       field('rad_type', $.rad_keyword),
       field("source", $.expr),
-      colonBlock($, $._rad_stmt),
+      colonBlockField($, $._rad_stmt, "stmt"),
     ),
 
     _request_block: $ => seq(
       field('rad_type', $.request_keyword),
       field("source", $.expr),
-      colonBlock($, $._rad_stmt),
+      colonBlockField($, $._rad_stmt, "stmt"),
     ),
 
     _display_block: $ => seq(
       field('rad_type', $.display_keyword),
-      colonBlock($, $._rad_stmt),
+      colonBlockField($, $._rad_stmt, "stmt"),
     ),
 
     rad_keyword: $ => "rad",
@@ -530,22 +530,22 @@ module.exports = grammar({
 
     rad_sort_stmt: $ => prec.right(seq(
       "sort",
-      commaSep0($._rad_sort_specifier),
+      commaSep0($.rad_sort_specifier),
     )),
 
-    _rad_sort_specifier: $ => seq(
-      $.identifier,
-      optional(choice("asc", "desc")),
+    rad_sort_specifier: $ => seq(
+      field("identifier", $.identifier),
+      optional(field("direction", choice("asc", "desc"))),
     ),
 
     rad_field_stmt: $ => seq(
       "fields",
-      commaSep1($.identifier),
+      commaSep1(field("identifier", $.identifier)),
     ),
 
     rad_field_modifier_stmt: $ => seq(
-      commaSep1($.identifier),
-      colonBlock($, $._rad_field_modifier),
+      commaSep1(field("identifier", $.identifier)),
+      colonBlockField($, $._rad_field_modifier, "mod_stmt"),
     ),
 
     _rad_field_modifier: $ => choice(
@@ -555,13 +555,13 @@ module.exports = grammar({
 
     rad_field_mod_color: $ => seq(
       "color",
-      $.expr, // todo too freeing?
-      $.expr,
+      field("color", $.expr), // todo too freeing?
+      field("regex", $.expr),
     ),
 
     rad_field_mod_map: $ => seq(
       "map",
-      $.lambda,
+      field("lambda", $.lambda),
     ),
 
     rad_if_stmt: $ => seq(
@@ -606,9 +606,9 @@ module.exports = grammar({
     comment: _ => token(seq('//', /.*/)),
 
     lambda: $ => seq( // todo quite different from Python's
-      $.identifier,
+      field("identifier", $.identifier),
       '->',
-      $.expr,
+      field("expr", $.expr),
     ),
 
     type: $ => choice(

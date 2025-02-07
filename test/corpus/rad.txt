@@ -14,9 +14,9 @@ rad url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))))
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))))
 
 ===
 Request simple
@@ -34,9 +34,9 @@ request url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))))
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))))
 
 ===
 Display simple
@@ -50,9 +50,9 @@ display:
 (source_file
   (rad_block
     rad_type: (display_keyword)
-    (rad_field_stmt
-      (identifier)
-      (identifier))))
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))))
 
 ===
 Rad sort simple
@@ -71,10 +71,10 @@ rad url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))
-    (rad_sort_stmt)))
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))
+    stmt: (rad_sort_stmt)))
 
 ===
 Rad sort complex
@@ -93,14 +93,18 @@ rad url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))
-    (rad_sort_stmt
-      (identifier)
-      (identifier)
-      (identifier)
-      (identifier))))
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))
+    stmt: (rad_sort_stmt
+      (rad_sort_specifier
+        identifier: (identifier))
+      (rad_sort_specifier
+        identifier: (identifier))
+      (rad_sort_specifier
+        identifier: (identifier))
+      (rad_sort_specifier
+        identifier: (identifier)))))
 
 ===
 Rad map one
@@ -120,15 +124,15 @@ rad url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))
-    (rad_field_modifier_stmt
-      (identifier)
-      (rad_field_mod_map
-        (lambda
-          (identifier)
-          (expr
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))
+    stmt: (rad_field_modifier_stmt
+      identifier: (identifier)
+      mod_stmt: (rad_field_mod_map
+        lambda: (lambda
+          identifier: (identifier)
+          expr: (expr
             (primary_expr
               (literal
                 (string
@@ -165,17 +169,17 @@ rad url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))
-    (rad_field_modifier_stmt
-      (identifier)
-      (identifier)
-      (identifier)
-      (rad_field_mod_map
-        (lambda
-          (identifier)
-          (expr
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))
+    stmt: (rad_field_modifier_stmt
+      identifier: (identifier)
+      identifier: (identifier)
+      identifier: (identifier)
+      mod_stmt: (rad_field_mod_map
+        lambda: (lambda
+          identifier: (identifier)
+          expr: (expr
             (primary_expr
               (literal
                 (string
@@ -213,14 +217,14 @@ rad url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))
-    (rad_field_modifier_stmt
-      (identifier)
-      (identifier)
-      (rad_field_mod_color
-        (expr
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))
+    stmt: (rad_field_modifier_stmt
+      identifier: (identifier)
+      identifier: (identifier)
+      mod_stmt: (rad_field_mod_color
+        color: (expr
           (primary_expr
             (literal
               (string
@@ -228,7 +232,7 @@ rad url:
                 contents: (string_contents
                   content: (string_content))
                 end: (string_end)))))
-        (expr
+        regex: (expr
           (primary_expr
             (literal
               (string
@@ -236,12 +240,12 @@ rad url:
                 contents: (string_contents
                   content: (string_content))
                 end: (string_end))))))
-      (rad_field_mod_color
-        (expr
+      mod_stmt: (rad_field_mod_color
+        color: (expr
           (primary_expr
             (var_path
               root: (identifier))))
-        (expr
+        regex: (expr
           (primary_expr
             (var_path
               root: (identifier))))))))
@@ -273,19 +277,19 @@ rad url:
       (primary_expr
         (var_path
           root: (identifier))))
-    (rad_field_stmt
-      (identifier)
-      (identifier))
-    (rad_if_stmt
+    stmt: (rad_field_stmt
+      identifier: (identifier)
+      identifier: (identifier))
+    stmt: (rad_if_stmt
       condition: (expr
         (primary_expr
           (var_path
             root: (identifier))))
       (rad_field_modifier_stmt
-        (identifier)
-        (identifier)
-        (rad_field_mod_color
-          (expr
+        identifier: (identifier)
+        identifier: (identifier)
+        mod_stmt: (rad_field_mod_color
+          color: (expr
             (primary_expr
               (literal
                 (string
@@ -293,7 +297,7 @@ rad url:
                   contents: (string_contents
                     content: (string_content))
                   end: (string_end)))))
-          (expr
+          regex: (expr
             (primary_expr
               (literal
                 (string
@@ -301,12 +305,12 @@ rad url:
                   contents: (string_contents
                     content: (string_content))
                   end: (string_end))))))
-        (rad_field_mod_color
-          (expr
+        mod_stmt: (rad_field_mod_color
+          color: (expr
             (primary_expr
               (var_path
                 root: (identifier))))
-          (expr
+          regex: (expr
             (primary_expr
               (var_path
                 root: (identifier))))))
@@ -316,15 +320,15 @@ rad url:
             (var_path
               root: (identifier))))
         (rad_field_stmt
-          (identifier))
+          identifier: (identifier))
         (rad_sort_stmt))
       alternative: (rad_else_clause
         (rad_field_modifier_stmt
-          (identifier)
-          (rad_field_mod_map
-            (lambda
-              (identifier)
-              (expr
+          identifier: (identifier)
+          mod_stmt: (rad_field_mod_map
+            lambda: (lambda
+              identifier: (identifier)
+              expr: (expr
                 (primary_expr
                   (binary_op
                     left: (primary_expr
@@ -333,12 +337,12 @@ rad url:
                     right: (primary_expr
                       (literal
                         (int))))))))
-          (rad_field_mod_color
-            (expr
+          mod_stmt: (rad_field_mod_color
+            color: (expr
               (primary_expr
                 (var_path
                   root: (identifier))))
-            (expr
+            regex: (expr
               (primary_expr
                 (var_path
                   root: (identifier))))))))))
