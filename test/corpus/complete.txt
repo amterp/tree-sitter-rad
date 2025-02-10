@@ -426,25 +426,26 @@ $!`git commit -m "Bump version to {version}"`
       identifier: (identifier)
       identifier: (identifier))
     stmt: (rad_sort_stmt
-      (rad_sort_specifier
+      specifier: (rad_sort_specifier
         identifier: (identifier))
-      (rad_sort_specifier
+      specifier: (rad_sort_specifier
         identifier: (identifier)))
     stmt: (rad_sort_stmt)
     stmt: (rad_if_stmt
-      condition: (expr
-        (comparison_op
-          left: (primary_expr
-            (var_path
-              root: (identifier)))
-          right: (primary_expr
-            (var_path
-              root: (identifier)))))
-      (rad_sort_stmt
-        (rad_sort_specifier
-          identifier: (identifier))
-        (rad_sort_specifier
-          identifier: (identifier))))
+      alt: (rad_if_alt
+        condition: (expr
+          (comparison_op
+            left: (primary_expr
+              (var_path
+                root: (identifier)))
+            right: (primary_expr
+              (var_path
+                root: (identifier)))))
+        stmt: (rad_sort_stmt
+          specifier: (rad_sort_specifier
+            identifier: (identifier))
+          specifier: (rad_sort_specifier
+            identifier: (identifier)))))
     stmt: (rad_field_modifier_stmt
       identifier: (identifier)
       mod_stmt: (rad_field_mod_map

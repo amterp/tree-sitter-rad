@@ -132,3 +132,16 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
               (primary_expr
                 (literal
                   (int))))))))))
+
+===
+Multiline
+:error
+===
+
+c = a < 10
+    ? "smaller!"
+    : "bigger!"
+
+---
+
+blah error

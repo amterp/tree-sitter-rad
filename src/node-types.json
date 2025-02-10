@@ -1463,16 +1463,17 @@
   {
     "type": "parenthesized_expr",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1571,68 +1572,31 @@
     }
   },
   {
-    "type": "rad_elif_clause",
+    "type": "rad_else_alt",
     "named": true,
     "fields": {
-      "condition": {
-        "multiple": false,
-        "required": true,
+      "stmt": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "rad_field_modifier_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_field_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_if_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_sort_stmt",
             "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "rad_field_modifier_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_field_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_if_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_sort_stmt",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "rad_else_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "rad_field_modifier_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_field_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_if_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_sort_stmt",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1724,23 +1688,9 @@
     }
   },
   {
-    "type": "rad_if_stmt",
+    "type": "rad_if_alt",
     "named": true,
     "fields": {
-      "alternative": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "rad_elif_clause",
-            "named": true
-          },
-          {
-            "type": "rad_else_clause",
-            "named": true
-          }
-        ]
-      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -1750,29 +1700,49 @@
             "named": true
           }
         ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "rad_field_modifier_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_field_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_if_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_sort_stmt",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "rad_field_modifier_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_field_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_if_stmt",
-          "named": true
-        },
-        {
-          "type": "rad_sort_stmt",
-          "named": true
-        }
-      ]
+    }
+  },
+  {
+    "type": "rad_if_stmt",
+    "named": true,
+    "fields": {
+      "alt": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "rad_else_alt",
+            "named": true
+          },
+          {
+            "type": "rad_if_alt",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1808,16 +1778,31 @@
   {
     "type": "rad_sort_stmt",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "rad_sort_specifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "direction": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "asc",
+            "named": false
+          },
+          {
+            "type": "desc",
+            "named": false
+          }
+        ]
+      },
+      "specifier": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "rad_sort_specifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

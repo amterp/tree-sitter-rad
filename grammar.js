@@ -16,7 +16,7 @@ const PREC = {
   conditional: -1,
 
   parenthesized_expr: 1,
-  parenthesized_list_splat: 1,
+  // parenthesized_list_splat: 1,
   or: 10,
   and: 11,
   not: 12,
@@ -154,10 +154,6 @@ module.exports = grammar({
       $.unary_op,
       $.call,
       $.list_comprehension,
-      // $.dictionary,
-      // $.dictionary_comprehension,
-      // $.set,
-      // $.set_comprehension,
       $.parenthesized_expr,
     ),
 
@@ -223,7 +219,7 @@ module.exports = grammar({
 
     parenthesized_expr: $ => prec(PREC.parenthesized_expr, seq(
       '(',
-      $.expr,
+      field("expr", $.expr),
       ')',
     )),
 
@@ -530,13 +526,18 @@ module.exports = grammar({
 
     rad_sort_stmt: $ => prec.right(seq(
       "sort",
-      commaSep0($.rad_sort_specifier),
+      choice(
+        field("direction", $._asc_desc), // todo bug: 'sort asc asc' should treat first 'asc' as an identifier
+        commaSep0(field("specifier", $.rad_sort_specifier)),
+      )
     )),
 
     rad_sort_specifier: $ => seq(
       field("identifier", $.identifier),
-      optional(field("direction", choice("asc", "desc"))),
+      optional(field("direction", $._asc_desc)),
     ),
+
+    _asc_desc: $ => choice("asc", "desc"),
 
     rad_field_stmt: $ => seq(
       "fields",
@@ -565,24 +566,17 @@ module.exports = grammar({
     ),
 
     rad_if_stmt: $ => seq(
-      $._rad_if_clause,
-      colonBlock($, $._rad_stmt),
-      repeat(field('alternative', $.rad_elif_clause)),
-      optional(field('alternative', $.rad_else_clause)),
+      field("alt", $.rad_if_alt),
+      repeat(seq("else", field("alt", $.rad_if_alt))),
+      optional(seq("else", field("alt", $.rad_else_alt))),
     ),
 
-    rad_elif_clause: $ => seq(
-      'else',
-      $._rad_if_clause,
-      colonBlock($, $._rad_stmt),
+    rad_if_alt: $ => seq(
+      $._if_clause,
+      colonBlockField($, $._rad_stmt, "stmt"),
     ),
 
-    rad_else_clause: $ => seq(
-      'else',
-      colonBlock($, $._rad_stmt),
-    ),
-
-    _rad_if_clause: $ => $._if_clause,
+    rad_else_alt: $ => colonBlockField($, $._rad_stmt, "stmt"),
 
     // Defer block
 
@@ -593,7 +587,10 @@ module.exports = grammar({
 
     defer_block: $ => seq(
       field("keyword", "defer"),
-      colonBlockField($, $._stmt, "stmt"),
+      choice(
+        colonBlockField($, $._stmt, "stmt"),
+        field("stmt", $._simple_stmt),
+      ),
     ),
 
     errdefer_block: $ => seq(
