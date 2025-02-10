@@ -304,22 +304,22 @@ module.exports = grammar({
       )),
     ),
     
-    json_opener : $ => seq(
+    json_opener : $ => prec.right(seq(
       field("key", "json"),
       optional(field("index", $.json_path_indexer)),
-    ),
+    )),
     
-    json_segment : $ => seq(
+    json_segment : $ => prec.right(seq(
       field("key", choice($.identifier, "*")),
       optional(field("index", $.json_path_indexer)),
-    ),
+    )),
 
     json_path_indexer: $ => seq("[", optional(field("expr", $.expr)), "]"),
 
-    del_stmt: $ => seq(
+    del_stmt: $ => prec.right(seq(
       "del",
       sepTrail1(field("right", $.var_path)),
-    ),
+    )),
 
     break_stmt: _ => prec.left('break'),
     continue_stmt: _ => prec.left('continue'),
@@ -330,7 +330,7 @@ module.exports = grammar({
       $.if_stmt,
       $.for_loop,
       $.rad_block,
-      $._defer_or_errdefer_block,
+      $.defer_block,
     ),
 
     if_stmt: $ => seq(
@@ -580,22 +580,12 @@ module.exports = grammar({
 
     // Defer block
 
-    _defer_or_errdefer_block: $ => choice(
-      $.defer_block,
-      $.errdefer_block,
-    ),
-
     defer_block: $ => seq(
-      field("keyword", "defer"),
+      field("keyword", choice("defer", "errdefer")),
       choice(
         colonBlockField($, $._stmt, "stmt"),
         field("stmt", $._simple_stmt),
       ),
-    ),
-
-    errdefer_block: $ => seq(
-      field("keyword", "errdefer"),
-      colonBlockField($, $._stmt, "stmt"),
     ),
 
     // Generic

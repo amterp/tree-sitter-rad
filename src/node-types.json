@@ -8,10 +8,6 @@
         "named": true
       },
       {
-        "type": "errdefer_block",
-        "named": true
-      },
-      {
         "type": "for_loop",
         "named": true
       },
@@ -699,6 +695,10 @@
           {
             "type": "defer",
             "named": false
+          },
+          {
+            "type": "errdefer",
+            "named": false
           }
         ]
       },
@@ -758,36 +758,6 @@
     "type": "empty_list",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "errdefer_block",
-    "named": true,
-    "fields": {
-      "keyword": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "errdefer",
-            "named": false
-          }
-        ]
-      },
-      "stmt": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "_compound_stmt",
-            "named": true
-          },
-          {
-            "type": "_simple_stmt",
-            "named": true
-          }
-        ]
-      }
-    }
   },
   {
     "type": "expr",

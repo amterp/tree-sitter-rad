@@ -39,7 +39,7 @@ errdefer:
 ---
 
 (source_file
-  (errdefer_block
+  (defer_block
     stmt: (assign
       left: (var_path
         root: (identifier))

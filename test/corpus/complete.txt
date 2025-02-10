@@ -1078,7 +1078,7 @@ $!`git commit -m "Bump version to {version}"`
                       (var_path
                         root: (identifier))))))
               end: (string_end)))))))
-  (errdefer_block
+  (defer_block
     stmt: (expr_stmt
       (expr
         (primary_expr
@@ -1151,7 +1151,7 @@ $!`git commit -m "Bump version to {version}"`
                       (var_path
                         root: (identifier))))))
               end: (string_end)))))))
-  (errdefer_block
+  (defer_block
     stmt: (expr_stmt
       (expr
         (primary_expr
