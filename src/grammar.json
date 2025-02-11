@@ -1918,6 +1918,14 @@
             "type": "STRING",
             "value": "quiet"
           }
+        },
+        {
+          "type": "FIELD",
+          "name": "confirm_mod",
+          "content": {
+            "type": "STRING",
+            "value": "confirm"
+          }
         }
       ]
     },

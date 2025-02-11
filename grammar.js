@@ -411,6 +411,7 @@ module.exports = grammar({
 
     _shell_non_unsafe_mod: $ => choice(
       field("quiet_mod", "quiet"),
+      field("confirm_mod", "confirm"),
     ),
 
     // Arg Block

@@ -493,6 +493,16 @@
           }
         ]
       },
+      "confirm_mod": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "confirm",
+            "named": false
+          }
+        ]
+      },
       "quiet_mod": {
         "multiple": true,
         "required": false,
@@ -669,6 +679,16 @@
           {
             "type": "expr",
             "named": true
+          }
+        ]
+      },
+      "confirm_mod": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "confirm",
+            "named": false
           }
         ]
       },
@@ -2099,6 +2119,16 @@
           }
         ]
       },
+      "confirm_mod": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "confirm",
+            "named": false
+          }
+        ]
+      },
       "quiet_mod": {
         "multiple": true,
         "required": false,
@@ -2322,6 +2352,10 @@
   {
     "type": "comment_text",
     "named": true
+  },
+  {
+    "type": "confirm",
+    "named": false
   },
   {
     "type": "continue",
