@@ -34,11 +34,8 @@ Interpolation
           (string
             start: (string_start)
             contents: (string_contents
-              interpolation: (interpolation
-                expr: (expr
-                  (primary_expr
-                    (var_path
-                      root: (identifier))))))
+              open_bracket: (esc_open_bracket)
+              content: (string_content))
             end: (string_end)))))))
 
 ===

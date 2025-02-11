@@ -1947,7 +1947,7 @@
               "type": "REPEAT",
               "content": {
                 "type": "SYMBOL",
-                "name": "_arg_stmts"
+                "name": "_arg_stmt"
               }
             },
             {
@@ -1958,7 +1958,7 @@
         }
       ]
     },
-    "_arg_stmts": {
+    "_arg_stmt": {
       "type": "CHOICE",
       "members": [
         {
@@ -3930,6 +3930,14 @@
               "type": "SYMBOL",
               "name": "esc_backslash"
             }
+          },
+          {
+            "type": "FIELD",
+            "name": "open_bracket",
+            "content": {
+              "type": "SYMBOL",
+              "name": "esc_open_bracket"
+            }
           }
         ]
       }
@@ -3974,6 +3982,13 @@
       "content": {
         "type": "STRING",
         "value": "\\\\"
+      }
+    },
+    "esc_open_bracket": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "\\{"
       }
     },
     "_not_escape_seq": {
@@ -4162,7 +4177,7 @@
     },
     {
       "type": "PATTERN",
-      "value": "[\\s\\f\\uFEFF\\u2060\\u200B]|\\r?\\n"
+      "value": "[\\s\\t\\f\\uFEFF\\u2060\\u200B]"
     }
   ],
   "conflicts": [],

@@ -1971,6 +1971,16 @@
           }
         ]
       },
+      "open_bracket": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "esc_open_bracket",
+            "named": true
+          }
+        ]
+      },
       "single_quote": {
         "multiple": true,
         "required": false,
@@ -2359,6 +2369,10 @@
   },
   {
     "type": "esc_newline",
+    "named": true
+  },
+  {
+    "type": "esc_open_bracket",
     "named": true
   },
   {

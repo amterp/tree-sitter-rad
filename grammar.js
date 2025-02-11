@@ -37,7 +37,7 @@ module.exports = grammar({
 
   extras: $ => [
     $.comment,
-    /[\s\f\uFEFF\u2060\u200B]|\r?\n/,
+    /[\s\t\f\uFEFF\u2060\u200B]/,
   ],
 
   // todo can we get rid of this? or doc it
@@ -417,10 +417,10 @@ module.exports = grammar({
 
     arg_block: $ => seq(
       "args",
-      colonBlock($, $._arg_stmts)
+      colonBlock($, $._arg_stmt)
     ),
 
-    _arg_stmts: $ => choice(
+    _arg_stmt: $ => choice(
       field("declaration", $.arg_declaration),
       $._arg_constraint,
     ),
@@ -680,6 +680,7 @@ module.exports = grammar({
       field("newline", $.esc_newline),
       field("tab", $.esc_tab),
       field("backslash", $.esc_backslash),
+      field("open_bracket", $.esc_open_bracket),
     )),
 
     esc_single_quote: _ => token.immediate("\\'"),
@@ -688,6 +689,7 @@ module.exports = grammar({
     esc_newline: _ => token.immediate("\\n"),
     esc_tab: _ => token.immediate("\\t"),
     esc_backslash: _ => token.immediate("\\\\"),
+    esc_open_bracket: _ => token.immediate("\\{"),
 
     _not_escape_seq: _ => token.immediate('\\'),
 
