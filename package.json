@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-rsl",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A parser for RSL, Rad Scripting Language.",
   "repository": "https://github.com/amterp/tree-sitter-rsl",
   "license": "MIT",
