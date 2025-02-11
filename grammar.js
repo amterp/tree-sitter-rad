@@ -303,13 +303,13 @@ module.exports = grammar({
         optional(field("segment", $.json_segment)),
       )),
     ),
-    
-    json_opener : $ => prec.right(seq(
+
+    json_opener: $ => prec.right(seq(
       field("key", "json"),
       optional(field("index", $.json_path_indexer)),
     )),
-    
-    json_segment : $ => prec.right(seq(
+
+    json_segment: $ => prec.right(seq(
       field("key", choice($.identifier, "*")),
       optional(field("index", $.json_path_indexer)),
     )),
@@ -344,7 +344,10 @@ module.exports = grammar({
       colonBlockField($, $._stmt, "stmt"),
     ),
 
-    _if_clause: $ => seq("if", field('condition', $.expr)),
+    _if_clause: $ => seq(
+      "if",
+      seq(optional(seq(field("pre_stmt", $._simple_stmt), ";")), field("condition", $.expr)),
+    ),
 
     else_alt: $ => colonBlockField($, $._stmt, "stmt"),
 

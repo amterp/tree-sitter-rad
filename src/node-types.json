@@ -1010,6 +1010,16 @@
           }
         ]
       },
+      "pre_stmt": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_simple_stmt",
+            "named": true
+          }
+        ]
+      },
       "stmt": {
         "multiple": true,
         "required": false,
@@ -1326,6 +1336,16 @@
         "types": [
           {
             "type": "for_lefts",
+            "named": true
+          }
+        ]
+      },
+      "pre_stmt": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_simple_stmt",
             "named": true
           }
         ]
@@ -1687,6 +1707,16 @@
         "types": [
           {
             "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "pre_stmt": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_simple_stmt",
             "named": true
           }
         ]
@@ -2275,6 +2305,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {
