@@ -2572,6 +2572,132 @@
         }
       ]
     },
+    "arg_range_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "arg_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "range"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "opener",
+                  "content": {
+                    "type": "STRING",
+                    "value": "("
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "opener",
+                  "content": {
+                    "type": "STRING",
+                    "value": "["
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "FIELD",
+                      "name": "start",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "int_arg"
+                      }
+                    },
+                    {
+                      "type": "FIELD",
+                      "name": "start",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "float_arg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "FIELD",
+                      "name": "end",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "int_arg"
+                      }
+                    },
+                    {
+                      "type": "FIELD",
+                      "name": "end",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "float_arg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "closer",
+                  "content": {
+                    "type": "STRING",
+                    "value": ")"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "closer",
+                  "content": {
+                    "type": "STRING",
+                    "value": "]"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     "rad_block": {
       "type": "CHOICE",
       "members": [
@@ -4218,7 +4344,12 @@
       "value": "[\\s\\t\\f\\uFEFF\\u2060\\u200B]"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "call",
+      "shell_stmt"
+    ]
+  ],
   "precedences": [],
   "externals": [
     {

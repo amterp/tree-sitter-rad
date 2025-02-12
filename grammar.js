@@ -87,6 +87,14 @@ module.exports = grammar({
 
   word: $ => $.identifier,
 
+  // conflicts: $ => [
+  //   [$._shell_non_unsafe_mod, $.expr],
+  // ],
+  
+  conflicts: $ => [
+    [$.call, $.shell_stmt],
+  ],
+
   rules: {
     source_file: $ => seq(
       optional($.shebang),
@@ -478,6 +486,7 @@ module.exports = grammar({
     _arg_constraint: $ => choice(
       field("enum_constraint", $.arg_enum_constraint),
       field("regex_constraint", $.arg_regex_constraint),
+      // field("range_constraint", $.arg_range_constraint),
     ),
 
     arg_enum_constraint: $ => seq(
@@ -490,6 +499,30 @@ module.exports = grammar({
       field("arg_name", $.identifier),
       "regex",
       field("regex", $.string),
+    ),
+
+    arg_range_constraint: $ => seq(
+      field("arg_name", $.identifier),
+      "range",
+      seq(
+        choice(
+          field("opener", "("),
+          field("opener", "["),
+        ),
+        optional(choice(
+          field("start", $.int_arg),
+          field("start", $.float_arg),
+        )),
+        ",",
+        optional(choice(
+          field("end", $.int_arg),
+          field("end", $.float_arg),
+        )),
+        choice(
+          field("closer", ")"),
+          field("closer", "]"),
+        ),
+      ),
     ),
 
     // Rad Block
