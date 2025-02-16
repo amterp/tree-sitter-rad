@@ -11,7 +11,7 @@
     }
   ],
   "metadata": {
-    "version": "0.0.18",
+    "version": "0.0.19",
     "license": "MIT",
     "description": "A parser for RSL, Rad Scripting Language.",
     "authors": [
