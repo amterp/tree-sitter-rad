@@ -83,6 +83,16 @@
           }
         ]
       },
+      "range_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_range_constraint",
+            "named": true
+          }
+        ]
+      },
       "regex_constraint": {
         "multiple": true,
         "required": false,
@@ -238,6 +248,78 @@
           {
             "type": "string_list",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "arg_range_constraint",
+    "named": true,
+    "fields": {
+      "arg_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "closer": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          }
+        ]
+      },
+      "max": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "float_arg",
+            "named": true
+          },
+          {
+            "type": "int_arg",
+            "named": true
+          }
+        ]
+      },
+      "min": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "float_arg",
+            "named": true
+          },
+          {
+            "type": "int_arg",
+            "named": true
+          }
+        ]
+      },
+      "opener": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
           }
         ]
       }
@@ -2526,6 +2608,10 @@
   {
     "type": "rad_keyword",
     "named": true
+  },
+  {
+    "type": "range",
+    "named": false
   },
   {
     "type": "recover",

@@ -72,28 +72,11 @@ module.exports = grammar({
     '}',
   ],
 
-  // inline: $ => [
-  //   $._simple_stmt,
-  //   $._compound_stmt,
-  //   $._suite,
-  //   $._exprs,
-  //   $._left_hand_side,
-  //   $.keyword_identifier,
-  // ],
-
   inline: $ => [
     $._rad_if_clause,
   ],
 
   word: $ => $.identifier,
-
-  // conflicts: $ => [
-  //   [$._shell_non_unsafe_mod, $.expr],
-  // ],
-  
-  conflicts: $ => [
-    [$.call, $.shell_stmt],
-  ],
 
   rules: {
     source_file: $ => seq(
@@ -486,7 +469,7 @@ module.exports = grammar({
     _arg_constraint: $ => choice(
       field("enum_constraint", $.arg_enum_constraint),
       field("regex_constraint", $.arg_regex_constraint),
-      // field("range_constraint", $.arg_range_constraint),
+      field("range_constraint", $.arg_range_constraint),
     ),
 
     arg_enum_constraint: $ => seq(
@@ -509,20 +492,42 @@ module.exports = grammar({
           field("opener", "("),
           field("opener", "["),
         ),
-        optional(choice(
-          field("start", $.int_arg),
-          field("start", $.float_arg),
-        )),
-        ",",
-        optional(choice(
-          field("end", $.int_arg),
-          field("end", $.float_arg),
-        )),
+        choice(
+          $._arg_range_constraint_min_only,
+          $._arg_range_constraint_max_only,
+          $._arg_range_constraint_min_max,
+        ),
         choice(
           field("closer", ")"),
           field("closer", "]"),
         ),
       ),
+    ),
+
+    _arg_range_constraint_min_only: $ => seq(
+      $._arg_range_constraint_min,
+      ",",
+    ),
+
+    _arg_range_constraint_max_only: $ => seq(
+      ",",
+      $._arg_range_constraint_max,
+    ),
+
+    _arg_range_constraint_min_max: $ => seq(
+      $._arg_range_constraint_min,
+      ",",
+      $._arg_range_constraint_max,
+    ),
+
+    _arg_range_constraint_min: $ => choice(
+      field("min", $.int_arg),
+      field("min", $.float_arg),
+    ),
+
+    _arg_range_constraint_max: $ => choice(
+      field("max", $.int_arg),
+      field("max", $.float_arg),
     ),
 
     // Rad Block

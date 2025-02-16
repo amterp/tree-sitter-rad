@@ -2519,6 +2519,14 @@
             "type": "SYMBOL",
             "name": "arg_regex_constraint"
           }
+        },
+        {
+          "type": "FIELD",
+          "name": "range_constraint",
+          "content": {
+            "type": "SYMBOL",
+            "name": "arg_range_constraint"
+          }
         }
       ]
     },
@@ -2615,61 +2623,16 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "FIELD",
-                      "name": "start",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "int_arg"
-                      }
-                    },
-                    {
-                      "type": "FIELD",
-                      "name": "start",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "float_arg"
-                      }
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "_arg_range_constraint_min_only"
                 },
                 {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "STRING",
-              "value": ","
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "FIELD",
-                      "name": "end",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "int_arg"
-                      }
-                    },
-                    {
-                      "type": "FIELD",
-                      "name": "end",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "float_arg"
-                      }
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "_arg_range_constraint_max_only"
                 },
                 {
-                  "type": "BLANK"
+                  "type": "SYMBOL",
+                  "name": "_arg_range_constraint_min_max"
                 }
               ]
             },
@@ -2695,6 +2658,91 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    "_arg_range_constraint_min_only": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_arg_range_constraint_min"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        }
+      ]
+    },
+    "_arg_range_constraint_max_only": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_arg_range_constraint_max"
+        }
+      ]
+    },
+    "_arg_range_constraint_min_max": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_arg_range_constraint_min"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_arg_range_constraint_max"
+        }
+      ]
+    },
+    "_arg_range_constraint_min": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "min",
+          "content": {
+            "type": "SYMBOL",
+            "name": "int_arg"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "min",
+          "content": {
+            "type": "SYMBOL",
+            "name": "float_arg"
+          }
+        }
+      ]
+    },
+    "_arg_range_constraint_max": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "max",
+          "content": {
+            "type": "SYMBOL",
+            "name": "int_arg"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "max",
+          "content": {
+            "type": "SYMBOL",
+            "name": "float_arg"
+          }
         }
       ]
     },
@@ -4344,12 +4392,7 @@
       "value": "[\\s\\t\\f\\uFEFF\\u2060\\u200B]"
     }
   ],
-  "conflicts": [
-    [
-      "call",
-      "shell_stmt"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [
     {
