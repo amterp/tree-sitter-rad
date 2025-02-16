@@ -216,7 +216,14 @@ module.exports = grammar({
 
     call: $ => prec(PREC.call, seq(
       // python does primary_expr, probably to allow e.g. (a ? print : debug)(args here)
-      field('func', $.identifier),
+      field('func', choice(
+        $.identifier,
+        // need the following aliases, otherwise tree sitter eagerly parses them out
+        // as keywords, causing ERROR nodes in the tree
+        alias("confirm", $.identifier),
+        alias("unsafe", $.identifier),
+        alias("quiet", $.identifier),
+      )),
       choice(
         $._call_arg_list,
       ),
@@ -406,6 +413,7 @@ module.exports = grammar({
     _shell_non_unsafe_mod: $ => choice(
       field("quiet_mod", "quiet"),
       field("confirm_mod", "confirm"),
+      // when adding more here, ensure you add an alias in $.call
     ),
 
     // Arg Block
