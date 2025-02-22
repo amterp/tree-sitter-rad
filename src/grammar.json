@@ -2993,53 +2993,40 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "FIELD",
-                "name": "direction",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_asc_desc"
-                }
-              },
-              {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "FIELD",
-                        "name": "specifier",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "rad_sort_specifier"
-                        }
-                      },
-                      {
-                        "type": "REPEAT",
-                        "content": {
-                          "type": "SEQ",
-                          "members": [
-                            {
-                              "type": "STRING",
-                              "value": ","
-                            },
-                            {
-                              "type": "FIELD",
-                              "name": "specifier",
-                              "content": {
-                                "type": "SYMBOL",
-                                "name": "rad_sort_specifier"
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
+                    "type": "FIELD",
+                    "name": "specifier",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "rad_sort_specifier"
+                    }
                   },
                   {
-                    "type": "BLANK"
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "FIELD",
+                          "name": "specifier",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "rad_sort_specifier"
+                          }
+                        }
+                      ]
+                    }
                   }
                 ]
+              },
+              {
+                "type": "BLANK"
               }
             ]
           }
@@ -3050,11 +3037,18 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[ \\t]+"
+          }
+        },
+        {
           "type": "FIELD",
-          "name": "identifier",
+          "name": "first",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "immediate_identifier"
           }
         },
         {
@@ -3062,10 +3056,25 @@
           "members": [
             {
               "type": "FIELD",
-              "name": "direction",
+              "name": "second",
               "content": {
-                "type": "SYMBOL",
-                "name": "_asc_desc"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "STRING",
+                      "value": "asc"
+                    }
+                  },
+                  {
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "STRING",
+                      "value": "desc"
+                    }
+                  }
+                ]
               }
             },
             {
@@ -3075,18 +3084,12 @@
         }
       ]
     },
-    "_asc_desc": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "asc"
-        },
-        {
-          "type": "STRING",
-          "value": "desc"
-        }
-      ]
+    "immediate_identifier": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+      }
     },
     "rad_field_stmt": {
       "type": "SEQ",

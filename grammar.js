@@ -32,6 +32,8 @@ const PREC = {
   call: 22,
 };
 
+const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
+
 module.exports = grammar({
   name: 'rsl',
 
@@ -576,18 +578,21 @@ module.exports = grammar({
 
     rad_sort_stmt: $ => prec.right(seq(
       "sort",
-      choice(
-        field("direction", $._asc_desc), // todo bug: 'sort asc asc' should treat first 'asc' as an identifier
-        commaSep0(field("specifier", $.rad_sort_specifier)),
-      )
+      commaSep0(field("specifier", $.rad_sort_specifier)),
     )),
 
     rad_sort_specifier: $ => seq(
-      field("identifier", $.identifier),
-      optional(field("direction", $._asc_desc)),
+      token.immediate(/[ \t]+/),
+      field("first", $.immediate_identifier),
+      optional(
+        field("second", choice(
+          token.immediate("asc"),
+          token.immediate("desc"),
+        )),
+      ),
     ),
 
-    _asc_desc: $ => choice("asc", "desc"),
+    immediate_identifier: $ => token.immediate(identifierRegex),
 
     rad_field_stmt: $ => seq(
       "fields",
@@ -758,10 +763,10 @@ module.exports = grammar({
       ),
     ),
 
-    identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    float: $ => /\d+\.\d+/,
-    bool: $ => choice("true", "false"),
-    int: $ => /\d+/,
+    identifier: _ => identifierRegex,
+    float: _ => /\d+\.\d+/,
+    bool: _ => choice("true", "false"),
+    int: _ => /\d+/,
 
     literal: $ => choice(
       $.string,

@@ -1851,7 +1851,17 @@
     "type": "rad_sort_specifier",
     "named": true,
     "fields": {
-      "direction": {
+      "first": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "immediate_identifier",
+            "named": true
+          }
+        ]
+      },
+      "second": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1862,16 +1872,6 @@
           {
             "type": "desc",
             "named": false
-          }
-        ]
-      },
-      "identifier": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
           }
         ]
       }
@@ -1881,20 +1881,6 @@
     "type": "rad_sort_stmt",
     "named": true,
     "fields": {
-      "direction": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "asc",
-            "named": false
-          },
-          {
-            "type": "desc",
-            "named": false
-          }
-        ]
-      },
       "specifier": {
         "multiple": true,
         "required": false,
@@ -2568,6 +2554,10 @@
   {
     "type": "if",
     "named": false
+  },
+  {
+    "type": "immediate_identifier",
+    "named": true
   },
   {
     "type": "in",
