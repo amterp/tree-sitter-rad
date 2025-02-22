@@ -9,14 +9,9 @@
 // @ts-check
 
 const PREC = {
-  // this resolves a conflict between the usage of ':' in a lambda vs in a
-  // typed parameter. In the case of a lambda, we don't allow typed parameters.
-  lambda: -2,
-  typed_parameter: -1,
-  conditional: -1,
+  ternary: -1,
 
   parenthesized_expr: 1,
-  // parenthesized_list_splat: 1,
   or: 10,
   and: 11,
   not: 12,
@@ -30,6 +25,7 @@ const PREC = {
   unary: 20,
   power: 21,
   call: 22,
+  incr_decr: 23,
 };
 
 const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
@@ -74,11 +70,14 @@ module.exports = grammar({
     '}',
   ],
 
-  inline: $ => [
-    $._rad_if_clause,
+  conflicts: $ => [
+    [$.primary_expr, $.var_path],
   ],
 
-  word: $ => $.identifier,
+  // inline: $ => [
+  // ],
+
+  word: $ => $.identifierRegex,
 
   rules: {
     source_file: $ => seq(
@@ -116,7 +115,7 @@ module.exports = grammar({
     ),
 
     _simple_stmt: $ => choice(
-      $.expr_stmt,
+      $.expr,
       $.assign,
       $.compound_assign,
       $.shell_stmt,
@@ -126,13 +125,20 @@ module.exports = grammar({
       $.continue_stmt,
     ),
 
-    expr_stmt: $ => choice(
-      $.expr,
-    ),
-
     // Expressions
 
-    expr: $ => choice(
+    expr: $ => prec.right(choice(
+      seq(
+        field("base", choice(
+          $._base_expr,
+          $.call,
+        )),
+        repeat($._indexing),
+      ),
+      field('base', $.var_path),
+    )),
+
+    _base_expr: $ => choice(
       $.comparison_op,
       $.not_op,
       $.bool_op,
@@ -142,12 +148,11 @@ module.exports = grammar({
 
     primary_expr: $ => choice(
       $.binary_op,
-      $.var_path,
       $.literal,
       $.unary_op,
-      $.call,
       $.list_comprehension,
       $.parenthesized_expr,
+      $._identifier,
     ),
 
     not_op: $ => prec(PREC.not, seq(
@@ -179,15 +184,15 @@ module.exports = grammar({
 
       // @ts-ignore
       return choice(...table.map(([fn, op, precedence]) => fn(precedence, seq(
-        field('left', $.primary_expr),
+        field('left', $.expr),
         // @ts-ignore
         field('op', op),
-        field('right', $.primary_expr),
+        field('right', $.expr),
       ))));
     },
 
     comparison_op: $ => prec.left(PREC.compare, seq(
-      field("left", $.primary_expr),
+      field("left", $.expr),
       field("op", choice(
         '<',
         '<=',
@@ -198,14 +203,14 @@ module.exports = grammar({
         'in',
         $.not_in,
       )),
-      field("right", $.primary_expr),
+      field("right", $.expr),
     )),
 
     not_in: $ => seq('not', 'in'),
 
     unary_op: $ => prec(PREC.unary, seq(
       field("op", $._unary_op_sign),
-      field('arg', $.primary_expr),
+      field('arg', $.expr),
     )),
 
     _unary_op_sign: $ => choice('+', '-'),
@@ -216,20 +221,7 @@ module.exports = grammar({
       ')',
     )),
 
-    call: $ => prec(PREC.call, seq(
-      // python does primary_expr, probably to allow e.g. (a ? print : debug)(args here)
-      field('func', choice(
-        $.identifier,
-        // need the following aliases, otherwise tree sitter eagerly parses them out
-        // as keywords, causing ERROR nodes in the tree
-        alias("confirm", $.identifier),
-        alias("unsafe", $.identifier),
-        alias("quiet", $.identifier),
-      )),
-      choice(
-        $._call_arg_list,
-      ),
-    )),
+    call: $ => prec.right(PREC.call, seq(field("func", $._identifier), $._call_arg_list)),
 
     _call_arg_list: $ => choice(
       "()", // empty call
@@ -238,7 +230,7 @@ module.exports = grammar({
     ),
 
     call_named_arg: $ => seq(
-      field('name', $.identifier),
+      field('name', $._identifier),
       '=',
       field('value', $.expr),
     ),
@@ -259,30 +251,37 @@ module.exports = grammar({
       field('right', $._right_hand_side),
     ),
 
-    incr_decr: $ => seq(
-      field('left', $._left_hand_side),
+    incr_decr: $ => prec(PREC.incr_decr, seq(
+      field('left', alias($.incr_decr_left, "var_path")),
       field('op', choice('++', '--')),
-    ),
-
-    _left_hand_side: $ => commaSep1(field("left", $.var_path)),
-
-    var_path: $ => prec.left(seq(
-      field("root", $.identifier),
-      repeat($._var_path_lookup),
+      // token.immediate(choice("+", "-")),
     )),
 
-    _var_path_lookup: $ => choice(
-      $._indexing,
-      seq(".", field("indexing", $.identifier)),
-    ),
+    
+    _left_hand_side: $ => commaSep1(field("left", $.var_path)),
+    
+    // todo rename to identifier_path?
+    var_path: $ => prec.right(seq(
+      field("root", $._identifier),
+      repeat($._indexing),
+    )),
 
-    _indexing: $ => seq(
-      '[',
-      field('indexing', choice(
-        $.expr,
-        $.slice,
-      )),
-      ']',
+    // expected to look like var_path
+    incr_decr_left: $ => prec.right(PREC.incr_decr, seq(
+      field("root", $._identifier),
+      repeat($._indexing),
+    )),
+
+    _indexing: $ => choice(
+      seq(
+        '[',
+        field('indexing', choice(
+          $.expr,
+          $.slice,
+        )),
+        ']',
+      ),
+      seq(".", field("indexing", $._identifier)),
     ),
 
     slice: $ => seq(
@@ -310,7 +309,7 @@ module.exports = grammar({
     )),
 
     json_segment: $ => prec.right(seq(
-      field("key", choice($.identifier, "*")),
+      field("key", choice($._identifier, "*")),
       optional(field("index", $.json_path_indexer)),
     )),
 
@@ -363,7 +362,7 @@ module.exports = grammar({
       field('right', $.expr),
     ),
 
-    for_lefts: $ => commaSep1(field('left', $.identifier)),
+    for_lefts: $ => commaSep1(field('left', $._identifier)),
 
     list_comprehension: $ => seq(
       '[',
@@ -373,7 +372,7 @@ module.exports = grammar({
       ']',
     ),
 
-    ternary: $ => prec.right(PREC.conditional, seq(
+    ternary: $ => prec.right(PREC.ternary, seq(
       field('condition', $.expr),
       '?',
       field('true_branch', $.expr),
@@ -431,7 +430,7 @@ module.exports = grammar({
     ),
 
     arg_declaration: $ => seq(
-      field("arg_name", $.identifier),
+      field("arg_name", $._identifier),
       optional(field("rename", $.string)),
       optional(field("shorthand", $.shorthand_flag)),
       $._type_andor_default,
@@ -483,19 +482,19 @@ module.exports = grammar({
     ),
 
     arg_enum_constraint: $ => seq(
-      field("arg_name", $.identifier),
+      field("arg_name", $._identifier),
       "enum",
       field("values", $.string_list),
     ),
 
     arg_regex_constraint: $ => seq(
-      field("arg_name", $.identifier),
+      field("arg_name", $._identifier),
       "regex",
       field("regex", $.string),
     ),
 
     arg_range_constraint: $ => seq(
-      field("arg_name", $.identifier),
+      field("arg_name", $._identifier),
       "range",
       seq(
         choice(
@@ -596,11 +595,11 @@ module.exports = grammar({
 
     rad_field_stmt: $ => seq(
       "fields",
-      commaSep1(field("identifier", $.identifier)),
+      commaSep1(field("identifier", $._identifier)),
     ),
 
     rad_field_modifier_stmt: $ => seq(
-      commaSep1(field("identifier", $.identifier)),
+      commaSep1(field("identifier", $._identifier)),
       colonBlockField($, $._rad_field_modifier, "mod_stmt"),
     ),
 
@@ -648,7 +647,7 @@ module.exports = grammar({
     comment: _ => token(seq('//', /.*/)),
 
     lambda: $ => seq( // todo quite different from Python's
-      field("identifier", $.identifier),
+      field("identifier", $._identifier),
       '->',
       field("expr", $.expr),
     ),
@@ -763,7 +762,20 @@ module.exports = grammar({
       ),
     ),
 
-    identifier: _ => identifierRegex,
+    identifierRegex: _ => identifierRegex,
+
+    _identifier: $ => prec(1, choice( // prec to avoid conflict with aliases
+      // if identifier is missing, *identifierRegex* will be the node marked as missing.
+      // by aliasing it here, we prevent downstream from needing to worry about identifierRegex,
+      // but still let them see when the identifier is missing.
+      alias($.identifierRegex, "identifier"), 
+      // need the following aliases, otherwise tree sitter eagerly parses them out
+      // as keywords, causing ERROR nodes in the tree
+      alias("confirm", "identifier"),
+      alias("unsafe", "identifier"),
+      alias("quiet", "identifier"),
+    )),
+
     float: _ => /\d+\.\d+/,
     bool: _ => choice("true", "false"),
     int: _ => /\d+/,

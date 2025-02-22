@@ -14,92 +14,84 @@ a not in [2, 3]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      right: (expr
+        base: (primary_expr
           (literal
             (int))))))
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      right: (expr
+        base: (primary_expr
           (literal
             (int))))))
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      right: (expr
+        base: (primary_expr
           (literal
             (int))))))
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      right: (expr
+        base: (primary_expr
           (literal
             (int))))))
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      right: (expr
+        base: (primary_expr
           (literal
             (int))))))
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      right: (expr
+        base: (primary_expr
           (literal
             (int))))))
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      right: (expr
+        base: (primary_expr
           (literal
             (list
               list_entry: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (int))))
               list_entry: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (int))))))))))
-  (expr_stmt
-    (expr
-      (comparison_op
-        left: (primary_expr
-          (var_path
-            root: (identifier)))
-        op: (not_in)
-        right: (primary_expr
+  (expr
+    base: (comparison_op
+      left: (expr
+        base: (var_path))
+      op: (not_in)
+      right: (expr
+        base: (primary_expr
           (literal
             (list
               list_entry: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (int))))
               list_entry: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (int)))))))))))

@@ -11,20 +11,18 @@ defer:
 (source_file
   (defer_block
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
-    stmt: (expr_stmt
-      (expr
-        (primary_expr
-          (binary_op
-            left: (primary_expr
-              (var_path
-                root: (identifier)))
-            right: (primary_expr
+    stmt: (expr
+      base: (primary_expr
+        (binary_op
+          left: (expr
+            base: (var_path))
+          right: (expr
+            base: (primary_expr
               (literal
                 (int)))))))))
 
@@ -41,19 +39,17 @@ errdefer:
 (source_file
   (defer_block
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
-    stmt: (expr_stmt
-      (expr
-        (primary_expr
-          (binary_op
-            left: (primary_expr
-              (var_path
-                root: (identifier)))
-            right: (primary_expr
+    stmt: (expr
+      base: (primary_expr
+        (binary_op
+          left: (expr
+            base: (var_path))
+          right: (expr
+            base: (primary_expr
               (literal
                 (int)))))))))

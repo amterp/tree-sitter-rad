@@ -12,68 +12,43 @@ a[:b]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (slice)))))
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (slice
-            start: (expr
-              (primary_expr
-                (literal
-                  (int)))))))))
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (slice
-            end: (expr
-              (primary_expr
-                (unary_op
-                  arg: (primary_expr
-                    (literal
-                      (int)))))))))))
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (slice
-            start: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))
-            end: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))))))
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (slice
-            start: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))))))
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (slice
-            end: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))))))))
+  (expr
+    base: (var_path
+      indexing: (slice)))
+  (expr
+    base: (var_path
+      indexing: (slice
+        start: (expr
+          base: (primary_expr
+            (literal
+              (int)))))))
+  (expr
+    base: (var_path
+      indexing: (slice
+        end: (expr
+          base: (primary_expr
+            (unary_op
+              arg: (expr
+                base: (primary_expr
+                  (literal
+                    (int))))))))))
+  (expr
+    base: (var_path
+      indexing: (slice
+        start: (expr
+          base: (var_path))
+        end: (expr
+          base: (var_path)))))
+  (expr
+    base: (var_path
+      indexing: (slice
+        start: (expr
+          base: (var_path)))))
+  (expr
+    base: (var_path
+      indexing: (slice
+        end: (expr
+          base: (var_path))))))
 
 ===
 With ternaries
@@ -84,45 +59,42 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (slice
-            start: (expr
-              (ternary
-                condition: (expr
-                  (comparison_op
-                    left: (primary_expr
-                      (var_path
-                        root: (identifier)))
-                    right: (primary_expr
-                      (literal
-                        (int)))))
-                true_branch: (expr
-                  (primary_expr
-                    (literal
-                      (int))))
-                false_branch: (expr
-                  (primary_expr
+  (expr
+    base: (var_path
+      indexing: (slice
+        start: (expr
+          base: (ternary
+            condition: (expr
+              base: (comparison_op
+                left: (expr
+                  base: (var_path))
+                right: (expr
+                  base: (primary_expr
                     (literal
                       (int))))))
-            end: (expr
-              (ternary
-                condition: (expr
-                  (comparison_op
-                    left: (primary_expr
-                      (var_path
-                        root: (identifier)))
-                    right: (primary_expr
-                      (literal
-                        (int)))))
-                true_branch: (expr
-                  (primary_expr
+            true_branch: (expr
+              base: (primary_expr
+                (literal
+                  (int))))
+            false_branch: (expr
+              base: (primary_expr
+                (literal
+                  (int))))))
+        end: (expr
+          base: (ternary
+            condition: (expr
+              base: (comparison_op
+                left: (expr
+                  base: (var_path))
+                right: (expr
+                  base: (primary_expr
                     (literal
-                      (int))))
-                false_branch: (expr
-                  (primary_expr
-                    (literal
-                      (int))))))))))))
+                      (int))))))
+            true_branch: (expr
+              base: (primary_expr
+                (literal
+                  (int))))
+            false_branch: (expr
+              base: (primary_expr
+                (literal
+                  (int))))))))))

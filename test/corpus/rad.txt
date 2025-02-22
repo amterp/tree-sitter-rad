@@ -11,12 +11,8 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))))
+      base: (var_path))
+    stmt: (rad_field_stmt)))
 
 ===
 Request simple
@@ -31,12 +27,8 @@ request url:
   (rad_block
     rad_type: (request_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))))
+      base: (var_path))
+    stmt: (rad_field_stmt)))
 
 ===
 Display simple
@@ -50,9 +42,7 @@ display:
 (source_file
   (rad_block
     rad_type: (display_keyword)
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))))
+    stmt: (rad_field_stmt)))
 
 ===
 Rad sort simple
@@ -68,12 +58,8 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))
+      base: (var_path))
+    stmt: (rad_field_stmt)
     stmt: (rad_sort_stmt)))
 
 ===
@@ -90,21 +76,17 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))
+      base: (var_path))
+    stmt: (rad_field_stmt)
     stmt: (rad_sort_stmt
       specifier: (rad_sort_specifier
-        identifier: (identifier))
+        first: (immediate_identifier))
       specifier: (rad_sort_specifier
-        identifier: (identifier))
+        first: (immediate_identifier))
       specifier: (rad_sort_specifier
-        identifier: (identifier))
+        first: (immediate_identifier))
       specifier: (rad_sort_specifier
-        identifier: (identifier)))))
+        first: (immediate_identifier)))))
 
 ===
 Rad map one
@@ -121,33 +103,27 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))
+      base: (var_path))
+    stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
-      identifier: (identifier)
       mod_stmt: (rad_field_mod_map
         lambda: (lambda
-          identifier: (identifier)
           expr: (expr
-            (primary_expr
+            base: (primary_expr
               (literal
                 (string
                   start: (string_start)
                   contents: (string_contents
                     interpolation: (interpolation
                       expr: (expr
-                        (primary_expr
+                        base: (primary_expr
                           (binary_op
-                            left: (primary_expr
-                              (var_path
-                                root: (identifier)))
-                            right: (primary_expr
-                              (literal
-                                (int)))))))
+                            left: (expr
+                              base: (var_path))
+                            right: (expr
+                              base: (primary_expr
+                                (literal
+                                  (int))))))))
                     content: (string_content))
                   end: (string_end))))))))))
 
@@ -166,35 +142,27 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))
+      base: (var_path))
+    stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
-      identifier: (identifier)
-      identifier: (identifier)
-      identifier: (identifier)
       mod_stmt: (rad_field_mod_map
         lambda: (lambda
-          identifier: (identifier)
           expr: (expr
-            (primary_expr
+            base: (primary_expr
               (literal
                 (string
                   start: (string_start)
                   contents: (string_contents
                     interpolation: (interpolation
                       expr: (expr
-                        (primary_expr
+                        base: (primary_expr
                           (binary_op
-                            left: (primary_expr
-                              (var_path
-                                root: (identifier)))
-                            right: (primary_expr
-                              (literal
-                                (int)))))))
+                            left: (expr
+                              base: (var_path))
+                            right: (expr
+                              base: (primary_expr
+                                (literal
+                                  (int))))))))
                     content: (string_content))
                   end: (string_end))))))))))
 
@@ -214,18 +182,12 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))
+      base: (var_path))
+    stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
-      identifier: (identifier)
-      identifier: (identifier)
       mod_stmt: (rad_field_mod_color
         color: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (string
                 start: (string_start)
@@ -233,7 +195,7 @@ rad url:
                   content: (string_content))
                 end: (string_end)))))
         regex: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (string
                 start: (string_start)
@@ -242,13 +204,9 @@ rad url:
                 end: (string_end))))))
       mod_stmt: (rad_field_mod_color
         color: (expr
-          (primary_expr
-            (var_path
-              root: (identifier))))
+          base: (var_path))
         regex: (expr
-          (primary_expr
-            (var_path
-              root: (identifier))))))))
+          base: (primary_expr))))))
 
 ===
 Rad if stmt
@@ -274,24 +232,16 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
-    stmt: (rad_field_stmt
-      identifier: (identifier)
-      identifier: (identifier))
+      base: (var_path))
+    stmt: (rad_field_stmt)
     stmt: (rad_if_stmt
       alt: (rad_if_alt
         condition: (expr
-          (primary_expr
-            (var_path
-              root: (identifier))))
+          base: (var_path))
         stmt: (rad_field_modifier_stmt
-          identifier: (identifier)
-          identifier: (identifier)
           mod_stmt: (rad_field_mod_color
             color: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (string
                     start: (string_start)
@@ -299,7 +249,7 @@ rad url:
                       content: (string_content))
                     end: (string_end)))))
             regex: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (string
                     start: (string_start)
@@ -308,42 +258,29 @@ rad url:
                     end: (string_end))))))
           mod_stmt: (rad_field_mod_color
             color: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))
+              base: (var_path))
             regex: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))))
+              base: (var_path)))))
       alt: (rad_if_alt
         condition: (expr
-          (primary_expr
-            (var_path
-              root: (identifier))))
-        stmt: (rad_field_stmt
-          identifier: (identifier))
+          base: (var_path))
+        stmt: (rad_field_stmt)
         stmt: (rad_sort_stmt))
       alt: (rad_else_alt
         stmt: (rad_field_modifier_stmt
-          identifier: (identifier)
           mod_stmt: (rad_field_mod_map
             lambda: (lambda
-              identifier: (identifier)
               expr: (expr
-                (primary_expr
+                base: (primary_expr
                   (binary_op
-                    left: (primary_expr
-                      (var_path
-                        root: (identifier)))
-                    right: (primary_expr
-                      (literal
-                        (int))))))))
+                    left: (expr
+                      base: (var_path))
+                    right: (expr
+                      base: (primary_expr
+                        (literal
+                          (int)))))))))
           mod_stmt: (rad_field_mod_color
             color: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))
+              base: (var_path))
             regex: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))))))))
+              base: (primary_expr))))))))

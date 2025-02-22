@@ -24,16 +24,13 @@ args:
     contents: (file_header_contents))
   (arg_block
     declaration: (arg_declaration
-      arg_name: (identifier)
       type: (string_type))
     declaration: (arg_declaration
-      arg_name: (identifier)
       type: (int_type)
       default: (int_arg
         value: (int))
       comment: (comment_text))
     enum_constraint: (arg_enum_constraint
-      arg_name: (identifier)
       values: (string_list
         list_entry: (string
           start: (string_start)
@@ -46,7 +43,6 @@ args:
             content: (string_content))
           end: (string_end))))
     regex_constraint: (arg_regex_constraint
-      arg_name: (identifier)
       regex: (string
         start: (string_start)
         contents: (string_contents

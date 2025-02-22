@@ -8,8 +8,7 @@ a = json
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (json_path
       segment: (json_opener))))
 
@@ -23,8 +22,7 @@ a = json[]
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (json_path
       segment: (json_opener
         index: (json_path_indexer)))))
@@ -39,14 +37,11 @@ a = json.foo.bar
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (json_path
       segment: (json_opener)
-      segment: (json_segment
-        key: (identifier))
-      segment: (json_segment
-        key: (identifier)))))
+      segment: (json_segment)
+      segment: (json_segment))))
 
 ===
 Simple lists
@@ -58,15 +53,12 @@ a = json[].foo.bar[]
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (json_path
       segment: (json_opener
         index: (json_path_indexer))
+      segment: (json_segment)
       segment: (json_segment
-        key: (identifier))
-      segment: (json_segment
-        key: (identifier)
         index: (json_path_indexer)))))
 
 ===
@@ -79,11 +71,9 @@ a = json[].*.bar
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (json_path
       segment: (json_opener
         index: (json_path_indexer))
       segment: (json_segment)
-      segment: (json_segment
-        key: (identifier)))))
+      segment: (json_segment))))

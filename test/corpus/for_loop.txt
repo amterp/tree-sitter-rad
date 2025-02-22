@@ -10,24 +10,19 @@ for i in nums:
 
 (source_file
   (for_loop
-    lefts: (for_lefts
-      left: (identifier))
+    lefts: (for_lefts)
     right: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
+      base: (var_path))
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))))
 
@@ -43,25 +38,19 @@ for i, item in nums:
 
 (source_file
   (for_loop
-    lefts: (for_lefts
-      left: (identifier)
-      left: (identifier))
+    lefts: (for_lefts)
     right: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
+      base: (var_path))
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))))
 
@@ -81,32 +70,24 @@ for i in nums:
 
 (source_file
   (for_loop
-    lefts: (for_lefts
-      left: (identifier))
+    lefts: (for_lefts)
     right: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
+      base: (var_path))
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
     stmt: (break_stmt))
   (for_loop
-    lefts: (for_lefts
-      left: (identifier))
+    lefts: (for_lefts)
     right: (expr
-      (primary_expr
-        (var_path
-          root: (identifier))))
+      base: (var_path))
     stmt: (assign
-      left: (var_path
-        root: (identifier))
+      left: (var_path)
       right: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
     stmt: (continue_stmt)))

@@ -7,33 +7,32 @@ a > 2 ? "true" : "false"
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (ternary
-        condition: (expr
-          (comparison_op
-            left: (primary_expr
-              (var_path
-                root: (identifier)))
-            right: (primary_expr
+  (expr
+    base: (ternary
+      condition: (expr
+        base: (comparison_op
+          left: (expr
+            base: (var_path))
+          right: (expr
+            base: (primary_expr
               (literal
-                (int)))))
-        true_branch: (expr
-          (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end)))))
-        false_branch: (expr
-          (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end)))))))))
+                (int))))))
+      true_branch: (expr
+        base: (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))
+      false_branch: (expr
+        base: (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Assignment
@@ -45,20 +44,19 @@ b = a > 2 ? "true" : "false"
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (ternary
+      base: (ternary
         condition: (expr
-          (comparison_op
-            left: (primary_expr
-              (var_path
-                root: (identifier)))
-            right: (primary_expr
-              (literal
-                (int)))))
+          base: (comparison_op
+            left: (expr
+              base: (var_path))
+            right: (expr
+              base: (primary_expr
+                (literal
+                  (int))))))
         true_branch: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (string
                 start: (string_start)
@@ -66,7 +64,7 @@ b = a > 2 ? "true" : "false"
                   content: (string_content))
                 end: (string_end)))))
         false_branch: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (string
                 start: (string_start)
@@ -84,52 +82,51 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (ternary
+      base: (ternary
         condition: (expr
-          (comparison_op
-            left: (primary_expr
-              (var_path
-                root: (identifier)))
-            right: (primary_expr
-              (literal
-                (int)))))
+          base: (comparison_op
+            left: (expr
+              base: (var_path))
+            right: (expr
+              base: (primary_expr
+                (literal
+                  (int))))))
         true_branch: (expr
-          (ternary
+          base: (ternary
             condition: (expr
-              (comparison_op
-                left: (primary_expr
-                  (var_path
-                    root: (identifier)))
-                right: (primary_expr
-                  (literal
-                    (int)))))
+              base: (comparison_op
+                left: (expr
+                  base: (var_path))
+                right: (expr
+                  base: (primary_expr
+                    (literal
+                      (int))))))
             true_branch: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int))))
             false_branch: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int))))))
         false_branch: (expr
-          (ternary
+          base: (ternary
             condition: (expr
-              (comparison_op
-                left: (primary_expr
-                  (var_path
-                    root: (identifier)))
-                right: (primary_expr
-                  (literal
-                    (int)))))
+              base: (comparison_op
+                left: (expr
+                  base: (var_path))
+                right: (expr
+                  base: (primary_expr
+                    (literal
+                      (int))))))
             true_branch: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int))))
             false_branch: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int))))))))))
 

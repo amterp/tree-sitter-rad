@@ -7,15 +7,12 @@ a[0]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (expr
-            (primary_expr
-              (literal
-                (int)))))))))
+  (expr
+    base: (var_path
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (int)))))))
 
 ===
 List index nested
@@ -26,23 +23,20 @@ a[0][1][3]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (expr
-            (primary_expr
-              (literal
-                (int))))
-          indexing: (expr
-            (primary_expr
-              (literal
-                (int))))
-          indexing: (expr
-            (primary_expr
-              (literal
-                (int)))))))))
+  (expr
+    base: (var_path
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (int))))
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (int))))
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (int)))))))
 
 ===
 List expr
@@ -53,23 +47,16 @@ a[8][b][c]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (expr
-            (primary_expr
-              (literal
-                (int))))
-          indexing: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          indexing: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+  (expr
+    base: (var_path
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (int))))
+      indexing: (expr
+        base: (var_path))
+      indexing: (expr
+        base: (var_path)))))
 
 ===
 Map index
@@ -80,19 +67,16 @@ a["2"]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+  (expr
+    base: (var_path
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Map index nested
@@ -103,27 +87,24 @@ a["2"]["3"]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))
-          indexing: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end))))))))))
+  (expr
+    base: (var_path
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Map index expr
@@ -134,23 +115,18 @@ a["2"][b]
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))
-          indexing: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+  (expr
+    base: (var_path
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end)))))
+      indexing: (expr
+        base: (var_path)))))
 
 ===
 List index assign
@@ -164,13 +140,12 @@ a[1][2] = "hi"
 (source_file
   (assign
     left: (var_path
-      root: (identifier)
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (string
             start: (string_start)
@@ -179,17 +154,16 @@ a[1][2] = "hi"
             end: (string_end))))))
   (assign
     left: (var_path
-      root: (identifier)
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int))))
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (string
             start: (string_start)
@@ -209,9 +183,8 @@ a["a"]["b"] = "hi"
 (source_file
   (assign
     left: (var_path
-      root: (identifier)
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (string
               start: (string_start)
@@ -219,7 +192,7 @@ a["a"]["b"] = "hi"
                 content: (string_content))
               end: (string_end))))))
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (string
             start: (string_start)
@@ -228,9 +201,8 @@ a["a"]["b"] = "hi"
             end: (string_end))))))
   (assign
     left: (var_path
-      root: (identifier)
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (string
               start: (string_start)
@@ -238,7 +210,7 @@ a["a"]["b"] = "hi"
                 content: (string_content))
               end: (string_end)))))
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (string
               start: (string_start)
@@ -246,7 +218,7 @@ a["a"]["b"] = "hi"
                 content: (string_content))
               end: (string_end))))))
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (string
             start: (string_start)
@@ -265,9 +237,8 @@ a["a"][0] = "hi"
 (source_file
   (assign
     left: (var_path
-      root: (identifier)
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (string
               start: (string_start)
@@ -275,11 +246,11 @@ a["a"][0] = "hi"
                 content: (string_content))
               end: (string_end)))))
       indexing: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (int)))))
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (string
             start: (string_start)
@@ -296,13 +267,8 @@ a.b.c
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (identifier)
-          indexing: (identifier))))))
+  (expr
+    base: (var_path)))
 
 ===
 Map dot mixed syntax
@@ -313,26 +279,18 @@ a.b[c].d["e"].f
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (var_path
-          root: (identifier)
-          indexing: (identifier)
-          indexing: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          indexing: (identifier)
-          indexing: (expr
-            (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))
-          indexing: (identifier))))))
+  (expr
+    base: (var_path
+      indexing: (expr
+        base: (var_path))
+      indexing: (expr
+        base: (primary_expr
+          (literal
+            (string
+              start: (string_start)
+              contents: (string_contents
+                content: (string_content))
+              end: (string_end))))))))
 
 ===
 Map dot syntax assign
@@ -344,11 +302,8 @@ a.b.c = 2
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier)
-      indexing: (identifier)
-      indexing: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (int))))))

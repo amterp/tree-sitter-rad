@@ -7,11 +7,8 @@ print()
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier))))))
+  (expr
+    base: (call)))
 
 ===
 Basic 1
@@ -22,15 +19,10 @@ print(hi)
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier)
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+  (expr
+    base: (call
+      arg: (expr
+        base: (var_path)))))
 
 ===
 Basic 2+
@@ -41,23 +33,14 @@ print(hi, hello, hey)
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier)
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+  (expr
+    base: (call
+      arg: (expr
+        base: (var_path))
+      arg: (expr
+        base: (var_path))
+      arg: (expr
+        base: (var_path)))))
 
 ===
 Basic 2+ trailing
@@ -68,23 +51,14 @@ print(hi, hello, hey, )
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier)
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+  (expr
+    base: (call
+      arg: (expr
+        base: (var_path))
+      arg: (expr
+        base: (var_path))
+      arg: (expr
+        base: (var_path)))))
 
 ===
 Basic 2+ trailing multiline
@@ -99,23 +73,14 @@ print(
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier)
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+  (expr
+    base: (call
+      arg: (expr
+        base: (var_path))
+      arg: (expr
+        base: (var_path))
+      arg: (expr
+        base: (var_path)))))
 
 ===
 Only named 1
@@ -126,17 +91,11 @@ print(foo=bar)
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier)
-          named_arg: (call_named_arg
-            name: (identifier)
-            value: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))))))))
+  (expr
+    base: (call
+      named_arg: (call_named_arg
+        value: (expr
+          base: (var_path))))))
 
 ===
 Only named 2+
@@ -147,29 +106,17 @@ print(foo=bar, a = b, c = d, )
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier)
-          named_arg: (call_named_arg
-            name: (identifier)
-            value: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))
-          named_arg: (call_named_arg
-            name: (identifier)
-            value: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))
-          named_arg: (call_named_arg
-            name: (identifier)
-            value: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))))))))
+  (expr
+    base: (call
+      named_arg: (call_named_arg
+        value: (expr
+          base: (var_path)))
+      named_arg: (call_named_arg
+        value: (expr
+          base: (var_path)))
+      named_arg: (call_named_arg
+        value: (expr
+          base: (var_path))))))
 
 ===
 Mixed
@@ -180,34 +127,18 @@ print(hello, hi, foo=bar, a = b, c = d, )
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (call
-          func: (identifier)
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          arg: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          named_arg: (call_named_arg
-            name: (identifier)
-            value: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))
-          named_arg: (call_named_arg
-            name: (identifier)
-            value: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier)))))
-          named_arg: (call_named_arg
-            name: (identifier)
-            value: (expr
-              (primary_expr
-                (var_path
-                  root: (identifier))))))))))
+  (expr
+    base: (call
+      arg: (expr
+        base: (var_path))
+      arg: (expr
+        base: (var_path))
+      named_arg: (call_named_arg
+        value: (expr
+          base: (var_path)))
+      named_arg: (call_named_arg
+        value: (expr
+          base: (var_path)))
+      named_arg: (call_named_arg
+        value: (expr
+          base: (var_path))))))

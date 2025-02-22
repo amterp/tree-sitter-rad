@@ -7,25 +7,21 @@ Comprehension no filter
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (list_comprehension
-          expr: (expr
-            (primary_expr
-              (binary_op
-                left: (primary_expr
-                  (var_path
-                    root: (identifier)))
-                right: (primary_expr
+  (expr
+    base: (primary_expr
+      (list_comprehension
+        expr: (expr
+          base: (primary_expr
+            (binary_op
+              left: (expr
+                base: (var_path))
+              right: (expr
+                base: (primary_expr
                   (literal
-                    (int))))))
-          lefts: (for_lefts
-            left: (identifier))
-          right: (expr
-            (primary_expr
-              (var_path
-                root: (identifier)))))))))
+                    (int)))))))
+        lefts: (for_lefts)
+        right: (expr
+          base: (var_path))))))
 
 ===
 Comprehension w/ filter
@@ -36,30 +32,26 @@ Comprehension w/ filter
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (list_comprehension
-          expr: (expr
-            (primary_expr
-              (binary_op
-                left: (primary_expr
-                  (var_path
-                    root: (identifier)))
-                right: (primary_expr
+  (expr
+    base: (primary_expr
+      (list_comprehension
+        expr: (expr
+          base: (primary_expr
+            (binary_op
+              left: (expr
+                base: (var_path))
+              right: (expr
+                base: (primary_expr
                   (literal
-                    (int))))))
-          lefts: (for_lefts
-            left: (identifier))
-          right: (expr
-            (primary_expr
-              (var_path
-                root: (identifier))))
-          condition: (expr
-            (comparison_op
-              left: (primary_expr
-                (var_path
-                  root: (identifier)))
-              right: (primary_expr
+                    (int)))))))
+        lefts: (for_lefts)
+        right: (expr
+          base: (var_path))
+        condition: (expr
+          base: (comparison_op
+            left: (expr
+              base: (var_path))
+            right: (expr
+              base: (primary_expr
                 (literal
                   (int))))))))))

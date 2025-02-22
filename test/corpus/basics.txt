@@ -8,10 +8,9 @@ a = 2
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (int))))))
 
@@ -25,10 +24,9 @@ a = "hi"
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (string
             start: (string_start)
@@ -46,10 +44,9 @@ a = 2.1
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (float))))))
 
@@ -64,17 +61,15 @@ b = false
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (bool)))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (bool))))))
 
@@ -95,67 +90,62 @@ a = [true, false, ]
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             (empty_list))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int))))
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int)))))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int))))
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int)))))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int))))
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (int)))))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (string
                     start: (string_start)
@@ -163,14 +153,13 @@ a = [true, false, ]
                       content: (string_content))
                     end: (string_end))))))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (string
                     start: (string_start)
@@ -178,7 +167,7 @@ a = [true, false, ]
                       content: (string_content))
                     end: (string_end)))))
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (string
                     start: (string_start)
@@ -186,33 +175,31 @@ a = [true, false, ]
                       content: (string_content))
                     end: (string_end))))))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (float))))
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (float)))))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (list
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (bool))))
             list_entry: (expr
-              (primary_expr
+              base: (primary_expr
                 (literal
                   (bool))))))))))
 
@@ -227,17 +214,15 @@ b = false
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (bool)))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (bool))))))
 
@@ -250,31 +235,30 @@ Assignment mixed list
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (int))))
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (bool))))
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content))
-                    end: (string_end)))))
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (float))))))))))
+  (expr
+    base: (primary_expr
+      (literal
+        (list
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (int))))
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (bool))))
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (string
+                  start: (string_start)
+                  contents: (string_contents
+                    content: (string_content))
+                  end: (string_end)))))
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (float)))))))))
 
 ===
 Assignment nested list
@@ -285,44 +269,43 @@ Assignment nested list
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (int))))
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (bool))))
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (list
-                    list_entry: (expr
-                      (primary_expr
-                        (literal
-                          (string
-                            start: (string_start)
-                            contents: (string_contents
-                              content: (string_content))
-                            end: (string_end)))))
-                    list_entry: (expr
-                      (primary_expr
-                        (literal
-                          (list
-                            list_entry: (expr
-                              (primary_expr
-                                (literal
-                                  (int))))
-                            list_entry: (expr
-                              (primary_expr
-                                (literal
-                                  (int))))))))))))
-            list_entry: (expr
-              (primary_expr
-                (literal
-                  (float))))))))))
+  (expr
+    base: (primary_expr
+      (literal
+        (list
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (int))))
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (bool))))
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (list
+                  list_entry: (expr
+                    base: (primary_expr
+                      (literal
+                        (string
+                          start: (string_start)
+                          contents: (string_contents
+                            content: (string_content))
+                          end: (string_end)))))
+                  list_entry: (expr
+                    base: (primary_expr
+                      (literal
+                        (list
+                          list_entry: (expr
+                            base: (primary_expr
+                              (literal
+                                (int))))
+                          list_entry: (expr
+                            base: (primary_expr
+                              (literal
+                                (int))))))))))))
+          list_entry: (expr
+            base: (primary_expr
+              (literal
+                (float)))))))))

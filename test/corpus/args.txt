@@ -11,12 +11,10 @@ args:
 (source_file
   (arg_block
     declaration: (arg_declaration
-      arg_name: (identifier)
       type: (int_type)
       default: (int_arg
         value: (int)))
     declaration: (arg_declaration
-      arg_name: (identifier)
       type: (float_type)
       default: (float_arg
         value: (float)))))

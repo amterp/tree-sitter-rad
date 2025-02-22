@@ -8,16 +8,14 @@ a = {}
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (literal
-          (map)))))
+  (expr
+    base: (primary_expr
+      (literal
+        (map))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (map))))))
 
@@ -31,34 +29,32 @@ a = {"b": 3}
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (literal
-          (map
-            map_entry: (map_entry
-              key: (expr
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))
-              value: (expr
-                (primary_expr
-                  (literal
-                    (int))))))))))
+  (expr
+    base: (primary_expr
+      (literal
+        (map
+          map_entry: (map_entry
+            key: (expr
+              base: (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))
+            value: (expr
+              base: (primary_expr
+                (literal
+                  (int)))))))))
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (map
             map_entry: (map_entry
               key: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (string
                       start: (string_start)
@@ -66,7 +62,7 @@ a = {"b": 3}
                         content: (string_content))
                       end: (string_end)))))
               value: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (int)))))))))))
 
@@ -79,66 +75,65 @@ With more contents
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (literal
-          (map
-            map_entry: (map_entry
-              key: (expr
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))
-              value: (expr
-                (primary_expr
-                  (literal
-                    (int)))))
-            map_entry: (map_entry
-              key: (expr
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))
-              value: (expr
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end))))))
-            map_entry: (map_entry
-              key: (expr
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))
-              value: (expr
-                (primary_expr
-                  (literal
-                    (list
-                      list_entry: (expr
-                        (primary_expr
-                          (literal
-                            (string
-                              start: (string_start)
-                              contents: (string_contents
-                                content: (string_content))
-                              end: (string_end)))))
-                      list_entry: (expr
-                        (primary_expr
-                          (literal
-                            (int)))))))))))))))
+  (expr
+    base: (primary_expr
+      (literal
+        (map
+          map_entry: (map_entry
+            key: (expr
+              base: (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))
+            value: (expr
+              base: (primary_expr
+                (literal
+                  (int)))))
+          map_entry: (map_entry
+            key: (expr
+              base: (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))
+            value: (expr
+              base: (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end))))))
+          map_entry: (map_entry
+            key: (expr
+              base: (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))
+            value: (expr
+              base: (primary_expr
+                (literal
+                  (list
+                    list_entry: (expr
+                      base: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end)))))
+                    list_entry: (expr
+                      base: (primary_expr
+                        (literal
+                          (int))))))))))))))
 
 ===
 Nested
@@ -149,89 +144,88 @@ Nested
 ---
 
 (source_file
-  (expr_stmt
-    (expr
-      (primary_expr
-        (literal
-          (map
-            map_entry: (map_entry
-              key: (expr
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))
-              value: (expr
-                (primary_expr
-                  (literal
-                    (int)))))
-            map_entry: (map_entry
-              key: (expr
-                (primary_expr
-                  (literal
-                    (string
-                      start: (string_start)
-                      contents: (string_contents
-                        content: (string_content))
-                      end: (string_end)))))
-              value: (expr
-                (primary_expr
-                  (literal
-                    (map
-                      map_entry: (map_entry
-                        key: (expr
-                          (primary_expr
-                            (literal
-                              (string
-                                start: (string_start)
-                                contents: (string_contents
-                                  content: (string_content))
-                                end: (string_end)))))
-                        value: (expr
-                          (primary_expr
-                            (literal
-                              (bool)))))
-                      map_entry: (map_entry
-                        key: (expr
-                          (primary_expr
-                            (literal
-                              (string
-                                start: (string_start)
-                                contents: (string_contents
-                                  content: (string_content))
-                                end: (string_end)))))
-                        value: (expr
-                          (primary_expr
-                            (literal
-                              (map
-                                map_entry: (map_entry
-                                  key: (expr
-                                    (primary_expr
-                                      (literal
-                                        (string
-                                          start: (string_start)
-                                          contents: (string_contents
-                                            content: (string_content))
-                                          end: (string_end)))))
-                                  value: (expr
-                                    (primary_expr
-                                      (literal
-                                        (int)))))
-                                map_entry: (map_entry
-                                  key: (expr
-                                    (primary_expr
-                                      (literal
-                                        (string
-                                          start: (string_start)
-                                          contents: (string_contents
-                                            content: (string_content))
-                                          end: (string_end)))))
-                                  value: (expr
-                                    (primary_expr
-                                      (literal
-                                        (map)))))))))))))))))))))
+  (expr
+    base: (primary_expr
+      (literal
+        (map
+          map_entry: (map_entry
+            key: (expr
+              base: (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))
+            value: (expr
+              base: (primary_expr
+                (literal
+                  (int)))))
+          map_entry: (map_entry
+            key: (expr
+              base: (primary_expr
+                (literal
+                  (string
+                    start: (string_start)
+                    contents: (string_contents
+                      content: (string_content))
+                    end: (string_end)))))
+            value: (expr
+              base: (primary_expr
+                (literal
+                  (map
+                    map_entry: (map_entry
+                      key: (expr
+                        base: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end)))))
+                      value: (expr
+                        base: (primary_expr
+                          (literal
+                            (bool)))))
+                    map_entry: (map_entry
+                      key: (expr
+                        base: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end)))))
+                      value: (expr
+                        base: (primary_expr
+                          (literal
+                            (map
+                              map_entry: (map_entry
+                                key: (expr
+                                  base: (primary_expr
+                                    (literal
+                                      (string
+                                        start: (string_start)
+                                        contents: (string_contents
+                                          content: (string_content))
+                                        end: (string_end)))))
+                                value: (expr
+                                  base: (primary_expr
+                                    (literal
+                                      (int)))))
+                              map_entry: (map_entry
+                                key: (expr
+                                  base: (primary_expr
+                                    (literal
+                                      (string
+                                        start: (string_start)
+                                        contents: (string_contents
+                                          content: (string_content))
+                                        end: (string_end)))))
+                                value: (expr
+                                  base: (primary_expr
+                                    (literal
+                                      (map))))))))))))))))))))
 
 ===
 Multiline
@@ -249,15 +243,14 @@ my_headers = {
 
 (source_file
   (assign
-    left: (var_path
-      root: (identifier))
+    left: (var_path)
     right: (expr
-      (primary_expr
+      base: (primary_expr
         (literal
           (map
             map_entry: (map_entry
               key: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (string
                       start: (string_start)
@@ -265,7 +258,7 @@ my_headers = {
                         content: (string_content))
                       end: (string_end)))))
               value: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (string
                       start: (string_start)
@@ -273,13 +266,11 @@ my_headers = {
                         content: (string_content)
                         interpolation: (interpolation
                           expr: (expr
-                            (primary_expr
-                              (var_path
-                                root: (identifier))))))
+                            base: (var_path))))
                       end: (string_end))))))
             map_entry: (map_entry
               key: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (string
                       start: (string_start)
@@ -287,11 +278,11 @@ my_headers = {
                         content: (string_content))
                       end: (string_end)))))
               value: (expr
-                (primary_expr
+                base: (primary_expr
                   (literal
                     (list
                       list_entry: (expr
-                        (primary_expr
+                        base: (primary_expr
                           (literal
                             (string
                               start: (string_start)
@@ -299,7 +290,7 @@ my_headers = {
                                 content: (string_content))
                               end: (string_end)))))
                       list_entry: (expr
-                        (primary_expr
+                        base: (primary_expr
                           (literal
                             (string
                               start: (string_start)

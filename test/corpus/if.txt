@@ -11,14 +11,13 @@ if true:
   (if_stmt
     alt: (if_alt
       condition: (expr
-        (primary_expr
+        base: (primary_expr
           (literal
             (bool))))
       stmt: (assign
-        left: (var_path
-          root: (identifier))
+        left: (var_path)
         right: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (int))))))))
 
@@ -37,26 +36,24 @@ else:
   (if_stmt
     alt: (if_alt
       condition: (expr
-        (comparison_op
-          left: (primary_expr
-            (var_path
-              root: (identifier)))
-          right: (primary_expr
-            (literal
-              (int)))))
+        base: (comparison_op
+          left: (expr
+            base: (var_path))
+          right: (expr
+            base: (primary_expr
+              (literal
+                (int))))))
       stmt: (assign
-        left: (var_path
-          root: (identifier))
+        left: (var_path)
         right: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (int))))))
     alt: (else_alt
       stmt: (assign
-        left: (var_path
-          root: (identifier))
+        left: (var_path)
         right: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (string
                 start: (string_start)
@@ -82,49 +79,45 @@ else:
   (if_stmt
     alt: (if_alt
       condition: (expr
-        (comparison_op
-          left: (primary_expr
-            (var_path
-              root: (identifier)))
-          right: (primary_expr
+        base: (comparison_op
+          left: (expr
+            base: (var_path))
+          right: (expr
+            base: (primary_expr
+              (literal
+                (int))))))
+      stmt: (assign
+        left: (var_path)
+        right: (expr
+          base: (primary_expr
             (literal
               (int)))))
       stmt: (assign
-        left: (var_path
-          root: (identifier))
+        left: (var_path)
         right: (expr
-          (primary_expr
-            (literal
-              (int)))))
-      stmt: (assign
-        left: (var_path
-          root: (identifier))
-        right: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (int))))))
     alt: (if_alt
       condition: (expr
-        (comparison_op
-          left: (primary_expr
-            (var_path
-              root: (identifier)))
-          right: (primary_expr
-            (literal
-              (int)))))
+        base: (comparison_op
+          left: (expr
+            base: (var_path))
+          right: (expr
+            base: (primary_expr
+              (literal
+                (int))))))
       stmt: (assign
-        left: (var_path
-          root: (identifier))
+        left: (var_path)
         right: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (bool))))))
     alt: (else_alt
       stmt: (assign
-        left: (var_path
-          root: (identifier))
+        left: (var_path)
         right: (expr
-          (primary_expr
+          base: (primary_expr
             (literal
               (string
                 start: (string_start)
