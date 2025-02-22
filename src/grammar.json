@@ -1262,20 +1262,15 @@
             }
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "index",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "json_path_indexer"
-                }
-              },
-              {
-                "type": "BLANK"
+            "type": "REPEAT",
+            "content": {
+              "type": "FIELD",
+              "name": "index",
+              "content": {
+                "type": "SYMBOL",
+                "name": "json_path_indexer"
               }
-            ]
+            }
           }
         ]
       }
@@ -1304,20 +1299,15 @@
             }
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "index",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "json_path_indexer"
-                }
-              },
-              {
-                "type": "BLANK"
+            "type": "REPEAT",
+            "content": {
+              "type": "FIELD",
+              "name": "index",
+              "content": {
+                "type": "SYMBOL",
+                "name": "json_path_indexer"
               }
-            ]
+            }
           }
         ]
       }

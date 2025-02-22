@@ -305,12 +305,12 @@ module.exports = grammar({
 
     json_opener: $ => prec.right(seq(
       field("key", "json"),
-      optional(field("index", $.json_path_indexer)),
+      repeat(field("index", $.json_path_indexer)),
     )),
 
     json_segment: $ => prec.right(seq(
       field("key", choice($._identifier, "*")),
-      optional(field("index", $.json_path_indexer)),
+      repeat(field("index", $.json_path_indexer)),
     )),
 
     json_path_indexer: $ => seq("[", optional(field("expr", $.expr)), "]"),
