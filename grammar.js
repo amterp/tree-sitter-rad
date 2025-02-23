@@ -41,7 +41,7 @@ module.exports = grammar({
   // todo can we get rid of this? or doc it
   supertypes: $ => [
     $._simple_stmt,
-    $._compound_stmt,
+    $._complex_stmt,
     // $.expr,
     // $.primary_expr,
     // $.pattern,
@@ -104,7 +104,7 @@ module.exports = grammar({
 
     _stmt: $ => choice(
       $._simple_stmts,
-      $._compound_stmt,
+      $._complex_stmt,
     ),
 
     // Simple stmts
@@ -257,9 +257,8 @@ module.exports = grammar({
       // token.immediate(choice("+", "-")),
     )),
 
-    
     _left_hand_side: $ => commaSep1(field("left", $.var_path)),
-    
+
     // todo rename to identifier_path?
     var_path: $ => prec.right(seq(
       field("root", $._identifier),
@@ -323,13 +322,14 @@ module.exports = grammar({
     break_stmt: _ => prec.left('break'),
     continue_stmt: _ => prec.left('continue'),
 
-    // Compound stmts
+    // Complex stmts
 
-    _compound_stmt: $ => choice(
+    _complex_stmt: $ => choice(
       $.if_stmt,
       $.for_loop,
       $.rad_block,
       $.defer_block,
+      $.switch_stmt,
     ),
 
     if_stmt: $ => seq(
@@ -370,6 +370,20 @@ module.exports = grammar({
       $._for_in,
       optional($._if_clause),
       ']',
+    ),
+
+    switch_stmt: $ => seq(
+      optional(seq($._left_hand_side, "=")),
+      'switch',
+      field("discriminant", $.expr),
+      colonBlockField($, $.switch_case, "case"),
+    ),
+
+    switch_case: $ => seq(
+      "case",
+      commaSep1(field("case_key", $.expr)),
+      ':',
+      commaSep1(field("case_value", $.expr)),
     ),
 
     ternary: $ => prec.right(PREC.ternary, seq(
@@ -768,7 +782,7 @@ module.exports = grammar({
       // if identifier is missing, *identifierRegex* will be the node marked as missing.
       // by aliasing it here, we prevent downstream from needing to worry about identifierRegex,
       // but still let them see when the identifier is missing.
-      alias($.identifierRegex, "identifier"), 
+      alias($.identifierRegex, "identifier"),
       // need the following aliases, otherwise tree sitter eagerly parses them out
       // as keywords, causing ERROR nodes in the tree
       alias("confirm", "identifier"),
