@@ -426,6 +426,8 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
                         return true;
                     }
                     has_content = true;
+                    // we didn't consume triple end, just some end chars, so we've got that content, let's restart the loop.
+                    continue;
                 }
                 else
                 {
