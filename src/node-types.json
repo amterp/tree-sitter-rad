@@ -87,6 +87,16 @@
           }
         ]
       },
+      "excludes_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_excludes_constraint",
+            "named": true
+          }
+        ]
+      },
       "range_constraint": {
         "multiple": true,
         "required": false,
@@ -103,6 +113,16 @@
         "types": [
           {
             "type": "arg_regex_constraint",
+            "named": true
+          }
+        ]
+      },
+      "requires_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_requires_constraint",
             "named": true
           }
         ]
@@ -258,6 +278,52 @@
     }
   },
   {
+    "type": "arg_excludes_constraint",
+    "named": true,
+    "fields": {
+      "arg_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "excluded": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "excludes": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "excludes",
+            "named": false
+          }
+        ]
+      },
+      "mutually": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "mutually",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "arg_range_constraint",
     "named": true,
     "fields": {
@@ -350,6 +416,52 @@
           {
             "type": "string",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "arg_requires_constraint",
+    "named": true,
+    "fields": {
+      "arg_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "mutually": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "mutually",
+            "named": false
+          }
+        ]
+      },
+      "required": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "requires": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "requires",
+            "named": false
           }
         ]
       }
@@ -2590,6 +2702,10 @@
     "named": true
   },
   {
+    "type": "excludes",
+    "named": false
+  },
+  {
     "type": "fail",
     "named": false
   },
@@ -2654,6 +2770,10 @@
     "named": false
   },
   {
+    "type": "mutually",
+    "named": false
+  },
+  {
     "type": "not",
     "named": false
   },
@@ -2684,6 +2804,10 @@
   {
     "type": "request_keyword",
     "named": true
+  },
+  {
+    "type": "requires",
+    "named": false
   },
   {
     "type": "shebang",

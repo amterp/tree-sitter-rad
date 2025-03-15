@@ -493,6 +493,8 @@ module.exports = grammar({
       field("enum_constraint", $.arg_enum_constraint),
       field("regex_constraint", $.arg_regex_constraint),
       field("range_constraint", $.arg_range_constraint),
+      field("requires_constraint", $.arg_requires_constraint),
+      field("excludes_constraint", $.arg_excludes_constraint),
     ),
 
     arg_enum_constraint: $ => seq(
@@ -551,6 +553,20 @@ module.exports = grammar({
     _arg_range_constraint_max: $ => choice(
       field("max", $.int_arg),
       field("max", $.float_arg),
+    ),
+
+    arg_requires_constraint: $ => seq(
+      field("arg_name", $._identifier),
+      optional(field("mutually", "mutually")),
+      field("requires", "requires"),
+      commaSep1(field("required", $._identifier)),
+    ),
+
+    arg_excludes_constraint: $ => seq(
+      field("arg_name", $._identifier),
+      optional(field("mutually", "mutually")),
+      field("excludes", "excludes"),
+      commaSep1(field("excluded", $._identifier)),
     ),
 
     // Rad Block

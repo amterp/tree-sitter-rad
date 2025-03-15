@@ -2727,6 +2727,22 @@
             "type": "SYMBOL",
             "name": "arg_range_constraint"
           }
+        },
+        {
+          "type": "FIELD",
+          "name": "requires_constraint",
+          "content": {
+            "type": "SYMBOL",
+            "name": "arg_requires_constraint"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "excludes_constraint",
+          "content": {
+            "type": "SYMBOL",
+            "name": "arg_excludes_constraint"
+          }
         }
       ]
     },
@@ -2943,6 +2959,146 @@
             "type": "SYMBOL",
             "name": "float_arg"
           }
+        }
+      ]
+    },
+    "arg_requires_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "arg_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "mutually",
+              "content": {
+                "type": "STRING",
+                "value": "mutually"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "requires",
+          "content": {
+            "type": "STRING",
+            "value": "requires"
+          }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "required",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_identifier"
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "required",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_identifier"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "arg_excludes_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "arg_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "mutually",
+              "content": {
+                "type": "STRING",
+                "value": "mutually"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "excludes",
+          "content": {
+            "type": "STRING",
+            "value": "excludes"
+          }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "excluded",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_identifier"
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "excluded",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_identifier"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     },
