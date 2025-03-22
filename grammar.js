@@ -806,9 +806,9 @@ module.exports = grammar({
       alias("quiet", "identifier"),
     )),
 
-    float: _ => /\d+\.\d+/,
+    int: _ => /\d(_?\d+)*/,
+    float: _ => /\d(_?\d+)*\.\d(_?\d+)*/,
     bool: _ => choice("true", "false"),
-    int: _ => /\d+/,
 
     literal: $ => choice(
       $.string,

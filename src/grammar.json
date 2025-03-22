@@ -4735,9 +4735,13 @@
         ]
       }
     },
+    "int": {
+      "type": "PATTERN",
+      "value": "\\d(_?\\d+)*"
+    },
     "float": {
       "type": "PATTERN",
-      "value": "\\d+\\.\\d+"
+      "value": "\\d(_?\\d+)*\\.\\d(_?\\d+)*"
     },
     "bool": {
       "type": "CHOICE",
@@ -4751,10 +4755,6 @@
           "value": "false"
         }
       ]
-    },
-    "int": {
-      "type": "PATTERN",
-      "value": "\\d+"
     },
     "literal": {
       "type": "CHOICE",

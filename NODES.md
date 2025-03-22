@@ -100,10 +100,10 @@
 |  95 | `esc_backslash`                          |
 |  96 | `esc_open_bracket`                       |
 |  97 | `\`                                      |
-|  98 | `float`                                  |
-|  99 | `true`                                   |
-| 100 | `false`                                  |
-| 101 | `int`                                    |
+|  98 | `int`                                    |
+|  99 | `float`                                  |
+| 100 | `true`                                   |
+| 101 | `false`                                  |
 | 102 | `_newline`                               |
 | 103 | `_indent`                                |
 | 104 | `_dedent`                                |
