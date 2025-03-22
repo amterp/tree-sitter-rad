@@ -807,13 +807,13 @@ module.exports = grammar({
     )),
 
     int: _ => /\d(_?\d+)*/,
-    float: _ => /\d(_?\d+)*\.\d(_?\d+)*/,
+    float: _ => /\d(_?\d+)*((\.\d(_?\d+)*([eE][+-]?\d(_?\d+)*)?)|([eE][+-]?\d(_?\d+)*))/,
     bool: _ => choice("true", "false"),
 
     literal: $ => choice(
       $.string,
-      $.int,
       $.float,
+      $.int,
       $.bool,
       $.list,
       $.map,
