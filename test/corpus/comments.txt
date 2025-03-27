@@ -18,20 +18,52 @@ if true: // inline comment
   (if_stmt
     alt: (if_alt
       condition: (expr
-        base: (primary_expr
-          (literal
-            (bool))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (bool))))))))))))
       (comment)
       (comment)
       stmt: (assign
         left: (var_path)
         right: (expr
-          base: (primary_expr
-            (literal
-              (int)))))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (indexed_expr
+                          root: (primary_expr
+                            (literal
+                              (int)))))))))))))
       (comment)
       stmt: (expr
-        base: (call
-          arg: (expr
-            base: (var_path))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (call
+                            arg: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (var_path))))))))))))))))))))))
   (comment))

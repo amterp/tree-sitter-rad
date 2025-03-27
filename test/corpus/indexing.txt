@@ -8,11 +8,26 @@ a[0]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (int)))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (int))))))))))))))))))))))
 
 ===
 List index nested
@@ -24,19 +39,50 @@ a[0][1][3]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (int))))
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (int))))
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (int)))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (int))))))))))))
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (int))))))))))))
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (int))))))))))))))))))))))
 
 ===
 List expr
@@ -48,15 +94,44 @@ a[8][b][c]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (int))))
-      indexing: (expr
-        base: (var_path))
-      indexing: (expr
-        base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (int))))))))))))
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (var_path)))))))))
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (var_path)))))))))))))))))))
 
 ===
 Map index
@@ -68,15 +143,30 @@ a["2"]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (string
+                                            start: (string_start)
+                                            contents: (string_contents
+                                              content: (string_content))
+                                            end: (string_end)))))))))))))))))))))))
 
 ===
 Map index nested
@@ -88,23 +178,46 @@ a["2"]["3"]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (string
+                                            start: (string_start)
+                                            contents: (string_contents
+                                              content: (string_content))
+                                            end: (string_end)))))))))))))
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (string
+                                            start: (string_start)
+                                            contents: (string_contents
+                                              content: (string_content))
+                                            end: (string_end)))))))))))))))))))))))
 
 ===
 Map index expr
@@ -116,17 +229,39 @@ a["2"][b]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))
-      indexing: (expr
-        base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (string
+                                            start: (string_start)
+                                            contents: (string_contents
+                                              content: (string_content))
+                                            end: (string_end)))))))))))))
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (var_path)))))))))))))))))))
 
 ===
 List index assign
@@ -141,35 +276,75 @@ a[1][2] = "hi"
   (assign
     left: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     right: (expr
-      base: (primary_expr
-        (literal
-          (string
-            start: (string_start)
-            contents: (string_contents
-              content: (string_content))
-            end: (string_end))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end))))))))))))))
   (assign
     left: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (int))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int))))))))))))
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     right: (expr
-      base: (primary_expr
-        (literal
-          (string
-            start: (string_start)
-            contents: (string_contents
-              content: (string_content))
-            end: (string_end)))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end)))))))))))))))
 
 ===
 Map index assign
@@ -184,47 +359,87 @@ a["a"]["b"] = "hi"
   (assign
     left: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end))))))))))))))
     right: (expr
-      base: (primary_expr
-        (literal
-          (string
-            start: (string_start)
-            contents: (string_contents
-              content: (string_content))
-            end: (string_end))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end))))))))))))))
   (assign
     left: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end)))))))))))))
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end))))))))))))))
     right: (expr
-      base: (primary_expr
-        (literal
-          (string
-            start: (string_start)
-            contents: (string_contents
-              content: (string_content))
-            end: (string_end)))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end)))))))))))))))
 
 ===
 Mixed index assign
@@ -238,25 +453,49 @@ a["a"][0] = "hi"
   (assign
     left: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end)))))))))))))
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     right: (expr
-      base: (primary_expr
-        (literal
-          (string
-            start: (string_start)
-            contents: (string_contents
-              content: (string_content))
-            end: (string_end)))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end)))))))))))))))
 
 ===
 Map dot syntax
@@ -268,7 +507,14 @@ a.b.c
 
 (source_file
   (expr
-    base: (var_path)))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path))))))))))
 
 ===
 Map dot mixed syntax
@@ -280,17 +526,39 @@ a.b[c].d["e"].f
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (expr
-        base: (var_path))
-      indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (var_path)))))))))
+                    indexing: (expr
+                      (ternary_expr
+                        delegate: (or_expr
+                          delegate: (and_expr
+                            delegate: (compare_expr
+                              delegate: (add_expr
+                                delegate: (mult_expr
+                                  delegate: (unary_expr
+                                    delegate: (indexed_expr
+                                      root: (primary_expr
+                                        (literal
+                                          (string
+                                            start: (string_start)
+                                            contents: (string_contents
+                                              content: (string_content))
+                                            end: (string_end)))))))))))))))))))))))
 
 ===
 Map dot syntax assign
@@ -304,6 +572,14 @@ a.b.c = 2
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (int))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (int))))))))))))))

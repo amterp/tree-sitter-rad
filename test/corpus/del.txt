@@ -63,9 +63,17 @@ del a[0]
   (del_stmt
     right: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (int)))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))))
 
 ===
 Path map lookup
@@ -79,13 +87,21 @@ del a["foo"]
   (del_stmt
     right: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end))))))))))))))))
 
 ===
 Path map dot syntax
@@ -112,15 +128,31 @@ del a.foo, b[1], c["bar"]
     right: (var_path)
     right: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     right: (var_path
       indexing: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end))))))))))))))))

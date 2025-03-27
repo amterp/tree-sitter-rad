@@ -10,9 +10,17 @@ a = 2
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (int))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (int))))))))))))))
 
 ===
 Assignment string
@@ -26,13 +34,21 @@ a = "hi"
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (string
-            start: (string_start)
-            contents: (string_contents
-              content: (string_content))
-            end: (string_end)))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end)))))))))))))))
 
 ===
 Assignment float
@@ -46,9 +62,17 @@ a = 2.1
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (float))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (float))))))))))))))
 
 ===
 Assignment bool
@@ -63,15 +87,31 @@ b = false
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (bool)))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (bool)))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (bool))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (bool))))))))))))))
 
 ===
 Assignment lists
@@ -92,116 +132,284 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            (empty_list))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            (empty_list))))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (int))))
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (int)))))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (int))))))))))))
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (int)))))))))))))))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (int))))
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (int)))))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (int))))))))))))
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (int)))))))))))))))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (int))))
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (int)))))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (int))))))))))))
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (int)))))))))))))))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content))
-                    end: (string_end))))))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (string
+                                                    start: (string_start)
+                                                    contents: (string_contents
+                                                      content: (string_content))
+                                                    end: (string_end))))))))))))))))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content))
-                    end: (string_end)))))
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content))
-                    end: (string_end))))))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (string
+                                                    start: (string_start)
+                                                    contents: (string_contents
+                                                      content: (string_content))
+                                                    end: (string_end)))))))))))))
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (string
+                                                    start: (string_start)
+                                                    contents: (string_contents
+                                                      content: (string_content))
+                                                    end: (string_end))))))))))))))))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (float))))
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (float)))))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (float))))))))))))
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (float)))))))))))))))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (list
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (bool))))
-            list_entry: (expr
-              base: (primary_expr
-                (literal
-                  (bool))))))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (list
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (bool))))))))))))
+                            list_entry: (expr
+                              (ternary_expr
+                                delegate: (or_expr
+                                  delegate: (and_expr
+                                    delegate: (compare_expr
+                                      delegate: (add_expr
+                                        delegate: (mult_expr
+                                          delegate: (unary_expr
+                                            delegate: (indexed_expr
+                                              root: (primary_expr
+                                                (literal
+                                                  (bool))))))))))))))))))))))))))
 
 ===
 Assignment bool
@@ -216,15 +424,31 @@ b = false
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (bool)))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (bool)))))))))))))
   (assign
     left: (var_path)
     right: (expr
-      base: (primary_expr
-        (literal
-          (bool))))))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (bool))))))))))))))
 
 ===
 Assignment mixed list
@@ -236,29 +460,69 @@ Assignment mixed list
 
 (source_file
   (expr
-    base: (primary_expr
-      (literal
-        (list
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (int))))
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (bool))))
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    content: (string_content))
-                  end: (string_end)))))
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (float)))))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (literal
+                        (list
+                          list_entry: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (int))))))))))))
+                          list_entry: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (bool))))))))))))
+                          list_entry: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (string
+                                                  start: (string_start)
+                                                  contents: (string_contents
+                                                    content: (string_content))
+                                                  end: (string_end)))))))))))))
+                          list_entry: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (float)))))))))))))))))))))))))
 
 ===
 Assignment nested list
@@ -270,42 +534,114 @@ Assignment nested list
 
 (source_file
   (expr
-    base: (primary_expr
-      (literal
-        (list
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (int))))
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (bool))))
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (list
-                  list_entry: (expr
-                    base: (primary_expr
-                      (literal
-                        (string
-                          start: (string_start)
-                          contents: (string_contents
-                            content: (string_content))
-                          end: (string_end)))))
-                  list_entry: (expr
-                    base: (primary_expr
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
                       (literal
                         (list
                           list_entry: (expr
-                            base: (primary_expr
-                              (literal
-                                (int))))
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (int))))))))))))
                           list_entry: (expr
-                            base: (primary_expr
-                              (literal
-                                (int))))))))))))
-          list_entry: (expr
-            base: (primary_expr
-              (literal
-                (float)))))))))
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (bool))))))))))))
+                          list_entry: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (list
+                                                  list_entry: (expr
+                                                    (ternary_expr
+                                                      delegate: (or_expr
+                                                        delegate: (and_expr
+                                                          delegate: (compare_expr
+                                                            delegate: (add_expr
+                                                              delegate: (mult_expr
+                                                                delegate: (unary_expr
+                                                                  delegate: (indexed_expr
+                                                                    root: (primary_expr
+                                                                      (literal
+                                                                        (string
+                                                                          start: (string_start)
+                                                                          contents: (string_contents
+                                                                            content: (string_content))
+                                                                          end: (string_end)))))))))))))
+                                                  list_entry: (expr
+                                                    (ternary_expr
+                                                      delegate: (or_expr
+                                                        delegate: (and_expr
+                                                          delegate: (compare_expr
+                                                            delegate: (add_expr
+                                                              delegate: (mult_expr
+                                                                delegate: (unary_expr
+                                                                  delegate: (indexed_expr
+                                                                    root: (primary_expr
+                                                                      (literal
+                                                                        (list
+                                                                          list_entry: (expr
+                                                                            (ternary_expr
+                                                                              delegate: (or_expr
+                                                                                delegate: (and_expr
+                                                                                  delegate: (compare_expr
+                                                                                    delegate: (add_expr
+                                                                                      delegate: (mult_expr
+                                                                                        delegate: (unary_expr
+                                                                                          delegate: (indexed_expr
+                                                                                            root: (primary_expr
+                                                                                              (literal
+                                                                                                (int))))))))))))
+                                                                          list_entry: (expr
+                                                                            (ternary_expr
+                                                                              delegate: (or_expr
+                                                                                delegate: (and_expr
+                                                                                  delegate: (compare_expr
+                                                                                    delegate: (add_expr
+                                                                                      delegate: (mult_expr
+                                                                                        delegate: (unary_expr
+                                                                                          delegate: (indexed_expr
+                                                                                            root: (primary_expr
+                                                                                              (literal
+                                                                                                (int))))))))))))))))))))))))))))))))))))
+                          list_entry: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (float)))))))))))))))))))))))))

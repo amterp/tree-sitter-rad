@@ -8,7 +8,16 @@ print()
 
 (source_file
   (expr
-    base: (call)))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call))))))))))))
 
 ===
 Basic 1
@@ -20,9 +29,25 @@ print(hi)
 
 (source_file
   (expr
-    base: (call
-      arg: (expr
-        base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))))))))))))))
 
 ===
 Basic 2+
@@ -34,13 +59,43 @@ print(hi, hello, hey)
 
 (source_file
   (expr
-    base: (call
-      arg: (expr
-        base: (var_path))
-      arg: (expr
-        base: (var_path))
-      arg: (expr
-        base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))))))))))))))
 
 ===
 Basic 2+ trailing
@@ -52,13 +107,43 @@ print(hi, hello, hey, )
 
 (source_file
   (expr
-    base: (call
-      arg: (expr
-        base: (var_path))
-      arg: (expr
-        base: (var_path))
-      arg: (expr
-        base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))))))))))))))
 
 ===
 Basic 2+ trailing multiline
@@ -74,13 +159,43 @@ print(
 
 (source_file
   (expr
-    base: (call
-      arg: (expr
-        base: (var_path))
-      arg: (expr
-        base: (var_path))
-      arg: (expr
-        base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))))))))))))))
 
 ===
 Only named 1
@@ -92,10 +207,26 @@ print(foo=bar)
 
 (source_file
   (expr
-    base: (call
-      named_arg: (call_named_arg
-        value: (expr
-          base: (var_path))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call
+                        named_arg: (call_named_arg
+                          value: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path))))))))))))))))))))))
 
 ===
 Only named 2+
@@ -107,16 +238,46 @@ print(foo=bar, a = b, c = d, )
 
 (source_file
   (expr
-    base: (call
-      named_arg: (call_named_arg
-        value: (expr
-          base: (var_path)))
-      named_arg: (call_named_arg
-        value: (expr
-          base: (var_path)))
-      named_arg: (call_named_arg
-        value: (expr
-          base: (var_path))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call
+                        named_arg: (call_named_arg
+                          value: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path))))))))))
+                        named_arg: (call_named_arg
+                          value: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path))))))))))
+                        named_arg: (call_named_arg
+                          value: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path))))))))))))))))))))))
 
 ===
 Mixed
@@ -128,17 +289,61 @@ print(hello, hi, foo=bar, a = b, c = d, )
 
 (source_file
   (expr
-    base: (call
-      arg: (expr
-        base: (var_path))
-      arg: (expr
-        base: (var_path))
-      named_arg: (call_named_arg
-        value: (expr
-          base: (var_path)))
-      named_arg: (call_named_arg
-        value: (expr
-          base: (var_path)))
-      named_arg: (call_named_arg
-        value: (expr
-          base: (var_path))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (call
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        arg: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        named_arg: (call_named_arg
+                          value: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path))))))))))
+                        named_arg: (call_named_arg
+                          value: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path))))))))))
+                        named_arg: (call_named_arg
+                          value: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path))))))))))))))))))))))

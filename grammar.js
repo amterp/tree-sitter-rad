@@ -24,8 +24,9 @@ const PREC = {
   times: 19,
   unary: 20,
   power: 21,
-  call: 22,
-  incr_decr: 23,
+  var_path: 22,
+  call: 23,
+  incr_decr: 24,
 };
 
 const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
@@ -69,13 +70,6 @@ module.exports = grammar({
     ')',
     '}',
   ],
-
-  conflicts: $ => [
-    [$.primary_expr, $.var_path],
-  ],
-
-  // inline: $ => [
-  // ],
 
   word: $ => $.identifierRegex,
 
@@ -127,93 +121,91 @@ module.exports = grammar({
 
     // Expressions
 
-    expr: $ => prec.right(choice(
-      seq(
-        field("base", choice(
-          $._base_expr,
-          $.call,
-        )),
-        repeat($._indexing),
-      ),
-      field('base', $.var_path),
-    )),
+    expr: $ => $.ternary_expr,
 
-    _base_expr: $ => choice(
-      $.comparison_op,
-      $.not_op,
-      $.bool_op,
-      $.primary_expr,
-      $.ternary,
-    ),
-
-    primary_expr: $ => choice(
-      $.binary_op,
-      $.literal,
-      $.unary_op,
-      $.list_comprehension,
-      $.parenthesized_expr,
-      $._identifier,
-    ),
-
-    not_op: $ => prec(PREC.not, seq(
-      field("op", 'not'),
-      field('arg', $.expr),
-    )),
-
-    bool_op: $ => choice(
-      prec.left(PREC.and, seq(
-        field('left', $.expr),
-        field('op', 'and'),
-        field('right', $.expr),
+    ternary_expr: $ => choice(
+      // Ternary operator (lowest precedence; right associative)
+      prec.right(PREC.ternary, seq(
+        field('condition', $.or_expr),
+        '?',
+        field('true_branch', $.expr),
+        ':',
+        field('false_branch', $.ternary_expr)
       )),
+      field("delegate", $.or_expr),
+    ),
+
+    or_expr: $ => choice(
       prec.left(PREC.or, seq(
-        field('left', $.expr),
+        field('left', $.or_expr),
         field('op', 'or'),
-        field('right', $.expr),
+        field('right', $.and_expr)
       )),
+      field("delegate", $.and_expr),
     ),
 
-    binary_op: $ => {
-      const table = [
-        [prec.left, '+', PREC.plus],
-        [prec.left, '-', PREC.plus],
-        [prec.left, '*', PREC.times],
-        [prec.left, '/', PREC.times],
-        [prec.left, '%', PREC.times],
-      ];
-
-      // @ts-ignore
-      return choice(...table.map(([fn, op, precedence]) => fn(precedence, seq(
-        field('left', $.expr),
-        // @ts-ignore
-        field('op', op),
-        field('right', $.expr),
-      ))));
-    },
-
-    comparison_op: $ => prec.left(PREC.compare, seq(
-      field("left", $.expr),
-      field("op", choice(
-        '<',
-        '<=',
-        '==',
-        '!=',
-        '>=',
-        '>',
-        'in',
-        $.not_in,
+    and_expr: $ => choice(
+      prec.left(PREC.and, seq(
+        field('left', $.and_expr),
+        field('op', 'and'),
+        field('right', $.compare_expr)
       )),
-      field("right", $.expr),
-    )),
+      field("delegate", $.compare_expr),
+    ),
+
+    compare_expr: $ => choice(
+      prec.left(PREC.compare, seq(
+        field('left', $.compare_expr),
+        field('op', choice('<', '<=', '==', '!=', '>=', '>', 'in', $.not_in)),
+        field('right', $.add_expr)
+      )),
+      field("delegate", $.add_expr),
+    ),
 
     not_in: $ => seq('not', 'in'),
 
-    unary_op: $ => prec(PREC.unary, seq(
-      field("op", $._unary_op_sign),
-      field('arg', $.expr),
+    add_expr: $ => choice(
+      prec.left(PREC.plus, seq(
+        field('left', $.add_expr),
+        field('op', $._unary_op_sign),
+        field('right', $.mult_expr)
+      )),
+      field("delegate", $.mult_expr),
+    ),
+
+    mult_expr: $ => choice(
+      prec.left(PREC.times, seq(
+        field('left', $.mult_expr),
+        field('op', choice('*', '/', '%')),
+        field('right', $.unary_expr)
+      )),
+      field("delegate", $.unary_expr),
+    ),
+
+    unary_expr: $ => choice(
+      prec(PREC.unary, seq(
+        field('op', choice($._unary_op_sign, 'not')),
+        field('arg', $.unary_expr)
+      )),
+      field("delegate", $._postfix_expr),
+    ),
+
+    _postfix_expr: $ => choice(
+      $.indexed_expr,
+      $.var_path,
+    ),
+
+    indexed_expr: $ => prec.left(PREC.call, seq(
+      field("root", $.primary_expr),
+      repeat($._indexing)
     )),
 
-    _unary_op_sign: $ => choice('+', '-'),
+    primary_expr: $ => choice(
+      $.literal,
+      $.list_comprehension,
+      $.parenthesized_expr,
+      $.call,
+    ),
 
     parenthesized_expr: $ => prec(PREC.parenthesized_expr, seq(
       '(',
@@ -234,6 +226,8 @@ module.exports = grammar({
       '=',
       field('value', $.expr),
     ),
+
+    _unary_op_sign: $ => choice('+', '-'),
 
     // Assignment
 
@@ -260,28 +254,28 @@ module.exports = grammar({
     _left_hand_side: $ => commaSep1(field("left", $.var_path)),
 
     // todo rename to identifier_path?
-    var_path: $ => prec.right(seq(
+    var_path: $ => prec.left(PREC.var_path, seq(
       field("root", $._identifier),
       repeat($._indexing),
     )),
 
     // expected to look like var_path
-    incr_decr_left: $ => prec.right(PREC.incr_decr, seq(
+    incr_decr_left: $ => prec.left(PREC.incr_decr, seq(
       field("root", $._identifier),
       repeat($._indexing),
     )),
 
-    _indexing: $ => choice(
+    _indexing: $ => prec(PREC.call, choice(
       seq(
         '[',
         field('indexing', choice(
           $.expr,
           $.slice,
         )),
-        ']',
+        ']'
       ),
-      seq(".", field("indexing", $._identifier)),
-    ),
+      seq('.', field("indexing", $._identifier)),
+    )),
 
     slice: $ => seq(
       optional(field("start", $.expr)),
@@ -385,14 +379,6 @@ module.exports = grammar({
       ':',
       commaSep1(field("case_value", $.expr)),
     ),
-
-    ternary: $ => prec.right(PREC.ternary, seq(
-      field('condition', $.expr),
-      '?',
-      field('true_branch', $.expr),
-      ':',
-      field('false_branch', $.expr),
-    )),
 
     shell_stmt: $ => seq(
       optional(seq($._left_hand_side, "=")),

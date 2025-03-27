@@ -11,7 +11,14 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)))
 
 ===
@@ -27,7 +34,14 @@ request url:
   (rad_block
     rad_type: (request_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)))
 
 ===
@@ -58,7 +72,14 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)
     stmt: (rad_sort_stmt)))
 
@@ -76,7 +97,14 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)
     stmt: (rad_sort_stmt
       specifier: (rad_sort_specifier
@@ -103,29 +131,50 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_map
         lambda: (lambda
           expr: (expr
-            base: (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    interpolation: (interpolation
-                      expr: (expr
-                        base: (primary_expr
-                          (binary_op
-                            left: (expr
-                              base: (var_path))
-                            right: (expr
-                              base: (primary_expr
-                                (literal
-                                  (int))))))))
-                    content: (string_content))
-                  end: (string_end))))))))))
+            (ternary_expr
+              delegate: (or_expr
+                delegate: (and_expr
+                  delegate: (compare_expr
+                    delegate: (add_expr
+                      delegate: (mult_expr
+                        delegate: (unary_expr
+                          delegate: (indexed_expr
+                            root: (primary_expr
+                              (literal
+                                (string
+                                  start: (string_start)
+                                  contents: (string_contents
+                                    interpolation: (interpolation
+                                      expr: (expr
+                                        (ternary_expr
+                                          delegate: (or_expr
+                                            delegate: (and_expr
+                                              delegate: (compare_expr
+                                                delegate: (add_expr
+                                                  delegate: (mult_expr
+                                                    left: (mult_expr
+                                                      delegate: (unary_expr
+                                                        delegate: (var_path)))
+                                                    right: (unary_expr
+                                                      delegate: (indexed_expr
+                                                        root: (primary_expr
+                                                          (literal
+                                                            (int)))))))))))))
+                                    content: (string_content))
+                                  end: (string_end))))))))))))))))))
 
 ===
 Rad map more
@@ -142,29 +191,50 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_map
         lambda: (lambda
           expr: (expr
-            base: (primary_expr
-              (literal
-                (string
-                  start: (string_start)
-                  contents: (string_contents
-                    interpolation: (interpolation
-                      expr: (expr
-                        base: (primary_expr
-                          (binary_op
-                            left: (expr
-                              base: (var_path))
-                            right: (expr
-                              base: (primary_expr
-                                (literal
-                                  (int))))))))
-                    content: (string_content))
-                  end: (string_end))))))))))
+            (ternary_expr
+              delegate: (or_expr
+                delegate: (and_expr
+                  delegate: (compare_expr
+                    delegate: (add_expr
+                      delegate: (mult_expr
+                        delegate: (unary_expr
+                          delegate: (indexed_expr
+                            root: (primary_expr
+                              (literal
+                                (string
+                                  start: (string_start)
+                                  contents: (string_contents
+                                    interpolation: (interpolation
+                                      expr: (expr
+                                        (ternary_expr
+                                          delegate: (or_expr
+                                            delegate: (and_expr
+                                              delegate: (compare_expr
+                                                delegate: (add_expr
+                                                  delegate: (mult_expr
+                                                    left: (mult_expr
+                                                      delegate: (unary_expr
+                                                        delegate: (var_path)))
+                                                    right: (unary_expr
+                                                      delegate: (indexed_expr
+                                                        root: (primary_expr
+                                                          (literal
+                                                            (int)))))))))))))
+                                    content: (string_content))
+                                  end: (string_end))))))))))))))))))
 
 ===
 Rad color
@@ -182,31 +252,68 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_color
         color: (expr
-          base: (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end)))))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (indexed_expr
+                          root: (primary_expr
+                            (literal
+                              (string
+                                start: (string_start)
+                                contents: (string_contents
+                                  content: (string_content))
+                                end: (string_end)))))))))))))
         regex: (expr
-          base: (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end))))))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (indexed_expr
+                          root: (primary_expr
+                            (literal
+                              (string
+                                start: (string_start)
+                                contents: (string_contents
+                                  content: (string_content))
+                                end: (string_end))))))))))))))
       mod_stmt: (rad_field_mod_color
         color: (expr
-          base: (var_path))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (var_path)))))))))
         regex: (expr
-          base: (primary_expr))))))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (var_path)))))))))))))
 
 ===
 Rad if stmt
@@ -232,38 +339,89 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (rad_field_stmt)
     stmt: (rad_if_stmt
       alt: (rad_if_alt
         condition: (expr
-          base: (var_path))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (var_path)))))))))
         stmt: (rad_field_modifier_stmt
           mod_stmt: (rad_field_mod_color
             color: (expr
-              base: (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content))
-                    end: (string_end)))))
+              (ternary_expr
+                delegate: (or_expr
+                  delegate: (and_expr
+                    delegate: (compare_expr
+                      delegate: (add_expr
+                        delegate: (mult_expr
+                          delegate: (unary_expr
+                            delegate: (indexed_expr
+                              root: (primary_expr
+                                (literal
+                                  (string
+                                    start: (string_start)
+                                    contents: (string_contents
+                                      content: (string_content))
+                                    end: (string_end)))))))))))))
             regex: (expr
-              base: (primary_expr
-                (literal
-                  (string
-                    start: (string_start)
-                    contents: (string_contents
-                      content: (string_content))
-                    end: (string_end))))))
+              (ternary_expr
+                delegate: (or_expr
+                  delegate: (and_expr
+                    delegate: (compare_expr
+                      delegate: (add_expr
+                        delegate: (mult_expr
+                          delegate: (unary_expr
+                            delegate: (indexed_expr
+                              root: (primary_expr
+                                (literal
+                                  (string
+                                    start: (string_start)
+                                    contents: (string_contents
+                                      content: (string_content))
+                                    end: (string_end))))))))))))))
           mod_stmt: (rad_field_mod_color
             color: (expr
-              base: (var_path))
+              (ternary_expr
+                delegate: (or_expr
+                  delegate: (and_expr
+                    delegate: (compare_expr
+                      delegate: (add_expr
+                        delegate: (mult_expr
+                          delegate: (unary_expr
+                            delegate: (var_path)))))))))
             regex: (expr
-              base: (var_path)))))
+              (ternary_expr
+                delegate: (or_expr
+                  delegate: (and_expr
+                    delegate: (compare_expr
+                      delegate: (add_expr
+                        delegate: (mult_expr
+                          delegate: (unary_expr
+                            delegate: (var_path))))))))))))
       alt: (rad_if_alt
         condition: (expr
-          base: (var_path))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (var_path)))))))))
         stmt: (rad_field_stmt)
         stmt: (rad_sort_stmt))
       alt: (rad_else_alt
@@ -271,16 +429,36 @@ rad url:
           mod_stmt: (rad_field_mod_map
             lambda: (lambda
               expr: (expr
-                base: (primary_expr
-                  (binary_op
-                    left: (expr
-                      base: (var_path))
-                    right: (expr
-                      base: (primary_expr
-                        (literal
-                          (int)))))))))
+                (ternary_expr
+                  delegate: (or_expr
+                    delegate: (and_expr
+                      delegate: (compare_expr
+                        delegate: (add_expr
+                          delegate: (mult_expr
+                            left: (mult_expr
+                              delegate: (unary_expr
+                                delegate: (var_path)))
+                            right: (unary_expr
+                              delegate: (indexed_expr
+                                root: (primary_expr
+                                  (literal
+                                    (int))))))))))))))
           mod_stmt: (rad_field_mod_color
             color: (expr
-              base: (var_path))
+              (ternary_expr
+                delegate: (or_expr
+                  delegate: (and_expr
+                    delegate: (compare_expr
+                      delegate: (add_expr
+                        delegate: (mult_expr
+                          delegate: (unary_expr
+                            delegate: (var_path)))))))))
             regex: (expr
-              base: (primary_expr))))))))
+              (ternary_expr
+                delegate: (or_expr
+                  delegate: (and_expr
+                    delegate: (compare_expr
+                      delegate: (add_expr
+                        delegate: (mult_expr
+                          delegate: (unary_expr
+                            delegate: (var_path)))))))))))))))

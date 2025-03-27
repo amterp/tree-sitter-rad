@@ -13,42 +13,126 @@ a[:b]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (slice)))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (slice))))))))))
   (expr
-    base: (var_path
-      indexing: (slice
-        start: (expr
-          base: (primary_expr
-            (literal
-              (int)))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (slice
+                      start: (expr
+                        (ternary_expr
+                          delegate: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                delegate: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      delegate: (indexed_expr
+                                        root: (primary_expr
+                                          (literal
+                                            (int))))))))))))))))))))))
   (expr
-    base: (var_path
-      indexing: (slice
-        end: (expr
-          base: (primary_expr
-            (unary_op
-              arg: (expr
-                base: (primary_expr
-                  (literal
-                    (int))))))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (slice
+                      end: (expr
+                        (ternary_expr
+                          delegate: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                delegate: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      arg: (unary_expr
+                                        delegate: (indexed_expr
+                                          root: (primary_expr
+                                            (literal
+                                              (int)))))))))))))))))))))))
   (expr
-    base: (var_path
-      indexing: (slice
-        start: (expr
-          base: (var_path))
-        end: (expr
-          base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (slice
+                      start: (expr
+                        (ternary_expr
+                          delegate: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                delegate: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      delegate: (var_path)))))))))
+                      end: (expr
+                        (ternary_expr
+                          delegate: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                delegate: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      delegate: (var_path)))))))))))))))))))
   (expr
-    base: (var_path
-      indexing: (slice
-        start: (expr
-          base: (var_path)))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (slice
+                      start: (expr
+                        (ternary_expr
+                          delegate: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                delegate: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      delegate: (var_path)))))))))))))))))))
   (expr
-    base: (var_path
-      indexing: (slice
-        end: (expr
-          base: (var_path))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (slice
+                      end: (expr
+                        (ternary_expr
+                          delegate: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                delegate: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      delegate: (var_path))))))))))))))))))))
 
 ===
 With ternaries
@@ -60,41 +144,92 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
 
 (source_file
   (expr
-    base: (var_path
-      indexing: (slice
-        start: (expr
-          base: (ternary
-            condition: (expr
-              base: (comparison_op
-                left: (expr
-                  base: (var_path))
-                right: (expr
-                  base: (primary_expr
-                    (literal
-                      (int))))))
-            true_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))
-            false_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))))
-        end: (expr
-          base: (ternary
-            condition: (expr
-              base: (comparison_op
-                left: (expr
-                  base: (var_path))
-                right: (expr
-                  base: (primary_expr
-                    (literal
-                      (int))))))
-            true_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))
-            false_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (var_path
+                    indexing: (slice
+                      start: (expr
+                        (ternary_expr
+                          condition: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                left: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))
+                                right: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      delegate: (indexed_expr
+                                        root: (primary_expr
+                                          (literal
+                                            (int))))))))))
+                          true_branch: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (int))))))))))))
+                          false_branch: (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (indexed_expr
+                                          root: (primary_expr
+                                            (literal
+                                              (int)))))))))))))
+                      end: (expr
+                        (ternary_expr
+                          condition: (or_expr
+                            delegate: (and_expr
+                              delegate: (compare_expr
+                                left: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))
+                                right: (add_expr
+                                  delegate: (mult_expr
+                                    delegate: (unary_expr
+                                      delegate: (indexed_expr
+                                        root: (primary_expr
+                                          (literal
+                                            (int))))))))))
+                          true_branch: (expr
+                            (ternary_expr
+                              delegate: (or_expr
+                                delegate: (and_expr
+                                  delegate: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (indexed_expr
+                                            root: (primary_expr
+                                              (literal
+                                                (int))))))))))))
+                          false_branch: (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (indexed_expr
+                                          root: (primary_expr
+                                            (literal
+                                              (int))))))))))))))))))))))))

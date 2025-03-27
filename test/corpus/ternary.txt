@@ -8,31 +8,53 @@ a > 2 ? "true" : "false"
 
 (source_file
   (expr
-    base: (ternary
-      condition: (expr
-        base: (comparison_op
-          left: (expr
-            base: (var_path))
-          right: (expr
-            base: (primary_expr
-              (literal
-                (int))))))
+    (ternary_expr
+      condition: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            left: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))
+            right: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (literal
+                        (int))))))))))
       true_branch: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end)))))
-      false_branch: (expr
-        base: (primary_expr
-          (literal
-            (string
-              start: (string_start)
-              contents: (string_contents
-                content: (string_content))
-              end: (string_end))))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end)))))))))))))
+      false_branch: (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (string
+                            start: (string_start)
+                            contents: (string_contents
+                              content: (string_content))
+                            end: (string_end)))))))))))))))
 
 ===
 Assignment
@@ -46,31 +68,53 @@ b = a > 2 ? "true" : "false"
   (assign
     left: (var_path)
     right: (expr
-      base: (ternary
-        condition: (expr
-          base: (comparison_op
-            left: (expr
-              base: (var_path))
-            right: (expr
-              base: (primary_expr
-                (literal
-                  (int))))))
+      (ternary_expr
+        condition: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              left: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (var_path)))))
+              right: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (int))))))))))
         true_branch: (expr
-          base: (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end)))))
-        false_branch: (expr
-          base: (primary_expr
-            (literal
-              (string
-                start: (string_start)
-                contents: (string_contents
-                  content: (string_content))
-                end: (string_end)))))))))
+          (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (indexed_expr
+                          root: (primary_expr
+                            (literal
+                              (string
+                                start: (string_start)
+                                contents: (string_contents
+                                  content: (string_content))
+                                end: (string_end)))))))))))))
+        false_branch: (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (string
+                              start: (string_start)
+                              contents: (string_contents
+                                content: (string_content))
+                              end: (string_end))))))))))))))))
 
 ===
 Nested
@@ -84,51 +128,101 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
   (assign
     left: (var_path)
     right: (expr
-      base: (ternary
-        condition: (expr
-          base: (comparison_op
-            left: (expr
-              base: (var_path))
-            right: (expr
-              base: (primary_expr
-                (literal
-                  (int))))))
+      (ternary_expr
+        condition: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              left: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (var_path)))))
+              right: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (indexed_expr
+                      root: (primary_expr
+                        (literal
+                          (int))))))))))
         true_branch: (expr
-          base: (ternary
-            condition: (expr
-              base: (comparison_op
-                left: (expr
-                  base: (var_path))
-                right: (expr
-                  base: (primary_expr
-                    (literal
-                      (int))))))
+          (ternary_expr
+            condition: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  left: (compare_expr
+                    delegate: (add_expr
+                      delegate: (mult_expr
+                        delegate: (unary_expr
+                          delegate: (var_path)))))
+                  right: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (indexed_expr
+                          root: (primary_expr
+                            (literal
+                              (int))))))))))
             true_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))
-            false_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))))
-        false_branch: (expr
-          base: (ternary
-            condition: (expr
-              base: (comparison_op
-                left: (expr
-                  base: (var_path))
-                right: (expr
-                  base: (primary_expr
-                    (literal
-                      (int))))))
-            true_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))
-            false_branch: (expr
-              base: (primary_expr
-                (literal
-                  (int))))))))))
+              (ternary_expr
+                delegate: (or_expr
+                  delegate: (and_expr
+                    delegate: (compare_expr
+                      delegate: (add_expr
+                        delegate: (mult_expr
+                          delegate: (unary_expr
+                            delegate: (indexed_expr
+                              root: (primary_expr
+                                (literal
+                                  (int))))))))))))
+            false_branch: (ternary_expr
+              delegate: (or_expr
+                delegate: (and_expr
+                  delegate: (compare_expr
+                    delegate: (add_expr
+                      delegate: (mult_expr
+                        delegate: (unary_expr
+                          delegate: (indexed_expr
+                            root: (primary_expr
+                              (literal
+                                (int)))))))))))))
+        false_branch: (ternary_expr
+          condition: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                left: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (var_path)))))
+                right: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int))))))))))
+          true_branch: (expr
+            (ternary_expr
+              delegate: (or_expr
+                delegate: (and_expr
+                  delegate: (compare_expr
+                    delegate: (add_expr
+                      delegate: (mult_expr
+                        delegate: (unary_expr
+                          delegate: (indexed_expr
+                            root: (primary_expr
+                              (literal
+                                (int))))))))))))
+          false_branch: (ternary_expr
+            delegate: (or_expr
+              delegate: (and_expr
+                delegate: (compare_expr
+                  delegate: (add_expr
+                    delegate: (mult_expr
+                      delegate: (unary_expr
+                        delegate: (indexed_expr
+                          root: (primary_expr
+                            (literal
+                              (int))))))))))))))))
 
 ===
 Multiline

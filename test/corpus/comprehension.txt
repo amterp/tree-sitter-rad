@@ -8,20 +8,41 @@ Comprehension no filter
 
 (source_file
   (expr
-    base: (primary_expr
-      (list_comprehension
-        expr: (expr
-          base: (primary_expr
-            (binary_op
-              left: (expr
-                base: (var_path))
-              right: (expr
-                base: (primary_expr
-                  (literal
-                    (int)))))))
-        lefts: (for_lefts)
-        right: (expr
-          base: (var_path))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (list_comprehension
+                        expr: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      left: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path)))
+                                      right: (unary_expr
+                                        delegate: (indexed_expr
+                                          root: (primary_expr
+                                            (literal
+                                              (int))))))))))))
+                        lefts: (for_lefts)
+                        right: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))))))))))))))
 
 ===
 Comprehension w/ filter
@@ -33,25 +54,55 @@ Comprehension w/ filter
 
 (source_file
   (expr
-    base: (primary_expr
-      (list_comprehension
-        expr: (expr
-          base: (primary_expr
-            (binary_op
-              left: (expr
-                base: (var_path))
-              right: (expr
-                base: (primary_expr
-                  (literal
-                    (int)))))))
-        lefts: (for_lefts)
-        right: (expr
-          base: (var_path))
-        condition: (expr
-          base: (comparison_op
-            left: (expr
-              base: (var_path))
-            right: (expr
-              base: (primary_expr
-                (literal
-                  (int))))))))))
+    (ternary_expr
+      delegate: (or_expr
+        delegate: (and_expr
+          delegate: (compare_expr
+            delegate: (add_expr
+              delegate: (mult_expr
+                delegate: (unary_expr
+                  delegate: (indexed_expr
+                    root: (primary_expr
+                      (list_comprehension
+                        expr: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      left: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path)))
+                                      right: (unary_expr
+                                        delegate: (indexed_expr
+                                          root: (primary_expr
+                                            (literal
+                                              (int))))))))))))
+                        lefts: (for_lefts)
+                        right: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  delegate: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (var_path)))))))))
+                        condition: (expr
+                          (ternary_expr
+                            delegate: (or_expr
+                              delegate: (and_expr
+                                delegate: (compare_expr
+                                  left: (compare_expr
+                                    delegate: (add_expr
+                                      delegate: (mult_expr
+                                        delegate: (unary_expr
+                                          delegate: (var_path)))))
+                                  right: (add_expr
+                                    delegate: (mult_expr
+                                      delegate: (unary_expr
+                                        delegate: (indexed_expr
+                                          root: (primary_expr
+                                            (literal
+                                              (int))))))))))))))))))))))))

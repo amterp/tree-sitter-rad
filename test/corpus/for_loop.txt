@@ -12,19 +12,42 @@ for i in nums:
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (assign
       left: (var_path)
       right: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     stmt: (assign
       left: (var_path)
       right: (expr
-        base: (primary_expr
-          (literal
-            (int)))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))))
 
 ===
 i, item
@@ -40,19 +63,42 @@ for i, item in nums:
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (assign
       left: (var_path)
       right: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     stmt: (assign
       left: (var_path)
       right: (expr
-        base: (primary_expr
-          (literal
-            (int)))))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))))
 
 ===
 break, continue
@@ -72,22 +118,52 @@ for i in nums:
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (assign
       left: (var_path)
       right: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     stmt: (break_stmt))
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      base: (var_path))
+      (ternary_expr
+        delegate: (or_expr
+          delegate: (and_expr
+            delegate: (compare_expr
+              delegate: (add_expr
+                delegate: (mult_expr
+                  delegate: (unary_expr
+                    delegate: (var_path)))))))))
     stmt: (assign
       left: (var_path)
       right: (expr
-        base: (primary_expr
-          (literal
-            (int)))))
+        (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (indexed_expr
+                        root: (primary_expr
+                          (literal
+                            (int)))))))))))))
     stmt: (continue_stmt)))
