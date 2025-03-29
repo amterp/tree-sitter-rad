@@ -39,16 +39,6 @@ module.exports = grammar({
     /[\s\t\f\uFEFF\u2060\u200B]/,
   ],
 
-  // todo can we get rid of this? or doc it
-  supertypes: $ => [
-    $._simple_stmt,
-    $._complex_stmt,
-    // $.expr,
-    // $.primary_expr,
-    // $.pattern,
-    // $.parameter,
-  ],
-
   externals: $ => [
     $._newline,
     $._indent,
@@ -234,7 +224,7 @@ module.exports = grammar({
     assign: $ => seq(
       $._left_hand_side,
       '=',
-      field('right', $._right_hand_side),
+      commaSep1(field("right", $._right_hand_side)),
     ),
 
     compound_assign: $ => seq(

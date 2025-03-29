@@ -1,69 +1,5 @@
 [
   {
-    "type": "_complex_stmt",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "defer_block",
-        "named": true
-      },
-      {
-        "type": "for_loop",
-        "named": true
-      },
-      {
-        "type": "if_stmt",
-        "named": true
-      },
-      {
-        "type": "rad_block",
-        "named": true
-      },
-      {
-        "type": "switch_stmt",
-        "named": true
-      }
-    ]
-  },
-  {
-    "type": "_simple_stmt",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "assign",
-        "named": true
-      },
-      {
-        "type": "break_stmt",
-        "named": true
-      },
-      {
-        "type": "compound_assign",
-        "named": true
-      },
-      {
-        "type": "continue_stmt",
-        "named": true
-      },
-      {
-        "type": "del_stmt",
-        "named": true
-      },
-      {
-        "type": "expr",
-        "named": true
-      },
-      {
-        "type": "incr_decr",
-        "named": true
-      },
-      {
-        "type": "shell_stmt",
-        "named": true
-      }
-    ]
-  },
-  {
     "type": "add_expr",
     "named": true,
     "fields": {
@@ -578,7 +514,7 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -734,11 +670,55 @@
         "required": false,
         "types": [
           {
-            "type": "_complex_stmt",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "_simple_stmt",
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
             "named": true
           }
         ]
@@ -939,11 +919,55 @@
         "required": false,
         "types": [
           {
-            "type": "_complex_stmt",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "_simple_stmt",
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
             "named": true
           }
         ]
@@ -975,11 +999,55 @@
         "required": false,
         "types": [
           {
-            "type": "_complex_stmt",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "_simple_stmt",
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
             "named": true
           }
         ]
@@ -1126,11 +1194,55 @@
         "required": false,
         "types": [
           {
-            "type": "_complex_stmt",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "_simple_stmt",
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
             "named": true
           }
         ]
@@ -1196,7 +1308,35 @@
         "required": false,
         "types": [
           {
-            "type": "_simple_stmt",
+            "type": "assign",
+            "named": true
+          },
+          {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
             "named": true
           }
         ]
@@ -1206,11 +1346,55 @@
         "required": false,
         "types": [
           {
-            "type": "_complex_stmt",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "_simple_stmt",
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
             "named": true
           }
         ]
@@ -1556,7 +1740,35 @@
         "required": false,
         "types": [
           {
-            "type": "_simple_stmt",
+            "type": "assign",
+            "named": true
+          },
+          {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
             "named": true
           }
         ]
@@ -1989,7 +2201,35 @@
         "required": false,
         "types": [
           {
-            "type": "_simple_stmt",
+            "type": "assign",
+            "named": true
+          },
+          {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
             "named": true
           }
         ]
@@ -2154,15 +2394,35 @@
       "required": false,
       "types": [
         {
-          "type": "_complex_stmt",
-          "named": true
-        },
-        {
-          "type": "_simple_stmt",
-          "named": true
-        },
-        {
           "type": "arg_block",
+          "named": true
+        },
+        {
+          "type": "assign",
+          "named": true
+        },
+        {
+          "type": "break_stmt",
+          "named": true
+        },
+        {
+          "type": "compound_assign",
+          "named": true
+        },
+        {
+          "type": "continue_stmt",
+          "named": true
+        },
+        {
+          "type": "defer_block",
+          "named": true
+        },
+        {
+          "type": "del_stmt",
+          "named": true
+        },
+        {
+          "type": "expr",
           "named": true
         },
         {
@@ -2170,7 +2430,31 @@
           "named": true
         },
         {
+          "type": "for_loop",
+          "named": true
+        },
+        {
+          "type": "if_stmt",
+          "named": true
+        },
+        {
+          "type": "incr_decr",
+          "named": true
+        },
+        {
+          "type": "rad_block",
+          "named": true
+        },
+        {
           "type": "shebang",
+          "named": true
+        },
+        {
+          "type": "shell_stmt",
+          "named": true
+        },
+        {
+          "type": "switch_stmt",
           "named": true
         }
       ]

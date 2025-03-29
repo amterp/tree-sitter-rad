@@ -907,12 +907,37 @@
           "value": "="
         },
         {
-          "type": "FIELD",
-          "name": "right",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_right_hand_side"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "right",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_right_hand_side"
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "right",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_right_hand_side"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     },
@@ -4786,8 +4811,5 @@
     }
   ],
   "inline": [],
-  "supertypes": [
-    "_simple_stmt",
-    "_complex_stmt"
-  ]
+  "supertypes": []
 }
