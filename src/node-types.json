@@ -2616,6 +2616,20 @@
     "type": "switch_case",
     "named": true,
     "fields": {
+      "alt": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "switch_case_block",
+            "named": true
+          },
+          {
+            "type": "switch_case_expr",
+            "named": true
+          }
+        ]
+      },
       "case_key": {
         "multiple": true,
         "required": true,
@@ -2625,13 +2639,117 @@
             "named": true
           }
         ]
+      }
+    }
+  },
+  {
+    "type": "switch_case_block",
+    "named": true,
+    "fields": {
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "assign",
+            "named": true
+          },
+          {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
+            "named": true
+          }
+        ]
       },
-      "case_value": {
+      "yield_stmt": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "yield_stmt",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "switch_case_expr",
+    "named": true,
+    "fields": {
+      "value": {
         "multiple": true,
         "required": true,
         "types": [
           {
             "type": "expr",
+            "named": true
+          },
+          {
+            "type": "json_path",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "switch_default",
+    "named": true,
+    "fields": {
+      "alt": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "switch_case_block",
+            "named": true
+          },
+          {
+            "type": "switch_case_expr",
             "named": true
           }
         ]
@@ -2648,6 +2766,16 @@
         "types": [
           {
             "type": "switch_case",
+            "named": true
+          }
+        ]
+      },
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "switch_default",
             "named": true
           }
         ]
@@ -2849,6 +2977,26 @@
     }
   },
   {
+    "type": "yield_stmt",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "json_path",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "!=",
     "named": false
   },
@@ -3030,6 +3178,10 @@
   },
   {
     "type": "continue",
+    "named": false
+  },
+  {
+    "type": "default",
     "named": false
   },
   {
@@ -3238,6 +3390,10 @@
   },
   {
     "type": "unsafe",
+    "named": false
+  },
+  {
+    "type": "yield",
     "named": false
   },
   {

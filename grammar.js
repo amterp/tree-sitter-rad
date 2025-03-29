@@ -360,14 +360,49 @@ module.exports = grammar({
       optional(seq($._left_hand_side, "=")),
       'switch',
       field("discriminant", $.expr),
-      colonBlockField($, $.switch_case, "case"),
+      ":",
+      $._newline,
+      $._indent,
+      field("case", repeat($.switch_case)),
+      optional(field("default", $.switch_default)),
+      $._dedent,
     ),
 
     switch_case: $ => seq(
       "case",
       commaSep1(field("case_key", $.expr)),
-      ':',
-      commaSep1(field("case_value", $.expr)),
+      $._switch_case_value_alt,
+      $._newline,
+    ),
+
+    _switch_case_value_alt: $ => field("alt", choice(
+      $.switch_case_expr,
+      $.switch_case_block,
+    )),
+
+    switch_case_expr: $ => seq(
+      "->",
+      commaSep1(field("value", $._right_hand_side)),
+    ),
+
+    switch_case_block: $ => seq(
+      ":",
+      $._newline,
+      $._indent,
+      field("stmt", repeat($._stmt)),
+      optional(seq(field("yield_stmt", $.yield_stmt), $._newline)),
+      $._dedent,
+    ),
+
+    yield_stmt: $ => seq(
+      "yield",
+      commaSep1(field("value", $._right_hand_side)),
+    ),
+
+    switch_default: $ => seq(
+      "default",
+      $._switch_case_value_alt,
+      $._newline,
     ),
 
     shell_stmt: $ => seq(
