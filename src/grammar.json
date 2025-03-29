@@ -1558,42 +1558,12 @@
           "value": "if"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "FIELD",
-                      "name": "pre_stmt",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "_simple_stmt"
-                      }
-                    },
-                    {
-                      "type": "STRING",
-                      "value": ";"
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "FIELD",
-              "name": "condition",
-              "content": {
-                "type": "SYMBOL",
-                "name": "expr"
-              }
-            }
-          ]
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
         }
       ]
     },

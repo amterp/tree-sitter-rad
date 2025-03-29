@@ -327,10 +327,7 @@ module.exports = grammar({
       colonBlockField($, $._stmt, "stmt"),
     ),
 
-    _if_clause: $ => seq(
-      "if",
-      seq(optional(seq(field("pre_stmt", $._simple_stmt), ";")), field("condition", $.expr)),
-    ),
+    _if_clause: $ => seq("if", field('condition', $.expr)),
 
     else_alt: $ => colonBlockField($, $._stmt, "stmt"),
 

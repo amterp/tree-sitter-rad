@@ -1303,44 +1303,6 @@
           }
         ]
       },
-      "pre_stmt": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "assign",
-            "named": true
-          },
-          {
-            "type": "break_stmt",
-            "named": true
-          },
-          {
-            "type": "compound_assign",
-            "named": true
-          },
-          {
-            "type": "continue_stmt",
-            "named": true
-          },
-          {
-            "type": "del_stmt",
-            "named": true
-          },
-          {
-            "type": "expr",
-            "named": true
-          },
-          {
-            "type": "incr_decr",
-            "named": true
-          },
-          {
-            "type": "shell_stmt",
-            "named": true
-          }
-        ]
-      },
       "stmt": {
         "multiple": true,
         "required": false,
@@ -1731,44 +1693,6 @@
         "types": [
           {
             "type": "for_lefts",
-            "named": true
-          }
-        ]
-      },
-      "pre_stmt": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "assign",
-            "named": true
-          },
-          {
-            "type": "break_stmt",
-            "named": true
-          },
-          {
-            "type": "compound_assign",
-            "named": true
-          },
-          {
-            "type": "continue_stmt",
-            "named": true
-          },
-          {
-            "type": "del_stmt",
-            "named": true
-          },
-          {
-            "type": "expr",
-            "named": true
-          },
-          {
-            "type": "incr_decr",
-            "named": true
-          },
-          {
-            "type": "shell_stmt",
             "named": true
           }
         ]
@@ -2192,44 +2116,6 @@
         "types": [
           {
             "type": "expr",
-            "named": true
-          }
-        ]
-      },
-      "pre_stmt": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "assign",
-            "named": true
-          },
-          {
-            "type": "break_stmt",
-            "named": true
-          },
-          {
-            "type": "compound_assign",
-            "named": true
-          },
-          {
-            "type": "continue_stmt",
-            "named": true
-          },
-          {
-            "type": "del_stmt",
-            "named": true
-          },
-          {
-            "type": "expr",
-            "named": true
-          },
-          {
-            "type": "incr_decr",
-            "named": true
-          },
-          {
-            "type": "shell_stmt",
             "named": true
           }
         ]
@@ -3086,10 +2972,6 @@
   },
   {
     "type": ":",
-    "named": false
-  },
-  {
-    "type": ";",
     "named": false
   },
   {
