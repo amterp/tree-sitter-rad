@@ -25,8 +25,9 @@ const PREC = {
   unary: 20,
   power: 21,
   var_path: 22,
-  call: 23,
-  incr_decr: 24,
+  indexing: 23,
+  call: 24,
+  incr_decr: 25,
 };
 
 const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
@@ -255,7 +256,7 @@ module.exports = grammar({
       repeat($._indexing),
     )),
 
-    _indexing: $ => prec(PREC.call, choice(
+    _indexing: $ => prec(PREC.indexing, choice(
       seq(
         '[',
         field('indexing', choice(
@@ -264,7 +265,7 @@ module.exports = grammar({
         )),
         ']'
       ),
-      seq('.', field("indexing", $._identifier)),
+      seq('.', field("indexing", choice($._identifier, $.call))),
     )),
 
     slice: $ => seq(

@@ -593,7 +593,7 @@
     },
     "indexed_expr": {
       "type": "PREC_LEFT",
-      "value": 23,
+      "value": 24,
       "content": {
         "type": "SEQ",
         "members": [
@@ -663,7 +663,7 @@
     },
     "call": {
       "type": "PREC_RIGHT",
-      "value": 23,
+      "value": 24,
       "content": {
         "type": "SEQ",
         "members": [
@@ -989,7 +989,7 @@
     },
     "incr_decr": {
       "type": "PREC",
-      "value": 24,
+      "value": 25,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1085,7 +1085,7 @@
     },
     "incr_decr_left": {
       "type": "PREC_LEFT",
-      "value": 24,
+      "value": 25,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1154,8 +1154,17 @@
                 "type": "FIELD",
                 "name": "indexing",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "_identifier"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_identifier"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "call"
+                    }
+                  ]
                 }
               }
             ]
