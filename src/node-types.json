@@ -720,6 +720,10 @@
           {
             "type": "switch_stmt",
             "named": true
+          },
+          {
+            "type": "while_loop",
+            "named": true
           }
         ]
       }
@@ -969,6 +973,10 @@
           {
             "type": "switch_stmt",
             "named": true
+          },
+          {
+            "type": "while_loop",
+            "named": true
           }
         ]
       }
@@ -1048,6 +1056,10 @@
           },
           {
             "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "while_loop",
             "named": true
           }
         ]
@@ -1244,6 +1256,10 @@
           {
             "type": "switch_stmt",
             "named": true
+          },
+          {
+            "type": "while_loop",
+            "named": true
           }
         ]
       }
@@ -1357,6 +1373,10 @@
           },
           {
             "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "while_loop",
             "named": true
           }
         ]
@@ -2342,6 +2362,10 @@
         {
           "type": "switch_stmt",
           "named": true
+        },
+        {
+          "type": "while_loop",
+          "named": true
         }
       ]
     }
@@ -2586,6 +2610,10 @@
           },
           {
             "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "while_loop",
             "named": true
           }
         ]
@@ -2857,6 +2885,84 @@
           {
             "type": "identifier",
             "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "while_loop",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "assign",
+            "named": true
+          },
+          {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "while_loop",
+            "named": true
           }
         ]
       }
@@ -3272,6 +3378,10 @@
   },
   {
     "type": "unsafe",
+    "named": false
+  },
+  {
+    "type": "while",
     "named": false
   },
   {

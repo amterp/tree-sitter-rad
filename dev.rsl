@@ -57,13 +57,7 @@ clean = unsafe $`git status --porcelain | grep -q .`
 if not clean:
     $!`git add .`
     $!`git diff HEAD --compact-summary`
-    if not confirm("You've got local changes, commit them ALL first? [y/n] > "):
-        print(red("Exiting!"))
-        print("Your", yellow("git status"), "isn't clean, first commit/shelve/clean any files before releasing a new version.")
-        exit(1)
-    else:
-        $!`git add .`
-        $!`git commit`
+    print(yellow("WARN: Your git status isn't clean, they will be included in the version bump."))
 
 if not confirm("Bumping to version {version}, continue? [y/n] > "):
     print(red("Exiting..."))
@@ -74,14 +68,17 @@ $!`tss version {version}`
 $!`git diff HEAD --compact-summary`
 
 if not confirm("Continue? [y/n] > "):
-    print(red("Resetting and exiting..."))
-    $!`git reset --hard`
+    print(red("Exiting..."))
     exit(1)
 
 $!`git add .`
 
 msg = "Release version {version}"
-$!`git commit -m "{msg}"`
+if clean:
+    $!`git commit -m "{msg}"`
+else:
+    $!`git commit`
+
 $!`git tag -a v{version} -m "{msg}"`
 
 push_cmd = `git push origin main --tags`

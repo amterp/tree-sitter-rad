@@ -311,6 +311,7 @@ module.exports = grammar({
     _complex_stmt: $ => choice(
       $.if_stmt,
       $.for_loop,
+      $.while_loop,
       $.rad_block,
       $.defer_block,
       $.switch_stmt,
@@ -333,6 +334,12 @@ module.exports = grammar({
 
     for_loop: $ => seq(
       $._for_in,
+      colonBlockField($, $._stmt, "stmt"),
+    ),
+
+    while_loop: $ => seq(
+      "while",
+      optional(field("condition", $.expr)),
       colonBlockField($, $._stmt, "stmt"),
     ),
 
