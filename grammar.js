@@ -607,6 +607,7 @@ module.exports = grammar({
 
     _display_block: $ => seq(
       field('rad_type', $.display_keyword),
+      optional(field("source", $.expr)),
       colonBlockField($, $._rad_stmt, "stmt"),
     ),
 
