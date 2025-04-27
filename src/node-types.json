@@ -522,6 +522,10 @@
             "named": true
           },
           {
+            "type": "fn_block",
+            "named": true
+          },
+          {
             "type": "json_path",
             "named": true
           }
@@ -852,6 +856,10 @@
             "named": true
           },
           {
+            "type": "fn_block",
+            "named": true
+          },
+          {
             "type": "json_path",
             "named": true
           }
@@ -1155,6 +1163,94 @@
           },
           {
             "type": "int_arg",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "fn_block",
+    "named": true,
+    "fields": {
+      "param": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "return_stmt": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "return_stmt",
+            "named": true
+          }
+        ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "assign",
+            "named": true
+          },
+          {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "while_loop",
             "named": true
           }
         ]
@@ -1640,7 +1736,7 @@
     "named": true,
     "fields": {
       "expr": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -1649,9 +1745,9 @@
           }
         ]
       },
-      "identifier": {
-        "multiple": false,
-        "required": true,
+      "param": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
             "type": "identifier",
@@ -1944,6 +2040,10 @@
           "named": true
         },
         {
+          "type": "lambda",
+          "named": true
+        },
+        {
           "type": "list_comprehension",
           "named": true
         },
@@ -2228,6 +2328,30 @@
         "types": [
           {
             "type": "rad_sort_specifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "return_stmt",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "fn_block",
+            "named": true
+          },
+          {
+            "type": "json_path",
             "named": true
           }
         ]
@@ -2647,6 +2771,10 @@
             "named": true
           },
           {
+            "type": "fn_block",
+            "named": true
+          },
+          {
             "type": "json_path",
             "named": true
           }
@@ -2989,6 +3117,10 @@
             "named": true
           },
           {
+            "type": "fn_block",
+            "named": true
+          },
+          {
             "type": "json_path",
             "named": true
           }
@@ -3265,6 +3397,10 @@
     "named": true
   },
   {
+    "type": "fn",
+    "named": false
+  },
+  {
     "type": "for",
     "named": false
   },
@@ -3342,6 +3478,10 @@
   },
   {
     "type": "requires",
+    "named": false
+  },
+  {
+    "type": "return",
     "named": false
   },
   {

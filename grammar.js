@@ -28,6 +28,7 @@ const PREC = {
   indexing: 23,
   call: 24,
   incr_decr: 25,
+  lambda: 26,
 };
 
 const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
@@ -196,6 +197,7 @@ module.exports = grammar({
       $.list_comprehension,
       $.parenthesized_expr,
       $.call,
+      $.lambda,
     ),
 
     parenthesized_expr: $ => prec(PREC.parenthesized_expr, seq(
@@ -277,6 +279,7 @@ module.exports = grammar({
     _right_hand_side: $ => choice(
       $.expr,
       $.json_path,
+      $.fn_block,
     ),
 
     json_path: $ => seq(
@@ -689,15 +692,44 @@ module.exports = grammar({
       ),
     ),
 
+    // Functions & Lambdas
+
+    // todo: enforce single line?
+    lambda: $ => prec.right(PREC.lambda, seq(
+      "fn",
+      $._fn_arg_list,
+      commaSep1(field("expr", $.expr)),
+    )),
+
+    fn_block: $ => seq(
+      "fn",
+      $._fn_arg_list,
+      $._fn_block_stmts,
+    ),
+
+    _fn_block_stmts: $ => seq(
+      ":",
+      $._newline,
+      $._indent,
+      field("stmt", repeat($._stmt)),
+      optional(seq(field("return_stmt", $.return_stmt), $._newline)),
+      $._dedent,
+    ),
+
+    return_stmt: $ => seq(
+      "return",
+      commaSep1(field("value", $._right_hand_side)),
+    ),
+
+    _fn_arg_list: $ => choice(
+      "()", // empty call
+      seq("(", commaSep1(field("param", $._identifier)), ")"),
+      // todo may want to support named args, at least for named lambdas
+    ),
+
     // Generic
 
     comment: _ => token(seq('//', /.*/)),
-
-    lambda: $ => seq( // todo quite different from Python's
-      field("identifier", $._identifier),
-      '->',
-      field("expr", $.expr),
-    ),
 
     type: $ => choice(
       $.string_type,

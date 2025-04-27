@@ -48,7 +48,7 @@ rad url:
         sort f2, f1
     
     f1:
-        map a -> a * 2
+        map fn(a) a * 2
 
     f1, f2:
         color "red" ".*"

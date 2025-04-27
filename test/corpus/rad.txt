@@ -123,7 +123,7 @@ Rad map one
 rad url:
     fields foo, bar
     foo:
-        map a -> "{a * 100}%"
+        map fn(a) "{a * 100}%"
 
 ---
 
@@ -183,7 +183,7 @@ Rad map more
 rad url:
     fields foo, bar
     foo, bar, woo:
-        map a -> "{a * 100}%"
+        map fn(a) "{a * 100}%"
 
 ---
 
@@ -330,7 +330,7 @@ rad url:
         sort
     else:
         bar:
-            map a -> a * 10
+            map fn(a) a * 10
             color a b
 
 ---
