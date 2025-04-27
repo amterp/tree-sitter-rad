@@ -2040,10 +2040,6 @@
           "named": true
         },
         {
-          "type": "lambda",
-          "named": true
-        },
-        {
           "type": "list_comprehension",
           "named": true
         },
@@ -2914,6 +2910,10 @@
         "types": [
           {
             "type": "indexed_expr",
+            "named": true
+          },
+          {
+            "type": "lambda",
             "named": true
           },
           {

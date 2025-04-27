@@ -179,7 +179,10 @@ module.exports = grammar({
         field('op', choice($._unary_op_sign, 'not')),
         field('arg', $.unary_expr)
       )),
-      field("delegate", $._postfix_expr),
+      field("delegate", choice(
+        $._postfix_expr,
+        $.lambda,
+      )),
     ),
 
     _postfix_expr: $ => choice(
@@ -197,7 +200,6 @@ module.exports = grammar({
       $.list_comprehension,
       $.parenthesized_expr,
       $.call,
-      $.lambda,
     ),
 
     parenthesized_expr: $ => prec(PREC.parenthesized_expr, seq(

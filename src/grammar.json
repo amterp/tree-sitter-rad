@@ -572,8 +572,17 @@
           "type": "FIELD",
           "name": "delegate",
           "content": {
-            "type": "SYMBOL",
-            "name": "_postfix_expr"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_postfix_expr"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "lambda"
+              }
+            ]
           }
         }
       ]
@@ -633,10 +642,6 @@
         {
           "type": "SYMBOL",
           "name": "call"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "lambda"
         }
       ]
     },
