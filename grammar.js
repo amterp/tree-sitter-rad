@@ -697,10 +697,11 @@ module.exports = grammar({
     // Functions & Lambdas
 
     // todo: enforce single line?
-    lambda: $ => prec.right(PREC.lambda, seq(
-      "fn",
-      $._fn_arg_list,
-      commaSep1(field("expr", $.expr)),
+    lambda: $ => prec.right(PREC.lambda, choice(
+      // single return
+      seq("fn", $._fn_arg_list, field("expr", $.expr)),
+      // multi return
+      seq("fn", $._fn_arg_list, '(', commaSep1(field("expr", $.expr)), optional(','), ')'),
     )),
 
     fn_block: $ => seq(
