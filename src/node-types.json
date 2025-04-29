@@ -1173,6 +1173,16 @@
     "type": "fn_block",
     "named": true,
     "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fn",
+            "named": false
+          }
+        ]
+      },
       "param": {
         "multiple": true,
         "required": false,
@@ -1737,11 +1747,21 @@
     "fields": {
       "expr": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "expr",
             "named": true
+          }
+        ]
+      },
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fn",
+            "named": false
           }
         ]
       },
@@ -1752,6 +1772,32 @@
           {
             "type": "identifier",
             "named": false
+          }
+        ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
           }
         ]
       }
@@ -2172,6 +2218,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "fn_block",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": false
+          },
           {
             "type": "lambda",
             "named": true

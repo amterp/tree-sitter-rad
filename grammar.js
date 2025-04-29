@@ -63,6 +63,10 @@ module.exports = grammar({
     '}',
   ],
 
+  conflicts: $ => [
+    [$._left_hand_side, $._postfix_expr],
+  ],
+
   word: $ => $.identifierRegex,
 
   rules: {
@@ -109,6 +113,15 @@ module.exports = grammar({
       $.del_stmt,
       $.break_stmt,
       $.continue_stmt,
+    ),
+
+    _lambda_compat_stmt: $ => choice(
+      field("expr", $.expr),
+      // todo technically would be good to allow assign, but the multi-right side assign seems to cause issues
+      field("stmt", $.compound_assign),
+      field("stmt", $.shell_stmt),
+      field("stmt", $.incr_decr),
+      field("stmt", $.del_stmt),
     ),
 
     // Expressions
@@ -668,7 +681,7 @@ module.exports = grammar({
 
     rad_field_mod_map: $ => seq(
       "map",
-      field("lambda", $.lambda),
+      field("lambda", choice($.lambda, $.fn_block, $._identifier)),
     ),
 
     rad_if_stmt: $ => seq(
@@ -698,14 +711,32 @@ module.exports = grammar({
 
     // todo: enforce single line?
     lambda: $ => prec.right(PREC.lambda, choice(
-      // single return
-      seq("fn", $._fn_arg_list, field("expr", $.expr)),
-      // multi return
-      seq("fn", $._fn_arg_list, '(', commaSep1(field("expr", $.expr)), optional(','), ')'),
+      // single expression
+      seq(field("keyword", "fn"), $._fn_arg_list, field("expr", $.expr)),
+
+      // single statement, optionally parenthesized
+      seq(
+        field("keyword", "fn"),
+        $._fn_arg_list,
+        choice(
+          field("stmt", $._lambda_compat_stmt),
+          // allow exactly one stmt inside parens
+          seq('(', field("stmt", $._lambda_compat_stmt), ')'),
+        ),
+      ),
+
+      // multi-return: one or more exprs in parens
+      seq(
+        field("keyword", "fn"),
+        $._fn_arg_list,
+        '(',
+        commaSep1(field("expr", $.expr)),
+        ')',
+      ),
     )),
 
     fn_block: $ => seq(
-      "fn",
+      field("keyword", "fn"),
       $._fn_arg_list,
       $._fn_block_stmts,
     ),

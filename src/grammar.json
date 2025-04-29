@@ -184,6 +184,51 @@
         }
       ]
     },
+    "_lambda_compat_stmt": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "stmt",
+          "content": {
+            "type": "SYMBOL",
+            "name": "compound_assign"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "stmt",
+          "content": {
+            "type": "SYMBOL",
+            "name": "shell_stmt"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "stmt",
+          "content": {
+            "type": "SYMBOL",
+            "name": "incr_decr"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "stmt",
+          "content": {
+            "type": "SYMBOL",
+            "name": "del_stmt"
+          }
+        }
+      ]
+    },
     "expr": {
       "type": "SYMBOL",
       "name": "ternary_expr"
@@ -3772,8 +3817,21 @@
           "type": "FIELD",
           "name": "lambda",
           "content": {
-            "type": "SYMBOL",
-            "name": "lambda"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "lambda"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "fn_block"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_identifier"
+              }
+            ]
           }
         }
       ]
@@ -3986,8 +4044,12 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "STRING",
-                "value": "fn"
+                "type": "FIELD",
+                "name": "keyword",
+                "content": {
+                  "type": "STRING",
+                  "value": "fn"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -4007,8 +4069,63 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "STRING",
-                "value": "fn"
+                "type": "FIELD",
+                "name": "keyword",
+                "content": {
+                  "type": "STRING",
+                  "value": "fn"
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_fn_arg_list"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "stmt",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_lambda_compat_stmt"
+                    }
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "("
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "stmt",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_lambda_compat_stmt"
+                        }
+                      },
+                      {
+                        "type": "STRING",
+                        "value": ")"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "keyword",
+                "content": {
+                  "type": "STRING",
+                  "value": "fn"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -4052,18 +4169,6 @@
                 ]
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": ","
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
                 "type": "STRING",
                 "value": ")"
               }
@@ -4076,8 +4181,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "fn"
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "STRING",
+            "value": "fn"
+          }
         },
         {
           "type": "SYMBOL",
@@ -5234,7 +5343,12 @@
       "value": "[\\s\\t\\f\\uFEFF\\u2060\\u200B]"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "_left_hand_side",
+      "_postfix_expr"
+    ]
+  ],
   "precedences": [],
   "externals": [
     {
