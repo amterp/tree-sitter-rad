@@ -1904,6 +1904,10 @@
           "named": true
         },
         {
+          "type": "null",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -3501,6 +3505,10 @@
   {
     "type": "not",
     "named": false
+  },
+  {
+    "type": "null",
+    "named": true
   },
   {
     "type": "or",

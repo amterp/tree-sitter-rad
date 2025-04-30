@@ -5303,6 +5303,10 @@
         }
       ]
     },
+    "null": {
+      "type": "STRING",
+      "value": "null"
+    },
     "literal": {
       "type": "CHOICE",
       "members": [
@@ -5329,6 +5333,10 @@
         {
           "type": "SYMBOL",
           "name": "map"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "null"
         }
       ]
     }
