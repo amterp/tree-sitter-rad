@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-rsl"
 description = "A parser for RSL, Rad Scripting Language."
-version = "0.0.32"
+version = "0.0.33"
 keywords = ["incremental", "parsing", "tree-sitter", "rsl"]
 classifiers = [
   "Intended Audience :: Developers",
