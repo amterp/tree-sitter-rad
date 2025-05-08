@@ -555,11 +555,6 @@
     }
   },
   {
-    "type": "break_stmt",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "call",
     "named": true,
     "fields": {
@@ -711,6 +706,10 @@
           },
           {
             "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "pass_stmt",
             "named": true
           },
           {
@@ -868,11 +867,6 @@
     }
   },
   {
-    "type": "continue_stmt",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "critical_shell_cmd",
     "named": true,
     "fields": {
@@ -971,6 +965,10 @@
             "named": true
           },
           {
+            "type": "pass_stmt",
+            "named": true
+          },
+          {
             "type": "rad_block",
             "named": true
           },
@@ -1052,6 +1050,10 @@
           },
           {
             "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "pass_stmt",
             "named": true
           },
           {
@@ -1296,6 +1298,10 @@
             "named": true
           },
           {
+            "type": "pass_stmt",
+            "named": true
+          },
+          {
             "type": "rad_block",
             "named": true
           },
@@ -1397,6 +1403,10 @@
           },
           {
             "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "pass_stmt",
             "named": true
           },
           {
@@ -1515,6 +1525,10 @@
           },
           {
             "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "pass_stmt",
             "named": true
           },
           {
@@ -2578,6 +2592,10 @@
           "named": true
         },
         {
+          "type": "pass_stmt",
+          "named": true
+        },
+        {
           "type": "rad_block",
           "named": true
         },
@@ -2828,6 +2846,10 @@
           },
           {
             "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "pass_stmt",
             "named": true
           },
           {
@@ -3191,6 +3213,10 @@
             "named": true
           },
           {
+            "type": "pass_stmt",
+            "named": true
+          },
+          {
             "type": "rad_block",
             "named": true
           },
@@ -3387,8 +3413,8 @@
     "named": true
   },
   {
-    "type": "break",
-    "named": false
+    "type": "break_stmt",
+    "named": true
   },
   {
     "type": "case",
@@ -3411,8 +3437,8 @@
     "named": false
   },
   {
-    "type": "continue",
-    "named": false
+    "type": "continue_stmt",
+    "named": true
   },
   {
     "type": "default",
@@ -3561,6 +3587,10 @@
   {
     "type": "or",
     "named": false
+  },
+  {
+    "type": "pass_stmt",
+    "named": true
   },
   {
     "type": "quiet",

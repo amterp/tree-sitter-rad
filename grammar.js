@@ -134,6 +134,7 @@ module.exports = grammar({
       $.del_stmt,
       $.break_stmt,
       $.continue_stmt,
+      $.pass_stmt,
     ),
 
     _lambda_compat_stmt: $ => choice(
@@ -343,8 +344,10 @@ module.exports = grammar({
       sepTrail1(field("right", $.var_path)),
     )),
 
-    break_stmt: _ => prec.left('break'),
-    continue_stmt: _ => prec.left('continue'),
+    break_stmt: _ => 'break',
+    continue_stmt: _ => 'continue',
+
+    pass_stmt: _ => 'pass',
 
     // Complex stmts
 
