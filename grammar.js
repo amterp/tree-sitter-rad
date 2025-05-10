@@ -65,7 +65,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$._left_hand_side, $._postfix_expr],
-    [$.file_header],
   ],
 
   word: $ => $.identifierRegex,
@@ -84,32 +83,12 @@ module.exports = grammar({
       $._file_header_line,
       optional(field("contents", $.file_header_contents)),
       $._file_header_line,
-      choice(
-        seq($._file_header_metadata, $._file_header_line),
-        optional($._file_header_line),
-      ),
     ),
 
     file_header_contents: $ => repeat1(seq(
       optional(/[^\r\n]+/),
       /\r?\n/
     )),
-
-    _file_header_metadata: $ => repeat1(field("metadata_entry", $.file_header_metadata_entry)),
-
-    file_header_metadata_entry: $ => seq(
-      field("key", $._identifier),
-      '=',
-      field("value", $._metadata_value),
-      /\r?\n/
-    ),
-
-    _metadata_value: $ => choice(
-      $.string,
-      $.int,
-      $.float,
-      $.bool,
-    ),
 
     _file_header_line: $ => seq("---", /\r?\n/),
 

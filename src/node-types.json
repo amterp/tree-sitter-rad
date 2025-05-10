@@ -1109,16 +1109,6 @@
             "named": true
           }
         ]
-      },
-      "metadata_entry": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "file_header_metadata_entry",
-            "named": true
-          }
-        ]
       }
     }
   },
@@ -1126,44 +1116,6 @@
     "type": "file_header_contents",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "file_header_metadata_entry",
-    "named": true,
-    "fields": {
-      "key": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": false
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          }
-        ]
-      }
-    }
   },
   {
     "type": "float_arg",

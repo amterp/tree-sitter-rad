@@ -81,36 +81,6 @@
         {
           "type": "SYMBOL",
           "name": "_file_header_line"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_file_header_metadata"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_file_header_line"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_file_header_line"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
@@ -137,67 +107,6 @@
           }
         ]
       }
-    },
-    "_file_header_metadata": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "FIELD",
-        "name": "metadata_entry",
-        "content": {
-          "type": "SYMBOL",
-          "name": "file_header_metadata_entry"
-        }
-      }
-    },
-    "file_header_metadata_entry": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "key",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_identifier"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_metadata_value"
-          }
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\r?\\n"
-        }
-      ]
-    },
-    "_metadata_value": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "int"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "float"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "bool"
-        }
-      ]
     },
     "_file_header_line": {
       "type": "SEQ",
@@ -5446,9 +5355,6 @@
     [
       "_left_hand_side",
       "_postfix_expr"
-    ],
-    [
-      "file_header"
     ]
   ],
   "precedences": [],
