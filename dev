@@ -1,8 +1,6 @@
 #!/usr/bin/env rad
 ---
 Releases new version of the RSL tree sitter.
-
-Releases new version of the RSL tree sitter.
 Doc: https://tree-sitter.github.io/tree-sitter/creating-parsers/6-publishing.html
 ---
 args:

@@ -223,6 +223,16 @@
           }
         ]
       },
+      "optional": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "?",
+            "named": false
+          }
+        ]
+      },
       "rename": {
         "multiple": false,
         "required": false,

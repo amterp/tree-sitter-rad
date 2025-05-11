@@ -508,14 +508,62 @@ module.exports = grammar({
       $._arg_bool_list_default,
     ),
 
-    _arg_string_default: $ => seq(field("type", $.string_type), optional(seq("=", field("default", $.string)))),
-    _arg_int_default: $ => seq(field("type", $.int_type), optional(seq("=", field("default", $.int_arg)))),
-    _arg_float_default: $ => seq(field("type", $.float_type), optional(seq("=", field("default", $.float_arg)))),
-    _arg_bool_default: $ => seq(field("type", $.bool_type), optional(seq("=", field("default", $.bool)))),
-    _arg_string_list_default: $ => seq(field("type", $.string_list_type), optional(seq("=", field("default", $.string_list)))),
-    _arg_int_list_default: $ => seq(field("type", $.int_list_type), optional(seq("=", field("default", $.int_list)))),
-    _arg_float_list_default: $ => seq(field("type", $.float_list_type), optional(seq("=", field("default", $.float_list)))),
-    _arg_bool_list_default: $ => seq(field("type", $.bool_list_type), optional(seq("=", field("default", $.bool_list)))),
+    _arg_string_default: $ => seq(
+      field("type", $.string_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.string)))
+      ),
+    ),
+    _arg_int_default: $ => seq(
+      field("type", $.int_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.int_arg)))
+      ),
+    ),
+    _arg_float_default: $ => seq(
+      field("type", $.float_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.float_arg)))
+      ),
+    ),
+    _arg_bool_default: $ => seq(
+      field("type", $.bool_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.bool)))
+      ),
+    ),
+    _arg_string_list_default: $ => seq(
+      field("type", $.string_list_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.string_list)))
+      ),
+    ),
+    _arg_int_list_default: $ => seq(
+      field("type", $.int_list_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.int_list)))
+      ),
+    ),
+    _arg_float_list_default: $ => seq(
+      field("type", $.float_list_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.float_list)))
+      ),
+    ),
+    _arg_bool_list_default: $ => seq(
+      field("type", $.bool_list_type),
+      choice(
+        field("optional", "?"),
+        optional(seq("=", field("default", $.bool_list)))
+      ),
+    ),
 
     int_arg: $ => prec(1, seq(
       field('op', repeat($._unary_op_sign)),
