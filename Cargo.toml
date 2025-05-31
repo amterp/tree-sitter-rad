@@ -1,13 +1,13 @@
 [package]
-name = "tree-sitter-rsl"
-description = "A parser for RSL, Rad Scripting Language."
+name = "tree-sitter-rad"
+description = "A parser for Rad, a modern CLI scripting language."
 version = "0.0.35"
 authors = ["Alexander Terp <alexander.terp@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-keywords = ["incremental", "parsing", "tree-sitter", "rsl"]
+keywords = ["incremental", "parsing", "tree-sitter", "rad"]
 categories = ["parsing", "text-editors"]
-repository = "http://github.com/amterp/tree-sitter-rsl"
+repository = "http://github.com/amterp/tree-sitter-rad"
 edition = "2021"
 autoexamples = false
 

@@ -1,19 +1,19 @@
 {
   "grammars": [
     {
-      "name": "rsl",
-      "camelcase": "Rsl",
-      "scope": "source.rsl",
+      "name": "rad",
+      "camelcase": "Rad",
+      "scope": "source.rad",
       "file-types": [
-        "rsl,rad"
+        "rad"
       ],
-      "injection-regex": "^rsl$"
+      "injection-regex": "^rad$"
     }
   ],
   "metadata": {
     "version": "0.0.35",
     "license": "MIT",
-    "description": "A parser for RSL, Rad Scripting Language.",
+    "description": "A parser for Rad, a modern CLI scripting language.",
     "authors": [
       {
         "name": "Alexander Terp",
@@ -22,7 +22,7 @@
       }
     ],
     "links": {
-      "repository": "http://github.com/amterp/tree-sitter-rsl"
+      "repository": "http://github.com/amterp/tree-sitter-rad"
     }
   },
   "bindings": {

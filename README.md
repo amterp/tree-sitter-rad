@@ -1,9 +1,9 @@
-# RSL Tree Sitter
+# Rad Tree Sitter
 
 ## Installation
 
 ```shell
-go get -u github.com/amterp/tree-sitter-rsl
+go get -u github.com/amterp/tree-sitter-rad
 ```
 
 ## Commands

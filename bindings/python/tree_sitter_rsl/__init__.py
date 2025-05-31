@@ -1,4 +1,4 @@
-"""A parser for RSL, Rad Scripting Language."""
+"""A parser for Rad, a modern CLI scripting language."""
 
 from importlib.resources import files as _files
 

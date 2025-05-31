@@ -309,7 +309,7 @@ static int strip_prefix_ws(TSLexer *lexer, int to_strip, bool do_skip)
 }
 
 // The core external scanner function.
-bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols)
+bool tree_sitter_rad_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols)
 {
     Scanner *scanner = (Scanner *)payload;
 
@@ -658,7 +658,7 @@ bool tree_sitter_rsl_external_scanner_scan(void *payload, TSLexer *lexer, const 
 }
 
 // Serialization function for the external scanner state.
-unsigned tree_sitter_rsl_external_scanner_serialize(void *payload, char *buffer)
+unsigned tree_sitter_rad_external_scanner_serialize(void *payload, char *buffer)
 {
     Scanner *scanner = (Scanner *)payload;
     size_t size = 0;
@@ -709,7 +709,7 @@ unsigned tree_sitter_rsl_external_scanner_serialize(void *payload, char *buffer)
 }
 
 // Deserialization function for the external scanner state.
-void tree_sitter_rsl_external_scanner_deserialize(void *payload, const char *buffer, unsigned length)
+void tree_sitter_rad_external_scanner_deserialize(void *payload, const char *buffer, unsigned length)
 {
     DEBUG("Loading (deserializing) state...");
     Scanner *scanner = (Scanner *)payload;
@@ -770,7 +770,7 @@ void tree_sitter_rsl_external_scanner_deserialize(void *payload, const char *buf
 }
 
 // Create a new external scanner instance.
-void *tree_sitter_rsl_external_scanner_create()
+void *tree_sitter_rad_external_scanner_create()
 {
 // Assert that the size of Delimiter is the same as the size of char.
 // This is important because the delimiter stack is serialized as an array of chars.
@@ -782,13 +782,13 @@ void *tree_sitter_rsl_external_scanner_create()
     Scanner *scanner = calloc(1, sizeof(Scanner));
     array_init(&scanner->indents);
     array_init(&scanner->delimiters);
-    tree_sitter_rsl_external_scanner_deserialize(scanner, NULL, 0);
+    tree_sitter_rad_external_scanner_deserialize(scanner, NULL, 0);
     DEBUG("Created scanner");
     return scanner;
 }
 
 // Destroy an external scanner instance.
-void tree_sitter_rsl_external_scanner_destroy(void *payload)
+void tree_sitter_rad_external_scanner_destroy(void *payload)
 {
     Scanner *scanner = (Scanner *)payload;
     array_delete(&scanner->indents);

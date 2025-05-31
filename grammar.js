@@ -1,5 +1,5 @@
 /**
- * @file RSL grammar for tree-sitter
+ * @file Rad grammar for tree-sitter
  * @author Alexander Terp <alexander.terp@gmail.com>
  * @license MIT
  */
@@ -34,7 +34,7 @@ const PREC = {
 const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
 
 module.exports = grammar({
-  name: 'rsl',
+  name: 'rad',
 
   extras: $ => [
     $.comment,

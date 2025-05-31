@@ -2,8 +2,8 @@ ifeq ($(OS),Windows_NT)
 $(error Windows is not supported)
 endif
 
-LANGUAGE_NAME := tree-sitter-rsl
-HOMEPAGE_URL := http://github.com/amterp/tree-sitter-rsl
+LANGUAGE_NAME := tree-sitter-rad
+HOMEPAGE_URL := http://github.com/amterp/tree-sitter-rad
 VERSION := 0.0.35
 
 # repository

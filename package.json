@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-rsl",
+  "name": "tree-sitter-rad",
   "version": "0.0.35",
-  "description": "A parser for RSL, Rad Scripting Language.",
-  "repository": "https://github.com/amterp/tree-sitter-rsl",
+  "description": "A parser for Rad, a modern CLI scripting language.",
+  "repository": "https://github.com/amterp/tree-sitter-rad",
   "license": "MIT",
   "author": {
     "name": "Alexander Terp",
@@ -15,7 +15,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "rsl"
+    "rad"
   ],
   "files": [
     "grammar.js",
@@ -53,8 +53,8 @@
   },
   "tree-sitter": [
     {
-      "scope": "source.rsl",
-      "injection-regex": "^rsl$"
+      "scope": "source.rad",
+      "injection-regex": "^rad$"
     }
   ]
 }

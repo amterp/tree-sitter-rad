@@ -1,4 +1,4 @@
-module github.com/amterp/tree-sitter-rsl
+module github.com/amterp/tree-sitter-rad
 
 go 1.22
 

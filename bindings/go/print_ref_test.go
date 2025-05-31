@@ -1,8 +1,8 @@
-package tree_sitter_rsl_test
+package tree_sitter_rad_test
 
 import (
 	"fmt"
-	rts "github.com/amterp/tree-sitter-rsl/bindings/go"
+	rts "github.com/amterp/tree-sitter-rad/bindings/go"
 	ts "github.com/tree-sitter/go-tree-sitter"
 	"os"
 	"testing"

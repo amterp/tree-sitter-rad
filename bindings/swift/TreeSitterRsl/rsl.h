@@ -1,5 +1,5 @@
-#ifndef TREE_SITTER_RSL_H_
-#define TREE_SITTER_RSL_H_
+#ifndef TREE_SITTER_RAD_H_
+#define TREE_SITTER_RAD_H_
 
 typedef struct TSLanguage TSLanguage;
 
@@ -7,10 +7,10 @@ typedef struct TSLanguage TSLanguage;
 extern "C" {
 #endif
 
-const TSLanguage *tree_sitter_rsl(void);
+const TSLanguage *tree_sitter_rad(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // TREE_SITTER_RSL_H_
+#endif // TREE_SITTER_RAD_H_

@@ -1,12 +1,12 @@
 import XCTest
 import SwiftTreeSitter
-import TreeSitterRsl
+import TreeSitterRad
 
-final class TreeSitterRslTests: XCTestCase {
+final class TreeSitterRadTests: XCTestCase {
     func testCanLoadGrammar() throws {
         let parser = Parser()
-        let language = Language(language: tree_sitter_rsl())
+        let language = Language(language: tree_sitter_rad())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading Rsl grammar")
+                         "Error loading Rad grammar")
     }
 }
