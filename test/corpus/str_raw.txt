@@ -8,7 +8,7 @@ r"\t\n"
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -34,7 +34,7 @@ r"\{hello}"
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -73,7 +73,7 @@ r"\"
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -99,7 +99,7 @@ r"\\"
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr

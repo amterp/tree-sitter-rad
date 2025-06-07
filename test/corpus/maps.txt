@@ -9,7 +9,7 @@ a = {}
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -23,7 +23,7 @@ a = {}
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -46,7 +46,7 @@ a = {"b": 3}
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -59,7 +59,7 @@ a = {"b": 3}
                         (map
                           map_entry: (map_entry
                             key: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -75,7 +75,7 @@ a = {"b": 3}
                                                       content: (string_content))
                                                     end: (string_end)))))))))))))
                             value: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -89,7 +89,7 @@ a = {"b": 3}
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -102,7 +102,7 @@ a = {"b": 3}
                           (map
                             map_entry: (map_entry
                               key: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -118,7 +118,7 @@ a = {"b": 3}
                                                         content: (string_content))
                                                       end: (string_end)))))))))))))
                               value: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -140,7 +140,7 @@ With more contents
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -153,7 +153,7 @@ With more contents
                         (map
                           map_entry: (map_entry
                             key: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -169,7 +169,7 @@ With more contents
                                                       content: (string_content))
                                                     end: (string_end)))))))))))))
                             value: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -182,7 +182,7 @@ With more contents
                                                   (int)))))))))))))
                           map_entry: (map_entry
                             key: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -198,7 +198,7 @@ With more contents
                                                       content: (string_content))
                                                     end: (string_end)))))))))))))
                             value: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -215,7 +215,7 @@ With more contents
                                                     end: (string_end))))))))))))))
                           map_entry: (map_entry
                             key: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -231,7 +231,7 @@ With more contents
                                                       content: (string_content))
                                                     end: (string_end)))))))))))))
                             value: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -243,7 +243,7 @@ With more contents
                                                 (literal
                                                   (list
                                                     list_entry: (expr
-                                                      (ternary_expr
+                                                      delegate: (ternary_expr
                                                         delegate: (or_expr
                                                           delegate: (and_expr
                                                             delegate: (compare_expr
@@ -259,7 +259,7 @@ With more contents
                                                                               content: (string_content))
                                                                             end: (string_end)))))))))))))
                                                     list_entry: (expr
-                                                      (ternary_expr
+                                                      delegate: (ternary_expr
                                                         delegate: (or_expr
                                                           delegate: (and_expr
                                                             delegate: (compare_expr
@@ -281,7 +281,7 @@ Nested
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -294,7 +294,7 @@ Nested
                         (map
                           map_entry: (map_entry
                             key: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -310,7 +310,7 @@ Nested
                                                       content: (string_content))
                                                     end: (string_end)))))))))))))
                             value: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -323,7 +323,7 @@ Nested
                                                   (int)))))))))))))
                           map_entry: (map_entry
                             key: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -339,7 +339,7 @@ Nested
                                                       content: (string_content))
                                                     end: (string_end)))))))))))))
                             value: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -352,7 +352,7 @@ Nested
                                                   (map
                                                     map_entry: (map_entry
                                                       key: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr
@@ -368,7 +368,7 @@ Nested
                                                                                 content: (string_content))
                                                                               end: (string_end)))))))))))))
                                                       value: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr
@@ -381,7 +381,7 @@ Nested
                                                                             (bool)))))))))))))
                                                     map_entry: (map_entry
                                                       key: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr
@@ -397,7 +397,7 @@ Nested
                                                                                 content: (string_content))
                                                                               end: (string_end)))))))))))))
                                                       value: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr
@@ -410,7 +410,7 @@ Nested
                                                                             (map
                                                                               map_entry: (map_entry
                                                                                 key: (expr
-                                                                                  (ternary_expr
+                                                                                  delegate: (ternary_expr
                                                                                     delegate: (or_expr
                                                                                       delegate: (and_expr
                                                                                         delegate: (compare_expr
@@ -426,7 +426,7 @@ Nested
                                                                                                           content: (string_content))
                                                                                                         end: (string_end)))))))))))))
                                                                                 value: (expr
-                                                                                  (ternary_expr
+                                                                                  delegate: (ternary_expr
                                                                                     delegate: (or_expr
                                                                                       delegate: (and_expr
                                                                                         delegate: (compare_expr
@@ -439,7 +439,7 @@ Nested
                                                                                                       (int)))))))))))))
                                                                               map_entry: (map_entry
                                                                                 key: (expr
-                                                                                  (ternary_expr
+                                                                                  delegate: (ternary_expr
                                                                                     delegate: (or_expr
                                                                                       delegate: (and_expr
                                                                                         delegate: (compare_expr
@@ -455,7 +455,7 @@ Nested
                                                                                                           content: (string_content))
                                                                                                         end: (string_end)))))))))))))
                                                                                 value: (expr
-                                                                                  (ternary_expr
+                                                                                  delegate: (ternary_expr
                                                                                     delegate: (or_expr
                                                                                       delegate: (and_expr
                                                                                         delegate: (compare_expr
@@ -485,7 +485,7 @@ my_headers = {
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -498,7 +498,7 @@ my_headers = {
                           (map
                             map_entry: (map_entry
                               key: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -514,7 +514,7 @@ my_headers = {
                                                         content: (string_content))
                                                       end: (string_end)))))))))))))
                               value: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -530,7 +530,7 @@ my_headers = {
                                                         content: (string_content)
                                                         interpolation: (interpolation
                                                           expr: (expr
-                                                            (ternary_expr
+                                                            delegate: (ternary_expr
                                                               delegate: (or_expr
                                                                 delegate: (and_expr
                                                                   delegate: (compare_expr
@@ -541,7 +541,7 @@ my_headers = {
                                                       end: (string_end))))))))))))))
                             map_entry: (map_entry
                               key: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -557,7 +557,7 @@ my_headers = {
                                                         content: (string_content))
                                                       end: (string_end)))))))))))))
                               value: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -569,7 +569,7 @@ my_headers = {
                                                   (literal
                                                     (list
                                                       list_entry: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr
@@ -585,7 +585,7 @@ my_headers = {
                                                                                 content: (string_content))
                                                                               end: (string_end)))))))))))))
                                                       list_entry: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr

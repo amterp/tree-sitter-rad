@@ -11,7 +11,7 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -34,7 +34,7 @@ request url:
   (rad_block
     rad_type: (request_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -72,7 +72,7 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -97,7 +97,7 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -131,7 +131,7 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -142,9 +142,10 @@ rad url:
     stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_map
-        lambda: (lambda
+        lambda: (fn_lambda
+          param: (fn_param)
           expr: (expr
-            (ternary_expr
+            delegate: (ternary_expr
               delegate: (or_expr
                 delegate: (and_expr
                   delegate: (compare_expr
@@ -159,7 +160,7 @@ rad url:
                                   contents: (string_contents
                                     interpolation: (interpolation
                                       expr: (expr
-                                        (ternary_expr
+                                        delegate: (ternary_expr
                                           delegate: (or_expr
                                             delegate: (and_expr
                                               delegate: (compare_expr
@@ -191,7 +192,7 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -202,9 +203,10 @@ rad url:
     stmt: (rad_field_stmt)
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_map
-        lambda: (lambda
+        lambda: (fn_lambda
+          param: (fn_param)
           expr: (expr
-            (ternary_expr
+            delegate: (ternary_expr
               delegate: (or_expr
                 delegate: (and_expr
                   delegate: (compare_expr
@@ -219,7 +221,7 @@ rad url:
                                   contents: (string_contents
                                     interpolation: (interpolation
                                       expr: (expr
-                                        (ternary_expr
+                                        delegate: (ternary_expr
                                           delegate: (or_expr
                                             delegate: (and_expr
                                               delegate: (compare_expr
@@ -252,7 +254,7 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -264,7 +266,7 @@ rad url:
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_color
         color: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -280,7 +282,7 @@ rad url:
                                   content: (string_content))
                                 end: (string_end)))))))))))))
         regex: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -297,7 +299,7 @@ rad url:
                                 end: (string_end))))))))))))))
       mod_stmt: (rad_field_mod_color
         color: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -306,7 +308,7 @@ rad url:
                       delegate: (unary_expr
                         delegate: (var_path)))))))))
         regex: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -339,7 +341,7 @@ rad url:
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -351,7 +353,7 @@ rad url:
     stmt: (rad_if_stmt
       alt: (rad_if_alt
         condition: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -362,7 +364,7 @@ rad url:
         stmt: (rad_field_modifier_stmt
           mod_stmt: (rad_field_mod_color
             color: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -378,7 +380,7 @@ rad url:
                                       content: (string_content))
                                     end: (string_end)))))))))))))
             regex: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -395,7 +397,7 @@ rad url:
                                     end: (string_end))))))))))))))
           mod_stmt: (rad_field_mod_color
             color: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -404,7 +406,7 @@ rad url:
                           delegate: (unary_expr
                             delegate: (var_path)))))))))
             regex: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -414,7 +416,7 @@ rad url:
                             delegate: (var_path))))))))))))
       alt: (rad_if_alt
         condition: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -427,9 +429,10 @@ rad url:
       alt: (rad_else_alt
         stmt: (rad_field_modifier_stmt
           mod_stmt: (rad_field_mod_map
-            lambda: (lambda
+            lambda: (fn_lambda
+              param: (fn_param)
               expr: (expr
-                (ternary_expr
+                delegate: (ternary_expr
                   delegate: (or_expr
                     delegate: (and_expr
                       delegate: (compare_expr
@@ -445,7 +448,7 @@ rad url:
                                     (int))))))))))))))
           mod_stmt: (rad_field_mod_color
             color: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -454,7 +457,7 @@ rad url:
                           delegate: (unary_expr
                             delegate: (var_path)))))))))
             regex: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr

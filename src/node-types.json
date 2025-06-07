@@ -524,15 +524,11 @@
         ]
       },
       "right": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
             "type": "expr",
-            "named": true
-          },
-          {
-            "type": "fn_block",
             "named": true
           },
           {
@@ -707,6 +703,10 @@
             "named": true
           },
           {
+            "type": "fn_named",
+            "named": true
+          },
+          {
             "type": "for_loop",
             "named": true
           },
@@ -865,10 +865,6 @@
             "named": true
           },
           {
-            "type": "fn_block",
-            "named": true
-          },
-          {
             "type": "json_path",
             "named": true
           }
@@ -963,6 +959,10 @@
             "named": true
           },
           {
+            "type": "fn_named",
+            "named": true
+          },
+          {
             "type": "for_loop",
             "named": true
           },
@@ -1051,6 +1051,10 @@
             "named": true
           },
           {
+            "type": "fn_named",
+            "named": true
+          },
+          {
             "type": "for_loop",
             "named": true
           },
@@ -1094,16 +1098,27 @@
   {
     "type": "expr",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "ternary_expr",
-          "named": true
-        }
-      ]
+    "fields": {
+      "catch": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "catch",
+            "named": false
+          }
+        ]
+      },
+      "delegate": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ternary_expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1182,9 +1197,29 @@
     }
   },
   {
-    "type": "fn_block",
+    "type": "fn_lambda",
     "named": true,
     "fields": {
+      "block_colon": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
       "keyword": {
         "multiple": false,
         "required": true,
@@ -1200,8 +1235,8 @@
         "required": false,
         "types": [
           {
-            "type": "identifier",
-            "named": false
+            "type": "fn_param",
+            "named": true
           }
         ]
       },
@@ -1211,6 +1246,16 @@
         "types": [
           {
             "type": "return_stmt",
+            "named": true
+          }
+        ]
+      },
+      "return_type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
             "named": true
           }
         ]
@@ -1248,6 +1293,10 @@
             "named": true
           },
           {
+            "type": "fn_named",
+            "named": true
+          },
+          {
             "type": "for_loop",
             "named": true
           },
@@ -1281,6 +1330,261 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "fn_leaf_type",
+    "named": true,
+    "fields": {
+      "optional": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "?",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_type",
+          "named": true
+        },
+        {
+          "type": "error_type",
+          "named": true
+        },
+        {
+          "type": "float_type",
+          "named": true
+        },
+        {
+          "type": "int_type",
+          "named": true
+        },
+        {
+          "type": "list_type",
+          "named": true
+        },
+        {
+          "type": "map_type",
+          "named": true
+        },
+        {
+          "type": "number_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "void_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fn_named",
+    "named": true,
+    "fields": {
+      "block_colon": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fn",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "param": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_param",
+            "named": true
+          }
+        ]
+      },
+      "return_stmt": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "return_stmt",
+            "named": true
+          }
+        ]
+      },
+      "return_type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
+            "named": true
+          }
+        ]
+      },
+      "stmt": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "assign",
+            "named": true
+          },
+          {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "compound_assign",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
+            "type": "defer_block",
+            "named": true
+          },
+          {
+            "type": "del_stmt",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "fn_named",
+            "named": true
+          },
+          {
+            "type": "for_loop",
+            "named": true
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "incr_decr",
+            "named": true
+          },
+          {
+            "type": "pass_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_block",
+            "named": true
+          },
+          {
+            "type": "shell_stmt",
+            "named": true
+          },
+          {
+            "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "while_loop",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "fn_param",
+    "named": true,
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "fn_param_or_return_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "fn_leaf_type",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1353,6 +1657,10 @@
           },
           {
             "type": "expr",
+            "named": true
+          },
+          {
+            "type": "fn_named",
             "named": true
           },
           {
@@ -1475,6 +1783,10 @@
           },
           {
             "type": "expr",
+            "named": true
+          },
+          {
+            "type": "fn_named",
             "named": true
           },
           {
@@ -1766,68 +2078,6 @@
     }
   },
   {
-    "type": "lambda",
-    "named": true,
-    "fields": {
-      "expr": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
-          }
-        ]
-      },
-      "keyword": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "fn",
-            "named": false
-          }
-        ]
-      },
-      "param": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": false
-          }
-        ]
-      },
-      "stmt": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "compound_assign",
-            "named": true
-          },
-          {
-            "type": "del_stmt",
-            "named": true
-          },
-          {
-            "type": "expr",
-            "named": true
-          },
-          {
-            "type": "incr_decr",
-            "named": true
-          },
-          {
-            "type": "shell_stmt",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "list",
     "named": true,
     "fields": {
@@ -1979,6 +2229,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "map_type",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "mult_expr",
@@ -2247,16 +2502,12 @@
         "required": true,
         "types": [
           {
-            "type": "fn_block",
+            "type": "fn_lambda",
             "named": true
           },
           {
             "type": "identifier",
             "named": false
-          },
-          {
-            "type": "lambda",
-            "named": true
           }
         ]
       }
@@ -2425,10 +2676,6 @@
             "named": true
           },
           {
-            "type": "fn_block",
-            "named": true
-          },
-          {
             "type": "json_path",
             "named": true
           }
@@ -2539,6 +2786,10 @@
         },
         {
           "type": "file_header",
+          "named": true
+        },
+        {
+          "type": "fn_named",
           "named": true
         },
         {
@@ -2799,6 +3050,10 @@
             "named": true
           },
           {
+            "type": "fn_named",
+            "named": true
+          },
+          {
             "type": "for_loop",
             "named": true
           },
@@ -2854,10 +3109,6 @@
         "types": [
           {
             "type": "expr",
-            "named": true
-          },
-          {
-            "type": "fn_block",
             "named": true
           },
           {
@@ -2999,11 +3250,11 @@
         "required": false,
         "types": [
           {
-            "type": "indexed_expr",
+            "type": "fn_lambda",
             "named": true
           },
           {
-            "type": "lambda",
+            "type": "indexed_expr",
             "named": true
           },
           {
@@ -3163,6 +3414,10 @@
             "named": true
           },
           {
+            "type": "fn_named",
+            "named": true
+          },
+          {
             "type": "for_loop",
             "named": true
           },
@@ -3208,10 +3463,6 @@
         "types": [
           {
             "type": "expr",
-            "named": true
-          },
-          {
-            "type": "fn_block",
             "named": true
           },
           {
@@ -3383,6 +3634,10 @@
     "named": false
   },
   {
+    "type": "catch",
+    "named": false
+  },
+  {
     "type": "color",
     "named": false
   },
@@ -3433,6 +3688,10 @@
   {
     "type": "errdefer",
     "named": false
+  },
+  {
+    "type": "error_type",
+    "named": true
   },
   {
     "type": "esc_backslash",
@@ -3531,6 +3790,10 @@
     "named": false
   },
   {
+    "type": "list_type",
+    "named": true
+  },
+  {
     "type": "map",
     "named": false
   },
@@ -3544,6 +3807,10 @@
   },
   {
     "type": "null",
+    "named": true
+  },
+  {
+    "type": "number_type",
     "named": true
   },
   {
@@ -3631,6 +3898,10 @@
     "named": false
   },
   {
+    "type": "void_type",
+    "named": true
+  },
+  {
     "type": "while",
     "named": false
   },
@@ -3640,6 +3911,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

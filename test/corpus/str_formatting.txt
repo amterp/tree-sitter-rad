@@ -8,7 +8,7 @@ Padding
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -24,7 +24,7 @@ Padding
                             content: (string_content)
                             interpolation: (interpolation
                               expr: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -46,7 +46,7 @@ Decimals
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -62,7 +62,7 @@ Decimals
                             content: (string_content)
                             interpolation: (interpolation
                               expr: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -84,7 +84,7 @@ Padding & Decimals
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -100,7 +100,7 @@ Padding & Decimals
                             content: (string_content)
                             interpolation: (interpolation
                               expr: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -123,7 +123,7 @@ Left align
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -139,7 +139,7 @@ Left align
                             content: (string_content)
                             interpolation: (interpolation
                               expr: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -162,7 +162,7 @@ Right align
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -178,7 +178,7 @@ Right align
                             content: (string_content)
                             interpolation: (interpolation
                               expr: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr

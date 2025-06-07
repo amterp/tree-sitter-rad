@@ -117,7 +117,6 @@ module.exports = grammar({
     ),
 
     _lambda_compat_stmt: $ => choice(
-      field("expr", $.expr),
       // todo technically would be good to allow assign, but the multi-right side assign seems to cause issues
       field("stmt", $.compound_assign),
       field("stmt", $.shell_stmt),
@@ -127,7 +126,10 @@ module.exports = grammar({
 
     // Expressions
 
-    expr: $ => $.ternary_expr,
+    expr: $ => seq(
+      optional(field("catch", "catch")),
+      field("delegate", $.ternary_expr),
+    ),
 
     ternary_expr: $ => choice(
       // Ternary operator (lowest precedence; right associative)
@@ -195,7 +197,7 @@ module.exports = grammar({
       )),
       field("delegate", choice(
         $._postfix_expr,
-        $.lambda,
+        $.fn_lambda,
       )),
     ),
 
@@ -222,7 +224,10 @@ module.exports = grammar({
       ')',
     )),
 
-    call: $ => prec.right(PREC.call, seq(field("func", $._identifier), $._call_arg_list)),
+    call: $ => prec.right(PREC.call, seq(
+      field("func", $._identifier),
+      $._call_arg_list),
+    ),
 
     _call_arg_list: $ => choice(
       "()", // empty call
@@ -243,7 +248,7 @@ module.exports = grammar({
     assign: $ => seq(
       $._left_hand_side,
       '=',
-      commaSep1(field("right", $._right_hand_side)),
+      field("right", $._right_hand_side),
     ),
 
     compound_assign: $ => seq(
@@ -295,7 +300,6 @@ module.exports = grammar({
     _right_hand_side: $ => choice(
       $.expr,
       $.json_path,
-      $.fn_block,
     ),
 
     json_path: $ => seq(
@@ -337,6 +341,7 @@ module.exports = grammar({
       $.rad_block,
       $.defer_block,
       $.switch_stmt,
+      $.fn_named,
     ),
 
     if_stmt: $ => seq(
@@ -732,7 +737,7 @@ module.exports = grammar({
 
     rad_field_mod_map: $ => seq(
       "map",
-      field("lambda", choice($.lambda, $.fn_block, $._identifier)),
+      field("lambda", choice($.fn_lambda, $._identifier)),
     ),
 
     rad_if_stmt: $ => seq(
@@ -760,56 +765,83 @@ module.exports = grammar({
 
     // Functions & Lambdas
 
-    // todo: enforce single line?
-    lambda: $ => prec.right(PREC.lambda, choice(
-      // single expression
-      seq(field("keyword", "fn"), $._fn_arg_list, field("expr", $.expr)),
-
-      // single statement, optionally parenthesized
-      seq(
-        field("keyword", "fn"),
-        $._fn_arg_list,
-        choice(
-          field("stmt", $._lambda_compat_stmt),
-          // allow exactly one stmt inside parens
-          seq('(', field("stmt", $._lambda_compat_stmt), ')'),
-        ),
-      ),
-
-      // multi-return: one or more exprs in parens
-      seq(
-        field("keyword", "fn"),
-        $._fn_arg_list,
-        '(',
-        commaSep1(field("expr", $.expr)),
-        ')',
-      ),
+    fn_named: $ => prec.right(PREC.lambda, seq(
+      field("keyword", "fn"),
+      field("name", $._identifier),
+      $._fn_param_list,
+      optional(seq(
+        "->",
+        field("return_type", $.fn_param_or_return_type),
+      )),
+      $._fn_body,
     )),
 
-    fn_block: $ => seq(
+    fn_lambda: $ => prec.right(PREC.lambda, seq(
       field("keyword", "fn"),
-      $._fn_arg_list,
-      $._fn_block_stmts,
-    ),
+      $._fn_param_list,
+      optional(seq(
+        "->",
+        field("return_type", $.fn_param_or_return_type),
+      )),
+      $._fn_body,
+    )),
 
-    _fn_block_stmts: $ => seq(
-      ":",
+    _fn_body: $ => choice(
+        field("expr", $.expr),
+        field("stmt", $._lambda_compat_stmt),
+        seq('(', field("stmt", $._lambda_compat_stmt), ')'),
+        $._fn_block,
+      ),
+
+    _fn_block: $ => seq(
+      field("block_colon", ":"),
       $._newline,
       $._indent,
       field("stmt", repeat($._stmt)),
-      optional(seq(field("return_stmt", $.return_stmt), $._newline)),
+      optional(seq(field("return_stmt", $.return_stmt), $._newline)), // todo this does not work (e.g. return in if)
       $._dedent,
+    ),
+
+    _fn_param_list: $ => choice(
+      "()", // empty call
+      seq("(", commaSep1(field("param", $.fn_param)), ")"),
+    ),
+
+    fn_param: $ => seq(
+      field("name", $._identifier),
+      optional(seq(
+        ":",
+        field("type", $.fn_param_or_return_type),
+      )),
+      optional(seq(
+        "=",
+        field("default", $.literal),
+      )),
+    ),
+
+    fn_param_or_return_type: $ => prec.left(seq(
+      $.fn_leaf_type,
+      repeat(seq('|', $.fn_leaf_type))
+    )),
+
+    fn_leaf_type: $ => seq(
+      choice(
+        $.string_type,
+        $.int_type,
+        $.float_type,
+        $.bool_type,
+        $.list_type,
+        $.map_type,
+        $.number_type,
+        $.error_type,
+        $.void_type
+      ),
+      optional(field("optional", "?")),
     ),
 
     return_stmt: $ => seq(
       "return",
       commaSep1(field("value", $._right_hand_side)),
-    ),
-
-    _fn_arg_list: $ => choice(
-      "()", // empty call
-      seq("(", commaSep1(field("param", $._identifier)), ")"),
-      // todo may want to support named args, at least for named lambdas
     ),
 
     // Generic
@@ -835,6 +867,12 @@ module.exports = grammar({
     int_list_type: $ => "int[]",
     float_list_type: $ => "float[]",
     bool_list_type: $ => "bool[]",
+
+    list_type: $ => "list",
+    map_type: $ => "map",
+    number_type: $ => 'number',
+    error_type: $ => "error",
+    void_type: $ => 'void',
 
     block: $ => seq(
       repeat($._stmt),

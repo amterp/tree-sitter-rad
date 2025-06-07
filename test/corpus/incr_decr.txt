@@ -24,7 +24,7 @@ a.b["asd"].c++
 (source_file
   (incr_decr
     indexing: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -36,7 +36,7 @@ a.b["asd"].c++
                         (literal
                           (int))))))))))))
     indexing: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -50,7 +50,7 @@ a.b["asd"].c++
   (incr_decr)
   (incr_decr
     indexing: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr

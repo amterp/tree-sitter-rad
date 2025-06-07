@@ -13,7 +13,7 @@ a[:b]
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -23,7 +23,7 @@ a[:b]
                   delegate: (var_path
                     indexing: (slice))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -33,7 +33,7 @@ a[:b]
                   delegate: (var_path
                     indexing: (slice
                       start: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           delegate: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -45,7 +45,7 @@ a[:b]
                                           (literal
                                             (int))))))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -55,7 +55,7 @@ a[:b]
                   delegate: (var_path
                     indexing: (slice
                       end: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           delegate: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -68,7 +68,7 @@ a[:b]
                                             (literal
                                               (int)))))))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -78,7 +78,7 @@ a[:b]
                   delegate: (var_path
                     indexing: (slice
                       start: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           delegate: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -87,7 +87,7 @@ a[:b]
                                     delegate: (unary_expr
                                       delegate: (var_path)))))))))
                       end: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           delegate: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -96,7 +96,7 @@ a[:b]
                                     delegate: (unary_expr
                                       delegate: (var_path)))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -106,7 +106,7 @@ a[:b]
                   delegate: (var_path
                     indexing: (slice
                       start: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           delegate: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -115,7 +115,7 @@ a[:b]
                                     delegate: (unary_expr
                                       delegate: (var_path)))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -125,7 +125,7 @@ a[:b]
                   delegate: (var_path
                     indexing: (slice
                       end: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           delegate: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -144,7 +144,7 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -154,7 +154,7 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
                   delegate: (var_path
                     indexing: (slice
                       start: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           condition: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -171,7 +171,7 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
                                           (literal
                                             (int))))))))))
                           true_branch: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -194,7 +194,7 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
                                             (literal
                                               (int)))))))))))))
                       end: (expr
-                        (ternary_expr
+                        delegate: (ternary_expr
                           condition: (or_expr
                             delegate: (and_expr
                               delegate: (compare_expr
@@ -211,7 +211,7 @@ a[a > 2 ? 2 : 3 : a > 2 ? 2 : 3]
                                           (literal
                                             (int))))))))))
                           true_branch: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr

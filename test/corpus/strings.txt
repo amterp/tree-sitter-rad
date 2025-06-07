@@ -10,7 +10,7 @@ a = "hi"
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -38,7 +38,7 @@ a = 'hi'
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -66,7 +66,7 @@ a = `hi`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -92,7 +92,7 @@ Interpolation
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -108,7 +108,7 @@ Interpolation
                             content: (string_content)
                             interpolation: (interpolation
                               expr: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -128,7 +128,7 @@ r"hello {name}"
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -154,7 +154,7 @@ Interpolation fancy
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -170,7 +170,7 @@ Interpolation fancy
                             content: (string_content)
                             interpolation: (interpolation
                               expr: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -201,7 +201,7 @@ Nested double quotes
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -217,7 +217,7 @@ Nested double quotes
                             content: (string_content))
                           end: (string_end)))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -244,7 +244,7 @@ Nested single quotes
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -260,7 +260,7 @@ Nested single quotes
                             content: (string_content))
                           end: (string_end)))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -287,7 +287,7 @@ Nested backtick
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -303,7 +303,7 @@ Nested backtick
                             content: (string_content))
                           end: (string_end)))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -331,7 +331,7 @@ Empty
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -345,7 +345,7 @@ Empty
                           start: (string_start)
                           end: (string_end)))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -359,7 +359,7 @@ Empty
                           start: (string_start)
                           end: (string_end)))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr

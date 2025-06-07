@@ -12,7 +12,7 @@ for i in nums:
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -23,7 +23,7 @@ for i in nums:
     stmt: (assign
       left: (var_path)
       right: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -37,7 +37,7 @@ for i in nums:
     stmt: (assign
       left: (var_path)
       right: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -63,7 +63,7 @@ for i, item in nums:
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -74,7 +74,7 @@ for i, item in nums:
     stmt: (assign
       left: (var_path)
       right: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -88,7 +88,7 @@ for i, item in nums:
     stmt: (assign
       left: (var_path)
       right: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -118,7 +118,7 @@ for i in nums:
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -129,7 +129,7 @@ for i in nums:
     stmt: (assign
       left: (var_path)
       right: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -144,7 +144,7 @@ for i in nums:
   (for_loop
     lefts: (for_lefts)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -155,7 +155,7 @@ for i in nums:
     stmt: (assign
       left: (var_path)
       right: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr

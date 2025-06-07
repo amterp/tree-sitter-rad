@@ -8,7 +8,7 @@ print()
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -29,7 +29,7 @@ print(hi)
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -40,7 +40,7 @@ print(hi)
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -59,7 +59,7 @@ print(hi, hello, hey)
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -70,7 +70,7 @@ print(hi, hello, hey)
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -79,7 +79,7 @@ print(hi, hello, hey)
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -88,7 +88,7 @@ print(hi, hello, hey)
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -107,7 +107,7 @@ print(hi, hello, hey, )
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -118,7 +118,7 @@ print(hi, hello, hey, )
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -127,7 +127,7 @@ print(hi, hello, hey, )
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -136,7 +136,7 @@ print(hi, hello, hey, )
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -159,7 +159,7 @@ print(
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -170,7 +170,7 @@ print(
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -179,7 +179,7 @@ print(
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -188,7 +188,7 @@ print(
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -207,7 +207,7 @@ print(foo=bar)
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -219,7 +219,7 @@ print(foo=bar)
                       (call
                         named_arg: (call_named_arg
                           value: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -238,7 +238,7 @@ print(foo=bar, a = b, c = d, )
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -250,7 +250,7 @@ print(foo=bar, a = b, c = d, )
                       (call
                         named_arg: (call_named_arg
                           value: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -260,7 +260,7 @@ print(foo=bar, a = b, c = d, )
                                           delegate: (var_path))))))))))
                         named_arg: (call_named_arg
                           value: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -270,7 +270,7 @@ print(foo=bar, a = b, c = d, )
                                           delegate: (var_path))))))))))
                         named_arg: (call_named_arg
                           value: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -289,7 +289,7 @@ print(hello, hi, foo=bar, a = b, c = d, )
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -300,7 +300,7 @@ print(hello, hi, foo=bar, a = b, c = d, )
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -309,7 +309,7 @@ print(hello, hi, foo=bar, a = b, c = d, )
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -319,7 +319,7 @@ print(hello, hi, foo=bar, a = b, c = d, )
                                         delegate: (var_path)))))))))
                         named_arg: (call_named_arg
                           value: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -329,7 +329,7 @@ print(hello, hi, foo=bar, a = b, c = d, )
                                           delegate: (var_path))))))))))
                         named_arg: (call_named_arg
                           value: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -339,7 +339,7 @@ print(hello, hi, foo=bar, a = b, c = d, )
                                           delegate: (var_path))))))))))
                         named_arg: (call_named_arg
                           value: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr

@@ -14,7 +14,7 @@ a %= 2
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -28,7 +28,7 @@ a %= 2
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -42,7 +42,7 @@ a %= 2
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -56,7 +56,7 @@ a %= 2
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -70,7 +70,7 @@ a %= 2
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -96,7 +96,7 @@ a.b["asd"].c += 2
   (compound_assign
     left: (var_path
       indexing: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -108,7 +108,7 @@ a.b["asd"].c += 2
                           (literal
                             (int))))))))))))
       indexing: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -120,7 +120,7 @@ a.b["asd"].c += 2
                           (literal
                             (int)))))))))))))
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -134,7 +134,7 @@ a.b["asd"].c += 2
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -148,7 +148,7 @@ a.b["asd"].c += 2
   (compound_assign
     left: (var_path
       indexing: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -164,7 +164,7 @@ a.b["asd"].c += 2
                                 content: (string_content))
                               end: (string_end))))))))))))))
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr

@@ -211,7 +211,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -225,7 +225,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -243,7 +243,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -257,7 +257,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -271,7 +271,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -283,7 +283,7 @@ $!`git commit -m "Bump version to {version}"`
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -295,7 +295,7 @@ $!`git commit -m "Bump version to {version}"`
                                                 (literal
                                                   (int))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -307,7 +307,7 @@ $!`git commit -m "Bump version to {version}"`
                                                 (literal
                                                   (int))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -321,7 +321,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -334,7 +334,7 @@ $!`git commit -m "Bump version to {version}"`
                           (map
                             map_entry: (map_entry
                               key: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -350,7 +350,7 @@ $!`git commit -m "Bump version to {version}"`
                                                         content: (string_content))
                                                       end: (string_end)))))))))))))
                               value: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -363,7 +363,7 @@ $!`git commit -m "Bump version to {version}"`
                                                     (int)))))))))))))
                             map_entry: (map_entry
                               key: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -372,7 +372,7 @@ $!`git commit -m "Bump version to {version}"`
                                             delegate: (unary_expr
                                               delegate: (var_path)))))))))
                               value: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -386,7 +386,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -432,7 +432,7 @@ $!`git commit -m "Bump version to {version}"`
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -446,7 +446,7 @@ $!`git commit -m "Bump version to {version}"`
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -460,7 +460,7 @@ $!`git commit -m "Bump version to {version}"`
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -474,7 +474,7 @@ $!`git commit -m "Bump version to {version}"`
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -488,7 +488,7 @@ $!`git commit -m "Bump version to {version}"`
   (compound_assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -502,7 +502,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -518,7 +518,7 @@ $!`git commit -m "Bump version to {version}"`
                               content: (string_content)
                               interpolation: (interpolation
                                 expr: (expr
-                                  (ternary_expr
+                                  delegate: (ternary_expr
                                     delegate: (or_expr
                                       delegate: (and_expr
                                         delegate: (compare_expr
@@ -529,7 +529,7 @@ $!`git commit -m "Bump version to {version}"`
                                                   root: (primary_expr
                                                     (call
                                                       arg: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr
@@ -546,7 +546,7 @@ $!`git commit -m "Bump version to {version}"`
                                                                               end: (string_end))))))))))))))))))))))))))
                             end: (string_end))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -557,7 +557,7 @@ $!`git commit -m "Bump version to {version}"`
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -583,7 +583,7 @@ $!`git commit -m "Bump version to {version}"`
   (rad_block
     rad_type: (rad_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -601,7 +601,7 @@ $!`git commit -m "Bump version to {version}"`
     stmt: (rad_if_stmt
       alt: (rad_if_alt
         condition: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -621,9 +621,10 @@ $!`git commit -m "Bump version to {version}"`
             first: (immediate_identifier)))))
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_map
-        lambda: (lambda
+        lambda: (fn_lambda
+          param: (fn_param)
           expr: (expr
-            (ternary_expr
+            delegate: (ternary_expr
               delegate: (or_expr
                 delegate: (and_expr
                   delegate: (compare_expr
@@ -640,7 +641,7 @@ $!`git commit -m "Bump version to {version}"`
     stmt: (rad_field_modifier_stmt
       mod_stmt: (rad_field_mod_color
         color: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -656,7 +657,7 @@ $!`git commit -m "Bump version to {version}"`
                                   content: (string_content))
                                 end: (string_end)))))))))))))
         regex: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -674,7 +675,7 @@ $!`git commit -m "Bump version to {version}"`
   (if_stmt
     alt: (if_alt
       condition: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -693,7 +694,7 @@ $!`git commit -m "Bump version to {version}"`
       stmt: (assign
         left: (var_path)
         right: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -704,7 +705,7 @@ $!`git commit -m "Bump version to {version}"`
       stmt: (if_stmt
         alt: (if_alt
           condition: (expr
-            (ternary_expr
+            delegate: (ternary_expr
               delegate: (or_expr
                 delegate: (and_expr
                   delegate: (compare_expr
@@ -723,7 +724,7 @@ $!`git commit -m "Bump version to {version}"`
           stmt: (compound_assign
             left: (var_path)
             right: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -736,7 +737,7 @@ $!`git commit -m "Bump version to {version}"`
                                   (int))))))))))))))
         alt: (if_alt
           condition: (expr
-            (ternary_expr
+            delegate: (ternary_expr
               delegate: (or_expr
                 delegate: (and_expr
                   delegate: (compare_expr
@@ -755,7 +756,7 @@ $!`git commit -m "Bump version to {version}"`
           stmt: (assign
             left: (var_path)
             right: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -773,7 +774,7 @@ $!`git commit -m "Bump version to {version}"`
   (rad_block
     rad_type: (request_keyword)
     source: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -788,7 +789,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -799,7 +800,7 @@ $!`git commit -m "Bump version to {version}"`
                       root: (primary_expr
                         (list_comprehension
                           expr: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -809,7 +810,7 @@ $!`git commit -m "Bump version to {version}"`
                                           delegate: (unary_expr
                                             delegate: (var_path
                                               indexing: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -820,7 +821,7 @@ $!`git commit -m "Bump version to {version}"`
                                         right: (unary_expr
                                           delegate: (var_path
                                             indexing: (expr
-                                              (ternary_expr
+                                              delegate: (ternary_expr
                                                 delegate: (or_expr
                                                   delegate: (and_expr
                                                     delegate: (compare_expr
@@ -830,7 +831,7 @@ $!`git commit -m "Bump version to {version}"`
                                                             delegate: (var_path))))))))))))))))))
                           lefts: (for_lefts)
                           right: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -841,7 +842,7 @@ $!`git commit -m "Bump version to {version}"`
                                             root: (primary_expr
                                               (call
                                                 arg: (expr
-                                                  (ternary_expr
+                                                  delegate: (ternary_expr
                                                     delegate: (or_expr
                                                       delegate: (and_expr
                                                         delegate: (compare_expr
@@ -852,7 +853,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -864,7 +865,7 @@ $!`git commit -m "Bump version to {version}"`
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -876,7 +877,7 @@ $!`git commit -m "Bump version to {version}"`
                                                 (literal
                                                   (int))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -888,7 +889,7 @@ $!`git commit -m "Bump version to {version}"`
                                                 (literal
                                                   (int))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -900,7 +901,7 @@ $!`git commit -m "Bump version to {version}"`
                                                 (literal
                                                   (int)))))))))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -911,7 +912,7 @@ $!`git commit -m "Bump version to {version}"`
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -922,7 +923,7 @@ $!`git commit -m "Bump version to {version}"`
                                           root: (primary_expr
                                             (call
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -931,7 +932,7 @@ $!`git commit -m "Bump version to {version}"`
                                                             delegate: (unary_expr
                                                               delegate: (var_path)))))))))
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -947,7 +948,7 @@ $!`git commit -m "Bump version to {version}"`
                                                                         content: (string_content))
                                                                       end: (string_end)))))))))))))))))))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -958,7 +959,7 @@ $!`git commit -m "Bump version to {version}"`
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -969,7 +970,7 @@ $!`git commit -m "Bump version to {version}"`
                                           root: (primary_expr
                                             (call
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -978,7 +979,7 @@ $!`git commit -m "Bump version to {version}"`
                                                             delegate: (unary_expr
                                                               delegate: (var_path)))))))))
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -994,7 +995,7 @@ $!`git commit -m "Bump version to {version}"`
                                                                         content: (string_content))
                                                                       end: (string_end)))))))))))))
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -1010,7 +1011,7 @@ $!`git commit -m "Bump version to {version}"`
                                                                         content: (string_content))
                                                                       end: (string_end)))))))))))))))))))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -1021,7 +1022,7 @@ $!`git commit -m "Bump version to {version}"`
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -1032,7 +1033,7 @@ $!`git commit -m "Bump version to {version}"`
                                           root: (primary_expr
                                             (call
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -1041,7 +1042,7 @@ $!`git commit -m "Bump version to {version}"`
                                                             delegate: (unary_expr
                                                               delegate: (var_path)))))))))
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -1057,7 +1058,7 @@ $!`git commit -m "Bump version to {version}"`
                                                                         content: (string_content))
                                                                       end: (string_end)))))))))))))
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -1073,7 +1074,7 @@ $!`git commit -m "Bump version to {version}"`
                                                                         content: (string_content))
                                                                       end: (string_end)))))))))))))
                                               arg: (expr
-                                                (ternary_expr
+                                                delegate: (ternary_expr
                                                   delegate: (or_expr
                                                     delegate: (and_expr
                                                       delegate: (compare_expr
@@ -1091,7 +1092,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1103,7 +1104,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1113,7 +1114,7 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (var_path
                       indexing: (slice
                         start: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -1127,7 +1128,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1137,7 +1138,7 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (var_path
                       indexing: (slice
                         start: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -1149,7 +1150,7 @@ $!`git commit -m "Bump version to {version}"`
                                             (literal
                                               (int))))))))))))
                         end: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -1163,7 +1164,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1173,7 +1174,7 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (var_path
                       indexing: (slice
                         end: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -1187,7 +1188,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1200,7 +1201,7 @@ $!`git commit -m "Bump version to {version}"`
                           (map
                             map_entry: (map_entry
                               key: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -1216,7 +1217,7 @@ $!`git commit -m "Bump version to {version}"`
                                                         content: (string_content))
                                                       end: (string_end)))))))))))))
                               value: (expr
-                                (ternary_expr
+                                delegate: (ternary_expr
                                   delegate: (or_expr
                                     delegate: (and_expr
                                       delegate: (compare_expr
@@ -1232,7 +1233,7 @@ $!`git commit -m "Bump version to {version}"`
                                                         content: (string_content)
                                                         interpolation: (interpolation
                                                           expr: (expr
-                                                            (ternary_expr
+                                                            delegate: (ternary_expr
                                                               delegate: (or_expr
                                                                 delegate: (and_expr
                                                                   delegate: (compare_expr
@@ -1244,7 +1245,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1255,7 +1256,7 @@ $!`git commit -m "Bump version to {version}"`
                       root: (primary_expr
                         (call
                           arg: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -1264,7 +1265,7 @@ $!`git commit -m "Bump version to {version}"`
                                         delegate: (unary_expr
                                           delegate: (var_path)))))))))
                           arg: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -1274,7 +1275,7 @@ $!`git commit -m "Bump version to {version}"`
                                           delegate: (var_path)))))))))
                           named_arg: (call_named_arg
                             value: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -1291,7 +1292,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1309,7 +1310,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1327,7 +1328,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1346,7 +1347,7 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path)
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1357,7 +1358,7 @@ $!`git commit -m "Bump version to {version}"`
                       root: (primary_expr
                         (call
                           arg: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -1373,7 +1374,7 @@ $!`git commit -m "Bump version to {version}"`
                                                     content: (string_content))
                                                   end: (string_end)))))))))))))
                           arg: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -1382,7 +1383,7 @@ $!`git commit -m "Bump version to {version}"`
                                         delegate: (unary_expr
                                           delegate: (var_path)))))))))))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -1393,7 +1394,7 @@ $!`git commit -m "Bump version to {version}"`
                     root: (primary_expr
                       (call
                         arg: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -1409,7 +1410,7 @@ $!`git commit -m "Bump version to {version}"`
                                                   content: (string_content)
                                                   interpolation: (interpolation
                                                     expr: (expr
-                                                      (ternary_expr
+                                                      delegate: (ternary_expr
                                                         delegate: (or_expr
                                                           delegate: (and_expr
                                                             delegate: (compare_expr
@@ -1420,7 +1421,7 @@ $!`git commit -m "Bump version to {version}"`
                                                   content: (string_content)
                                                   interpolation: (interpolation
                                                     expr: (expr
-                                                      (ternary_expr
+                                                      delegate: (ternary_expr
                                                         delegate: (or_expr
                                                           delegate: (and_expr
                                                             delegate: (compare_expr
@@ -1432,7 +1433,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1450,7 +1451,7 @@ $!`git commit -m "Bump version to {version}"`
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1466,7 +1467,7 @@ $!`git commit -m "Bump version to {version}"`
                               content: (string_content)
                               interpolation: (interpolation
                                 expr: (expr
-                                  (ternary_expr
+                                  delegate: (ternary_expr
                                     delegate: (or_expr
                                       delegate: (and_expr
                                         delegate: (compare_expr
@@ -1478,7 +1479,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (checked_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1487,7 +1488,7 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (unary_expr
                       delegate: (var_path)))))))))
       stmt: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1498,7 +1499,7 @@ $!`git commit -m "Bump version to {version}"`
                         root: (primary_expr
                           (call
                             arg: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -1516,7 +1517,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (checked_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1525,7 +1526,7 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (unary_expr
                       delegate: (var_path)))))))))
       stmt: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1536,7 +1537,7 @@ $!`git commit -m "Bump version to {version}"`
                         root: (primary_expr
                           (call
                             arg: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -1554,7 +1555,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (unsafe_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1573,7 +1574,7 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1586,21 +1587,7 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
-          delegate: (or_expr
-            delegate: (and_expr
-              delegate: (compare_expr
-                delegate: (add_expr
-                  delegate: (mult_expr
-                    delegate: (unary_expr
-                      delegate: (var_path)))))))))))
-  (shell_stmt
-    left: (var_path)
-    left: (var_path)
-    left: (var_path)
-    shell_cmd: (critical_shell_cmd
-      command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1614,7 +1601,21 @@ $!`git commit -m "Bump version to {version}"`
     left: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
+          delegate: (or_expr
+            delegate: (and_expr
+              delegate: (compare_expr
+                delegate: (add_expr
+                  delegate: (mult_expr
+                    delegate: (unary_expr
+                      delegate: (var_path)))))))))))
+  (shell_stmt
+    left: (var_path)
+    left: (var_path)
+    left: (var_path)
+    shell_cmd: (critical_shell_cmd
+      command: (expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1625,7 +1626,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1641,7 +1642,7 @@ $!`git commit -m "Bump version to {version}"`
                                 content: (string_content)
                                 interpolation: (interpolation
                                   expr: (expr
-                                    (ternary_expr
+                                    delegate: (ternary_expr
                                       delegate: (or_expr
                                         delegate: (and_expr
                                           delegate: (compare_expr
@@ -1654,7 +1655,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (unsafe_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1670,7 +1671,7 @@ $!`git commit -m "Bump version to {version}"`
                                 content: (string_content)
                                 interpolation: (interpolation
                                   expr: (expr
-                                    (ternary_expr
+                                    delegate: (ternary_expr
                                       delegate: (or_expr
                                         delegate: (and_expr
                                           delegate: (compare_expr
@@ -1683,7 +1684,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (unsafe_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1699,7 +1700,7 @@ $!`git commit -m "Bump version to {version}"`
                                 content: (string_content)
                                 interpolation: (interpolation
                                   expr: (expr
-                                    (ternary_expr
+                                    delegate: (ternary_expr
                                       delegate: (or_expr
                                         delegate: (and_expr
                                           delegate: (compare_expr
@@ -1713,7 +1714,7 @@ $!`git commit -m "Bump version to {version}"`
     stmt: (shell_stmt
       shell_cmd: (critical_shell_cmd
         command: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -1729,7 +1730,7 @@ $!`git commit -m "Bump version to {version}"`
                                   content: (string_content))
                                 end: (string_end)))))))))))))))
     stmt: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1740,7 +1741,7 @@ $!`git commit -m "Bump version to {version}"`
                       root: (primary_expr
                         (call
                           arg: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -1758,7 +1759,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1774,7 +1775,7 @@ $!`git commit -m "Bump version to {version}"`
                                 content: (string_content)
                                 interpolation: (interpolation
                                   expr: (expr
-                                    (ternary_expr
+                                    delegate: (ternary_expr
                                       delegate: (or_expr
                                         delegate: (and_expr
                                           delegate: (compare_expr
@@ -1785,7 +1786,7 @@ $!`git commit -m "Bump version to {version}"`
                                 content: (string_content)
                                 interpolation: (interpolation
                                   expr: (expr
-                                    (ternary_expr
+                                    delegate: (ternary_expr
                                       delegate: (or_expr
                                         delegate: (and_expr
                                           delegate: (compare_expr
@@ -1796,7 +1797,7 @@ $!`git commit -m "Bump version to {version}"`
                               end: (string_end)))))))))))))))
   (defer_block
     stmt: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1807,7 +1808,7 @@ $!`git commit -m "Bump version to {version}"`
                       root: (primary_expr
                         (call
                           arg: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -1825,7 +1826,7 @@ $!`git commit -m "Bump version to {version}"`
     stmt: (shell_stmt
       shell_cmd: (critical_shell_cmd
         command: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -1841,7 +1842,7 @@ $!`git commit -m "Bump version to {version}"`
                                   content: (string_content)
                                   interpolation: (interpolation
                                     expr: (expr
-                                      (ternary_expr
+                                      delegate: (ternary_expr
                                         delegate: (or_expr
                                           delegate: (and_expr
                                             delegate: (compare_expr
@@ -1853,7 +1854,7 @@ $!`git commit -m "Bump version to {version}"`
   (if_stmt
     alt: (if_alt
       condition: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1866,7 +1867,7 @@ $!`git commit -m "Bump version to {version}"`
                             (bool))))))))))))
       (comment)
       stmt: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1877,7 +1878,7 @@ $!`git commit -m "Bump version to {version}"`
                         root: (primary_expr
                           (call
                             arg: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -1893,7 +1894,7 @@ $!`git commit -m "Bump version to {version}"`
                                                       content: (string_content))
                                                     end: (string_end))))))))))))))))))))))))
       stmt: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1904,7 +1905,7 @@ $!`git commit -m "Bump version to {version}"`
                         root: (primary_expr
                           (call
                             arg: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -1918,7 +1919,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -1934,7 +1935,7 @@ $!`git commit -m "Bump version to {version}"`
                                 content: (string_content)
                                 interpolation: (interpolation
                                   expr: (expr
-                                    (ternary_expr
+                                    delegate: (ternary_expr
                                       delegate: (or_expr
                                         delegate: (and_expr
                                           delegate: (compare_expr
@@ -1945,7 +1946,7 @@ $!`git commit -m "Bump version to {version}"`
                               end: (string_end)))))))))))))))
   (defer_block
     stmt: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -1956,7 +1957,7 @@ $!`git commit -m "Bump version to {version}"`
                       root: (primary_expr
                         (call
                           arg: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -1972,7 +1973,7 @@ $!`git commit -m "Bump version to {version}"`
                                                     content: (string_content)
                                                     interpolation: (interpolation
                                                       expr: (expr
-                                                        (ternary_expr
+                                                        delegate: (ternary_expr
                                                           delegate: (or_expr
                                                             delegate: (and_expr
                                                               delegate: (compare_expr
@@ -1987,7 +1988,7 @@ $!`git commit -m "Bump version to {version}"`
       left: (var_path)
       shell_cmd: (critical_shell_cmd
         command: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -2003,7 +2004,7 @@ $!`git commit -m "Bump version to {version}"`
                                   content: (string_content)
                                   interpolation: (interpolation
                                     expr: (expr
-                                      (ternary_expr
+                                      delegate: (ternary_expr
                                         delegate: (or_expr
                                           delegate: (and_expr
                                             delegate: (compare_expr
@@ -2015,7 +2016,7 @@ $!`git commit -m "Bump version to {version}"`
   (if_stmt
     alt: (if_alt
       condition: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -2028,7 +2029,7 @@ $!`git commit -m "Bump version to {version}"`
                             (bool))))))))))))
       (comment)
       stmt: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -2039,7 +2040,7 @@ $!`git commit -m "Bump version to {version}"`
                         root: (primary_expr
                           (call
                             arg: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -2055,7 +2056,7 @@ $!`git commit -m "Bump version to {version}"`
                                                       content: (string_content))
                                                     end: (string_end))))))))))))))))))))))))
       stmt: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -2066,7 +2067,7 @@ $!`git commit -m "Bump version to {version}"`
                         root: (primary_expr
                           (call
                             arg: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -2080,7 +2081,7 @@ $!`git commit -m "Bump version to {version}"`
   (shell_stmt
     shell_cmd: (critical_shell_cmd
       command: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -2096,7 +2097,7 @@ $!`git commit -m "Bump version to {version}"`
                                 content: (string_content)
                                 interpolation: (interpolation
                                   expr: (expr
-                                    (ternary_expr
+                                    delegate: (ternary_expr
                                       delegate: (or_expr
                                         delegate: (and_expr
                                           delegate: (compare_expr

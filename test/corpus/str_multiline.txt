@@ -14,7 +14,7 @@ this is a many-line
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -47,7 +47,7 @@ a = """
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -76,7 +76,7 @@ a = """
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -110,7 +110,7 @@ this is a {2 + 2}
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -128,7 +128,7 @@ this is a {2 + 2}
                               content: (string_content)
                               interpolation: (interpolation
                                 expr: (expr
-                                  (ternary_expr
+                                  delegate: (ternary_expr
                                     delegate: (or_expr
                                       delegate: (and_expr
                                         delegate: (compare_expr
@@ -166,7 +166,7 @@ this is a {2 + 2}
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr

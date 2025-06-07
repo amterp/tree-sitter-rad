@@ -8,7 +8,7 @@ Newline, tab
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -35,7 +35,7 @@ Interpolation
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -64,7 +64,7 @@ Own delimiter
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -82,7 +82,7 @@ Own delimiter
                             double_quote: (esc_double_quote))
                           end: (string_end)))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -100,7 +100,7 @@ Own delimiter
                             single_quote: (esc_single_quote))
                           end: (string_end)))))))))))))
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr

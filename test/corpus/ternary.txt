@@ -8,7 +8,7 @@ a > 2 ? "true" : "false"
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       condition: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -25,7 +25,7 @@ a > 2 ? "true" : "false"
                       (literal
                         (int))))))))))
       true_branch: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -68,7 +68,7 @@ b = a > 2 ? "true" : "false"
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         condition: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -85,7 +85,7 @@ b = a > 2 ? "true" : "false"
                         (literal
                           (int))))))))))
         true_branch: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -128,7 +128,7 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         condition: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -145,7 +145,7 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
                         (literal
                           (int))))))))))
         true_branch: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             condition: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -162,7 +162,7 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
                             (literal
                               (int))))))))))
             true_branch: (expr
-              (ternary_expr
+              delegate: (ternary_expr
                 delegate: (or_expr
                   delegate: (and_expr
                     delegate: (compare_expr
@@ -201,7 +201,7 @@ b = a > 2 ? b > 2 ? 1 : 0 : c > 2 ? 1 : 0
                           (literal
                             (int))))))))))
           true_branch: (expr
-            (ternary_expr
+            delegate: (ternary_expr
               delegate: (or_expr
                 delegate: (and_expr
                   delegate: (compare_expr

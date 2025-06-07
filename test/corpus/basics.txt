@@ -10,7 +10,7 @@ a = 2
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -34,7 +34,7 @@ a = "hi"
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -62,7 +62,7 @@ a = 2.1
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -87,7 +87,7 @@ b = false
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -101,7 +101,7 @@ b = false
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -132,7 +132,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -147,7 +147,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -159,7 +159,7 @@ a = [true, false, ]
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -171,7 +171,7 @@ a = [true, false, ]
                                                 (literal
                                                   (int))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -185,7 +185,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -197,7 +197,7 @@ a = [true, false, ]
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -209,7 +209,7 @@ a = [true, false, ]
                                                 (literal
                                                   (int))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -223,7 +223,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -235,7 +235,7 @@ a = [true, false, ]
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -247,7 +247,7 @@ a = [true, false, ]
                                                 (literal
                                                   (int))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -261,7 +261,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -273,7 +273,7 @@ a = [true, false, ]
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -291,7 +291,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -303,7 +303,7 @@ a = [true, false, ]
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -319,7 +319,7 @@ a = [true, false, ]
                                                       content: (string_content))
                                                     end: (string_end)))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -337,7 +337,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -349,7 +349,7 @@ a = [true, false, ]
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -361,7 +361,7 @@ a = [true, false, ]
                                                 (literal
                                                   (float))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -375,7 +375,7 @@ a = [true, false, ]
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -387,7 +387,7 @@ a = [true, false, ]
                         (literal
                           (list
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -399,7 +399,7 @@ a = [true, false, ]
                                                 (literal
                                                   (bool))))))))))))
                             list_entry: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr
@@ -424,7 +424,7 @@ b = false
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -438,7 +438,7 @@ b = false
   (assign
     left: (var_path)
     right: (expr
-      (ternary_expr
+      delegate: (ternary_expr
         delegate: (or_expr
           delegate: (and_expr
             delegate: (compare_expr
@@ -460,7 +460,7 @@ Assignment mixed list
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -472,7 +472,7 @@ Assignment mixed list
                       (literal
                         (list
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -484,7 +484,7 @@ Assignment mixed list
                                               (literal
                                                 (int))))))))))))
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -496,7 +496,7 @@ Assignment mixed list
                                               (literal
                                                 (bool))))))))))))
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -512,7 +512,7 @@ Assignment mixed list
                                                     content: (string_content))
                                                   end: (string_end)))))))))))))
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -534,7 +534,7 @@ Assignment nested list
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -546,7 +546,7 @@ Assignment nested list
                       (literal
                         (list
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -558,7 +558,7 @@ Assignment nested list
                                               (literal
                                                 (int))))))))))))
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -570,7 +570,7 @@ Assignment nested list
                                               (literal
                                                 (bool))))))))))))
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr
@@ -582,7 +582,7 @@ Assignment nested list
                                               (literal
                                                 (list
                                                   list_entry: (expr
-                                                    (ternary_expr
+                                                    delegate: (ternary_expr
                                                       delegate: (or_expr
                                                         delegate: (and_expr
                                                           delegate: (compare_expr
@@ -598,7 +598,7 @@ Assignment nested list
                                                                             content: (string_content))
                                                                           end: (string_end)))))))))))))
                                                   list_entry: (expr
-                                                    (ternary_expr
+                                                    delegate: (ternary_expr
                                                       delegate: (or_expr
                                                         delegate: (and_expr
                                                           delegate: (compare_expr
@@ -610,7 +610,7 @@ Assignment nested list
                                                                       (literal
                                                                         (list
                                                                           list_entry: (expr
-                                                                            (ternary_expr
+                                                                            delegate: (ternary_expr
                                                                               delegate: (or_expr
                                                                                 delegate: (and_expr
                                                                                   delegate: (compare_expr
@@ -622,7 +622,7 @@ Assignment nested list
                                                                                               (literal
                                                                                                 (int))))))))))))
                                                                           list_entry: (expr
-                                                                            (ternary_expr
+                                                                            delegate: (ternary_expr
                                                                               delegate: (or_expr
                                                                                 delegate: (and_expr
                                                                                   delegate: (compare_expr
@@ -634,7 +634,7 @@ Assignment nested list
                                                                                               (literal
                                                                                                 (int))))))))))))))))))))))))))))))))))))
                           list_entry: (expr
-                            (ternary_expr
+                            delegate: (ternary_expr
                               delegate: (or_expr
                                 delegate: (and_expr
                                   delegate: (compare_expr

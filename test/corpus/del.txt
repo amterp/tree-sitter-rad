@@ -63,7 +63,7 @@ del a[0]
   (del_stmt
     right: (var_path
       indexing: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -87,7 +87,7 @@ del a["foo"]
   (del_stmt
     right: (var_path
       indexing: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -128,7 +128,7 @@ del a.foo, b[1], c["bar"]
     right: (var_path)
     right: (var_path
       indexing: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -141,7 +141,7 @@ del a.foo, b[1], c["bar"]
                             (int)))))))))))))
     right: (var_path
       indexing: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr

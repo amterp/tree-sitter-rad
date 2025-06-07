@@ -18,7 +18,7 @@ if true: // inline comment
   (if_stmt
     alt: (if_alt
       condition: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -34,7 +34,7 @@ if true: // inline comment
       stmt: (assign
         left: (var_path)
         right: (expr
-          (ternary_expr
+          delegate: (ternary_expr
             delegate: (or_expr
               delegate: (and_expr
                 delegate: (compare_expr
@@ -47,7 +47,7 @@ if true: // inline comment
                               (int)))))))))))))
       (comment)
       stmt: (expr
-        (ternary_expr
+        delegate: (ternary_expr
           delegate: (or_expr
             delegate: (and_expr
               delegate: (compare_expr
@@ -58,7 +58,7 @@ if true: // inline comment
                         root: (primary_expr
                           (call
                             arg: (expr
-                              (ternary_expr
+                              delegate: (ternary_expr
                                 delegate: (or_expr
                                   delegate: (and_expr
                                     delegate: (compare_expr

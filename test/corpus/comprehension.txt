@@ -8,7 +8,7 @@ Comprehension no filter
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -19,7 +19,7 @@ Comprehension no filter
                     root: (primary_expr
                       (list_comprehension
                         expr: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -35,7 +35,7 @@ Comprehension no filter
                                               (int))))))))))))
                         lefts: (for_lefts)
                         right: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -54,7 +54,7 @@ Comprehension w/ filter
 
 (source_file
   (expr
-    (ternary_expr
+    delegate: (ternary_expr
       delegate: (or_expr
         delegate: (and_expr
           delegate: (compare_expr
@@ -65,7 +65,7 @@ Comprehension w/ filter
                     root: (primary_expr
                       (list_comprehension
                         expr: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -81,7 +81,7 @@ Comprehension w/ filter
                                               (int))))))))))))
                         lefts: (for_lefts)
                         right: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
@@ -90,7 +90,7 @@ Comprehension w/ filter
                                       delegate: (unary_expr
                                         delegate: (var_path)))))))))
                         condition: (expr
-                          (ternary_expr
+                          delegate: (ternary_expr
                             delegate: (or_expr
                               delegate: (and_expr
                                 delegate: (compare_expr
