@@ -294,8 +294,8 @@ a, b = $!`ls -n`
 
 (source_file
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -324,9 +324,9 @@ a, b, c = $!`ls -n`
 
 (source_file
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -355,9 +355,9 @@ _, _, _ = $!`ls -n`
 
 (source_file
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -389,8 +389,8 @@ fail:
 
 (source_file
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (checked_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -474,8 +474,8 @@ a, b = quiet unsafe $`ls -n`
 
 (source_file
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (unsafe_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -494,8 +494,8 @@ a, b = quiet unsafe $`ls -n`
                                 content: (string_content))
                               end: (string_end)))))))))))))))
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (unsafe_shell_cmd
       command: (expr
         delegate: (ternary_expr

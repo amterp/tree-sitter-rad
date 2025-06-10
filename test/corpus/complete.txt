@@ -1344,8 +1344,8 @@ $!`git commit -m "Bump version to {version}"`
                               content: (string_content))
                             end: (string_end))))))))))))))
   (assign
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     right: (expr
       delegate: (ternary_expr
         delegate: (or_expr
@@ -1583,8 +1583,8 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (unary_expr
                       delegate: (var_path)))))))))))
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -1596,9 +1596,9 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (unary_expr
                       delegate: (var_path)))))))))))
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -1610,9 +1610,9 @@ $!`git commit -m "Bump version to {version}"`
                     delegate: (unary_expr
                       delegate: (var_path)))))))))))
   (shell_stmt
-    left: (var_path)
-    left: (var_path)
-    left: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
+    lefts: (var_path)
     shell_cmd: (critical_shell_cmd
       command: (expr
         delegate: (ternary_expr
@@ -1984,8 +1984,8 @@ $!`git commit -m "Bump version to {version}"`
                                                     content: (string_content))
                                                   end: (string_end))))))))))))))))))))))))
     stmt: (shell_stmt
-      left: (var_path)
-      left: (var_path)
+      lefts: (var_path)
+      lefts: (var_path)
       shell_cmd: (critical_shell_cmd
         command: (expr
           delegate: (ternary_expr
