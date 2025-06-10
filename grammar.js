@@ -64,7 +64,7 @@ module.exports = grammar({
   ],
 
   conflicts: $ => [
-    [$._left_hand_side, $._postfix_expr],
+    [$._left_side, $._postfix_expr],
   ],
 
   word: $ => $.identifierRegex,
@@ -246,17 +246,17 @@ module.exports = grammar({
     // Assignment
 
     assign: $ => seq(
-      $._left_hand_side,
+      $._left_side,
       '=',
-      field("right", $._right_hand_side),
+      $._right_side,
     ),
 
     compound_assign: $ => seq(
-      $._left_hand_side,
+      $._left_side_single,
       field('op', choice(
         '+=', '-=', '*=', '/=', '%=',
       )),
-      field('right', $._right_hand_side),
+      field('right', $._right_side_single),
     ),
 
     incr_decr: $ => prec(PREC.incr_decr, seq(
@@ -265,7 +265,23 @@ module.exports = grammar({
       // token.immediate(choice("+", "-")),
     )),
 
-    _left_hand_side: $ => commaSep1(field("left", $.var_path)),
+    _left_side_single: $ => prec(1, field("left", $.var_path)),
+
+    _left_side: $ => choice(
+      commaSep1(field("lefts", $.var_path)),
+      seq('[', sepTrail1(field("lefts", $.var_path)), ']'),
+      $._left_side_single,
+    ),
+
+    _right_side_single: $ => field("right", choice(
+      $.expr,
+      $.json_path,
+    )),
+
+    _right_side: $ => prec(-1, choice(
+      commaSep1($._right_side_single),
+      $._right_side_single,
+    )),
 
     // todo rename to identifier_path?
     var_path: $ => prec.left(PREC.var_path, seq(
@@ -295,11 +311,6 @@ module.exports = grammar({
       optional(field("start", $.expr)),
       ':',
       optional(field("end", $.expr)),
-    ),
-
-    _right_hand_side: $ => choice(
-      $.expr,
-      $.json_path,
     ),
 
     json_path: $ => seq(
@@ -388,7 +399,7 @@ module.exports = grammar({
     ),
 
     switch_stmt: $ => seq(
-      optional(seq($._left_hand_side, "=")),
+      optional(seq($._left_side, "=")),
       'switch',
       field("discriminant", $.expr),
       ":",
@@ -413,7 +424,7 @@ module.exports = grammar({
 
     switch_case_expr: $ => seq(
       "->",
-      commaSep1(field("value", $._right_hand_side)),
+      $._right_side,
     ),
 
     switch_case_block: $ => seq(
@@ -427,7 +438,7 @@ module.exports = grammar({
 
     yield_stmt: $ => seq(
       "yield",
-      commaSep1(field("value", $._right_hand_side)),
+      $._right_side,
     ),
 
     switch_default: $ => seq(
@@ -437,7 +448,7 @@ module.exports = grammar({
     ),
 
     shell_stmt: $ => seq(
-      optional(seq($._left_hand_side, "=")),
+      optional(seq($._left_side, "=")),
       field("shell_cmd", choice(
         $.checked_shell_cmd,
         $.unsafe_shell_cmd,
@@ -841,7 +852,7 @@ module.exports = grammar({
 
     return_stmt: $ => seq(
       "return",
-      commaSep1(field("value", $._right_hand_side)),
+      $._right_side,
     ),
 
     // Generic

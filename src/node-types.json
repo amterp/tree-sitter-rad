@@ -514,8 +514,18 @@
     "named": true,
     "fields": {
       "left": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "var_path",
+            "named": true
+          }
+        ]
+      },
+      "lefts": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "var_path",
@@ -524,7 +534,7 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -821,7 +831,7 @@
     "named": true,
     "fields": {
       "left": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -857,7 +867,7 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -2667,7 +2677,7 @@
     "type": "return_stmt",
     "named": true,
     "fields": {
-      "value": {
+      "right": {
         "multiple": true,
         "required": true,
         "types": [
@@ -2688,6 +2698,16 @@
     "named": true,
     "fields": {
       "left": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "var_path",
+            "named": true
+          }
+        ]
+      },
+      "lefts": {
         "multiple": true,
         "required": false,
         "types": [
@@ -3103,7 +3123,7 @@
     "type": "switch_case_expr",
     "named": true,
     "fields": {
-      "value": {
+      "right": {
         "multiple": true,
         "required": true,
         "types": [
@@ -3174,6 +3194,16 @@
         ]
       },
       "left": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "var_path",
+            "named": true
+          }
+        ]
+      },
+      "lefts": {
         "multiple": true,
         "required": false,
         "types": [
@@ -3457,7 +3487,7 @@
     "type": "yield_stmt",
     "named": true,
     "fields": {
-      "value": {
+      "right": {
         "multiple": true,
         "required": true,
         "types": [
