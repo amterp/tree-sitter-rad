@@ -31,17 +31,13 @@ if not version:
 
 // resolve version /////////////
 _, tags = $!`git tag`
-tags = split(tags[:-1], "\n")
-tags = [replace(t, "v", "") for t in tags]
-tags = [split(t, "\.") for t in tags]
+tags = tags.trim("\n").split("\n")
+tags = [t.replace("v", "") for t in tags].sort()
+latest = [t.split("\.") for t in tags][-1]
 
-majors = sort([parse_int(t[0]) for t in tags])
-minors = sort([parse_int(t[1]) for t in tags])
-patches = sort([parse_int(t[2]) for t in tags])
-
-major = majors[-1]
-minor = minors[-1]
-patch = patches[-1]
+major = latest[0].parse_int()
+minor = latest[1].parse_int()
+patch = latest[2].parse_int()
 
 if version == 1:
     version = "{major}.{minor}.{patch + 1}"
