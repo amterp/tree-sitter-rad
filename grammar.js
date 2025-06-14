@@ -114,6 +114,8 @@ module.exports = grammar({
       $.break_stmt,
       $.continue_stmt,
       $.pass_stmt,
+      $.return_stmt,
+      $.yield_stmt,
     ),
 
     _lambda_compat_stmt: $ => choice(
@@ -230,7 +232,7 @@ module.exports = grammar({
     ),
 
     _call_arg_list: $ => choice(
-      "()", // empty call
+      seq("(", ")"), // empty call
       seq("(", sepTrail1(field("arg", $.expr)), ")"), // no named args
       seq("(", optional(seq(commaSep1(field("arg", $.expr)), ",")), sepTrail1(field("named_arg", $.call_named_arg)), ")"), // mixed
     ),
@@ -281,6 +283,7 @@ module.exports = grammar({
     _right_side: $ => prec(-1, choice(
       commaSep1($._right_side_single),
       $._right_side_single,
+      field("right", $.switch_stmt),
     )),
 
     // todo rename to identifier_path?
@@ -399,7 +402,6 @@ module.exports = grammar({
     ),
 
     switch_stmt: $ => seq(
-      optional(seq($._left_side, "=")),
       'switch',
       field("discriminant", $.expr),
       ":",
@@ -432,7 +434,6 @@ module.exports = grammar({
       $._newline,
       $._indent,
       field("stmt", repeat($._stmt)),
-      optional(seq(field("yield_stmt", $.yield_stmt), $._newline)),
       $._dedent,
     ),
 
@@ -782,7 +783,10 @@ module.exports = grammar({
       $._fn_param_list,
       optional(seq(
         "->",
-        field("return_type", $.fn_param_or_return_type),
+        choice(
+          field("return_type", $.void_type),
+          field("return_type", $.fn_param_or_return_type),
+        ),
       )),
       $._fn_body,
     )),
@@ -792,63 +796,71 @@ module.exports = grammar({
       $._fn_param_list,
       optional(seq(
         "->",
-        field("return_type", $.fn_param_or_return_type),
+        choice(
+          field("return_type", $.void_type),
+          field("return_type", $.fn_param_or_return_type),
+        ),
       )),
       $._fn_body,
     )),
 
     _fn_body: $ => choice(
-        field("expr", $.expr),
-        field("stmt", $._lambda_compat_stmt),
-        seq('(', field("stmt", $._lambda_compat_stmt), ')'),
-        $._fn_block,
-      ),
+      field("expr", $.expr),
+      field("stmt", $._lambda_compat_stmt),
+      seq('(', field("stmt", $._lambda_compat_stmt), ')'),
+      $._fn_block,
+    ),
 
     _fn_block: $ => seq(
       field("block_colon", ":"),
       $._newline,
       $._indent,
       field("stmt", repeat($._stmt)),
-      optional(seq(field("return_stmt", $.return_stmt), $._newline)), // todo this does not work (e.g. return in if)
       $._dedent,
     ),
 
     _fn_param_list: $ => choice(
-      "()", // empty call
+      seq("(", ")"), // empty call
       seq("(", commaSep1(field("param", $.fn_param)), ")"),
     ),
 
-    fn_param: $ => seq(
-      field("name", $._identifier),
-      optional(seq(
-        ":",
-        field("type", $.fn_param_or_return_type),
-      )),
-      optional(seq(
-        "=",
-        field("default", $.literal),
-      )),
+    fn_param: $ => choice(
+      field("vararg_marker", "*"),
+      seq(
+        field("name", $._identifier),
+        optional(choice(
+          seq(
+            ":",
+            field("type", $.fn_param_or_return_type),
+          ),
+          optional(field("optional", "?")),
+        )),
+        optional(seq(
+          "=",
+          field("default", $.literal),
+        ))),
     ),
 
     fn_param_or_return_type: $ => prec.left(seq(
-      $.fn_leaf_type,
-      repeat(seq('|', $.fn_leaf_type))
+      field("leaf_type", $.fn_leaf_type),
+      repeat(seq('|', field("leaf_type", $.fn_leaf_type))),
     )),
 
-    fn_leaf_type: $ => seq(
+    fn_leaf_type: $ => prec.right(seq(
       choice(
-        $.string_type,
-        $.int_type,
-        $.float_type,
-        $.bool_type,
-        $.list_type,
-        $.map_type,
-        $.number_type,
+        seq(optional(field("vararg_marker", "*")), $.string_type),
+        seq(optional(field("vararg_marker", "*")), $.int_type),
+        seq(optional(field("vararg_marker", "*")), $.float_type),
+        seq(optional(field("vararg_marker", "*")), $.bool_type),
+        seq(optional(field("vararg_marker", "*")), $.list_type),
+        seq(optional(field("vararg_marker", "*")), $.map_type),
+        seq(optional(field("vararg_marker", "*")), $.num_type),
+        seq(optional(field("vararg_marker", "*")), $.any_type),
+        seq(optional(field("vararg_marker", "*")), $.fn_type),
         $.error_type,
-        $.void_type
       ),
       optional(field("optional", "?")),
-    ),
+    )),
 
     return_stmt: $ => seq(
       "return",
@@ -870,20 +882,54 @@ module.exports = grammar({
       $.bool_list_type,
     ),
 
-    string_type: $ => "string",
+    string_type: $ => "str",
     int_type: $ => "int",
     float_type: $ => "float",
     bool_type: $ => "bool",
-    string_list_type: $ => "string[]",
-    int_list_type: $ => "int[]",
-    float_list_type: $ => "float[]",
-    bool_list_type: $ => "bool[]",
+    string_list_type: $ => "[*str]",
+    int_list_type: $ => "[*int]",
+    float_list_type: $ => "[*float]",
+    bool_list_type: $ => "[*bool]",
 
-    list_type: $ => "list",
-    map_type: $ => "map",
-    number_type: $ => 'number',
+    list_type: $ => choice(
+      "list",
+      seq("[", field("type", commaSep1($.fn_param_or_return_type)), "]"),
+      seq("[", field("enum", commaSep1($.string)), "]"),
+    ),
+    num_type: $ => "num",
     error_type: $ => "error",
     void_type: $ => 'void',
+    any_type: $ => 'any',
+    fn_type: $ => seq(
+      "fn",
+      seq("(", sepTrail0(field("param", $.fn_param_or_return_type)), ")"),
+      optional(seq(
+        "->",
+        choice(
+          field("return_type", $.void_type),
+          field("return_type", $.fn_param_or_return_type),
+        ),
+      )),
+    ),
+    map_type: $ => choice(
+      "map",
+      seq(
+        "{",
+        sepTrail0($.map_entry_type),
+        "}",
+      ),
+    ),
+    map_entry_type: $ => seq(
+      choice(
+        seq(
+          field("key_name", $.string),
+          optional(field("optional", "?")),
+        ),
+        field("key_type", $.fn_param_or_return_type),
+      ),
+      ":",
+      field("value_type", $.fn_param_or_return_type),
+    ),
 
     block: $ => seq(
       repeat($._stmt),
