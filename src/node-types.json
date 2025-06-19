@@ -1248,16 +1248,6 @@
           }
         ]
       },
-      "expr": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
-          }
-        ]
-      },
       "keyword": {
         "multiple": false,
         "required": true,
@@ -1386,6 +1376,52 @@
           }
         ]
       },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "any_type",
+            "named": true
+          },
+          {
+            "type": "bool_type",
+            "named": true
+          },
+          {
+            "type": "error_type",
+            "named": true
+          },
+          {
+            "type": "float_type",
+            "named": true
+          },
+          {
+            "type": "fn_type",
+            "named": true
+          },
+          {
+            "type": "int_type",
+            "named": true
+          },
+          {
+            "type": "list_type",
+            "named": true
+          },
+          {
+            "type": "map_type",
+            "named": true
+          },
+          {
+            "type": "num_type",
+            "named": true
+          },
+          {
+            "type": "string_type",
+            "named": true
+          }
+        ]
+      },
       "vararg_marker": {
         "multiple": false,
         "required": false,
@@ -1396,52 +1432,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "any_type",
-          "named": true
-        },
-        {
-          "type": "bool_type",
-          "named": true
-        },
-        {
-          "type": "error_type",
-          "named": true
-        },
-        {
-          "type": "float_type",
-          "named": true
-        },
-        {
-          "type": "fn_type",
-          "named": true
-        },
-        {
-          "type": "int_type",
-          "named": true
-        },
-        {
-          "type": "list_type",
-          "named": true
-        },
-        {
-          "type": "map_type",
-          "named": true
-        },
-        {
-          "type": "num_type",
-          "named": true
-        },
-        {
-          "type": "string_type",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1455,16 +1445,6 @@
           {
             "type": ":",
             "named": false
-          }
-        ]
-      },
-      "expr": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
           }
         ]
       },

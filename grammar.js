@@ -120,10 +120,11 @@ module.exports = grammar({
 
     _lambda_compat_stmt: $ => choice(
       // todo technically would be good to allow assign, but the multi-right side assign seems to cause issues
-      field("stmt", $.compound_assign),
-      field("stmt", $.shell_stmt),
-      field("stmt", $.incr_decr),
-      field("stmt", $.del_stmt),
+      $.expr,
+      $.compound_assign,
+      $.shell_stmt,
+      $.incr_decr,
+      $.del_stmt,
     ),
 
     // Expressions
@@ -234,7 +235,7 @@ module.exports = grammar({
     _call_arg_list: $ => choice(
       seq("(", ")"), // empty call
       seq("(", sepTrail1(field("arg", $.expr)), ")"), // no named args
-      seq("(", optional(seq(commaSep1(field("arg", $.expr)), ",")), sepTrail1(field("named_arg", $.call_named_arg)), ")"), // mixed
+      seq("(", optional(seq(commaSep1(field("arg", $.expr)), ",")), sepTrail1(field("named_arg", $.call_named_arg)), ")"), // mixed // todo can probably collapse with previous
     ),
 
     call_named_arg: $ => seq(
@@ -805,7 +806,6 @@ module.exports = grammar({
     )),
 
     _fn_body: $ => choice(
-      field("expr", $.expr),
       field("stmt", $._lambda_compat_stmt),
       seq('(', field("stmt", $._lambda_compat_stmt), ')'),
       $._fn_block,
@@ -828,13 +828,14 @@ module.exports = grammar({
       field("vararg_marker", "*"),
       seq(
         field("name", $._identifier),
-        optional(choice(
-          seq(
-            ":",
-            field("type", $.fn_param_or_return_type),
-          ),
-          optional(field("optional", "?")),
-        )),
+        optional(
+          choice(
+            seq(
+              ":",
+              field("type", $.fn_param_or_return_type),
+            ),
+            optional(field("optional", "?")),
+          )),
         optional(seq(
           "=",
           field("default", $.literal),
@@ -848,16 +849,16 @@ module.exports = grammar({
 
     fn_leaf_type: $ => prec.right(seq(
       choice(
-        seq(optional(field("vararg_marker", "*")), $.string_type),
-        seq(optional(field("vararg_marker", "*")), $.int_type),
-        seq(optional(field("vararg_marker", "*")), $.float_type),
-        seq(optional(field("vararg_marker", "*")), $.bool_type),
-        seq(optional(field("vararg_marker", "*")), $.list_type),
-        seq(optional(field("vararg_marker", "*")), $.map_type),
-        seq(optional(field("vararg_marker", "*")), $.num_type),
-        seq(optional(field("vararg_marker", "*")), $.any_type),
-        seq(optional(field("vararg_marker", "*")), $.fn_type),
-        $.error_type,
+        seq(optional(field("vararg_marker", "*")), field("type", $.string_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.int_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.float_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.bool_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.list_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.map_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.num_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.any_type)),
+        seq(optional(field("vararg_marker", "*")), field("type", $.fn_type)),
+        field("type", $.error_type),
       ),
       optional(field("optional", "?")),
     )),
