@@ -6,7 +6,7 @@ Doc: https://tree-sitter.github.io/tree-sitter/creating-parsers/6-publishing.htm
 args:
     build b bool # Enable to build & test the tree sitter.
     no_clean "no-clean" C bool # Enable to not clean the go cache.
-    include i string = "" # Specify to regex include only certain TS tests.
+    include i str = "" # Specify to regex include only certain TS tests.
     release r int = 0 # 1 to bump patch, 2 to bump minor, 3 for major
 
     release regex "^[0-9]+\.[0-9]+\.[0-9]+$"

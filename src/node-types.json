@@ -1258,12 +1258,22 @@
           }
         ]
       },
-      "param": {
+      "named_only_param": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "fn_param",
+            "type": "normal_param",
+            "named": true
+          }
+        ]
+      },
+      "normal_param": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "normal_param",
             "named": true
           }
         ]
@@ -1359,6 +1369,16 @@
             "named": true
           }
         ]
+      },
+      "vararg_param": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "vararg_param",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -1366,6 +1386,16 @@
     "type": "fn_leaf_type",
     "named": true,
     "fields": {
+      "list": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "[]",
+            "named": false
+          }
+        ]
+      },
       "optional": {
         "multiple": false,
         "required": false,
@@ -1413,22 +1443,8 @@
             "named": true
           },
           {
-            "type": "num_type",
-            "named": true
-          },
-          {
             "type": "string_type",
             "named": true
-          }
-        ]
-      },
-      "vararg_marker": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "*",
-            "named": false
           }
         ]
       }
@@ -1468,12 +1484,22 @@
           }
         ]
       },
-      "param": {
+      "named_only_param": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "fn_param",
+            "type": "normal_param",
+            "named": true
+          }
+        ]
+      },
+      "normal_param": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "normal_param",
             "named": true
           }
         ]
@@ -1569,60 +1595,14 @@
             "named": true
           }
         ]
-      }
-    }
-  },
-  {
-    "type": "fn_param",
-    "named": true,
-    "fields": {
-      "default": {
+      },
+      "vararg_param": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "literal",
+            "type": "vararg_param",
             "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": false
-          }
-        ]
-      },
-      "optional": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "?",
-            "named": false
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "fn_param_or_return_type",
-            "named": true
-          }
-        ]
-      },
-      "vararg_marker": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "*",
-            "named": false
           }
         ]
       }
@@ -2256,14 +2236,20 @@
     "type": "list_type",
     "named": true,
     "fields": {
+      "any": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "list",
+            "named": false
+          }
+        ]
+      },
       "enum": {
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": ",",
-            "named": false
-          },
           {
             "type": "string",
             "named": true
@@ -2274,10 +2260,6 @@
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": ",",
-            "named": false
-          },
           {
             "type": "fn_param_or_return_type",
             "named": true
@@ -2368,16 +2350,16 @@
     }
   },
   {
-    "type": "map_entry_type",
+    "type": "map_type",
     "named": true,
     "fields": {
-      "key_name": {
+      "any": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "string",
-            "named": true
+            "type": "map",
+            "named": false
           }
         ]
       },
@@ -2391,19 +2373,19 @@
           }
         ]
       },
-      "optional": {
-        "multiple": false,
+      "named_entry": {
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "?",
-            "named": false
+            "type": "named_map_entry",
+            "named": true
           }
         ]
       },
       "value_type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "fn_param_or_return_type",
@@ -2411,21 +2393,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "map_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "map_entry_type",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2476,6 +2443,88 @@
         "types": [
           {
             "type": "unary_expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "named_map_entry",
+    "named": true,
+    "fields": {
+      "key_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "optional": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "?",
+            "named": false
+          }
+        ]
+      },
+      "value_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "normal_param",
+    "named": true,
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "optional": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "?",
+            "named": false
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
             "named": true
           }
         ]
@@ -3575,6 +3624,52 @@
     }
   },
   {
+    "type": "vararg_param",
+    "named": true,
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
+            "named": true
+          }
+        ]
+      },
+      "vararg_marker": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "*",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "while_loop",
     "named": true,
     "fields": {
@@ -3813,6 +3908,10 @@
     "named": false
   },
   {
+    "type": "[]",
+    "named": false
+  },
+  {
     "type": "\\",
     "named": false
   },
@@ -4026,10 +4125,6 @@
   },
   {
     "type": "null",
-    "named": true
-  },
-  {
-    "type": "num_type",
     "named": true
   },
   {

@@ -819,27 +819,43 @@ module.exports = grammar({
       $._dedent,
     ),
 
-    _fn_param_list: $ => choice(
-      seq("(", ")"), // empty call
-      seq("(", commaSep1(field("param", $.fn_param)), ")"),
+    _fn_param_list: $ => seq(
+      "(",
+      optional(choice(
+        seq(
+          optional($._positional_params),
+          optional(seq(",", commaSep1(field("named_only_param", $.normal_param))))
+        ),
+        seq(
+          "*",
+          ",",
+          commaSep1(field("named_only_param", $.normal_param))
+        )
+      )),
+      ")"
     ),
 
-    fn_param: $ => choice(
+    _positional_params: $ => prec.right(seq(
+      choice(
+        commaSep1(field("normal_param", $.normal_param)),
+        seq(commaSep1(field("normal_param", $.normal_param)), ",", field("vararg_param", $.vararg_param)),
+        field("vararg_param", $.vararg_param)
+      ),
+      optional(seq(",", "*")),
+    )),
+
+    normal_param: $ => seq(
+      field("name", $._identifier),
+      optional(seq(":", field("type", $.fn_param_or_return_type))),
+      optional(field("optional", "?")),
+      optional(seq("=", field("default", $.literal)))
+    ),
+
+    vararg_param: $ => seq(
       field("vararg_marker", "*"),
-      seq(
-        field("name", $._identifier),
-        optional(
-          choice(
-            seq(
-              ":",
-              field("type", $.fn_param_or_return_type),
-            ),
-            optional(field("optional", "?")),
-          )),
-        optional(seq(
-          "=",
-          field("default", $.literal),
-        ))),
+      field("name", $._identifier),
+      optional(seq(":", field("type", $.fn_param_or_return_type))),
+      optional(seq("=", field("default", $.literal)))
     ),
 
     fn_param_or_return_type: $ => prec.left(seq(
@@ -849,17 +865,17 @@ module.exports = grammar({
 
     fn_leaf_type: $ => prec.right(seq(
       choice(
-        seq(optional(field("vararg_marker", "*")), field("type", $.string_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.int_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.float_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.bool_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.list_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.map_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.num_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.any_type)),
-        seq(optional(field("vararg_marker", "*")), field("type", $.fn_type)),
+        field("type", $.string_type),
+        field("type", $.int_type),
+        field("type", $.float_type),
+        field("type", $.bool_type),
+        field("type", $.list_type),
+        field("type", $.map_type),
+        field("type", $.any_type),
+        field("type", $.fn_type),
         field("type", $.error_type),
       ),
+      optional(field("list", "[]")),
       optional(field("optional", "?")),
     )),
 
@@ -887,17 +903,17 @@ module.exports = grammar({
     int_type: $ => "int",
     float_type: $ => "float",
     bool_type: $ => "bool",
-    string_list_type: $ => "[*str]",
-    int_list_type: $ => "[*int]",
-    float_list_type: $ => "[*float]",
-    bool_list_type: $ => "[*bool]",
+    string_list_type: $ => "str[]",
+    int_list_type: $ => "int[]",
+    float_list_type: $ => "float[]",
+    bool_list_type: $ => "bool[]",
 
+    // bit of misnomer. int[] is a list of ints, but does not go through this rule.
     list_type: $ => choice(
-      "list",
-      seq("[", field("type", commaSep1($.fn_param_or_return_type)), "]"),
-      seq("[", field("enum", commaSep1($.string)), "]"),
+      field("any", "list"),
+      seq("[", commaSep1(field("type", $.fn_param_or_return_type)), "]"), // tuple
+      seq("[", commaSep1(field("enum", $.string)), "]"),
     ),
-    num_type: $ => "num",
     error_type: $ => "error",
     void_type: $ => 'void',
     any_type: $ => 'any',
@@ -913,23 +929,26 @@ module.exports = grammar({
       )),
     ),
     map_type: $ => choice(
-      "map",
+      field("any", "map"),
       seq(
         "{",
-        sepTrail0($.map_entry_type),
+        choice(
+          sepTrail1(field("named_entry", $.named_map_entry)),
+          seq(
+            field("key_type", $.fn_param_or_return_type),
+            ":",
+            field("value_type", $.fn_param_or_return_type),
+          ),
+        ),
         "}",
       ),
     ),
-    map_entry_type: $ => seq(
-      choice(
-        seq(
-          field("key_name", $.string),
-          optional(field("optional", "?")),
-        ),
-        field("key_type", $.fn_param_or_return_type),
-      ),
+
+    named_map_entry: $ => seq(
+      field("key_name", $.string),
+      optional(field("optional", "?")),
       ":",
-      field("value_type", $.fn_param_or_return_type),
+      field("value_type", $.fn_param_or_return_type)
     ),
 
     block: $ => seq(
