@@ -879,10 +879,10 @@ module.exports = grammar({
       optional(field("optional", "?")),
     )),
 
-    return_stmt: $ => seq(
+    return_stmt: $ => prec.right(seq(
       "return",
-      $._right_side,
-    ),
+      optional($._right_side),
+    )),
 
     // Generic
 

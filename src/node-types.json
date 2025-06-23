@@ -2911,7 +2911,7 @@
     "fields": {
       "right": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "expr",
