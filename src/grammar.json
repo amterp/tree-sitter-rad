@@ -4692,7 +4692,7 @@
                   "name": "default",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "literal"
+                    "name": "unary_expr"
                   }
                 }
               ]
@@ -4763,7 +4763,7 @@
                   "name": "default",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "literal"
+                    "name": "unary_expr"
                   }
                 }
               ]

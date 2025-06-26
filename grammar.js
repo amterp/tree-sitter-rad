@@ -848,14 +848,14 @@ module.exports = grammar({
       field("name", $._identifier),
       optional(seq(":", field("type", $.fn_param_or_return_type))),
       optional(field("optional", "?")),
-      optional(seq("=", field("default", $.literal)))
+      optional(seq("=", field("default", $.unary_expr)))
     ),
 
     vararg_param: $ => seq(
       field("vararg_marker", "*"),
       field("name", $._identifier),
       optional(seq(":", field("type", $.fn_param_or_return_type))),
-      optional(seq("=", field("default", $.literal)))
+      optional(seq("=", field("default", $.unary_expr)))
     ),
 
     fn_param_or_return_type: $ => prec.left(seq(

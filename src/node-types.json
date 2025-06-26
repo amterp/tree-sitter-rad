@@ -2494,7 +2494,7 @@
         "required": false,
         "types": [
           {
-            "type": "literal",
+            "type": "unary_expr",
             "named": true
           }
         ]
@@ -3632,7 +3632,7 @@
         "required": false,
         "types": [
           {
-            "type": "literal",
+            "type": "unary_expr",
             "named": true
           }
         ]
