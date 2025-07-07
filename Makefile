@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-rad
 HOMEPAGE_URL := http://github.com/amterp/tree-sitter-rad
-VERSION := 0.1.6
+VERSION := 0.1.7
 
 # repository
 SRC_DIR := src
