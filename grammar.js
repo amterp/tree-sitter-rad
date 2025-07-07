@@ -73,7 +73,10 @@ module.exports = grammar({
     source_file: $ => seq(
       optional($.shebang),
       optional($.file_header),
-      optional($.arg_block),
+      optional(choice(
+        $.arg_block,
+        $.cmd_block,
+      )),
       repeat($._stmt),
     ),
 
@@ -670,6 +673,18 @@ module.exports = grammar({
       optional(field("mutually", "mutually")),
       field("excludes", "excludes"),
       commaSep1(field("excluded", $._identifier)),
+    ),
+
+    // Command Block
+
+    cmd_block: $ => seq(
+      "commands",
+      colonBlock($, field("cmd", $.cmd_block_stmt))
+    ),
+
+    cmd_block_stmt: $ => seq(
+      field("name", $._identifier),
+      field("path", $.string),
     ),
 
     // Rad Block

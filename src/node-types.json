@@ -765,6 +765,48 @@
     }
   },
   {
+    "type": "cmd_block",
+    "named": true,
+    "fields": {
+      "cmd": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "cmd_block_stmt",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "cmd_block_stmt",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "path": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "compare_expr",
     "named": true,
     "fields": {
@@ -3021,6 +3063,10 @@
           "named": true
         },
         {
+          "type": "cmd_block",
+          "named": true
+        },
+        {
           "type": "compound_assign",
           "named": true
         },
@@ -3957,6 +4003,10 @@
   },
   {
     "type": "color",
+    "named": false
+  },
+  {
+    "type": "commands",
     "named": false
   },
   {
