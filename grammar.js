@@ -502,6 +502,7 @@ module.exports = grammar({
     ),
 
     arg_declaration: $ => seq(
+      optional(field("variadic_marker", "*")),
       field("arg_name", $._identifier),
       optional(field("rename", $.string)),
       optional(field("shorthand", $.shorthand_flag)),

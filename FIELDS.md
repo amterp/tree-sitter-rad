@@ -102,5 +102,6 @@
 |  97 | `value_type`                             |
 |  98 | `values`                                 |
 |  99 | `vararg_marker`                          |
+| 100 | `vararg_param`                           |
 
 *This file is generated - don't edit manually.*

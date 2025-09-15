@@ -290,6 +290,16 @@
             "named": true
           }
         ]
+      },
+      "variadic_marker": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "*",
+            "named": false
+          }
+        ]
       }
     }
   },
