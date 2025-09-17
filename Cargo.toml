@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-rad"
 description = "A parser for Rad, a modern CLI scripting language."
-version = "0.1.7"
+version = "0.1.8"
 authors = ["Alexander Terp <alexander.terp@gmail.com>"]
 license = "MIT"
 readme = "README.md"
