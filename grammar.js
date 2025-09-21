@@ -501,8 +501,21 @@ module.exports = grammar({
       $._arg_constraint,
     ),
 
-    arg_declaration: $ => seq(
-      optional(field("variadic_marker", "*")),
+    arg_declaration: $ => choice(
+      $._variadic_arg_declaration,
+      $._non_variadic_arg_declaration,
+    ),
+
+    _variadic_arg_declaration: $ => seq(
+      field("variadic_marker", "*"),
+      field("arg_name", $._identifier),
+      optional(field("rename", $.string)),
+      optional(field("shorthand", $.shorthand_flag)),
+      $._variadic_type_andor_default,
+      optional($._arg_comment),
+    ),
+
+    _non_variadic_arg_declaration: $ => seq(
       field("arg_name", $._identifier),
       optional(field("rename", $.string)),
       optional(field("shorthand", $.shorthand_flag)),
@@ -529,6 +542,14 @@ module.exports = grammar({
       $._arg_float_list_default,
       $._arg_bool_list_default,
     ),
+
+    _variadic_type_andor_default: $ => choice(
+      $._arg_string_var_default,
+      $._arg_int_var_default,
+      $._arg_float_var_default,
+      $._arg_bool_var_default,
+    ),
+
 
     _arg_string_default: $ => seq(
       field("type", $.string_type),
@@ -585,6 +606,24 @@ module.exports = grammar({
         field("optional", "?"),
         optional(seq("=", field("default", $.bool_list)))
       ),
+    ),
+
+    // Variadic argument rules - no optional (?) modifier, only list defaults allowed
+    _arg_string_var_default: $ => seq(
+      field("type", $.string_type),
+      optional(seq("=", field("default", $.string_list))),
+    ),
+    _arg_int_var_default: $ => seq(
+      field("type", $.int_type),
+      optional(seq("=", field("default", $.int_list))),
+    ),
+    _arg_float_var_default: $ => seq(
+      field("type", $.float_type),
+      optional(seq("=", field("default", $.float_list))),
+    ),
+    _arg_bool_var_default: $ => seq(
+      field("type", $.bool_type),
+      optional(seq("=", field("default", $.bool_list))),
     ),
 
     int_arg: $ => prec(1, seq(
