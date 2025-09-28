@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-rad"
 description = "A parser for Rad, a modern CLI scripting language."
-version = "0.1.9"
+version = "0.1.10"
 keywords = ["incremental", "parsing", "tree-sitter", "rad"]
 classifiers = [
   "Intended Audience :: Developers",
