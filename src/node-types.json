@@ -1863,6 +1863,16 @@
             "named": true
           }
         ]
+      },
+      "thousands_separator": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          }
+        ]
       }
     }
   },

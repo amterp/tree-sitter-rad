@@ -95,13 +95,14 @@
 |  90 | `start`                                  |
 |  91 | `stmt`                                   |
 |  92 | `tab`                                    |
-|  93 | `true_branch`                            |
-|  94 | `type`                                   |
-|  95 | `unsafe_mod`                             |
-|  96 | `value`                                  |
-|  97 | `value_type`                             |
-|  98 | `values`                                 |
-|  99 | `vararg_marker`                          |
-| 100 | `vararg_param`                           |
+|  93 | `thousands_separator`                    |
+|  94 | `true_branch`                            |
+|  95 | `type`                                   |
+|  96 | `unsafe_mod`                             |
+|  97 | `value`                                  |
+|  98 | `value_type`                             |
+|  99 | `values`                                 |
+| 100 | `vararg_marker`                          |
+| 101 | `vararg_param`                           |
 
 *This file is generated - don't edit manually.*

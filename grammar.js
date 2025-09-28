@@ -1090,6 +1090,7 @@ module.exports = grammar({
     format_specifier: $ => seq(
       ':',
       seq(
+        optional(field("thousands_separator", ",")),
         optional(field("alignment", choice("<", ">"))),
         optional(field("padding", $.int)),
         optional(seq('.', field("precision", $.int))),
