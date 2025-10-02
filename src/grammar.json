@@ -3272,8 +3272,17 @@
             "type": "FIELD",
             "name": "value",
             "content": {
-              "type": "SYMBOL",
-              "name": "int"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "int"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "scientific_number"
+                }
+              ]
             }
           }
         ]
@@ -6606,6 +6615,10 @@
     "float": {
       "type": "PATTERN",
       "value": "\\d(_?\\d+)*((\\.\\d(_?\\d+)*([eE][+-]?\\d(_?\\d+)*)?)|([eE][+-]?\\d(_?\\d+)*))"
+    },
+    "scientific_number": {
+      "type": "PATTERN",
+      "value": "\\d(_?\\d+)*(\\.\\d(_?\\d+)*)?[eE][+-]?\\d(_?\\d+)*"
     },
     "bool": {
       "type": "CHOICE",

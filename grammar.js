@@ -628,7 +628,7 @@ module.exports = grammar({
 
     int_arg: $ => prec(1, seq(
       field('op', repeat($._unary_op_sign)),
-      field("value", $.int),
+      field("value", choice($.int, $.scientific_number)),
     )),
     float_arg: $ => seq(
       field('op', repeat($._unary_op_sign)),
@@ -1113,6 +1113,7 @@ module.exports = grammar({
 
     int: _ => /\d(_?\d+)*/,
     float: _ => /\d(_?\d+)*((\.\d(_?\d+)*([eE][+-]?\d(_?\d+)*)?)|([eE][+-]?\d(_?\d+)*))/,
+    scientific_number: _ => /\d(_?\d+)*(\.\d(_?\d+)*)?[eE][+-]?\d(_?\d+)*/,
     bool: _ => choice("true", "false"),
     null: _ => "null",
 

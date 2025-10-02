@@ -2083,6 +2083,10 @@
           {
             "type": "int",
             "named": true
+          },
+          {
+            "type": "scientific_number",
+            "named": true
           }
         ]
       }
@@ -4236,6 +4240,10 @@
   {
     "type": "return",
     "named": false
+  },
+  {
+    "type": "scientific_number",
+    "named": true
   },
   {
     "type": "shebang",
