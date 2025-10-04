@@ -1261,6 +1261,10 @@
           {
             "type": "int",
             "named": true
+          },
+          {
+            "type": "scientific_number",
+            "named": true
           }
         ]
       }
@@ -2364,6 +2368,10 @@
         },
         {
           "type": "null",
+          "named": true
+        },
+        {
+          "type": "scientific_number",
           "named": true
         },
         {

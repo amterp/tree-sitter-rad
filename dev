@@ -30,10 +30,8 @@ if not release:
     exit()
 
 // resolve version /////////////
-_, tags = $!`git tag`
-tags = tags.trim("\n").split("\n")
-tags = [t.replace("v", "") for t in tags].sort()
-latest = [t.split("\.") for t in tags][-1]
+_, latest_tag = $!`git tag --sort=-v:refname | head -1`
+latest = latest_tag.trim().replace("v", "").split("\.")
 
 major = latest[0].parse_int()
 minor = latest[1].parse_int()

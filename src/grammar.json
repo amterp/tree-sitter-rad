@@ -3315,6 +3315,10 @@
               {
                 "type": "SYMBOL",
                 "name": "int"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "scientific_number"
               }
             ]
           }
@@ -6614,7 +6618,7 @@
     },
     "float": {
       "type": "PATTERN",
-      "value": "\\d(_?\\d+)*((\\.\\d(_?\\d+)*([eE][+-]?\\d(_?\\d+)*)?)|([eE][+-]?\\d(_?\\d+)*))"
+      "value": "\\d(_?\\d+)*\\.\\d(_?\\d+)*"
     },
     "scientific_number": {
       "type": "PATTERN",
@@ -6651,6 +6655,10 @@
         {
           "type": "SYMBOL",
           "name": "int"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "scientific_number"
         },
         {
           "type": "SYMBOL",

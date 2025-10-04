@@ -632,7 +632,7 @@ module.exports = grammar({
     )),
     float_arg: $ => seq(
       field('op', repeat($._unary_op_sign)),
-      field("value", choice($.float, $.int)),
+      field("value", choice($.float, $.int, $.scientific_number)),
     ),
 
     _arg_constraint: $ => choice(
@@ -1112,7 +1112,7 @@ module.exports = grammar({
     )),
 
     int: _ => /\d(_?\d+)*/,
-    float: _ => /\d(_?\d+)*((\.\d(_?\d+)*([eE][+-]?\d(_?\d+)*)?)|([eE][+-]?\d(_?\d+)*))/,
+    float: _ => /\d(_?\d+)*\.\d(_?\d+)*/,
     scientific_number: _ => /\d(_?\d+)*(\.\d(_?\d+)*)?[eE][+-]?\d(_?\d+)*/,
     bool: _ => choice("true", "false"),
     null: _ => "null",
@@ -1121,6 +1121,7 @@ module.exports = grammar({
       $.string,
       $.float,
       $.int,
+      $.scientific_number,
       $.bool,
       $.list,
       $.map,
