@@ -23,12 +23,13 @@ const PREC = {
   plus: 18,
   times: 19,
   unary: 20,
-  power: 21,
-  var_path: 22,
-  indexing: 23,
-  call: 24,
-  incr_decr: 25,
-  lambda: 26,
+  fallback: 21,
+  power: 22,
+  var_path: 23,
+  indexing: 24,
+  call: 25,
+  incr_decr: 26,
+  lambda: 27,
 };
 
 const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
@@ -108,7 +109,7 @@ module.exports = grammar({
     ),
 
     _simple_stmt: $ => choice(
-      $.expr,
+      $.expr_stmt,
       $.assign,
       $.compound_assign,
       $.shell_stmt,
@@ -121,6 +122,11 @@ module.exports = grammar({
       $.yield_stmt,
     ),
 
+    expr_stmt: $ => prec.right(seq(
+      field("expr", $.expr),
+      optional(field("catch", $.catch_block)),
+    )),
+
     _lambda_compat_stmt: $ => choice(
       // todo technically would be good to allow assign, but the multi-right side assign seems to cause issues
       $.expr,
@@ -132,10 +138,7 @@ module.exports = grammar({
 
     // Expressions
 
-    expr: $ => seq(
-      optional(field("catch", "catch")),
-      field("delegate", $.ternary_expr),
-    ),
+    expr: $ => field("delegate", $.ternary_expr),
 
     ternary_expr: $ => choice(
       // Ternary operator (lowest precedence; right associative)
@@ -202,9 +205,18 @@ module.exports = grammar({
         field('arg', $.unary_expr)
       )),
       field("delegate", choice(
-        $._postfix_expr,
+        $.fallback_expr,
         $.fn_lambda,
       )),
+    ),
+
+    fallback_expr: $ => choice(
+      prec.left(PREC.fallback, seq(
+        field('left', $.fallback_expr),
+        field('op', '??'),
+        field('right', $._postfix_expr)
+      )),
+      field("delegate", $._postfix_expr),
     ),
 
     _postfix_expr: $ => choice(
@@ -251,10 +263,16 @@ module.exports = grammar({
 
     // Assignment
 
-    assign: $ => seq(
+    assign: $ => prec.right(seq(
       $._left_side,
       '=',
       $._right_side,
+      optional(field("catch", $.catch_block)),
+    )),
+
+    catch_block: $ => seq(
+      'catch',
+      colonBlockField($, $._stmt, "stmt"),
     ),
 
     compound_assign: $ => seq(
@@ -452,41 +470,16 @@ module.exports = grammar({
       $._newline,
     ),
 
-    shell_stmt: $ => seq(
+    shell_stmt: $ => prec.right(seq(
       optional(seq($._left_side, "=")),
-      field("shell_cmd", choice(
-        $.checked_shell_cmd,
-        $.unsafe_shell_cmd,
-        $.critical_shell_cmd,
-      ))),
+      field("shell_cmd", $.shell_cmd),
+      optional(field("catch", $.catch_block)),
+    )),
 
-    checked_shell_cmd: $ => seq(
-      repeat($._shell_non_unsafe_mod),
+    shell_cmd: $ => seq(
+      repeat(field("modifier", choice("quiet", "confirm"))),
       '$',
       field("command", $.expr),
-      $._newline,
-      field("response", choice('fail', 'recover')),
-      colonBlockField($, $._stmt, "stmt"),
-    ),
-
-    unsafe_shell_cmd: $ => seq(
-      repeat($._shell_non_unsafe_mod),
-      repeat1(field("unsafe_mod", "unsafe")), // required somewhere in there
-      repeat($._shell_non_unsafe_mod),
-      '$',
-      field("command", $.expr),
-    ),
-
-    critical_shell_cmd: $ => seq(
-      repeat($._shell_non_unsafe_mod),
-      '$!',
-      field("command", $.expr), // too free? string or identifier?
-    ),
-
-    _shell_non_unsafe_mod: $ => choice(
-      field("quiet_mod", "quiet"),
-      field("confirm_mod", "confirm"),
-      // when adding more here, ensure you add an alias in $.call
     ),
 
     // Arg Block
@@ -1111,9 +1104,9 @@ module.exports = grammar({
       alias("quiet", "identifier"),
     )),
 
-    int: _ => /\d(_?\d+)*/,
-    float: _ => /\d(_?\d+)*\.\d(_?\d+)*/,
-    scientific_number: _ => /\d(_?\d+)*(\.\d(_?\d+)*)?[eE][+-]?\d(_?\d+)*/,
+    int: _ => /\d(_*\d+)*/,
+    float: _ => /\d(_*\d+)*\.\d(_*\d+)*/,
+    scientific_number: _ => /\d(_*\d+)*(\.\d(_*\d+)*)?[eE][+-]?\d(_*\d+)*/,
     bool: _ => choice("true", "false"),
     null: _ => "null",
 

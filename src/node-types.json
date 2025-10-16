@@ -523,6 +523,16 @@
     "type": "assign",
     "named": true,
     "fields": {
+      "catch": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "catch_block",
+            "named": true
+          }
+        ]
+      },
       "left": {
         "multiple": false,
         "required": false,
@@ -647,53 +657,9 @@
     }
   },
   {
-    "type": "checked_shell_cmd",
+    "type": "catch_block",
     "named": true,
     "fields": {
-      "command": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
-          }
-        ]
-      },
-      "confirm_mod": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "confirm",
-            "named": false
-          }
-        ]
-      },
-      "quiet_mod": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "quiet",
-            "named": false
-          }
-        ]
-      },
-      "response": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "fail",
-            "named": false
-          },
-          {
-            "type": "recover",
-            "named": false
-          }
-        ]
-      },
       "stmt": {
         "multiple": true,
         "required": false,
@@ -723,7 +689,7 @@
             "named": true
           },
           {
-            "type": "expr",
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -947,42 +913,6 @@
     }
   },
   {
-    "type": "critical_shell_cmd",
-    "named": true,
-    "fields": {
-      "command": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
-          }
-        ]
-      },
-      "confirm_mod": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "confirm",
-            "named": false
-          }
-        ]
-      },
-      "quiet_mod": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "quiet",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "defer_block",
     "named": true,
     "fields": {
@@ -1029,7 +959,7 @@
             "named": true
           },
           {
-            "type": "expr",
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -1129,7 +1059,7 @@
             "named": true
           },
           {
-            "type": "expr",
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -1189,22 +1119,92 @@
     "type": "expr",
     "named": true,
     "fields": {
-      "catch": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "catch",
-            "named": false
-          }
-        ]
-      },
       "delegate": {
         "multiple": false,
         "required": true,
         "types": [
           {
             "type": "ternary_expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "expr_stmt",
+    "named": true,
+    "fields": {
+      "catch": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "catch_block",
+            "named": true
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "fallback_expr",
+    "named": true,
+    "fields": {
+      "delegate": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "indexed_expr",
+            "named": true
+          },
+          {
+            "type": "var_path",
+            "named": true
+          }
+        ]
+      },
+      "left": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fallback_expr",
+            "named": true
+          }
+        ]
+      },
+      "op": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "??",
+            "named": false
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "indexed_expr",
+            "named": true
+          },
+          {
+            "type": "var_path",
             "named": true
           }
         ]
@@ -1378,6 +1378,10 @@
           },
           {
             "type": "expr",
+            "named": true
+          },
+          {
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -1607,6 +1611,10 @@
             "named": true
           },
           {
+            "type": "expr_stmt",
+            "named": true
+          },
+          {
             "type": "fn_named",
             "named": true
           },
@@ -1779,7 +1787,7 @@
             "named": true
           },
           {
-            "type": "expr",
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -1923,7 +1931,7 @@
             "named": true
           },
           {
-            "type": "expr",
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -3004,9 +3012,49 @@
     }
   },
   {
+    "type": "shell_cmd",
+    "named": true,
+    "fields": {
+      "command": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "modifier": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "confirm",
+            "named": false
+          },
+          {
+            "type": "quiet",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "shell_stmt",
     "named": true,
     "fields": {
+      "catch": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "catch_block",
+            "named": true
+          }
+        ]
+      },
       "left": {
         "multiple": false,
         "required": false,
@@ -3032,15 +3080,7 @@
         "required": true,
         "types": [
           {
-            "type": "checked_shell_cmd",
-            "named": true
-          },
-          {
-            "type": "critical_shell_cmd",
-            "named": true
-          },
-          {
-            "type": "unsafe_shell_cmd",
+            "type": "shell_cmd",
             "named": true
           }
         ]
@@ -3115,7 +3155,7 @@
           "named": true
         },
         {
-          "type": "expr",
+          "type": "expr_stmt",
           "named": true
         },
         {
@@ -3388,7 +3428,7 @@
             "named": true
           },
           {
-            "type": "expr",
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -3584,15 +3624,11 @@
         "required": false,
         "types": [
           {
+            "type": "fallback_expr",
+            "named": true
+          },
+          {
             "type": "fn_lambda",
-            "named": true
-          },
-          {
-            "type": "indexed_expr",
-            "named": true
-          },
-          {
-            "type": "var_path",
             "named": true
           }
         ]
@@ -3611,52 +3647,6 @@
           },
           {
             "type": "not",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "unsafe_shell_cmd",
-    "named": true,
-    "fields": {
-      "command": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
-          }
-        ]
-      },
-      "confirm_mod": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "confirm",
-            "named": false
-          }
-        ]
-      },
-      "quiet_mod": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "quiet",
-            "named": false
-          }
-        ]
-      },
-      "unsafe_mod": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "unsafe",
             "named": false
           }
         ]
@@ -3790,7 +3780,7 @@
             "named": true
           },
           {
-            "type": "expr",
+            "type": "expr_stmt",
             "named": true
           },
           {
@@ -3871,10 +3861,6 @@
   },
   {
     "type": "$",
-    "named": false
-  },
-  {
-    "type": "$!",
     "named": false
   },
   {
@@ -3979,6 +3965,10 @@
   },
   {
     "type": "?",
+    "named": false
+  },
+  {
+    "type": "??",
     "named": false
   },
   {
@@ -4126,10 +4116,6 @@
     "named": false
   },
   {
-    "type": "fail",
-    "named": false
-  },
-  {
     "type": "false",
     "named": false
   },
@@ -4230,10 +4216,6 @@
     "named": false
   },
   {
-    "type": "recover",
-    "named": false
-  },
-  {
     "type": "regex",
     "named": false
   },
@@ -4291,10 +4273,6 @@
   },
   {
     "type": "true",
-    "named": false
-  },
-  {
-    "type": "unsafe",
     "named": false
   },
   {
