@@ -12,25 +12,24 @@ args:
     release regex "^[0-9]+\.[0-9]+\.[0-9]+$"
 
 if build or release:
-    $!`npm install`
-    $!`tree-sitter generate -b`
+    $`npm install`
+    $`tree-sitter generate -b`
     if not no_clean:
-        $!`cd ./bindings/go && go clean -cache`
-    $!`go test ./bindings/go`
+        $`cd ./bindings/go && go clean -cache`
+    $`go test ./bindings/go`
     test_cmd = `tree-sitter test --show-fields`
     if include:
         test_cmd += ` --include "{include}"`
-    err = unsafe $test_cmd
-    if err != 0:
+    $test_cmd catch:
         test_cmd += " --update"
         if confirm("Update tests? [y/n] > "):
-            $!test_cmd
+            $test_cmd
 
 if not release:
     exit()
 
 // resolve version /////////////
-_, latest_tag = $!`git tag --sort=-v:refname | head -1`
+_, latest_tag = $`git tag --sort=-v:refname | head -1`
 latest = latest_tag.trim().replace("v", "").split("\.")
 
 major = latest[0].parse_int()
@@ -45,38 +44,39 @@ else if release == 3:
     version = "{major + 1}.0.0"
 ///////////////////////////////
 
-clean = unsafe $`git status --porcelain | grep -q .`
+clean = $`git status --porcelain | grep -q .` catch:
+    pass
 if not clean:
-    $!`git add .`
-    $!`git diff HEAD --compact-summary`
+    $`git add .`
+    $`git diff HEAD --compact-summary`
     print(yellow("WARN: Your git status isn't clean, they will be included in the version bump."))
 
 if not confirm("Bumping to version {version}, continue? [y/n] > "):
     print(red("Exiting..."))
     exit(1)
 
-$!`tss version {version}`
+$`tss version {version}`
 
-$!`git diff HEAD --compact-summary`
+$`git diff HEAD --compact-summary`
 
 if not confirm("Continue? [y/n] > "):
     print(red("Exiting..."))
     exit(1)
 
-$!`git add .`
+$`git add .`
 
 msg = "Release version {version}"
 if clean:
-    $!`git commit -m "{msg}"`
+    $`git commit -m "{msg}"`
 else:
-    $!`git commit`
+    $`git commit`
 
-$!`git tag -a v{version} -m "{msg}"`
+$`git tag -a v{version} -m "{msg}"`
 
 push_cmd = `git push origin main --tags`
 
 if confirm("Push? [y/n] > "):
-    $!push_cmd
+    $push_cmd
 else:
     print("Not pushing, remember to do it yourself with", yellow(push_cmd))
 

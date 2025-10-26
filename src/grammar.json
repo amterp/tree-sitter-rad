@@ -6481,22 +6481,6 @@
               "members": [
                 {
                   "type": "FIELD",
-                  "name": "thousands_separator",
-                  "content": {
-                    "type": "STRING",
-                    "value": ","
-                  }
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "FIELD",
                   "name": "alignment",
                   "content": {
                     "type": "CHOICE",
@@ -6526,6 +6510,22 @@
                   "content": {
                     "type": "SYMBOL",
                     "name": "int"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "thousands_separator",
+                  "content": {
+                    "type": "STRING",
+                    "value": ","
                   }
                 },
                 {
