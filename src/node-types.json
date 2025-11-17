@@ -744,22 +744,56 @@
     "type": "cmd_block",
     "named": true,
     "fields": {
-      "cmd": {
+      "calls": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "cmd_calls",
+            "named": true
+          }
+        ]
+      },
+      "declaration": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "cmd_block_stmt",
+            "type": "arg_declaration",
             "named": true
           }
         ]
-      }
-    }
-  },
-  {
-    "type": "cmd_block_stmt",
-    "named": true,
-    "fields": {
+      },
+      "description": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "cmd_description",
+            "named": true
+          }
+        ]
+      },
+      "enum_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_enum_constraint",
+            "named": true
+          }
+        ]
+      },
+      "excludes_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_excludes_constraint",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -770,17 +804,84 @@
           }
         ]
       },
-      "path": {
-        "multiple": false,
-        "required": true,
+      "range_constraint": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
-            "type": "string",
+            "type": "arg_range_constraint",
+            "named": true
+          }
+        ]
+      },
+      "regex_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_regex_constraint",
+            "named": true
+          }
+        ]
+      },
+      "requires_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_requires_constraint",
             "named": true
           }
         ]
       }
     }
+  },
+  {
+    "type": "cmd_calls",
+    "named": true,
+    "fields": {
+      "callback_identifier": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "callback_lambda": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_lambda",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "cmd_description",
+    "named": true,
+    "fields": {
+      "contents": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "cmd_description_contents",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "cmd_description_contents",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "compare_expr",
@@ -4016,6 +4117,10 @@
     "named": true
   },
   {
+    "type": "calls",
+    "named": false
+  },
+  {
     "type": "case",
     "named": false
   },
@@ -4028,7 +4133,7 @@
     "named": false
   },
   {
-    "type": "commands",
+    "type": "command",
     "named": false
   },
   {

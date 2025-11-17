@@ -74,10 +74,8 @@ module.exports = grammar({
     source_file: $ => seq(
       optional($.shebang),
       optional($.file_header),
-      optional(choice(
-        $.arg_block,
-        $.cmd_block,
-      )),
+      optional($.arg_block),
+      repeat($.cmd_block),
       repeat($._stmt),
     ),
 
@@ -711,13 +709,36 @@ module.exports = grammar({
     // Command Block
 
     cmd_block: $ => seq(
-      "commands",
-      colonBlock($, field("cmd", $.cmd_block_stmt))
+      "command",
+      field("name", $._identifier),
+      ":",
+      $._newline,
+      $._indent,
+      optional(field("description", $.cmd_description)),
+      repeat($._arg_stmt),
+      field("calls", $.cmd_calls),
+      $._dedent,
     ),
 
-    cmd_block_stmt: $ => seq(
-      field("name", $._identifier),
-      field("path", $.string),
+    cmd_description: $ => seq(
+      "---",
+      /\r?\n/,
+      optional(field("contents", $.cmd_description_contents)),
+      "---",
+      /\r?\n/,
+    ),
+
+    cmd_description_contents: $ => repeat1(seq(
+      optional(/[^\r\n]+/),
+      /\r?\n/
+    )),
+
+    cmd_calls: $ => seq(
+      "calls",
+      choice(
+        field("callback_lambda", $.fn_lambda),
+        field("callback_identifier", $._identifier),
+      ),
     ),
 
     // Rad Block

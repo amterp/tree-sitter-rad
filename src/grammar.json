@@ -34,22 +34,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "arg_block"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "cmd_block"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "arg_block"
             },
             {
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "cmd_block"
+          }
         },
         {
           "type": "REPEAT",
@@ -3730,45 +3728,8 @@
       "members": [
         {
           "type": "STRING",
-          "value": "commands"
+          "value": "command"
         },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": ":"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_newline"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_indent"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "FIELD",
-                "name": "cmd",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "cmd_block_stmt"
-                }
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_dedent"
-            }
-          ]
-        }
-      ]
-    },
-    "cmd_block_stmt": {
-      "type": "SEQ",
-      "members": [
         {
           "type": "FIELD",
           "name": "name",
@@ -3778,12 +3739,142 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "path",
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_indent"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "description",
+              "content": {
+                "type": "SYMBOL",
+                "name": "cmd_description"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "string"
+            "name": "_arg_stmt"
           }
+        },
+        {
+          "type": "FIELD",
+          "name": "calls",
+          "content": {
+            "type": "SYMBOL",
+            "name": "cmd_calls"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_dedent"
+        }
+      ]
+    },
+    "cmd_description": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "---"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\r?\\n"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "contents",
+              "content": {
+                "type": "SYMBOL",
+                "name": "cmd_description_contents"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "---"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\r?\\n"
+        }
+      ]
+    },
+    "cmd_description_contents": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\\r\\n]+"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\r?\\n"
+          }
+        ]
+      }
+    },
+    "cmd_calls": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "calls"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "callback_lambda",
+              "content": {
+                "type": "SYMBOL",
+                "name": "fn_lambda"
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "callback_identifier",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_identifier"
+              }
+            }
+          ]
         }
       ]
     },
