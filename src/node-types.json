@@ -2919,6 +2919,26 @@
     }
   },
   {
+    "type": "rad_field_mod_filter",
+    "named": true,
+    "fields": {
+      "lambda": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fn_lambda",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "rad_field_mod_map",
     "named": true,
     "fields": {
@@ -2958,6 +2978,10 @@
         "types": [
           {
             "type": "rad_field_mod_color",
+            "named": true
+          },
+          {
+            "type": "rad_field_mod_filter",
             "named": true
           },
           {
@@ -4226,6 +4250,10 @@
   },
   {
     "type": "fields",
+    "named": false
+  },
+  {
+    "type": "filter",
     "named": false
   },
   {

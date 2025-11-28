@@ -809,6 +809,7 @@ module.exports = grammar({
     _rad_field_modifier: $ => choice(
       $.rad_field_mod_color,
       $.rad_field_mod_map,
+      $.rad_field_mod_filter,
     ),
 
     rad_field_mod_color: $ => seq(
@@ -819,6 +820,11 @@ module.exports = grammar({
 
     rad_field_mod_map: $ => seq(
       "map",
+      field("lambda", choice($.fn_lambda, $._identifier)),
+    ),
+
+    rad_field_mod_filter: $ => seq(
+      "filter",
       field("lambda", choice($.fn_lambda, $._identifier)),
     ),
 

@@ -4329,6 +4329,10 @@
         {
           "type": "SYMBOL",
           "name": "rad_field_mod_map"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rad_field_mod_filter"
         }
       ]
     },
@@ -4363,6 +4367,32 @@
         {
           "type": "STRING",
           "value": "map"
+        },
+        {
+          "type": "FIELD",
+          "name": "lambda",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "fn_lambda"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_identifier"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "rad_field_mod_filter": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "filter"
         },
         {
           "type": "FIELD",
