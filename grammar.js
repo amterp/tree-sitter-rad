@@ -66,6 +66,8 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$._left_side, $._postfix_expr],
+    // Note: rad_block vs var_path/call conflicts are auto-detected by tree-sitter
+    // due to the identifier aliases for rad/request/display
   ],
 
   word: $ => $.identifierRegex,
@@ -749,23 +751,25 @@ module.exports = grammar({
       $._display_block,
     ),
 
-    _rad_rad_block: $ => seq(
+    // Dynamic precedence ensures rad blocks are preferred over identifier interpretation
+    // when the full block syntax matches (keyword + expr + colon + block body)
+    _rad_rad_block: $ => prec.dynamic(1, seq(
       field('rad_type', $.rad_keyword),
       field("source", $.expr),
       colonBlockField($, $._rad_stmt, "stmt"),
-    ),
+    )),
 
-    _request_block: $ => seq(
+    _request_block: $ => prec.dynamic(1, seq(
       field('rad_type', $.request_keyword),
       field("source", $.expr),
       colonBlockField($, $._rad_stmt, "stmt"),
-    ),
+    )),
 
-    _display_block: $ => seq(
+    _display_block: $ => prec.dynamic(1, seq(
       field('rad_type', $.display_keyword),
       optional(field("source", $.expr)),
       colonBlockField($, $._rad_stmt, "stmt"),
-    ),
+    )),
 
     rad_keyword: $ => "rad",
     request_keyword: $ => "request",
@@ -1129,6 +1133,11 @@ module.exports = grammar({
       alias("confirm", "identifier"),
       alias("unsafe", "identifier"),
       alias("quiet", "identifier"),
+      // rad block keywords - allow use as identifiers when not starting a block
+      // (e.g., `request = foo` should work as an assignment)
+      alias("rad", "identifier"),
+      alias("request", "identifier"),
+      alias("display", "identifier"),
     )),
 
     int: _ => /\d(_*\d+)*/,

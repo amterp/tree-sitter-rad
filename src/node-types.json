@@ -1128,6 +1128,11 @@
     }
   },
   {
+    "type": "display_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "else_alt",
     "named": true,
     "fields": {
@@ -3067,6 +3072,11 @@
     }
   },
   {
+    "type": "rad_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "rad_sort_specifier",
     "named": true,
     "fields": {
@@ -3111,6 +3121,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "request_keyword",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "return_stmt",
@@ -4193,8 +4208,8 @@
     "named": false
   },
   {
-    "type": "display_keyword",
-    "named": true
+    "type": "display",
+    "named": false
   },
   {
     "type": "else",
@@ -4341,8 +4356,8 @@
     "named": false
   },
   {
-    "type": "rad_keyword",
-    "named": true
+    "type": "rad",
+    "named": false
   },
   {
     "type": "range",
@@ -4353,8 +4368,8 @@
     "named": false
   },
   {
-    "type": "request_keyword",
-    "named": true
+    "type": "request",
+    "named": false
   },
   {
     "type": "requires",
