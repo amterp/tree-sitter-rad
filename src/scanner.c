@@ -368,12 +368,22 @@ bool tree_sitter_rad_external_scanner_scan(void *payload, TSLexer *lexer, const 
 
         }
 
-        DEBUG("Stripping %c %d", lexer->lookahead, to_strip);
-        int remaining = strip_prefix_ws(lexer, to_strip, true);
-        if (remaining > 0)
+        // Only strip leading whitespace if we're at the start of a content line (column 0).
+        // This prevents erroneous stripping after returning from mid-line interpolation/escape.
+        // We use column position rather than a flag because flags don't persist when the
+        // scanner returns false (e.g., when there's no content before an interpolation).
+        uint32_t current_col = lexer->get_column(lexer);
+        DEBUG("Column check: col=%u, to_strip=%d, lookahead='%c'", current_col, to_strip, lexer->lookahead);
+        if (current_col == 0 && to_strip > 0)
         {
-            // invalid multistring
-            return false;
+            DEBUG("Stripping whitespace at col 0");
+            int remaining = strip_prefix_ws(lexer, to_strip, true);
+            if (remaining > 0)
+            {
+                // invalid multistring - not enough indentation
+                DEBUG("Strip failed, remaining: %d", remaining);
+                return false;
+            }
         }
 
         while (lexer->lookahead)
