@@ -411,6 +411,7 @@ module.exports = grammar({
       field("lefts", $.for_lefts),
       'in',
       field('right', $.expr),
+      optional(seq('with', field('context', $._identifier))),
     ),
 
     for_lefts: $ => commaSep1(field('left', $._identifier)),
@@ -1138,6 +1139,8 @@ module.exports = grammar({
       alias("rad", "identifier"),
       alias("request", "identifier"),
       alias("display", "identifier"),
+      // for-loop context keyword - allow use as identifier outside for-loop context
+      alias("with", "identifier"),
     )),
 
     int: _ => /\d(_*\d+)*/,
