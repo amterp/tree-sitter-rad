@@ -24,12 +24,13 @@ const PREC = {
   times: 19,
   unary: 20,
   fallback: 21,
-  power: 22,
-  var_path: 23,
-  indexing: 24,
-  call: 25,
-  incr_decr: 26,
-  lambda: 27,
+  catch_op: 22,
+  power: 23,
+  var_path: 24,
+  indexing: 25,
+  call: 26,
+  incr_decr: 27,
+  lambda: 28,
 };
 
 const identifierRegex = /[a-zA-Z_][a-zA-Z0-9_]*/;
@@ -66,6 +67,7 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$._left_side, $._postfix_expr],
+    [$.fallback_expr, $.catch_expr],
     // Note: rad_block vs var_path/call conflicts are auto-detected by tree-sitter
     // due to the identifier aliases for rad/request/display
   ],
@@ -214,8 +216,17 @@ module.exports = grammar({
       prec.left(PREC.fallback, seq(
         field('left', $.fallback_expr),
         field('op', '??'),
-        field('right', $._postfix_expr)
+        field('right', $.catch_expr)
       )),
+      field("delegate", $.catch_expr),
+    ),
+
+    catch_expr: $ => choice(
+      prec.dynamic(-1, prec.left(seq(
+        field('left', $.catch_expr),
+        'catch',
+        field('right', $._postfix_expr)
+      ))),
       field("delegate", $._postfix_expr),
     ),
 
@@ -270,10 +281,10 @@ module.exports = grammar({
       optional(field("catch", $.catch_block)),
     )),
 
-    catch_block: $ => seq(
+    catch_block: $ => prec.dynamic(1, seq(
       'catch',
       colonBlockField($, $._stmt, "stmt"),
-    ),
+    )),
 
     compound_assign: $ => seq(
       $._left_side_single,
