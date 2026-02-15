@@ -1125,13 +1125,16 @@ module.exports = grammar({
     ),
     format_specifier: $ => seq(
       ':',
-      seq(
-        optional(field("alignment", choice("<", ">"))),
-        optional(field("padding", $.int)),
-        optional(field("thousands_separator", ",")),
-        optional(seq('.', field("precision", $.int))),
-      ),
+      optional(choice(
+        field("fill_alignment", $.fill_alignment),
+        field("alignment", choice("<", ">")),
+      )),
+      optional(field("padding", $.int)),
+      optional(field("thousands_separator", ",")),
+      optional(seq('.', field("precision", $.int))),
     ),
+
+    fill_alignment: _ => token(seq(/[^{}]/, choice('<', '>'))),
 
     identifierRegex: _ => identifierRegex,
 

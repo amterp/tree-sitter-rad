@@ -2008,6 +2008,16 @@
           }
         ]
       },
+      "fill_alignment": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fill_alignment",
+            "named": true
+          }
+        ]
+      },
       "padding": {
         "multiple": false,
         "required": false,
@@ -4322,6 +4332,10 @@
   {
     "type": "fields",
     "named": false
+  },
+  {
+    "type": "fill_alignment",
+    "named": true
   },
   {
     "type": "filter",
