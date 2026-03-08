@@ -2928,6 +2928,10 @@
             "named": true
           },
           {
+            "type": "rad_option_stmt",
+            "named": true
+          },
+          {
             "type": "rad_sort_stmt",
             "named": true
           }
@@ -2953,6 +2957,10 @@
           },
           {
             "type": "rad_if_stmt",
+            "named": true
+          },
+          {
+            "type": "rad_option_stmt",
             "named": true
           },
           {
@@ -3110,6 +3118,10 @@
             "named": true
           },
           {
+            "type": "rad_option_stmt",
+            "named": true
+          },
+          {
             "type": "rad_sort_stmt",
             "named": true
           }
@@ -3141,6 +3153,37 @@
     "type": "rad_keyword",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "rad_option_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "rad_option_stmt",
+    "named": true,
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "rad_option_keyword",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "rad_sort_specifier",
@@ -3322,7 +3365,6 @@
   {
     "type": "source_file",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -4375,6 +4417,10 @@
   },
   {
     "type": "in",
+    "named": false
+  },
+  {
+    "type": "insecure",
     "named": false
   },
   {

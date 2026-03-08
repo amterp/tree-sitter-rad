@@ -792,6 +792,16 @@ module.exports = grammar({
       $.rad_sort_stmt,
       $.rad_field_modifier_stmt,
       $.rad_if_stmt,
+      $.rad_option_stmt,
+    ),
+
+    rad_option_stmt: $ => prec.right(seq(
+      field('keyword', $.rad_option_keyword),
+      optional(field('value', $.expr)),
+    )),
+
+    rad_option_keyword: $ => choice(
+      'insecure',
     ),
 
     rad_sort_stmt: $ => prec.right(seq(
