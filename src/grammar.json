@@ -3953,23 +3953,6 @@
       ]
     },
     "rad_block": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_rad_rad_block"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_request_block"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_display_block"
-        }
-      ]
-    },
-    "_rad_rad_block": {
       "type": "PREC_DYNAMIC",
       "value": 1,
       "content": {
@@ -3981,120 +3964,6 @@
             "content": {
               "type": "SYMBOL",
               "name": "rad_keyword"
-            }
-          },
-          {
-            "type": "FIELD",
-            "name": "source",
-            "content": {
-              "type": "SYMBOL",
-              "name": "expr"
-            }
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_newline"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_indent"
-              },
-              {
-                "type": "FIELD",
-                "name": "stmt",
-                "content": {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_rad_stmt"
-                  }
-                }
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_dedent"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "_request_block": {
-      "type": "PREC_DYNAMIC",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "rad_type",
-            "content": {
-              "type": "SYMBOL",
-              "name": "request_keyword"
-            }
-          },
-          {
-            "type": "FIELD",
-            "name": "source",
-            "content": {
-              "type": "SYMBOL",
-              "name": "expr"
-            }
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_newline"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_indent"
-              },
-              {
-                "type": "FIELD",
-                "name": "stmt",
-                "content": {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_rad_stmt"
-                  }
-                }
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_dedent"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "_display_block": {
-      "type": "PREC_DYNAMIC",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "rad_type",
-            "content": {
-              "type": "SYMBOL",
-              "name": "display_keyword"
             }
           },
           {
@@ -4149,27 +4018,28 @@
       }
     },
     "rad_keyword": {
-      "type": "STRING",
-      "value": "rad"
-    },
-    "request_keyword": {
-      "type": "STRING",
-      "value": "request"
-    },
-    "display_keyword": {
-      "type": "STRING",
-      "value": "display"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "rad"
+        },
+        {
+          "type": "STRING",
+          "value": "request"
+        },
+        {
+          "type": "STRING",
+          "value": "display"
+        }
+      ]
     },
     "_rad_stmt": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "rad_field_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "rad_sort_stmt"
+          "name": "_rad_simple_stmts"
         },
         {
           "type": "SYMBOL",
@@ -4178,45 +4048,63 @@
         {
           "type": "SYMBOL",
           "name": "rad_if_stmt"
+        }
+      ]
+    },
+    "_rad_simple_stmts": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rad_field_stmt"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rad_sort_stmt"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rad_option_stmt"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
-          "name": "rad_option_stmt"
+          "name": "_newline"
         }
       ]
     },
     "rad_option_stmt": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "keyword",
-            "content": {
-              "type": "SYMBOL",
-              "name": "rad_option_keyword"
-            }
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "value",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "expr"
-                }
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "SYMBOL",
+            "name": "rad_option_keyword"
           }
-        ]
-      }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "value",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "rad_option_keyword": {
       "type": "CHOICE",
@@ -4224,6 +4112,14 @@
         {
           "type": "STRING",
           "value": "insecure"
+        },
+        {
+          "type": "STRING",
+          "value": "quiet"
+        },
+        {
+          "type": "STRING",
+          "value": "noprint"
         }
       ]
     },

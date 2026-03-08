@@ -68,7 +68,7 @@ module.exports = grammar({
   conflicts: $ => [
     [$._left_side, $._postfix_expr],
     [$.fallback_expr, $.catch_expr],
-    // Note: rad_block vs var_path/call conflicts are auto-detected by tree-sitter
+// Note: rad_block vs var_path/call conflicts are auto-detected by tree-sitter
     // due to the identifier aliases for rad/request/display
   ],
 
@@ -757,51 +757,40 @@ module.exports = grammar({
 
     // Rad Block
 
-    rad_block: $ => choice(
-      $._rad_rad_block,
-      $._request_block,
-      $._display_block,
-    ),
-
     // Dynamic precedence ensures rad blocks are preferred over identifier interpretation
-    // when the full block syntax matches (keyword + expr + colon + block body)
-    _rad_rad_block: $ => prec.dynamic(1, seq(
+    // when the full block syntax matches (keyword + optional expr + colon + block body)
+    rad_block: $ => prec.dynamic(1, seq(
       field('rad_type', $.rad_keyword),
-      field("source", $.expr),
-      colonBlockField($, $._rad_stmt, "stmt"),
-    )),
-
-    _request_block: $ => prec.dynamic(1, seq(
-      field('rad_type', $.request_keyword),
-      field("source", $.expr),
-      colonBlockField($, $._rad_stmt, "stmt"),
-    )),
-
-    _display_block: $ => prec.dynamic(1, seq(
-      field('rad_type', $.display_keyword),
       optional(field("source", $.expr)),
       colonBlockField($, $._rad_stmt, "stmt"),
     )),
 
-    rad_keyword: $ => "rad",
-    request_keyword: $ => "request",
-    display_keyword: $ => "display",
+    rad_keyword: $ => choice("rad", "request", "display"),
 
     _rad_stmt: $ => choice(
-      $.rad_field_stmt,
-      $.rad_sort_stmt,
+      $._rad_simple_stmts,
       $.rad_field_modifier_stmt,
       $.rad_if_stmt,
-      $.rad_option_stmt,
     ),
 
-    rad_option_stmt: $ => prec.right(seq(
+    _rad_simple_stmts: $ => seq(
+      choice(
+        $.rad_field_stmt,
+        $.rad_sort_stmt,
+        $.rad_option_stmt,
+      ),
+      $._newline,
+    ),
+
+    rad_option_stmt: $ => seq(
       field('keyword', $.rad_option_keyword),
       optional(field('value', $.expr)),
-    )),
+    ),
 
     rad_option_keyword: $ => choice(
       'insecure',
+      'quiet',
+      'noprint',
     ),
 
     rad_sort_stmt: $ => prec.right(seq(
@@ -1158,8 +1147,8 @@ module.exports = grammar({
       alias("confirm", "identifier"),
       alias("unsafe", "identifier"),
       alias("quiet", "identifier"),
-      // rad block keywords - allow use as identifiers when not starting a block
-      // (e.g., `request = foo` should work as an assignment)
+      // rad block keyword - allow use as identifier when not starting a block
+      // (e.g., `rad = foo` should work as an assignment)
       alias("rad", "identifier"),
       alias("request", "identifier"),
       alias("display", "identifier"),

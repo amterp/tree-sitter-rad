@@ -1172,11 +1172,6 @@
     }
   },
   {
-    "type": "display_keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "else_alt",
     "named": true,
     "fields": {
@@ -2888,15 +2883,7 @@
         "required": true,
         "types": [
           {
-            "type": "display_keyword",
-            "named": true
-          },
-          {
             "type": "rad_keyword",
-            "named": true
-          },
-          {
-            "type": "request_keyword",
             "named": true
           }
         ]
@@ -3230,11 +3217,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "request_keyword",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "return_stmt",
@@ -4449,6 +4431,10 @@
   },
   {
     "type": "mutually",
+    "named": false
+  },
+  {
+    "type": "noprint",
     "named": false
   },
   {
