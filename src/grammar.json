@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "rad",
   "word": "identifierRegex",
   "rules": {
@@ -4120,6 +4121,10 @@
         {
           "type": "STRING",
           "value": "noprint"
+        },
+        {
+          "type": "STRING",
+          "value": "transpose"
         }
       ]
     },

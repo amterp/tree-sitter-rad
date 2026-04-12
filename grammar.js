@@ -791,6 +791,7 @@ module.exports = grammar({
       'insecure',
       'quiet',
       'noprint',
+      'transpose',
     ),
 
     rad_sort_stmt: $ => prec.right(seq(

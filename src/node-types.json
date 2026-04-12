@@ -3347,6 +3347,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -4519,6 +4520,10 @@
   },
   {
     "type": "switch",
+    "named": false
+  },
+  {
+    "type": "transpose",
     "named": false
   },
   {
