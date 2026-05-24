@@ -729,6 +729,10 @@
             "named": true
           },
           {
+            "type": "typed_assign",
+            "named": true
+          },
+          {
             "type": "while_loop",
             "named": true
           },
@@ -1144,6 +1148,10 @@
             "named": true
           },
           {
+            "type": "typed_assign",
+            "named": true
+          },
+          {
             "type": "while_loop",
             "named": true
           },
@@ -1241,6 +1249,10 @@
           },
           {
             "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "typed_assign",
             "named": true
           },
           {
@@ -1558,6 +1570,10 @@
             "named": true
           },
           {
+            "type": "typed_assign",
+            "named": true
+          },
+          {
             "type": "while_loop",
             "named": true
           },
@@ -1584,7 +1600,7 @@
     "named": true,
     "fields": {
       "list": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -1788,6 +1804,10 @@
             "named": true
           },
           {
+            "type": "typed_assign",
+            "named": true
+          },
+          {
             "type": "while_loop",
             "named": true
           },
@@ -1974,6 +1994,10 @@
             "named": true
           },
           {
+            "type": "typed_assign",
+            "named": true
+          },
+          {
             "type": "while_loop",
             "named": true
           },
@@ -2125,6 +2149,10 @@
           },
           {
             "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "typed_assign",
             "named": true
           },
           {
@@ -3347,7 +3375,6 @@
   {
     "type": "source_file",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -3431,6 +3458,10 @@
         },
         {
           "type": "switch_stmt",
+          "named": true
+        },
+        {
+          "type": "typed_assign",
           "named": true
         },
         {
@@ -3699,6 +3730,10 @@
             "named": true
           },
           {
+            "type": "typed_assign",
+            "named": true
+          },
+          {
             "type": "while_loop",
             "named": true
           },
@@ -3830,6 +3865,56 @@
         "types": [
           {
             "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "typed_assign",
+    "named": true,
+    "fields": {
+      "catch": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "catch_block",
+            "named": true
+          }
+        ]
+      },
+      "declared_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
+            "named": true
+          }
+        ]
+      },
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          },
+          {
+            "type": "json_path",
             "named": true
           }
         ]
@@ -4048,6 +4133,10 @@
           },
           {
             "type": "switch_stmt",
+            "named": true
+          },
+          {
+            "type": "typed_assign",
             "named": true
           },
           {

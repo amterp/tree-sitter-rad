@@ -15,6 +15,10 @@
 #endif
 
 // Define token types recognized by the external scanner.
+//
+// IMPORTANT: the order here must match the order of $.externals in
+// grammar.js. Tree-sitter passes a `valid_symbols` array indexed by
+// this enum, so a mismatch silently misroutes lookahead.
 enum TokenType
 {
     NEWLINE,
@@ -27,6 +31,7 @@ enum TokenType
     CLOSE_PAREN,
     CLOSE_BRACKET,
     CLOSE_BRACE,
+    BLOCK_COLON,
 };
 
 // Flags to describe string delimiters (single quote, double quote, etc.) and
@@ -312,6 +317,60 @@ static int strip_prefix_ws(TSLexer *lexer, int to_strip, bool do_skip)
 bool tree_sitter_rad_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols)
 {
     Scanner *scanner = (Scanner *)payload;
+
+    // BLOCK_COLON: emit only when ':' is followed (after optional
+    // same-line whitespace and an optional line comment) by a
+    // newline or EOF. This is the unambiguous shape of a
+    // block-opening colon. typed_assign keeps using the in-grammar
+    // ':' literal, so the lexer's choice between BLOCK_COLON and ':'
+    // separates the two LR paths at the token level before any
+    // grammar conflict can arise.
+    //
+    // Run this check first so a successful peek consumes the ':'
+    // before any other external token logic kicks in. If the lookahead
+    // after the colon isn't end-of-line, return false so the regular
+    // ':' lexer fires.
+    if (valid_symbols[BLOCK_COLON] && lexer->lookahead == ':')
+    {
+        advance(lexer);
+        lexer->mark_end(lexer);
+        // Skip same-line whitespace.
+        while (lexer->lookahead == ' ' || lexer->lookahead == '\t')
+        {
+            advance(lexer);
+        }
+        // Allow an optional same-line comment between ':' and the
+        // newline so `rad: // foo` opens a block.
+        if (lexer->lookahead == '/')
+        {
+            int32_t saved = lexer->lookahead;
+            advance(lexer);
+            if (lexer->lookahead == '/')
+            {
+                while (lexer->lookahead != '\r' && lexer->lookahead != '\n' && lexer->lookahead != 0)
+                {
+                    advance(lexer);
+                }
+            }
+            else
+            {
+                // Lone '/' is not a colon-block terminator. Fall
+                // through to the not-a-block-colon branch below by
+                // ensuring we don't satisfy the newline check.
+                (void)saved;
+            }
+        }
+        if (lexer->lookahead == '\r' || lexer->lookahead == '\n' || lexer->lookahead == 0)
+        {
+            lexer->result_symbol = BLOCK_COLON;
+            return true;
+        }
+        // Not followed by EOL; this is a typed-assign / map-key /
+        // ternary colon. Decline to emit BLOCK_COLON; the in-grammar
+        // ':' lexer will run from before the colon on the parser's
+        // next attempt.
+        return false;
+    }
 
     // Special handling for error recovery mode and when within brackets.
     bool error_recovery_mode = valid_symbols[STRING_CONTENT] && valid_symbols[INDENT];

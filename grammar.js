@@ -63,6 +63,16 @@ module.exports = grammar({
     ']',
     ')',
     '}',
+
+    // `_block_colon` is a context-sensitive ':' that the external
+    // scanner only emits when the colon is followed (after optional
+    // same-line whitespace) by a newline - the unambiguous shape of
+    // a block-opening colon. Used by rad_block so it can coexist
+    // with typed_assign's `: type = expr` on the same identifier
+    // prefix without LR conflict. Other ':' usages (struct/map
+    // keys, conditionals, type intros) keep using the in-grammar
+    // ':' literal.
+    $._block_colon,
   ],
 
   conflicts: $ => [
@@ -113,6 +123,7 @@ module.exports = grammar({
     _simple_stmt: $ => choice(
       $.expr_stmt,
       $.assign,
+      $.typed_assign,
       $.compound_assign,
       $.shell_stmt,
       $.incr_decr,
@@ -281,6 +292,24 @@ module.exports = grammar({
       optional(field("catch", $.catch_block)),
     )),
 
+    // Typed local declaration: `x: int = 5`.
+    //
+    // typed_assign covers ALL identifiers that aren't rad-block
+    // keywords. The rad/request/display cases are handled inside
+    // the merged `rad_block` rule's choice (see Rad Block section
+    // below) so `rad: int = 5` parses as a typed-assign branch of
+    // rad_block while `rad :\n indent ...` parses as the block
+    // branch - both share the same LR state, lookahead picks the
+    // right one. No GLR forking or dynamic precedence needed.
+    typed_assign: $ => prec.right(seq(
+      field("left", $._identifier),
+      ":",
+      field("declared_type", $.fn_param_or_return_type),
+      '=',
+      field("right", $._right_side_single),
+      optional(field("catch", $.catch_block)),
+    )),
+
     catch_block: $ => prec.dynamic(1, seq(
       'catch',
       colonBlockField($, $._stmt, "stmt"),
@@ -307,6 +336,7 @@ module.exports = grammar({
       seq('[', sepTrail1(field("lefts", $.var_path)), ']'),
       $._left_side_single,
     ),
+
 
     _right_side_single: $ => field("right", choice(
       $.expr,
@@ -756,13 +786,20 @@ module.exports = grammar({
     ),
 
     // Rad Block
-
-    // Dynamic precedence ensures rad blocks are preferred over identifier interpretation
-    // when the full block syntax matches (keyword + optional expr + colon + block body)
+    //
+    // The leading colon uses the external `_block_colon` token
+    // instead of the in-grammar ':' literal. The scanner only emits
+    // BLOCK_COLON when the ':' is followed by end-of-line (possibly
+    // after same-line whitespace or comment) - the unambiguous shape
+    // of a block-opening colon. That lets `rad : int = 5` (typed
+    // local using 'rad' as a var) parse via the regular ':' lexer
+    // into typed_assign, while `rad :\n indent ...` parses via
+    // BLOCK_COLON into rad_block. No GLR conflict, no dynamic prec
+    // tricks - the two paths take different tokens at the colon.
     rad_block: $ => prec.dynamic(1, seq(
       field('rad_type', $.rad_keyword),
       optional(field("source", $.expr)),
-      colonBlockField($, $._rad_stmt, "stmt"),
+      colonBlockField($, $._rad_stmt, "stmt", $._block_colon),
     )),
 
     rad_keyword: $ => choice("rad", "request", "display"),
@@ -966,7 +1003,7 @@ module.exports = grammar({
         field("type", $.fn_type),
         field("type", $.error_type),
       ),
-      optional(field("list", "[]")),
+      repeat(field("list", "[]")),
       optional(field("optional", "?")),
     )),
 
@@ -1274,9 +1311,15 @@ function colonBlock($, rule) {
  *
  * @returns {SeqRule}
  */
-function colonBlockField($, rule, fieldName) {
+function colonBlockField($, rule, fieldName, colonToken) {
+  // Most callers want the in-grammar ':' literal. rad_block passes
+  // the external _block_colon token so its colon is distinguishable
+  // from a typed-assign ':' (which can also follow a var_path-like
+  // prefix when the variable name happens to be 'rad', 'request',
+  // or 'display'). Defaulting keeps every other call site
+  // unchanged.
   return seq(
-    ":",
+    colonToken || ":",
     $._newline,
     $._indent,
     field(fieldName, repeat(rule)),
