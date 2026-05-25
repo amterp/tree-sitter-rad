@@ -1599,6 +1599,16 @@
     "type": "fn_leaf_type",
     "named": true,
     "fields": {
+      "group": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fn_param_or_return_type",
+            "named": true
+          }
+        ]
+      },
       "list": {
         "multiple": true,
         "required": false,
@@ -1621,7 +1631,7 @@
       },
       "type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "any_type",
@@ -3375,6 +3385,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,

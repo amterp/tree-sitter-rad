@@ -936,6 +936,12 @@ module.exports = grammar({
     _fn_body: $ => choice(
       field("stmt", $._lambda_compat_stmt),
       seq('(', field("stmt", $._lambda_compat_stmt), ')'),
+      // Inline colon-then-expression form, distinct from _fn_block
+      // (which requires newline+indent after the colon). Mirrors fn-
+      // def style for one-liners and is the only way to write an
+      // inline lambda with annotated params or return type, since
+      // `fn(x: int) <expr>` runs the param-list colon into the body.
+      seq(":", field("stmt", $._lambda_compat_stmt)),
       $._fn_block,
     ),
 
@@ -1002,6 +1008,12 @@ module.exports = grammar({
         field("type", $.any_type),
         field("type", $.fn_type),
         field("type", $.error_type),
+        // Parenthesized group lets list / optional modifiers stack
+        // on top of a union: `(int|str)[]`, `(int|str)?`,
+        // `((int|str)|bool)[]?`. Without this, the `[]` / `?`
+        // suffix only attaches to a single leaf, so unioned-then-
+        // listed shapes weren't expressible.
+        seq("(", field("group", $.fn_param_or_return_type), ")"),
       ),
       repeat(field("list", "[]")),
       optional(field("optional", "?")),
