@@ -700,8 +700,17 @@
                 "type": "FIELD",
                 "name": "right",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "catch_expr"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "catch_expr"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_signed_operand"
+                    }
+                  ]
                 }
               }
             ]
@@ -745,8 +754,17 @@
                   "type": "FIELD",
                   "name": "right",
                   "content": {
-                    "type": "SYMBOL",
-                    "name": "_postfix_expr"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_postfix_expr"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_signed_operand"
+                      }
+                    ]
                   }
                 }
               ]
@@ -762,6 +780,40 @@
           }
         }
       ]
+    },
+    "_signed_operand": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_signed_postfix"
+      },
+      "named": true,
+      "value": "unary_expr"
+    },
+    "_signed_postfix": {
+      "type": "PREC",
+      "value": 20,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "op",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_unary_op_sign"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "arg",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_postfix_expr"
+            }
+          }
+        ]
+      }
     },
     "_postfix_expr": {
       "type": "CHOICE",

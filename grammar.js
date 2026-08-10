@@ -227,7 +227,7 @@ module.exports = grammar({
       prec.left(PREC.fallback, seq(
         field('left', $.fallback_expr),
         field('op', '??'),
-        field('right', $.catch_expr)
+        field('right', choice($.catch_expr, $._signed_operand))
       )),
       field("delegate", $.catch_expr),
     ),
@@ -236,10 +236,24 @@ module.exports = grammar({
       prec.dynamic(-1, prec.left(seq(
         field('left', $.catch_expr),
         'catch',
-        field('right', $._postfix_expr)
+        field('right', choice($._postfix_expr, $._signed_operand))
       ))),
       field("delegate", $._postfix_expr),
     ),
+
+    // A sign applied directly to the right-hand operand of `??` or `catch`.
+    // The general unary rule sits *above* `??` in the precedence cascade, so
+    // it cannot appear in this position; without this rule `x ?? -1` is a
+    // parse error and the fallback has to be written `?? (-1)`.
+    //
+    // Aliased to unary_expr so it carries the node kind and op/arg fields
+    // consumers already handle - this adds syntax, not a node type.
+    _signed_operand: $ => alias($._signed_postfix, $.unary_expr),
+
+    _signed_postfix: $ => prec(PREC.unary, seq(
+      field('op', $._unary_op_sign),
+      field('arg', $._postfix_expr),
+    )),
 
     _postfix_expr: $ => choice(
       $.indexed_expr,

@@ -781,6 +781,10 @@
             "named": true
           },
           {
+            "type": "unary_expr",
+            "named": true
+          },
+          {
             "type": "var_path",
             "named": true
           }
@@ -1354,6 +1358,10 @@
         "types": [
           {
             "type": "catch_expr",
+            "named": true
+          },
+          {
+            "type": "unary_expr",
             "named": true
           }
         ]
@@ -3940,7 +3948,15 @@
         "required": false,
         "types": [
           {
+            "type": "indexed_expr",
+            "named": true
+          },
+          {
             "type": "unary_expr",
+            "named": true
+          },
+          {
+            "type": "var_path",
             "named": true
           }
         ]
