@@ -688,6 +688,7 @@ module.exports = grammar({
       field("enum_constraint", $.arg_enum_constraint),
       field("regex_constraint", $.arg_regex_constraint),
       field("range_constraint", $.arg_range_constraint),
+      field("len_constraint", $.arg_len_constraint),
       field("requires_constraint", $.arg_requires_constraint),
       field("excludes_constraint", $.arg_excludes_constraint),
     ),
@@ -748,6 +749,44 @@ module.exports = grammar({
     _arg_range_constraint_max: $ => choice(
       field("max", $.int_arg),
       field("max", $.float_arg),
+    ),
+
+    // Same interval notation as range, but the bounds count values rather than
+    // measure them, so they are whole numbers only.
+    arg_len_constraint: $ => seq(
+      field("arg_name", $._identifier),
+      "len",
+      seq(
+        choice(
+          field("opener", "("),
+          field("opener", "["),
+        ),
+        choice(
+          $._arg_len_constraint_min_only,
+          $._arg_len_constraint_max_only,
+          $._arg_len_constraint_min_max,
+        ),
+        choice(
+          field("closer", ")"),
+          field("closer", "]"),
+        ),
+      ),
+    ),
+
+    _arg_len_constraint_min_only: $ => seq(
+      field("min", $.int_arg),
+      ",",
+    ),
+
+    _arg_len_constraint_max_only: $ => seq(
+      ",",
+      field("max", $.int_arg),
+    ),
+
+    _arg_len_constraint_min_max: $ => seq(
+      field("min", $.int_arg),
+      ",",
+      field("max", $.int_arg),
     ),
 
     arg_requires_constraint: $ => seq(

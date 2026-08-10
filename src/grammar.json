@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "rad",
   "word": "identifierRegex",
   "rules": {
@@ -3538,6 +3539,14 @@
         },
         {
           "type": "FIELD",
+          "name": "len_constraint",
+          "content": {
+            "type": "SYMBOL",
+            "name": "arg_len_constraint"
+          }
+        },
+        {
+          "type": "FIELD",
           "name": "requires_constraint",
           "content": {
             "type": "SYMBOL",
@@ -3766,6 +3775,146 @@
           "content": {
             "type": "SYMBOL",
             "name": "float_arg"
+          }
+        }
+      ]
+    },
+    "arg_len_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "arg_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "len"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "opener",
+                  "content": {
+                    "type": "STRING",
+                    "value": "("
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "opener",
+                  "content": {
+                    "type": "STRING",
+                    "value": "["
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_arg_len_constraint_min_only"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_arg_len_constraint_max_only"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_arg_len_constraint_min_max"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "closer",
+                  "content": {
+                    "type": "STRING",
+                    "value": ")"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "closer",
+                  "content": {
+                    "type": "STRING",
+                    "value": "]"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_arg_len_constraint_min_only": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "min",
+          "content": {
+            "type": "SYMBOL",
+            "name": "int_arg"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        }
+      ]
+    },
+    "_arg_len_constraint_max_only": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "FIELD",
+          "name": "max",
+          "content": {
+            "type": "SYMBOL",
+            "name": "int_arg"
+          }
+        }
+      ]
+    },
+    "_arg_len_constraint_min_max": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "min",
+          "content": {
+            "type": "SYMBOL",
+            "name": "int_arg"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "FIELD",
+          "name": "max",
+          "content": {
+            "type": "SYMBOL",
+            "name": "int_arg"
           }
         }
       ]

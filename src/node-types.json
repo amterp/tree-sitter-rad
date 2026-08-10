@@ -129,6 +129,16 @@
           }
         ]
       },
+      "len_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_len_constraint",
+            "named": true
+          }
+        ]
+      },
       "range_constraint": {
         "multiple": true,
         "required": false,
@@ -369,6 +379,70 @@
         "types": [
           {
             "type": "mutually",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "arg_len_constraint",
+    "named": true,
+    "fields": {
+      "arg_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": false
+          }
+        ]
+      },
+      "closer": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          }
+        ]
+      },
+      "max": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "int_arg",
+            "named": true
+          }
+        ]
+      },
+      "min": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "int_arg",
+            "named": true
+          }
+        ]
+      },
+      "opener": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": "[",
             "named": false
           }
         ]
@@ -862,6 +936,16 @@
         "types": [
           {
             "type": "arg_excludes_constraint",
+            "named": true
+          }
+        ]
+      },
+      "len_constraint": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arg_len_constraint",
             "named": true
           }
         ]
@@ -3413,6 +3497,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -4569,6 +4654,10 @@
   },
   {
     "type": "json",
+    "named": false
+  },
+  {
+    "type": "len",
     "named": false
   },
   {
