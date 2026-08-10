@@ -798,10 +798,20 @@
     "fields": {
       "calls": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "cmd_calls",
+            "named": true
+          }
+        ]
+      },
+      "command": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "cmd_block",
             "named": true
           }
         ]
@@ -813,6 +823,16 @@
           {
             "type": "arg_declaration",
             "named": true
+          }
+        ]
+      },
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "default",
+            "named": false
           }
         ]
       },
@@ -3393,7 +3413,6 @@
   {
     "type": "source_file",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,

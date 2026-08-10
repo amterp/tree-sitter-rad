@@ -766,6 +766,12 @@ module.exports = grammar({
 
     // Command Block
 
+    // A command is a leaf (it has `calls`) or a namespace (it contains
+    // sub-commands). The body below is deliberately more permissive than
+    // that: a block with neither, a block with both, and `default` on a
+    // namespace all parse. Each is a checker diagnostic instead, because
+    // forgetting `calls` is the likeliest first mistake and the parser can
+    // only answer it with "Invalid syntax" pointing at a dedent.
     cmd_block: $ => seq(
       "command",
       field("name", $._identifier),
@@ -774,7 +780,9 @@ module.exports = grammar({
       $._indent,
       optional(field("description", $.cmd_description)),
       repeat($._arg_stmt),
-      field("calls", $.cmd_calls),
+      optional(field("default", "default")),
+      optional(field("calls", $.cmd_calls)),
+      repeat(field("command", $.cmd_block)),
       $._dedent,
     ),
 
