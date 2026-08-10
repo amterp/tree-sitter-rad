@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "rad",
   "word": "identifierRegex",
   "rules": {
@@ -6668,6 +6669,14 @@
               "type": "SYMBOL",
               "name": "esc_open_bracket"
             }
+          },
+          {
+            "type": "FIELD",
+            "name": "close_bracket",
+            "content": {
+              "type": "SYMBOL",
+              "name": "esc_close_bracket"
+            }
           }
         ]
       }
@@ -6719,6 +6728,13 @@
       "content": {
         "type": "STRING",
         "value": "\\{"
+      }
+    },
+    "esc_close_bracket": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "\\}"
       }
     },
     "_not_escape_seq": {

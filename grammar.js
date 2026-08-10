@@ -1168,6 +1168,7 @@ module.exports = grammar({
       field("tab", $.esc_tab),
       field("backslash", $.esc_backslash),
       field("open_bracket", $.esc_open_bracket),
+      field("close_bracket", $.esc_close_bracket),
     )),
 
     esc_single_quote: _ => token.immediate("\\'"),
@@ -1177,6 +1178,7 @@ module.exports = grammar({
     esc_tab: _ => token.immediate("\\t"),
     esc_backslash: _ => token.immediate("\\\\"),
     esc_open_bracket: _ => token.immediate("\\{"),
+    esc_close_bracket: _ => token.immediate("\\}"),
 
     _not_escape_seq: _ => token.immediate('\\'),
 

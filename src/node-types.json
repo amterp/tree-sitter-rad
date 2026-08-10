@@ -3393,6 +3393,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -3553,6 +3554,16 @@
         "types": [
           {
             "type": "esc_backtick",
+            "named": true
+          }
+        ]
+      },
+      "close_bracket": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "esc_close_bracket",
             "named": true
           }
         ]
@@ -4439,6 +4450,10 @@
   },
   {
     "type": "esc_backtick",
+    "named": true
+  },
+  {
+    "type": "esc_close_bracket",
     "named": true
   },
   {

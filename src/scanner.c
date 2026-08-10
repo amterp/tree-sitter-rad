@@ -447,13 +447,64 @@ bool tree_sitter_rad_external_scanner_scan(void *payload, TSLexer *lexer, const 
 
         while (lexer->lookahead)
         {
-            // Check for escape interpolation start within the string.
+            // A '{' either opens an interpolation or is a literal brace. It
+            // is literal only in the two shapes where an interpolation is
+            // impossible, because an interpolation must hold an expression
+            // and neither shape leaves room for one:
+            //
+            //   "{"     the string ends immediately after the brace
+            //   "{ }"   only whitespace sits between the braces
+            //
+            // Everything else stays an interpolation, so a forgotten
+            // closing brace ("{name") keeps failing loudly rather than
+            // silently printing itself.
+            //
+            // The first shape means an interpolation can no longer open
+            // with a same-delimiter string: `"{"a"}"` is now the literal
+            // brace `{` followed by stray tokens. That is a deliberate
+            // trade -- the two readings share the prefix `"{"` and cannot
+            // be told apart before the closing quote -- and the idiom has
+            // two spellings left, `"{'a'}"` and `"{ "a" }"`.
+            //
+            // Hence no whitespace is allowed in the first shape: skipping
+            // it would swallow the second spelling too.
+            //
+            // Newlines are not skipped either. In a triple string the loop
+            // returns at '\n' so the dedent logic can run (see below), and
+            // consuming one during lookahead would swallow the next line's
+            // indent prefix unstripped.
             if (lexer->lookahead == '{' && !is_raw(delimiter))
             {
-                // about to start an interpolation -- exit and let TS grammar handle it
+                // Placed before the '{' so that rejecting below ends the
+                // token here. Lookahead may advance past this mark freely;
+                // tree-sitter re-lexes from the mark.
                 lexer->mark_end(lexer);
-                lexer->result_symbol = STRING_CONTENT;
-                return has_content;
+                advance(lexer);
+
+                if (lexer->lookahead != end_char)
+                {
+                    while (lexer->lookahead == ' ' || lexer->lookahead == '\t')
+                    {
+                        advance(lexer);
+                    }
+
+                    if (lexer->lookahead != '}')
+                    {
+                        // A real interpolation -- hand the '{' to the grammar.
+                        lexer->result_symbol = STRING_CONTENT;
+                        return has_content;
+                    }
+
+                    // Consume it: a '}' outside an interpolation is content.
+                    advance(lexer);
+                }
+
+                // Literal brace. Extend the token over what we consumed and
+                // let the loop carry on; a pending end_char is untouched and
+                // gets handled on the next pass.
+                lexer->mark_end(lexer);
+                has_content = true;
+                continue;
             }
 
             // Handle escape sequences.
