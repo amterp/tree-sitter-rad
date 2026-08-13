@@ -2559,6 +2559,27 @@
         ]
       }
     },
+    "_shell_operand": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parenthesized_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_identifier"
+        }
+      ]
+    },
     "shell_cmd": {
       "type": "SEQ",
       "members": [
@@ -2591,7 +2612,7 @@
           "name": "command",
           "content": {
             "type": "SYMBOL",
-            "name": "expr"
+            "name": "_shell_operand"
           }
         }
       ]

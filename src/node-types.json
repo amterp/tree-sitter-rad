@@ -3401,7 +3401,19 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "identifier",
+            "named": false
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expr",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           }
         ]

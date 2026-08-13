@@ -532,10 +532,27 @@ module.exports = grammar({
       optional(field("catch", $.catch_block)),
     )),
 
+    // A shell invocation binds only a *primary* operand. It used to bind a
+    // whole `expr`, which meant everything written after the command joined
+    // the command instead of reading its result - so `$`echo hi`.upper()` ran
+    // ECHO HI, and `$`cmd` catch "x"` caught the command string rather than
+    // the failure, silently doing nothing.
+    //
+    // Postfix now attaches to the indexed_expr wrapping this node, i.e. to the
+    // result. Which postfix is legal is the checker's call, not the grammar's:
+    // that is what lets `$cmds[1]` still parse, so it can be told what it used
+    // to mean instead of failing as a syntax error.
+    _shell_operand: $ => choice(
+      $.string,
+      $.list,
+      $.parenthesized_expr,
+      $._identifier,
+    ),
+
     shell_cmd: $ => seq(
       repeat(field("modifier", choice("quiet", "confirm"))),
       '$',
-      field("command", $.expr),
+      field("command", $._shell_operand),
     ),
 
     // Arg Block
