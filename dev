@@ -7,9 +7,9 @@ args:
     build b bool # Enable to build & test the tree sitter.
     no_clean "no-clean" C bool # Enable to not clean the go cache.
     include i str = "" # Specify to regex include only certain TS tests.
-    release r int = 0 # 1 to bump patch, 2 to bump minor, 3 for major
+    release r str? # patch, minor, or major - which version component to bump
 
-    release regex "^[0-9]+\.[0-9]+\.[0-9]+$"
+    release enum ["patch", "minor", "major"]
 
 if build or release:
     $`npm install`
@@ -29,23 +29,24 @@ if not release:
     exit()
 
 // resolve version /////////////
-_, latest_tag = $`git tag --sort=-v:refname | head -1`
-latest = latest_tag.trim().replace("v", "").split("\.")
+latest_tag = $`git tag --sort=-v:refname | head -1`
+latest = latest_tag.trim().replace("v", "").split(".")
 
 major = latest[0].parse_int()
 minor = latest[1].parse_int()
 patch = latest[2].parse_int()
 
-if release == 1:
+if release == "patch":
     version = "{major}.{minor}.{patch + 1}"
-else if release == 2:
+else if release == "minor":
     version = "{major}.{minor + 1}.0"
-else if release == 3:
+else if release == "major":
     version = "{major + 1}.0.0"
 ///////////////////////////////
 
-clean = $`git status --porcelain | grep -q .` catch:
+code = $`git status --porcelain | grep -q .` catch:
     pass
+clean = code != 0
 if not clean:
     $`git add .`
     $`git diff HEAD --compact-summary`
@@ -67,11 +68,11 @@ $`git add .`
 
 msg = "Release version {version}"
 if clean:
-    $`git commit -m "{msg}"`
+    $`git commit -m {msg}`
 else:
     $`git commit`
 
-$`git tag -a v{version} -m "{msg}"`
+$`git tag -a v{version} -m {msg}`
 
 push_cmd = `git push origin main --tags`
 
