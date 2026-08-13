@@ -125,7 +125,6 @@ module.exports = grammar({
       $.assign,
       $.typed_assign,
       $.compound_assign,
-      $.shell_stmt,
       $.incr_decr,
       $.del_stmt,
       $.break_stmt,
@@ -144,7 +143,6 @@ module.exports = grammar({
       // todo technically would be good to allow assign, but the multi-right side assign seems to cause issues
       $.expr,
       $.compound_assign,
-      $.shell_stmt,
       $.incr_decr,
       $.del_stmt,
     ),
@@ -270,6 +268,11 @@ module.exports = grammar({
       $.list_comprehension,
       $.parenthesized_expr,
       $.call,
+      // A shell invocation is an ordinary primary. `$cmd` on its own is an
+      // expr_stmt and `x = $cmd` is an assign - there is no separate statement
+      // rule, so capture targets, `catch:` blocks and operator precedence are
+      // whatever assign and expr_stmt already say they are.
+      $.shell_cmd,
     ),
 
     parenthesized_expr: $ => prec(PREC.parenthesized_expr, seq(
@@ -525,12 +528,6 @@ module.exports = grammar({
       $._switch_case_value_alt,
       $._newline,
     ),
-
-    shell_stmt: $ => prec.right(seq(
-      optional(seq($._left_side, "=")),
-      field("shell_cmd", $.shell_cmd),
-      optional(field("catch", $.catch_block)),
-    )),
 
     // A shell invocation binds only a *primary* operand. It used to bind a
     // whole `expr`, which meant everything written after the command joined

@@ -175,10 +175,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "shell_stmt"
-        },
-        {
-          "type": "SYMBOL",
           "name": "incr_decr"
         },
         {
@@ -250,10 +246,6 @@
         {
           "type": "SYMBOL",
           "name": "compound_assign"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "shell_stmt"
         },
         {
           "type": "SYMBOL",
@@ -871,6 +863,10 @@
         {
           "type": "SYMBOL",
           "name": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "shell_cmd"
         }
       ]
     },
@@ -2504,60 +2500,6 @@
           "name": "_newline"
         }
       ]
-    },
-    "shell_stmt": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "_left_side"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "="
-                  }
-                ]
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "FIELD",
-            "name": "shell_cmd",
-            "content": {
-              "type": "SYMBOL",
-              "name": "shell_cmd"
-            }
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "catch",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "catch_block"
-                }
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
     },
     "_shell_operand": {
       "type": "CHOICE",

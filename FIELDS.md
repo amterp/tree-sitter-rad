@@ -93,21 +93,20 @@
 |  88 | `root`                                   |
 |  89 | `second`                                 |
 |  90 | `segment`                                |
-|  91 | `shell_cmd`                              |
-|  92 | `shorthand`                              |
-|  93 | `single_quote`                           |
-|  94 | `source`                                 |
-|  95 | `specifier`                              |
-|  96 | `start`                                  |
-|  97 | `stmt`                                   |
-|  98 | `tab`                                    |
-|  99 | `thousands_separator`                    |
-| 100 | `true_branch`                            |
-| 101 | `type`                                   |
-| 102 | `value`                                  |
-| 103 | `value_type`                             |
-| 104 | `values`                                 |
-| 105 | `vararg_marker`                          |
-| 106 | `vararg_param`                           |
+|  91 | `shorthand`                              |
+|  92 | `single_quote`                           |
+|  93 | `source`                                 |
+|  94 | `specifier`                              |
+|  95 | `start`                                  |
+|  96 | `stmt`                                   |
+|  97 | `tab`                                    |
+|  98 | `thousands_separator`                    |
+|  99 | `true_branch`                            |
+| 100 | `type`                                   |
+| 101 | `value`                                  |
+| 102 | `value_type`                             |
+| 103 | `values`                                 |
+| 104 | `vararg_marker`                          |
+| 105 | `vararg_param`                           |
 
 *This file is generated - don't edit manually.*
